@@ -1,11 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/no-namespace
 declare namespace _sp_ {
-    function loadPrivacyManagerModal(managerId: string): void;
+  function loadPrivacyManagerModal(managerId: string): void;
 }
 
 export const loadPrivacyManagerModal = (managerId: string): void => {
-    try {
-        _sp_.loadPrivacyManagerModal(managerId);
-    } catch (error) {
-        console.error(error);
-    }
+  try {
+    _sp_.loadPrivacyManagerModal(managerId);
+  } catch (error) {
+    console.error(error);
+  }
 };

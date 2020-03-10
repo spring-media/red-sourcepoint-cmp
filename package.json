@@ -5,7 +5,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "browser": "dist/browser/index.js",
-  "typings": "dist/red-sourcepoint-cmp.d.ts",
+  "typings": "dist/types.d.ts",
   "scripts": {
     "test": "jest",
     "build": "rollup -c"
@@ -17,7 +17,13 @@
   "license": "ISC",
   "devDependencies": {
     "@rollup/plugin-typescript": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.1.0",
+    "prettier": "^1.19.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.0.3",
     "rollup-plugin-vue": "^5.1.6",

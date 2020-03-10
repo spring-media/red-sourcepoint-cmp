@@ -1,10 +1,4 @@
 import { executeMethod } from './tcf';
+import { TCDataResult } from '../types';
 
-export type TCDataResult = {
-  consentData: string;
-  gdprApplies: boolean;
-  hasGlobalScope: boolean;
-};
-
-export const getTCData = (): Promise<TCDataResult> =>
-  executeMethod('getTCData');
+export const getTCData = (): Promise<TCDataResult> => executeMethod('getTCData');

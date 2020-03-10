@@ -1,17 +1,9 @@
-declare type tcfAction =
-  | "getCustomVendorConsents"
-  | "getTCData";
+import { tcfAction } from '../types';
 
-declare function __tcfapi(
-  method: tcfAction,
-  vendors: Array<string> | null,
-  callback: Function
-): void;
+declare function __tcfapi(method: tcfAction, vendors: Array<string> | null, callback: Function): void;
 
-export const executeMethod = (
-  method: tcfAction,
-  vendors: Array<string> | null = null
-): Promise<any> =>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const executeMethod = (method: tcfAction, vendors: Array<string> | null = null): Promise<any> =>
   new Promise((resolve, reject) => {
     try {
       __tcfapi(method, vendors, resolve);

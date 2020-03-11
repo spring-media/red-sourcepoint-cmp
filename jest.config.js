@@ -6,10 +6,7 @@ module.exports = {
   collectCoverage: true,
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: [
-     "json",
-     "text",
-  ],
+  coverageReporters: ['json', 'text'],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [

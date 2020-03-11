@@ -21,3 +21,18 @@ export type TCDataResult = {
 };
 
 export type tcfAction = 'getCustomVendorConsents' | 'getTCData';
+
+export type ConfigurationParameters = {
+  accountId: number;
+  propertyId: number;
+  mmsDomain: string;
+};
+
+export type Configuration = {
+  config: {
+    accountId: number;
+    wrapperAPIOrigin: string;
+    propertyId: number;
+    mmsDomain: string;
+  };
+};

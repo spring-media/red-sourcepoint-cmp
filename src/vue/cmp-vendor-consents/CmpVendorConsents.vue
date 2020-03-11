@@ -1,6 +1,7 @@
-<script>
-export default {
-  name: 'cmp-vendor-consents',
+<script lang="ts">
+import Vue from 'vue';
+
+export const CmpVendorConsent = Vue.extend({
   functional: true,
   props: {
     vendorId: {
@@ -11,5 +12,5 @@ export default {
   render() {
     return null;
   },
-};
+});
 </script>

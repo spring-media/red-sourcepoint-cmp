@@ -36,3 +36,7 @@ export type Configuration = {
     mmsDomain: string;
   };
 };
+
+export type State = {
+  consents: string[];
+};

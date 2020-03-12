@@ -26,7 +26,20 @@ export type ConfigurationParameters = {
   accountId: number;
   propertyId: number;
   mmsDomain: string;
+  events?: {
+    [key: OptionalCallback]: Function;
+  };
 };
+
+export type OptionalCallback =
+  | 'onMessageReady'
+  | 'onMessageChoiceSelect'
+  | 'onPrivacyManagerAction'
+  | 'onMessageChoiceError'
+  | 'onConsentReady'
+  | 'onPMCancel'
+  | 'onMessageReceiveData'
+  | 'onSPPMObjectReady';
 
 export type Configuration = {
   config: {
@@ -34,6 +47,9 @@ export type Configuration = {
     wrapperAPIOrigin: string;
     propertyId: number;
     mmsDomain: string;
+    events?: {
+      [key: OptionalCallback]: Function;
+    };
   };
 };
 

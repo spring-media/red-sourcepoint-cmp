@@ -11,5 +11,6 @@ export const createConfiguration = (parameters: ConfigurationParameters): Config
     wrapperAPIOrigin: 'https://wrapper-api.sp-prod.net/tcfv2',
     propertyId: parameters.propertyId,
     mmsDomain: 'https://message.sp-prod.net',
+    events: parameters.events,
   },
 });

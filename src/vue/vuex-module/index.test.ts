@@ -13,25 +13,25 @@ const createState = (args: Partial<State> = {}): State => {
 describe('vuex-module', () => {
   describe('getter', () => {
     it('hasVendorConsent should return true', () => {
-      const state: State = createState({ vendorConsents: ['#1234'] });
+      const state = createState({ vendorConsents: ['#1234'] });
 
       expect(getters.hasVendorConsent(state, '#1234')).toBe(true);
     });
 
     it('hasVendorConsent should return false', () => {
-      const state: State = createState();
+      const state = createState();
 
       expect(getters.hasVendorConsent(state, '#1234')).toBe(false);
     });
 
     it('hasPurposeConsent should return true', () => {
-      const state: State = createState({ purposeConsents: ['#1234'] });
+      const state = createState({ purposeConsents: ['#1234'] });
 
       expect(getters.hasPurposeConsent(state, '#1234')).toBe(true);
     });
 
     it('hasPurposeConsent should return false', () => {
-      const state: State = createState();
+      const state = createState();
 
       expect(getters.hasPurposeConsent(state, '#1234')).toBe(false);
     });

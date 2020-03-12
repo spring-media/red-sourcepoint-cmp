@@ -22,6 +22,15 @@ export default [
     plugins: [typescript({ target: 'ES5' })],
   },
   {
+    input: { CmpVendorConsents: './src/vue/components/cmp-vendor-consents/CmpVendorConsents.vue' },
+    external: ['vue'],
+    output: [
+      { format: 'esm', dir: './dist/esm/vue' },
+      { format: 'cjs', dir: './dist/cjs/vue' },
+    ],
+    plugins: [vue(), typescript()],
+  },
+  {
     input: {
       'vuex-module': './src/vue/vuex-module/index.ts',
     },
@@ -30,6 +39,6 @@ export default [
       { format: 'esm', dir: './dist/esm' },
       { format: 'cjs', dir: './dist/cjs' },
     ],
-    plugins: [typescript({ target: 'ES2020' })],
+    plugins: [typescript()],
   },
 ];

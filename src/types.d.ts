@@ -38,5 +38,6 @@ export type Configuration = {
 };
 
 export type State = {
-  consents: string[];
+  vendorConsents: string[];
+  purposeConsents: string[];
 };

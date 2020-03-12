@@ -5,8 +5,13 @@ module.exports = {
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,
 
+  // An array of glob patterns indicating a set of files for which coverage information should be collected
+  collectCoverageFrom: ['<rootDir>/**'],
+
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: ['json', 'text'],
+  coverageReporters: ['text', 'text-summary'],
+
+  coverageDirectory: null,
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
@@ -32,4 +37,6 @@ module.exports = {
   //   "**/__tests__/**/*.[jt]s?(x)",
   //   "**/?(*.)+(spec|test).[tj]s?(x)"
   // ],
+
+  preset: 'ts-jest',
 };

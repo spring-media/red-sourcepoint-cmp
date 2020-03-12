@@ -14,7 +14,6 @@
     "noImplicitAny": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.test.ts"],
   "files": ["src/types.d.ts"]
 }
 

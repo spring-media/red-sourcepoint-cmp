@@ -2,22 +2,20 @@
   "name": "red-sourcepoint",
   "version": "0.1.0",
   "description": "",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "browser": "dist/browser/index.js",
   "typings": "dist/types.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "rollup -c",
+    "build": "rollup -c && cp src/types.d.ts dist/types.d.ts",
     "lint": "eslint --ext .js,.ts ."
   },
   "author": {
     "name": "Mario Bartlack",
     "url": "https://spring-media.de"
   },
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-typescript": "^4.0.0",
+    "@types/jest": "^25.1.4",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
     "eslint": "^6.8.0",
@@ -26,10 +24,11 @@
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.0.3",
+    "rollup": "^2.0.5",
     "rollup-plugin-typescript2": "^0.26.0",
     "rollup-plugin-vue": "^5.1.6",
     "serve": "^11.3.0",
+    "ts-jest": "^25.2.1",
     "tslib": "^1.11.1",
     "typescript": "^3.8.3",
     "vue": "^2.6.11",

@@ -1,18 +1,21 @@
 import { sync } from 'rimraf';
-// import typescript from 'rollup-plugin-typescript2';
 import typescript from '@rollup/plugin-typescript';
 import vue from 'rollup-plugin-vue';
 
 sync('./dist');
 
 const tcfV2Entry = './src/tcf-v2/index.ts';
+const callbackEntry = './src/tcf-v2/callbacks/index.ts';
 
 export default [
   {
-    input: tcfV2Entry,
+    input: {
+      'tcf-v2': tcfV2Entry,
+      callbacks: callbackEntry,
+    },
     output: [
-      { format: 'esm', file: './dist/esm/tcf-v2.js' },
-      { format: 'cjs', file: './dist/cjs/tcf-v2.js' },
+      { format: 'esm', dir: './dist/esm' },
+      { format: 'cjs', dir: './dist/cjs' },
     ],
     plugins: [typescript()],
   },

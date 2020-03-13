@@ -42,16 +42,23 @@ export type OptionalCallback =
   | 'onSPPMObjectReady';
 
 export type Configuration = {
-  config: {
-    accountId: number;
-    wrapperAPIOrigin: string;
-    propertyId: number;
-    mmsDomain: string;
-    events?: {
-      [key: OptionalCallback]: Function;
-    };
-  };
+  accountId: number;
+  wrapperAPIOrigin: string;
+  propertyId: number;
+  mmsDomain: string;
+  events?: Partial<Record<OptionalCallback, Function>>;
 };
+
+export type SourcepointConfigurationObject = {
+  config: Configuration;
+  loadPrivacyManagerModal(managerId: string);
+};
+
+export declare global {
+  interface Window {
+    _sp_: SourcepointConfigurationObject;
+  }
+}
 
 export type State = {
   vendorConsents: string[];

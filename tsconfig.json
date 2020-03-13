@@ -11,7 +11,9 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "downlevelIteration": true,
+    "removeComments": true
   },
   "include": ["src/**/*.ts"],
   "files": ["src/types.d.ts"]

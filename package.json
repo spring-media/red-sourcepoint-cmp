@@ -8,6 +8,10 @@
     "build": "rollup -c && cp src/types.d.ts dist/types.d.ts",
     "lint": "eslint --ext .js,.ts ."
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "author": {
     "name": "Mario Bartlack",
     "url": "https://spring-media.de"

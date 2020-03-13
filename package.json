@@ -1,5 +1,5 @@
 {
-  "name": "red-sourcepoint",
+  "name": "@spring-media/red-sourcepoint-cmp",
   "version": "0.1.0",
   "description": "",
   "typings": "dist/types.d.ts",

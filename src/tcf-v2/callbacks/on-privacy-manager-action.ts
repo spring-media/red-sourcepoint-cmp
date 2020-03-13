@@ -1,3 +1,3 @@
 import { createCallback } from './create-callback';
 
-export const onPrivacyManagerAction = (): Function => createCallback('onPrivacyManagerAction');
+export const onPrivacyManagerAction = createCallback('onPrivacyManagerAction');

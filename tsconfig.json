@@ -6,7 +6,7 @@
     "noUnusedParameters": true,
     "pretty": true,
     "skipLibCheck": true,
-    "target": "ES2020",
+    "target": "ES2019",
     "module": "es2015",
     "strict": true,
     "forceConsistentCasingInFileNames": true,

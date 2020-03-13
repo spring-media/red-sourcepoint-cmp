@@ -11,6 +11,6 @@ describe('onPrivacyManagerAction', () => {
   });
 
   it('createCallback should be called with "onPrivacyManagerAction"', () => {
-    expect(createCallback).toHaveBeenCalledWith('onPrivacyManagerAction');
+    expect(createCallback).toHaveBeenCalledWith('onPrivacyManagerAction', undefined);
   });
 });

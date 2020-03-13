@@ -41,12 +41,14 @@ export type OptionalCallback =
   | 'onMessageReceiveData'
   | 'onSPPMObjectReady';
 
+export type EventConfigurationObject = Partial<Record<OptionalCallback, Function>>;
+
 export type Configuration = {
   accountId: number;
   wrapperAPIOrigin: string;
   propertyId: number;
   mmsDomain: string;
-  events?: Partial<Record<OptionalCallback, Function>>;
+  events?: EventConfigurationObject;
 };
 
 export type SourcepointConfigurationObject = {

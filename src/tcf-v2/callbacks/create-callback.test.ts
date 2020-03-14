@@ -12,6 +12,16 @@ describe('createCallback', () => {
     expect(eventStore.onPrivacyManagerAction).toBeInstanceOf(Function);
   });
 
+  it('should return a noop function if parameter eventStore is not set', () => {
+    const spy = jest.spyOn(window.console, 'error').mockImplementation();
+    const callback = createCallback('onPrivacyManagerAction');
+
+    expect(callback()).toBeUndefined();
+    expect(spy).toHaveBeenCalled();
+
+    spy.mockRestore();
+  });
+
   it('should invoke the registered callback', () => {
     const eventStore: EventConfigurationObject & RequiredPrivacyManagerAction = { onPrivacyManagerAction: () => null };
 

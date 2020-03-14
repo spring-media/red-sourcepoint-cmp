@@ -21,7 +21,12 @@ export default [
   },
   {
     input: tcfV2Entry,
-    output: { format: 'iife', file: './dist/browser/tcf-v2.js', name: 'RedSourcepointCmp' },
+    output: { format: 'iife', file: './dist/browser/tcf-v2.js', name: 'RedSourcepointTCFV2' },
+    plugins: [typescript({ target: 'ES5' })],
+  },
+  {
+    input: callbackEntry,
+    output: { format: 'iife', file: './dist/browser/callbacks.js', name: 'RedSourcepointCallbacks' },
     plugins: [typescript({ target: 'ES5' })],
   },
   {

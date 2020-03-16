@@ -15,8 +15,6 @@
     "downlevelIteration": true,
     "removeComments": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.test.ts"],
   "files": ["src/types.d.ts"]
 }
-
-

@@ -59,6 +59,7 @@ export type SourcepointConfigurationObject = {
 export declare global {
   interface Window {
     _sp_: SourcepointConfigurationObject;
+    __tcfapi(method: tcfAction, vendors: Array<string> | null, callback: Function): void;
   }
 }
 

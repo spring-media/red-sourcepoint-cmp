@@ -18,7 +18,7 @@ export const purposeHasConsent = async (purposeId: string): Promise<boolean> => 
 
     return consentedPurposes.some((purpose: ConsentedPurpose) => purpose._id === purposeId);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };

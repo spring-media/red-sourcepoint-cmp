@@ -1,32 +1,44 @@
-import { Module } from 'vuex';
-import { State } from '../../types';
+import { Commit, Module } from 'vuex';
+import { Purpose, State, Vendor } from '../../types';
+import { getCustomVendorConsents } from '../../tcf-v2';
 
 const state: State = {
-  vendorConsents: [],
-  purposeConsents: [],
+  consentedVendors: [],
+  consentedPurposes: [],
 };
 
 export const getters = {
-  hasVendorConsent: (state: State, payload: string): boolean => state.vendorConsents.includes(payload),
-  hasPurposeConsent: (state: State, payload: string): boolean => state.purposeConsents.includes(payload),
+  hasVendorConsent: (state: State, payload: Vendor): boolean => state.consentedVendors.includes(payload),
+  hasPurposeConsent: (state: State, payload: Purpose): boolean => state.consentedPurposes.includes(payload),
 };
 
 export const mutations = {
-  consentVendor(state: State, payload: string): void {
-    !state.vendorConsents.includes(payload) && state.vendorConsents.push(payload);
+  setVendorConsents(state: State, payload: Vendor[]): void {
+    state.consentedVendors = payload;
   },
-  rejectVendor(state: State, payload: string): void {
-    const index = state.vendorConsents.indexOf(payload);
+  setPurposeConsents(state: State, payload: Purpose[]): void {
+    state.consentedPurposes = payload;
+  },
+  consentVendor(state: State, payload: Vendor): void {
+    !state.consentedVendors.includes(payload) && state.consentedVendors.push(payload);
+  },
+  rejectVendor(state: State, payload: Vendor): void {
+    state.consentedVendors = state.consentedVendors.filter(vendor => vendor._id !== payload._id);
+  },
+  consentPurpose(state: State, payload: Purpose): void {
+    !state.consentedPurposes.includes(payload) && state.consentedPurposes.push(payload);
+  },
+  rejectPurpose(state: State, payload: Purpose): void {
+    state.consentedPurposes = state.consentedPurposes.filter(purpose => purpose._id !== payload._id);
+  },
+};
 
-    index >= 0 && state.vendorConsents.splice(index, 1);
-  },
-  consentPurpose(state: State, payload: string): void {
-    !state.purposeConsents.includes(payload) && state.purposeConsents.push(payload);
-  },
-  rejectPurpose(state: State, payload: string): void {
-    const index = state.purposeConsents.indexOf(payload);
+export const actions = {
+  async bootstrapConsents({ commit }: { commit: Commit }): Promise<void> {
+    const { consentedPurposes = [], consentedVendors = [] } = await getCustomVendorConsents();
 
-    index >= 0 && state.purposeConsents.splice(index, 1);
+    commit('setVendorConsents', consentedVendors);
+    commit('setPurposeConsents', consentedPurposes);
   },
 };
 
@@ -35,4 +47,5 @@ export const sourcepoint: Module<State, State> = {
   state,
   getters,
   mutations,
+  actions,
 };

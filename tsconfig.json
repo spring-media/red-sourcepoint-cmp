@@ -13,7 +13,8 @@
     "moduleResolution": "node",
     "noImplicitAny": true,
     "downlevelIteration": true,
-    "removeComments": true
+    "removeComments": true,
+    "esModuleInterop": true
   },
   "include": ["src/**/*.ts", "src/**/*.test.ts"],
   "files": ["src/types.d.ts"]

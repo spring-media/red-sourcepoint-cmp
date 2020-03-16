@@ -1,17 +1,17 @@
-export type ConsentedVendor = {
+export type Vendor = {
   _id: string;
   name: string;
   vendorType: string;
 };
 
-export type ConsentedPurpose = {
+export type Purpose = {
   _id: string;
   name: string;
 };
 
 export type CustomVendorConsentsResult = {
-  consentedPurposes: ConsentedPurpose[];
-  consentedVendors: ConsentedVendor[];
+  consentedPurposes: Purpose[];
+  consentedVendors: Vendor[];
 };
 
 export type TCDataResult = {
@@ -64,6 +64,6 @@ export declare global {
 }
 
 export type State = {
-  vendorConsents: string[];
-  purposeConsents: string[];
+  consentedVendors: Vendor[];
+  consentedPurposes: Purpose[];
 };

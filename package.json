@@ -14,7 +14,8 @@
   ],
   "exports": {
     "./tcf-v2": "./dist/esm/tcf-v2.js",
-    "./callbacks": "./dist/esm/callbacks.js"
+    "./callbacks": "./dist/esm/callbacks.js",
+    "./vuex-module": "./dist/esm/vuex-module.js"
   },
   "author": {
     "name": "Mario Bartlack",

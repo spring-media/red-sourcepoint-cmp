@@ -6,7 +6,7 @@ jest.mock('./create-callback', () => ({
 }));
 
 describe('onPrivacyManagerAction', () => {
-  it('should be the return value of createCallback factory function', () => {
+  it('should return the value of createCallback factory function', () => {
     expect(onPrivacyManagerAction).toBe('#createCallbackReturnValue');
   });
 

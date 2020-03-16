@@ -1,5 +1,9 @@
-import { getters, mutations } from './index';
-import { Purpose, State, Vendor } from '../../types';
+import { getters, mutations, actions } from './index';
+import { CustomVendorConsentsResult, Purpose, State, Vendor } from '../../types';
+import { getCustomVendorConsents } from '../../tcf-v2';
+import { Commit } from 'vuex';
+
+jest.mock('../../tcf-v2');
 
 const createState = (args: Partial<State> = {}): State => {
   const defaultState: State = {
@@ -104,6 +108,24 @@ describe('vuex-module', () => {
       mutations.rejectPurpose(state, purpose);
 
       expect(state.consentedPurposes.length).toBe(0);
+    });
+  });
+
+  describe('action', () => {
+    it('bootstrapConsents should initialize the consents props of the state', async () => {
+      const consents: CustomVendorConsentsResult = {
+        consentedPurposes: [],
+        consentedVendors: [],
+      };
+
+      const commit: Commit = jest.fn();
+
+      (getCustomVendorConsents as jest.Mock).mockImplementation(() => Promise.resolve(consents));
+
+      await actions.bootstrapConsents({ commit });
+
+      expect(commit).toHaveBeenNthCalledWith(1, 'setVendorConsents', consents.consentedVendors);
+      expect(commit).toHaveBeenNthCalledWith(2, 'setPurposeConsents', consents.consentedPurposes);
     });
   });
 });

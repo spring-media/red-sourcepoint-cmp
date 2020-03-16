@@ -7,6 +7,14 @@ sync('./dist');
 const tcfV2Entry = './src/tcf-v2/index.ts';
 const callbackEntry = './src/tcf-v2/callbacks/index.ts';
 
+const rewriteTcfModulePathInVuexModule = id => {
+  if (/\/tcf-v2$/.test(id)) {
+    return './tcf-v2';
+  }
+
+  return id;
+};
+
 export default [
   {
     input: {
@@ -47,10 +55,18 @@ export default [
     input: {
       'vuex-module': './src/vue/vuex-module/index.ts',
     },
-    external: ['vue', 'vuex'],
+    external: ['vue', 'vuex', '../../tcf-v2'],
     output: [
-      { format: 'esm', dir: './dist/esm' },
-      { format: 'cjs', dir: './dist/cjs' },
+      {
+        format: 'esm',
+        dir: './dist/esm',
+        paths: rewriteTcfModulePathInVuexModule,
+      },
+      {
+        format: 'cjs',
+        dir: './dist/cjs',
+        paths: rewriteTcfModulePathInVuexModule,
+      },
     ],
     plugins: [typescript()],
   },

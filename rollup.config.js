@@ -1,5 +1,5 @@
 import { sync } from 'rimraf';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
 
 sync('./dist');
@@ -30,13 +30,18 @@ export default [
     plugins: [typescript({ target: 'ES5' })],
   },
   {
-    input: { CmpVendorConsents: './src/vue/components/cmp-vendor-consents/CmpVendorConsents.vue' },
+    input: {
+      CmpConsents: './src/vue/components/CmpConsents.vue',
+      EmbedPlaceholder: './src/vue/components/EmbedPlaceholder.vue',
+      EmbedPlaceholderFacebook: './src/vue/components/EmbedPlaceholderFacebook.vue',
+      EmbedPlaceholderInstagram: './src/vue/components/EmbedPlaceholderInstagram.vue',
+    },
     external: ['vue'],
     output: [
-      { format: 'esm', dir: './dist/esm/vue' },
-      { format: 'cjs', dir: './dist/cjs/vue' },
+      { format: 'esm', dir: './dist/esm/vue-components' },
+      { format: 'cjs', dir: './dist/cjs/vue-components' },
     ],
-    plugins: [vue(), typescript()],
+    plugins: [vue()],
   },
   {
     input: {

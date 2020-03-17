@@ -1,13 +1,13 @@
-export type Vendor = {
+export interface Consent {
   _id: string;
-  name: string;
-  vendorType: string;
-};
+  name?: string;
+}
 
-export type Purpose = {
-  _id: string;
-  name: string;
-};
+export interface Vendor extends Consent {
+  vendorType?: string;
+}
+
+export type Purpose = Consent;
 
 export type CustomVendorConsentsResult = {
   consentedPurposes: Purpose[];

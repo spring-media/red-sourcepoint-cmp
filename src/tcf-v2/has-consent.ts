@@ -1,22 +1,31 @@
 import { getCustomVendorConsents } from './get-custom-vendor-consents';
-import { Purpose, Vendor } from '../types';
+import { Consent } from '../types';
 
-export const customVendorHasConsent = async (vendorId: string): Promise<boolean> => {
+export const consentsAreEqual = (...consents: Consent[]): boolean => {
+  const [consent, ...rest] = consents;
+
+  return rest.every(c => c._id === consent._id);
+};
+
+export const hasConsent = (consent: Consent, collection: Consent[]): boolean =>
+  collection.some((c: Consent) => consentsAreEqual(c, consent));
+
+export const customVendorHasConsent = async (vendor: Consent): Promise<boolean> => {
   try {
-    const { consentedVendors = [] } = await getCustomVendorConsents();
+    const { consentedVendors } = await getCustomVendorConsents();
 
-    return consentedVendors.some((vendor: Vendor) => vendor._id === vendorId);
+    return hasConsent(vendor, consentedVendors);
   } catch (error) {
     console.error(error);
     return false;
   }
 };
 
-export const purposeHasConsent = async (purposeId: string): Promise<boolean> => {
+export const purposeHasConsent = async (purpose: Consent): Promise<boolean> => {
   try {
-    const { consentedPurposes = [] } = await getCustomVendorConsents();
+    const { consentedPurposes } = await getCustomVendorConsents();
 
-    return consentedPurposes.some((purpose: Purpose) => purpose._id === purposeId);
+    return hasConsent(purpose, consentedPurposes);
   } catch (error) {
     console.error(error);
     return false;

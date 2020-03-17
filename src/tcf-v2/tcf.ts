@@ -6,7 +6,7 @@ export const executeMethod = (method: tcfAction, vendors: Array<string> | null =
     try {
       window.__tcfapi(method, vendors, resolve);
     } catch (error) {
-      console.error(error);
-      reject(error);
+      console.error(error.message);
+      reject(error.message);
     }
   });

@@ -1,6 +1,6 @@
 {
   "name": "@spring-media/red-sourcepoint-cmp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "typings": "dist/types.d.ts",
   "scripts": {
@@ -23,10 +23,16 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.1",
-    "@typescript-eslint/eslint-plugin": "^2.23.0",
-    "@typescript-eslint/parser": "^2.23.0",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
+    "@vue/test-utils": "^1.0.0-beta.32",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^25.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
@@ -41,6 +47,7 @@
     "tslib": "^1.11.1",
     "typescript": "^3.8.3",
     "vue": "^2.6.11",
+    "vue-jest": "^3.0.5",
     "vue-template-compiler": "^2.6.11",
     "vuex": "^3.1.3"
   },

@@ -3,7 +3,7 @@ module.exports = {
   collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['<rootDir>/**'],
+  collectCoverageFrom: ['**/*.{js,ts,vue}'],
 
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters: ['text', 'text-summary'],
@@ -11,14 +11,12 @@ module.exports = {
   coverageDirectory: null,
 
   // An array of file extensions your modules use
-  // moduleFileExtensions: [
-  //   "js",
-  //   "json",
-  //   "jsx",
-  //   "ts",
-  //   "tsx",
-  //   "node"
-  // ],
+  moduleFileExtensions: ['js', 'ts', 'vue'],
+
+  transform: {
+    '^.+\\.(vue)$': 'vue-jest',
+    '^.+\\.js$': 'babel-jest',
+  },
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
   moduleNameMapper: {

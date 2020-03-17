@@ -23,7 +23,7 @@ describe('vuex-module', () => {
 
       const state = createState({ consentedVendors: [vendor] });
 
-      expect(getters.hasVendorConsent(state, vendor)).toBe(true);
+      expect(getters.hasVendorConsent(state)(vendor)).toBe(true);
       expect(hasConsent).toHaveBeenCalledWith(vendor, state.consentedVendors);
 
       (hasConsent as jest.Mock).mockReset();
@@ -36,7 +36,7 @@ describe('vuex-module', () => {
 
       const state = createState({ consentedPurposes: [purpose] });
 
-      expect(getters.hasPurposeConsent(state, purpose)).toBe(true);
+      expect(getters.hasPurposeConsent(state)(purpose)).toBe(true);
       expect(hasConsent).toHaveBeenCalledWith(purpose, state.consentedPurposes);
 
       (hasConsent as jest.Mock).mockReset();

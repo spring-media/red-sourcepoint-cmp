@@ -8,8 +8,9 @@ const state: State = {
 };
 
 export const getters = {
-  hasVendorConsent: ({ consentedVendors }: State, payload: Vendor): boolean => hasConsent(payload, consentedVendors),
-  hasPurposeConsent: ({ consentedPurposes }: State, payload: Purpose): boolean =>
+  hasVendorConsent: ({ consentedVendors }: State): Function => (payload: Vendor): boolean =>
+    hasConsent(payload, consentedVendors),
+  hasPurposeConsent: ({ consentedPurposes }: State): Function => (payload: Purpose): boolean =>
     hasConsent(payload, consentedPurposes),
 };
 

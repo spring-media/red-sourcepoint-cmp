@@ -40,12 +40,9 @@ export default [
   },
   {
     input: {
-      CmpConsents: './src/vue/components/CmpConsents.vue',
-      EmbedPlaceholder: './src/vue/components/EmbedPlaceholder.vue',
-      EmbedPlaceholderFacebook: './src/vue/components/EmbedPlaceholderFacebook.vue',
-      EmbedPlaceholderInstagram: './src/vue/components/EmbedPlaceholderInstagram.vue',
+      CmpConsents: 'src/vue/components/cmp-consents/index.js',
     },
-    external: ['vue'],
+    external: ['vue', 'vuex'],
     output: [
       { format: 'esm', dir: './dist/esm/vue-components' },
       { format: 'cjs', dir: './dist/cjs/vue-components' },

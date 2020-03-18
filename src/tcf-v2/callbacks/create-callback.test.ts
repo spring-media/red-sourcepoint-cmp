@@ -1,45 +1,53 @@
 import { createCallback } from './create-callback';
-import { EventConfigurationObject } from '../../types';
 
-type RequiredPrivacyManagerAction = { onPrivacyManagerAction: Function };
+const createConfig = (config = {}): void => {
+  window._sp_ = {
+    loadPrivacyManagerModal(): void {
+      return;
+    },
+    config: {
+      ...config,
+      mmsDomain: '',
+      accountId: 1,
+      propertyId: 2,
+      wrapperAPIOrigin: '',
+    },
+  };
+};
 
 describe('createCallback', () => {
-  it('should set given action name to the given event object', () => {
-    const eventStore: EventConfigurationObject = {};
-
-    createCallback('onPrivacyManagerAction', eventStore);
-
-    expect(eventStore.onPrivacyManagerAction).toBeInstanceOf(Function);
+  afterEach(() => {
+    delete window._sp_;
   });
 
-  it('should return a noop function if parameter eventStore is not set', () => {
-    const spy = jest.spyOn(window.console, 'error').mockImplementation();
-    const callback = createCallback('onPrivacyManagerAction');
+  it('should set given action name to the given event object', () => {
+    createConfig({ events: {} });
 
-    expect(callback()).toBeUndefined();
-    expect(spy).toHaveBeenCalled();
+    createCallback('onPrivacyManagerAction')(() => {
+      return;
+    });
 
-    spy.mockRestore();
+    expect(window._sp_.config?.events?.onPrivacyManagerAction).toBeInstanceOf(Function);
   });
 
   it('should invoke the registered callback', () => {
-    const eventStore: EventConfigurationObject & RequiredPrivacyManagerAction = { onPrivacyManagerAction: () => null };
+    createConfig({ events: {} });
 
-    const callbackCollection = createCallback('onPrivacyManagerAction', eventStore);
+    const callbackCollection = createCallback('onPrivacyManagerAction');
 
     const callback = jest.fn();
 
     callbackCollection(callback);
 
-    eventStore.onPrivacyManagerAction(true);
+    window._sp_?.config?.events?.onPrivacyManagerAction && window._sp_.config.events.onPrivacyManagerAction(true);
 
     expect(callback).toHaveBeenCalledWith(true);
   });
 
   it('should return a deregister function for given callback', () => {
-    const eventStore: EventConfigurationObject & RequiredPrivacyManagerAction = { onPrivacyManagerAction: () => null };
+    createConfig({ events: {} });
 
-    const callbackCollection = createCallback('onPrivacyManagerAction', eventStore);
+    const callbackCollection = createCallback('onPrivacyManagerAction');
 
     const callback = jest.fn();
 
@@ -47,7 +55,7 @@ describe('createCallback', () => {
 
     deregister();
 
-    eventStore.onPrivacyManagerAction(true);
+    window._sp_?.config?.events?.onPrivacyManagerAction && window._sp_.config.events.onPrivacyManagerAction(true);
 
     expect(callback).not.toHaveBeenCalledWith();
   });

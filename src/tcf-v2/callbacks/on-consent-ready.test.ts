@@ -11,6 +11,6 @@ describe('onConsentReady', () => {
   });
 
   it('createCallback should be called with "onConsentReady"', () => {
-    expect(createCallback).toHaveBeenCalledWith('onConsentReady', undefined);
+    expect(createCallback).toHaveBeenCalledWith('onConsentReady');
   });
 });

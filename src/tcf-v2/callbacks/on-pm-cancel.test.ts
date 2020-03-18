@@ -1,16 +1,16 @@
 import { createCallback } from './create-callback';
-import { onMessageReady } from './on-message-ready';
+import { onPMCancel } from './on-pm-cancel';
 
 jest.mock('./create-callback', () => ({
   createCallback: jest.fn(() => '#createCallbackReturnValue'),
 }));
 
-describe('onMessageReady', () => {
+describe('onPMCancel', () => {
   it('should return the value of createCallback factory function', () => {
-    expect(onMessageReady).toBe('#createCallbackReturnValue');
+    expect(onPMCancel).toBe('#createCallbackReturnValue');
   });
 
   it('createCallback should be called with "onMessageReady"', () => {
-    expect(createCallback).toHaveBeenCalledWith('onMessageReady');
+    expect(createCallback).toHaveBeenCalledWith('onPMCancel');
   });
 });

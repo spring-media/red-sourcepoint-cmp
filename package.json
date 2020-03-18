@@ -1,12 +1,14 @@
 {
   "name": "@spring-media/red-sourcepoint-cmp",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "",
   "typings": "dist/types.d.ts",
   "scripts": {
     "test": "jest",
     "build": "rollup -c && cp src/types.d.ts dist/types.d.ts",
-    "lint": "eslint --ext .js,.ts ."
+    "lint": "eslint --ext .js,.ts .",
+    "playground": "npm run build && npm run copy-to-playground && serve ./playground",
+    "copy-to-playground": "rm -rf ./dist/browser/bundles && mkdir -p ./playground/browser/bundles && cp -R ./dist/browser/* ./playground/browser/bundles"
   },
   "files": [
     "dist",

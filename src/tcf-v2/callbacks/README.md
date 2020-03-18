@@ -11,7 +11,6 @@
       RedSourcepointCallbacks.onPrivacyManagerAction(() => console.log('onPrivacyManagerAction'));
     </script>
     ```
-    
 </details>
 
 ## onPMCancel
@@ -25,8 +24,6 @@
       RedSourcepointCallbacks.onPMCancel(() => console.log('onPMCancel'));
     </script>
     ```
-    
-    </p>
 </details>
 
 ## onConsentReady
@@ -40,7 +37,6 @@
       RedSourcepointCallbacks.onConsentReady(() => console.log('onConsentReady'));
     </script>
     ```
-    
 </details>
 
 ## onMessageReady
@@ -54,5 +50,4 @@
       RedSourcepointCallbacks.onMessageReady(() => console.log('onMessageReady'));
     </script>
     ```
-
 </details>

@@ -3,8 +3,6 @@
 ## onPrivacyManagerAction
 <details>
     <summary>Example Browser Bundle</summary>
-
-    > Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
     
     ```javascript
     <script>

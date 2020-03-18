@@ -2,50 +2,52 @@
 
 ## onPrivacyManagerAction
 <details>
-    <summary>Example Browser Bundle</summary>
-    
-    ```javascript
-    <script>
-      RedSourcepointCallbacks.onPrivacyManagerAction(() => console.log('onPrivacyManagerAction'));
-    </script>
-    ```
+<summary>Example Browser Bundle</summary>
+
+```javascript
+<script>
+  RedSourcepointCallbacks.onPrivacyManagerAction(() => console.log('onPrivacyManagerAction'));
+</script>
+```
+
+> Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
 </details>
 
 ## onPMCancel
 <details>
-    <summary>Example Browser Bundle</summary>
-
-    > Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
+<summary>Example Browser Bundle</summary>
     
-    ```javascript
-    <script>
-      RedSourcepointCallbacks.onPMCancel(() => console.log('onPMCancel'));
-    </script>
-    ```
+```javascript
+<script>
+  RedSourcepointCallbacks.onPMCancel(() => console.log('onPMCancel'));
+</script>
+```
+
+> Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
 </details>
 
 ## onConsentReady
 <details>
-    <summary>Example Browser Bundle</summary>
-
-    > Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
+<summary>Example Browser Bundle</summary>
     
-    ```javascript
-    <script>
-      RedSourcepointCallbacks.onConsentReady(() => console.log('onConsentReady'));
-    </script>
-    ```
+```javascript
+<script>
+  RedSourcepointCallbacks.onConsentReady(() => console.log('onConsentReady'));
+</script>
+```
+
+> Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
 </details>
 
 ## onMessageReady
 <details>
-    <summary>Example Browser Bundle</summary>
-    
-    > Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
-    
-    ```javascript
-    <script>
-      RedSourcepointCallbacks.onMessageReady(() => console.log('onMessageReady'));
-    </script>
-    ```
+<summary>Example Browser Bundle</summary>
+        
+```javascript
+<script>
+  RedSourcepointCallbacks.onMessageReady(() => console.log('onMessageReady'));
+</script>
+```
+
+> Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
 </details>

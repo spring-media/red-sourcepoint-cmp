@@ -3,10 +3,8 @@
 ## onPrivacyManagerAction
 <details>
     <summary>Example Browser Bundle</summary>
-    
+
     > Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
-    
-    <p>
     
     ```javascript
     <script>
@@ -14,16 +12,13 @@
     </script>
     ```
     
-    </p>
 </details>
 
 ## onPMCancel
 <details>
     <summary>Example Browser Bundle</summary>
-    
+
     > Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
-    
-    <p>
     
     ```javascript
     <script>
@@ -37,10 +32,8 @@
 ## onConsentReady
 <details>
     <summary>Example Browser Bundle</summary>
-    
+
     > Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
-    
-    <p>
     
     ```javascript
     <script>
@@ -48,7 +41,6 @@
     </script>
     ```
     
-    </p>
 </details>
 
 ## onMessageReady
@@ -57,13 +49,10 @@
     
     > Make sure you include the callbacks.js file from the browser bundle (dist/browser/callbacks.js)
     
-    <p>
-    
     ```javascript
     <script>
       RedSourcepointCallbacks.onMessageReady(() => console.log('onMessageReady'));
     </script>
     ```
-    
-    </p>
+
 </details>

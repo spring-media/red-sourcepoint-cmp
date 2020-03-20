@@ -10,6 +10,7 @@ sync('./dist');
 const tcfV2Entry = './src/tcf-v2/index.ts';
 const callbackEntry = './src/tcf-v2/callbacks/index.ts';
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const getVueComponents = () => {
   const basePath = './src/vue/components';
   const result = readdirSync(basePath);

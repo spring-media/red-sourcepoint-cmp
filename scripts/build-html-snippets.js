@@ -4,8 +4,14 @@ const { resolve, basename } = require('path');
 const { renderToString } = require('vue-server-renderer').createRenderer();
 const Vue = require('vue');
 
-const includeComponents = ['EmbedPlaceholderFacebook', 'EmbedPlaceholderInstagram'];
+const includeComponents = [
+  'EmbedPlaceholderFacebook',
+  'EmbedPlaceholderInstagram',
+  'EmbedPlaceholderTwitter',
+  'EmbedPlaceholderYoutube',
+];
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const buildSnippets = () => {
   const dir = './dist/cjs/vue-components';
   const dist = './dist/browser/embed-placeholder';
@@ -44,6 +50,7 @@ const buildSnippets = () => {
       const component = imports[name];
 
       const app = new Vue({
+        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
         render: h => h(component),
       });
 

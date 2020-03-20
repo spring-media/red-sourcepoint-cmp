@@ -1,11 +1,33 @@
 import { sync } from 'rimraf';
 import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
+import postcss from 'rollup-plugin-postcss';
+import { readdirSync, lstatSync } from 'fs';
+import { resolve, parse } from 'path';
 
 sync('./dist');
 
 const tcfV2Entry = './src/tcf-v2/index.ts';
 const callbackEntry = './src/tcf-v2/callbacks/index.ts';
+
+const getVueComponents = () => {
+  const basePath = './src/vue/components';
+  const result = readdirSync(basePath);
+
+  return result
+    .map(file => resolve(basePath, file))
+    .filter(file => lstatSync(file).isDirectory())
+    .map(file => parse(file))
+    .map(({ name, base }) => ({
+      input: { [name]: `${basePath}/${base}/index.js` },
+      external: ['vue', 'vuex'],
+      output: [
+        { format: 'esm', dir: './dist/esm/vue-components' },
+        { format: 'cjs', dir: './dist/cjs/vue-components' },
+      ],
+      plugins: [vue({ css: false }), postcss({ extract: true })],
+    }));
+};
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const rewriteTcfModulePathInVuexModule = id => {
@@ -40,17 +62,6 @@ export default [
   },
   {
     input: {
-      CmpConsents: 'src/vue/components/cmp-consents/index.js',
-    },
-    external: ['vue', 'vuex'],
-    output: [
-      { format: 'esm', dir: './dist/esm/vue-components' },
-      { format: 'cjs', dir: './dist/cjs/vue-components' },
-    ],
-    plugins: [vue()],
-  },
-  {
-    input: {
       'vuex-module': './src/vue/vuex-module/index.ts',
     },
     external: ['vue', 'vuex', '../../tcf-v2'],
@@ -68,4 +79,5 @@ export default [
     ],
     plugins: [typescript()],
   },
+  ...getVueComponents(),
 ];

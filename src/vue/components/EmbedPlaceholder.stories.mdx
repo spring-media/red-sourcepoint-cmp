@@ -1,0 +1,47 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { EmbedPlaceholder } from './EmbedPlaceholder';
+import { EmbedPlaceholderFacebook } from './EmbedPlaceholderFacebook';
+import { EmbedPlaceholderInstagram } from './EmbedPlaceholderInstagram';
+import { EmbedPlaceholderTwitter } from './EmbedPlaceholderTwitter';
+import { EmbedPlaceholderYoutube } from './EmbedPlaceholderYoutube';
+
+<Meta title='Embed Placeholder' components={[EmbedPlaceholder]} />
+
+# Embed Placeholder
+
+## Generic
+
+The EmbedPlaceholder component is the base component for our vendor specific placeholder components.
+
+<Story name='Generic'>{{
+  components: { EmbedPlaceholder },
+  template: '<EmbedPlaceholder />',
+}}></Story>
+
+## Facebook
+
+<Story name='Facebook'>{{
+  components: { EmbedPlaceholderFacebook },
+  template: '<EmbedPlaceholderFacebook />',
+}}></Story>
+
+## Instagram
+
+<Story name='Instagram'>{{
+  components: { EmbedPlaceholderInstagram },
+  template: '<EmbedPlaceholderInstagram />',
+}}></Story>
+
+## Twitter
+
+<Story name='Twitter'>{{
+  components: { EmbedPlaceholderTwitter },
+  template: '<EmbedPlaceholderTwitter />',
+}}></Story>
+
+## Youtube
+
+<Story name='Youtube'>{{
+  components: { EmbedPlaceholderYoutube },
+  template: '<EmbedPlaceholderYoutube />',
+}}></Story>

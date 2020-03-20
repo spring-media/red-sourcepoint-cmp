@@ -11,6 +11,15 @@ const tcfV2Entry = './src/tcf-v2/index.ts';
 const callbackEntry = './src/tcf-v2/callbacks/index.ts';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const rewriteTcfModulePath = newId => id => {
+  if (/\/tcf-v2/.test(id)) {
+    return newId;
+  }
+
+  return id;
+};
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const getVueComponents = () => {
   const basePath = './src/vue/components';
   const result = readdirSync(basePath);
@@ -21,22 +30,13 @@ const getVueComponents = () => {
     .map(file => parse(file))
     .map(({ name, base }) => ({
       input: { [name]: `${basePath}/${base}/index.js` },
-      external: ['vue', 'vuex'],
+      external: ['vue', 'vuex', '../../../tcf-v2/index.ts'],
       output: [
-        { format: 'esm', dir: './dist/esm/vue-components' },
-        { format: 'cjs', dir: './dist/cjs/vue-components' },
+        { format: 'esm', dir: './dist/esm/vue-components', paths: rewriteTcfModulePath('../tcf-v2') },
+        { format: 'cjs', dir: './dist/cjs/vue-components', paths: rewriteTcfModulePath('../tcf-v2') },
       ],
-      plugins: [vue({ css: false }), postcss({ extract: true })],
+      plugins: [typescript(), vue({ css: false }), postcss({ extract: true })],
     }));
-};
-
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const rewriteTcfModulePathInVuexModule = id => {
-  if (/\/tcf-v2$/.test(id)) {
-    return './tcf-v2';
-  }
-
-  return id;
 };
 
 export default [
@@ -70,12 +70,12 @@ export default [
       {
         format: 'esm',
         dir: './dist/esm',
-        paths: rewriteTcfModulePathInVuexModule,
+        paths: rewriteTcfModulePath('./tcf-v2'),
       },
       {
         format: 'cjs',
         dir: './dist/cjs',
-        paths: rewriteTcfModulePathInVuexModule,
+        paths: rewriteTcfModulePath('./tcf-v2'),
       },
     ],
     plugins: [typescript()],

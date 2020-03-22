@@ -22,11 +22,13 @@
         Um mit Inhalten aus Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
       </slot>
     </div>
-    <slot name="button">
-      <button class="embed-placeholder__button" @click.prevent="openPrivacyManager()">
-        Soziale Netzwerke aktivieren
-      </button>
-    </slot>
+    <privacy-manager v-slot="{ loadModal }">
+      <slot name="button">
+        <button class="embed-placeholder__button" @click.prevent="loadModal(privacyManagerId)">
+          Soziale Netzwerke aktivieren
+        </button>
+      </slot>
+    </privacy-manager>
     <div class="embed-placeholder__footer-text">
       <slot name="footer">
         Ich bin damit einverstanden, dass mir externe Inhalte aus Sozialen Netzwerken angezeigt werden. Damit können
@@ -42,21 +44,15 @@
 </template>
 
 <script>
-import { loadPrivacyManagerModal } from '../../../tcf-v2/index.ts';
+import PrivacyManager from '../PrivacyManager/PrivacyManager.vue';
 
 export default {
   name: 'EmbedPlaceholder',
+  components: { PrivacyManager },
   props: {
-    privacyManagerId: String,
-  },
-  methods: {
-    openPrivacyManager() {
-      if (!this.privacyManagerId) {
-        console.warn('Property privacyManagerId is not valid.');
-        return;
-      }
-
-      loadPrivacyManagerModal(this.privacyManagerId);
+    privacyManagerId: {
+      type: String,
+      required: true,
     },
   },
 };

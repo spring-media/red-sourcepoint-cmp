@@ -53,7 +53,7 @@ export type Configuration = {
 
 export type SourcepointConfigurationObject = {
   config: Configuration;
-  loadPrivacyManagerModal(managerId: string);
+  loadPrivacyManagerModal(managerId: string | number);
 };
 
 export declare global {

@@ -79,8 +79,8 @@ exports[`EmbedPlaceholder should render without any errors 1`] = `
     class="embed-placeholder__button"
   >
     
-      Soziale Netzwerke aktivieren
-    
+        Soziale Netzwerke aktivieren
+      
   </button>
    
   <div

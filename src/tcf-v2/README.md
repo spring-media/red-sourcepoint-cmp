@@ -3,7 +3,7 @@
 ## API
 
 > The following examples refer to the esm-bundle. 
-> When using the browser-bundle, all methods are properties of the global object named "RedSourcepointTCFV2"
+> When using the browser-bundle, all methods are properties of the global object named **RedSourcepointTCFV2**
 
 ### `getCustomVendorConsents(): Promise<CustomVendorConsentsResult>;`
 
@@ -27,7 +27,7 @@ Returns a bunch of consent data.
 <summary>Example</summary>
     
 ```javascript
-import { getTCData } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2'; import {hasConsent} from "./has-consent";
+import { getTCData } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2';
 
 getTCData().then(data => console.log(data)).catch(error => console.error(error));
 ```    
@@ -41,7 +41,7 @@ Checks whether the user has consented to given vendor.
 <summary>Example</summary>
     
 ```javascript
-import { customVendorHasConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2'; import {hasConsent} from "./has-consent";
+import { customVendorHasConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2';
 
 const vendor = { _id: '123456' };
 
@@ -57,7 +57,7 @@ Checks whether the user has consented to given purpose.
 <summary>Example</summary>
     
 ```javascript
-import { purposeHasConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2'; import {hasConsent} from "./has-consent";
+import { purposeHasConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2';
 
 const purpose = { _id: '123456' };
 
@@ -73,7 +73,7 @@ Open a privacy-manager modal by given managerId.
 <summary>Example</summary>
     
 ```javascript
-import { loadPrivacyManagerModal } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2'; import {hasConsent} from "./has-consent";
+import { loadPrivacyManagerModal } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2';
 
 loadPrivacyManagerModal('12345');
 ```
@@ -81,13 +81,44 @@ loadPrivacyManagerModal('12345');
 
 ### `hasConsent(consent: Consent, collection: Consent[]): boolean;`
 
-Checks whether given collection contains given consent object.
+Helper utility to check whether given collection contains given consent object.
+
+<details>
+<summary>Example</summary>
+    
+```javascript
+import { hasConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2';
+
+const consent1 = { _id: '12345' };
+const consent2 = { _id: '123456' };
+
+const collection = [{ _id: '12345' }];
+
+console.log(hasConsent(consent1, collection)); // true
+console.log(hasConsent(consent2, collection)); // false
+```
+</details>
 
 ### `consentsAreEqual(...consents: Consent[]): boolean;`
 
-Checks whether given consent objects are equal.
+Helper utility to checks whether given consent objects are equal.
 
 > Consent objects are treated as equal when they share the same _id property.
 
+<details>
+<summary>Example</summary>
+    
+```javascript
+import { consentsAreEqual } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2';
+
+const consent1 = { _id: '12345' };
+const consent2 = { _id: '123456' };
+const consent3 = { _id: '12345' };
+
+console.log(consentsAreEqual(consent1, consent2, consent3)); // false 
+console.log(consentsAreEqual(consent1, consent3)); // true 
+```
+</details>
+
 ## Optional Callbacks
-[Documentation](./callbacks/README.md)
+[Documentation](callbacks)

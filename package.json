@@ -1,11 +1,12 @@
 {
   "name": "@spring-media/red-sourcepoint-cmp",
-  "version": "0.6.0",
-  "description": "",
+  "version": "0.6.1",
+  "description": "Sourcepoint CMP Library for www.bild.de",
   "typings": "dist/types.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "rollup -c && npm run build-html-snippets && cp src/types.d.ts dist/types.d.ts",
+    "build": "rollup -c",
+    "postbuild": "npm run build-html-snippets && cp src/types.d.ts dist/types.d.ts",
     "lint": "eslint --ext .js,.ts .",
     "playground": "npm run build && npm run copy-to-playground && serve ./playground",
     "copy-to-playground": "rm -rf ./dist/browser/bundles && mkdir -p ./playground/browser/bundles && cp -R ./dist/browser/* ./playground/browser/bundles",
@@ -22,9 +23,28 @@
     "./callbacks": "./dist/esm/callbacks.js",
     "./vuex-module": "./dist/esm/vuex-module.js"
   },
+  "keywords": [
+    "sourcepoint",
+    "consent-management",
+    "tcf-v2.0",
+    "consent-management-platform",
+    "transparency-and-consent-framework",
+    "spring-media"
+  ],
   "author": {
     "name": "Mario Bartlack",
     "url": "https://spring-media.de"
+  },
+  "bugs": {
+    "url": "https://github.com/spring-media/red-sourcepoint-cmp/issues"
+  },
+  "homepage": "https://github.com/spring-media/red-sourcepoint-cmp#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spring-media/red-sourcepoint-cmp.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "license": "MIT",
   "devDependencies": {

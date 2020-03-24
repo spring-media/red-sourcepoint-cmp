@@ -51,7 +51,7 @@ const config = {
   tcfV2: `red-cmp-tcf-v2-${version}.min.js`,
   callbacks: `red-cmp-callbacks-${version}.min.js`,
   embedUtils: `red-cmp-embed-utils-${version}.min.js`,
-  embedPlaceholderStyles: `red-cmp-embed-placeholder-${version}.css`,
+  embedPlaceholderStyles: `red-cmp-embed-placeholder-${version}.min.css`,
   embedPlaceholderCommonHtml: `red-cmp-embed-placeholder-common-${version}.html`,
   embedPlaceholderFacebookHtml: `red-cmp-embed-placeholder-facebook-${version}.html`,
   embedPlaceholderInstagramHtml: `red-cmp-embed-placeholder-instagram-${version}.html`,

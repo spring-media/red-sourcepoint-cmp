@@ -5,6 +5,9 @@ import { consentsAreEqual, getCustomVendorConsents, hasConsent } from '../../tcf
 const state: State = {
   consentedVendors: [],
   consentedPurposes: [],
+  vendorMap: { instagram: '12345' },
+  purposeMap: { socialMedia: '67890' },
+  privacyManagerId: 123456,
 };
 
 export const getters = {
@@ -12,6 +15,10 @@ export const getters = {
     hasConsent(payload, consentedVendors),
   hasPurposeConsent: ({ consentedPurposes }: State): Function => (payload: Purpose): boolean =>
     hasConsent(payload, consentedPurposes),
+  getVendorFromMap: ({ vendorMap }: State): Function => (payload: string): Vendor | null =>
+    vendorMap[payload] ? { _id: vendorMap[payload] } : null,
+  getPurposeFromMap: ({ purposeMap }: State): Function => (payload: string): Purpose | null =>
+    purposeMap[payload] ? { _id: purposeMap[payload] } : null,
 };
 
 export const mutations = {

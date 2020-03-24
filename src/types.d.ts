@@ -60,10 +60,39 @@ export declare global {
   interface Window {
     _sp_: SourcepointConfigurationObject;
     __tcfapi(method: tcfAction, vendors: Array<string> | null, callback: Function): void;
+    instgrm: { Embeds: { process(): void } };
   }
 }
 
 export type State = {
   consentedVendors: Vendor[];
   consentedPurposes: Purpose[];
+  vendorMap: { [key: string]: string };
+  purposeMap: { [key: string]: string };
+  privacyManagerId: number;
+};
+
+export type InstagramOEmbedRequestParameters = {
+  url: string;
+  hidecaption?: boolean;
+  maxwidth?: number;
+  omitscript?: boolean;
+};
+
+export type InstagramOEmbedResponse = {
+  version: string;
+  title: string;
+  author_name: string;
+  author_url: string;
+  author_id: number;
+  media_id: string;
+  provider_name: string;
+  provider_url: string;
+  type: string;
+  width: number;
+  height: null;
+  html: string;
+  thumbnail_url: string;
+  thumbnail_width: number;
+  thumbnail_height: number;
 };

@@ -30,7 +30,7 @@ export default {
   components: { EmbedPlaceholder },
   props: {
     privacyManagerId: {
-      type: String,
+      type: Number,
       required: true,
     },
   },

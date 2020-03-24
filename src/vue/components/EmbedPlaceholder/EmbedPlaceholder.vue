@@ -51,7 +51,7 @@ export default {
   components: { PrivacyManager },
   props: {
     privacyManagerId: {
-      type: String,
+      type: Number,
       required: true,
     },
   },

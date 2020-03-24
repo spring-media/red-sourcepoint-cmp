@@ -5,6 +5,7 @@ const { renderToString } = require('vue-server-renderer').createRenderer();
 const Vue = require('vue');
 
 const includeComponents = [
+  'EmbedPlaceholder',
   'EmbedPlaceholderFacebook',
   'EmbedPlaceholderInstagram',
   'EmbedPlaceholderTwitter',
@@ -51,7 +52,7 @@ const buildSnippets = () => {
 
       const app = new Vue({
         // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-        render: h => h(component),
+        render: h => h(component, { props: { privacyManagerId: 123 } }),
       });
 
       renderToString(app)

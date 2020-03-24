@@ -9,6 +9,9 @@ const createState = (args: Partial<State> = {}): State => {
   const defaultState: State = {
     consentedVendors: [],
     consentedPurposes: [],
+    privacyManagerId: 1,
+    purposeMap: {},
+    vendorMap: {},
   };
 
   return { ...defaultState, ...args };

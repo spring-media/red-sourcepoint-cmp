@@ -7,9 +7,9 @@ export default {
       type: Object,
       default: () => ({}),
     },
-    purpose: {
-      type: Object,
-      default: () => ({}),
+    purposes: {
+      type: Array,
+      default: () => ([]),
     },
   },
   computed: {
@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     hasConsent() {
-      return this.hasVendorConsent(this.vendor) || this.hasPurposeConsent(this.purpose);
+      return this.hasVendorConsent(this.vendor) || this.purposes.some(purpose => this.hasPurposeConsent(purpose));
     },
   },
   render() {

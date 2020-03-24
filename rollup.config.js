@@ -1,11 +1,11 @@
-import { sync } from 'rimraf';
+import { rmdirSync } from 'fs';
 import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
 import postcss from 'rollup-plugin-postcss';
 import { readdirSync, lstatSync } from 'fs';
 import { resolve, parse } from 'path';
 
-sync('./dist');
+rmdirSync('./dist', { recursive: true });
 
 const tcfV2Entry = './src/tcf-v2/index.ts';
 const callbackEntry = './src/tcf-v2/callbacks/index.ts';
@@ -54,12 +54,12 @@ export default [
   {
     input: tcfV2Entry,
     output: { format: 'iife', file: './dist/browser/tcf-v2.js', name: 'RedSourcepointTCFV2' },
-    plugins: [typescript({ target: 'ES5' })],
+    plugins: [typescript({ tsconfigOverride: { compilerOptions: { target: 'ES5' } } })],
   },
   {
     input: callbackEntry,
     output: { format: 'iife', file: './dist/browser/callbacks.js', name: 'RedSourcepointCallbacks' },
-    plugins: [typescript({ target: 'ES5' })],
+    plugins: [typescript({ tsconfigOverride: { compilerOptions: { target: 'ES5' } } })],
   },
   {
     input: {
@@ -79,6 +79,19 @@ export default [
       },
     ],
     plugins: [typescript()],
+  },
+  {
+    input: './src/embed-utils/index.ts',
+    output: [
+      { format: 'esm', dir: './dist/esm/embed-utils' },
+      { format: 'cjs', dir: './dist/cjs/embed-utils' },
+    ],
+    plugins: [typescript()],
+  },
+  {
+    input: './src/embed-utils/index.ts',
+    output: { format: 'iife', file: './dist/browser/embed-utils.js', name: 'RedEmbedUtils' },
+    plugins: [typescript({ tsconfigOverride: { compilerOptions: { target: 'ES5' } } })],
   },
   ...getVueComponents(),
 ];

@@ -19,12 +19,89 @@
     <script src="https://gdpr-tcfv2.sp-prod.net/wrapperMessagingWithoutDetection.js"></script>
     <script src="./bundles/tcf-v2.js"></script>
     <script src="./bundles/callbacks.js"></script>
-    <script>
-      RedSourcepointTCFV2.getCustomVendorConsents().then(result => console.log(result));
-      RedSourcepointCallbacks.onPMCancel(() => console.log('onPMCancel'));
-    </script>
+    <link rel="stylesheet" href="../assets/fonts.css">
+    <link rel="stylesheet" href="./bundles/embed-placeholder/EmbedPlaceholderFacebook.css">
+    <style>
+        body {
+            font-family: Gotham;
+        }
+
+        .embed-placeholder__showcase {
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .embed-placeholder__section {
+            margin-bottom: 20px;
+        }
+
+        .consent-status__container {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-<button onclick="RedSourcepointTCFV2.loadPrivacyManagerModal('103346')">Open Privacy Manager</button>
+<div class="embed-placeholder__showcase">
+    <section class="embed-placeholder__section">
+        <h2>Allgemeiner Embed Platzhalter</h2>
+        <div id="generic"></div>
+    </section>
+    <section class="embed-placeholder__section">
+        <h2>Facebook Embed Platzhalter</h2>
+        <div id="facebook"></div>
+        <div class="consent-status__container" data-vendor-id="5e716fc09a0b5040d575080f">Consent Status: <span class="consent-status__value">Unbekannt</span></div>
+    </section>
+    <section class="embed-placeholder__section">
+        <h2>Instagram Embed Platzhalter</h2>
+        <div id="instagram"></div>
+        <div class="consent-status__container" data-vendor-id="5e717c8e69966540e4554f05">Consent Status: <span class="consent-status__value">Unbekannt</span></div>
+    </section>
+    <section class="embed-placeholder__section">
+        <h2>Twitter Embed Platzhalter</h2>
+        <div id="twitter"></div>
+        <div class="consent-status__container" data-vendor-id="5e71760b69966540e4554f01">Consent Status: <span class="consent-status__value">Unbekannt</span></div>
+    </section>
+    <section class="embed-placeholder__section">
+        <h2>Youtube Embed Platzhalter</h2>
+        <div id="youtube"></div>
+        <!-- <div class="consent-status__container" data-vendor-id="5e716fc09a0b5040d575080f">Consent Status: <span class="consent-status__value">Unbekannt</span></div>-->
+    </section>
+</div>
+
+<script>
+  const loadPlaceholderSnippets = async () => {
+    const containers = [
+      {name: 'EmbedPlaceholder', targetId: 'generic'},
+      {name: 'EmbedPlaceholderFacebook', targetId: 'facebook'},
+      {name: 'EmbedPlaceholderInstagram', targetId: 'instagram'},
+      {name: 'EmbedPlaceholderTwitter', targetId: 'twitter'},
+      {name: 'EmbedPlaceholderYoutube', targetId: 'youtube'},
+    ];
+
+    await Promise.all(
+      containers.map(
+        ({ name, targetId }) => fetch(`./bundles/embed-placeholder/${name}.html`)
+          .then(response => response.text())
+          .then(html => (document.getElementById(targetId).innerHTML = html))
+      )
+    );
+
+    document
+      .querySelectorAll('.embed-placeholder__button')
+      .forEach(
+        button => button.addEventListener(
+          'click',
+          () => RedSourcepointTCFV2.loadPrivacyManagerModal('103346')
+        )
+      );
+
+    RedSourcepointTCFV2.getCustomVendorConsents().then(result => console.log(result));
+    RedSourcepointCallbacks.onPrivacyManagerAction(() => console.log('onPrivacyManagerAction'));
+  };
+
+  loadPlaceholderSnippets();
+</script>
 </body>
 </html>

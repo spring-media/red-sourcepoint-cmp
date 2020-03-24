@@ -37,5 +37,13 @@ jobs:
       - name: Publish to NPM
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Upload to Akamai
+        uses: ./.github/actions/akamai_uploader
+        env:
+          SSH_KEY_AKAMAI: ${{ secrets.AKAMAI_SSH_KEY }}
+          BUILD_OUTPUT_DIR: ".cae"
+          DOMAIN_NAME_PREFIX: ${{ secrets.AKAMAI_DOMAIN_NAME_PREFIX }}
+          TARGET_PATH: "/"
 

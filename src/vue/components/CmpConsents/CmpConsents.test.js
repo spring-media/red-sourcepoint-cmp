@@ -42,7 +42,7 @@ describe('CmpConsents component', () => {
 
     const wrapper = mount(CmpConsents, {
       propsData: {
-        purpose: { _id: '#1234' },
+        purposes: [{ _id: '#1234' }],
       },
       slots: {
         consent: `<div>Consent</div>`,
@@ -84,7 +84,7 @@ describe('CmpConsents component', () => {
 
     const wrapper = mount(CmpConsents, {
       propsData: {
-        purpose: { _id: '#1234' },
+        purposes: [{ _id: '#1234' }],
       },
       slots: {
         reject: `<div>Reject</div>`,

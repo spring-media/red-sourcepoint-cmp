@@ -7,7 +7,11 @@ export const requestInstagramOEmbedData = async (
   params: InstagramOEmbedRequestParameters,
 ): Promise<InstagramOEmbedResponse> => {
   try {
-    const response = await fetch(`${INSTAGRAM_OEMBED_API_URL}?omitscript=true&url=${params.url}`);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    const query = new URLSearchParams(params);
+
+    const response = await fetch(`${INSTAGRAM_OEMBED_API_URL}?${query.toString()}`);
 
     return await response.json();
   } catch (error) {

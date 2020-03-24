@@ -1,6 +1,7 @@
 import EmbedInstagramCmp from './EmbedInstagramCmp.vue';
 import Vuex from 'vuex';
 import Vue from 'vue';
+import { text, boolean } from '@storybook/addon-knobs';
 import { sourcepoint } from '../../vuex-module';
 
 Vue.use(Vuex);
@@ -19,5 +20,13 @@ export default {
 export const Instagram = () => ({
   components: { EmbedInstagramCmp },
   store,
-  template: `<embed-instagram-cmp :privacy-manager-id="1234" :url="'https://some-instagram-post.com'"></embed-instagram-cmp>`,
+  props: {
+    url: {
+      default: text('Embed URL', 'https://www.instagram.com/p/B1EnQzZn3e2/'),
+    },
+    cmpEnabled: {
+      default: boolean('CMP Enabled', true),
+    },
+  },
+  template: `<embed-instagram-cmp :privacy-manager-id="1234" :url="url" :cmp-enabled="cmpEnabled"></embed-instagram-cmp>`,
 });

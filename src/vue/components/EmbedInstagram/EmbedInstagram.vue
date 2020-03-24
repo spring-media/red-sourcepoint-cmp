@@ -19,7 +19,7 @@ export default {
   async mounted() {
     await loadInstagramJsLibrary().catch(error => console.error(error));
 
-    const result = await requestInstagramOEmbedData({ url: this.url }).catch(error => console.error(error));
+    const result = await requestInstagramOEmbedData({ url: this.url, maxwidth: 500 }).catch(error => console.error(error));
 
     if (result) {
       this.embedContent = result.html;

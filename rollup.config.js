@@ -83,8 +83,8 @@ export default [
   {
     input: './src/embed-utils/index.ts',
     output: [
-      { format: 'esm', dir: './dist/esm/embed-utils' },
-      { format: 'cjs', dir: './dist/cjs/embed-utils' },
+      { format: 'esm', file: './dist/esm/embed-utils.js' },
+      { format: 'cjs', file: './dist/cjs/embed-utils.js' },
     ],
     plugins: [typescript()],
   },

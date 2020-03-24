@@ -19,10 +19,12 @@ export default {
   async mounted() {
     await loadInstagramJsLibrary().catch(error => console.error(error));
 
-    const { html = '' } = await requestInstagramOEmbedData({ url: this.url }).catch(error => console.error(error));
+    const result = await requestInstagramOEmbedData({ url: this.url }).catch(error => console.error(error));
 
-    this.embedContent = html;
-    this.$nextTick(() => processInstagramEmbeds());
+    if (result) {
+      this.embedContent = result.html;
+      this.$nextTick(() => processInstagramEmbeds());
+    }
   },
 };
 </script>

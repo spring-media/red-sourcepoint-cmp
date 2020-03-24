@@ -10,8 +10,6 @@ const createState = (args: Partial<State> = {}): State => {
     consentedVendors: [],
     consentedPurposes: [],
     privacyManagerId: 1,
-    purposeMap: {},
-    vendorMap: {},
   };
 
   return { ...defaultState, ...args };

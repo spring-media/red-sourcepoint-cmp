@@ -11,12 +11,20 @@ export default {
       type: Array,
       default: () => ([]),
     },
+    cmpEnabled: {
+      type: Boolean,
+      default: true,
+    }
   },
   computed: {
     ...mapGetters('sourcepoint', ['hasVendorConsent', 'hasPurposeConsent']),
   },
   methods: {
     hasConsent() {
+      if (!this.cmpEnabled) {
+        return true;
+      }
+
       return this.hasVendorConsent(this.vendor) || this.purposes.some(purpose => this.hasPurposeConsent(purpose));
     },
   },

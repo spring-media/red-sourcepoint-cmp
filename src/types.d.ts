@@ -67,8 +67,6 @@ export declare global {
 export type State = {
   consentedVendors: Vendor[];
   consentedPurposes: Purpose[];
-  vendorMap: { [key: string]: string };
-  purposeMap: { [key: string]: string };
   privacyManagerId: number;
 };
 

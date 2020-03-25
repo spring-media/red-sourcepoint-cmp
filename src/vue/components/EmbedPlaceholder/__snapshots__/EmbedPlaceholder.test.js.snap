@@ -91,7 +91,7 @@ exports[`EmbedPlaceholder should render without any errors 1`] = `
       personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
       
     <a
-      class="embed-placeholder__text-link"
+      class="embed-placeholder__text-link embed-placeholder__link-description"
       href="#"
       rel="noopener"
       target="_blank"
@@ -102,7 +102,7 @@ exports[`EmbedPlaceholder should render without any errors 1`] = `
       und in den Datenschutzinformationen dieser
       
     <a
-      class="embed-placeholder__text-link"
+      class="embed-placeholder__text-link embed-placeholder__link-vendor-list"
       href="#"
       rel="noopener"
       target="_blank"

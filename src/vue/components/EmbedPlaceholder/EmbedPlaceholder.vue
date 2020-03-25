@@ -31,9 +31,9 @@
       <slot name="footer">
         Ich bin damit einverstanden, dass mir externe Inhalte aus Sozialen Netzwerken angezeigt werden. Damit können
         personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-        <a class="embed-placeholder__text-link" href="#" rel="noopener" target="_blank">Beschreibung dieses Datenverarbeitungszweck</a>
+        <a class="embed-placeholder__text-link embed-placeholder__link-description" href="#" rel="noopener" target="_blank" @click.prevent="$emit('requestConsent')">Beschreibung dieses Datenverarbeitungszweck</a>
         und in den Datenschutzinformationen dieser
-        <a class="embed-placeholder__text-link" href="#" rel="noopener" target="_blank">Drittanbieter</a>.
+        <a class="embed-placeholder__text-link embed-placeholder__link-vendor-list" href="#" rel="noopener" target="_blank" @click.prevent="$emit('requestConsent')">Drittanbieter</a>.
       </slot>
     </div>
   </div>

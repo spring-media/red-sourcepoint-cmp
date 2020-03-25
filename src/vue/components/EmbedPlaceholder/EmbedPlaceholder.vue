@@ -22,20 +22,16 @@
         Um mit Inhalten aus Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
       </slot>
     </div>
-    <privacy-manager v-slot="{ loadModal }">
-      <slot name="button">
-        <button class="embed-placeholder__button" @click.prevent="loadModal(privacyManagerId)">
-          Soziale Netzwerke aktivieren
-        </button>
-      </slot>
-    </privacy-manager>
+    <slot name="button">
+      <button class="embed-placeholder__button" @click.prevent="$emit('requestConsent')">
+        Soziale Netzwerke aktivieren
+      </button>
+    </slot>
     <div class="embed-placeholder__footer-text">
       <slot name="footer">
         Ich bin damit einverstanden, dass mir externe Inhalte aus Sozialen Netzwerken angezeigt werden. Damit können
         personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-        <a class="embed-placeholder__text-link" href="#" rel="noopener" target="_blank"
-          >Beschreibung dieses Datenverarbeitungszweck</a
-        >
+        <a class="embed-placeholder__text-link" href="#" rel="noopener" target="_blank">Beschreibung dieses Datenverarbeitungszweck</a>
         und in den Datenschutzinformationen dieser
         <a class="embed-placeholder__text-link" href="#" rel="noopener" target="_blank">Drittanbieter</a>.
       </slot>
@@ -44,17 +40,8 @@
 </template>
 
 <script>
-import PrivacyManager from '../PrivacyManager/PrivacyManager.vue';
-
 export default {
   name: 'EmbedPlaceholder',
-  components: { PrivacyManager },
-  props: {
-    privacyManagerId: {
-      type: Number,
-      required: true,
-    },
-  },
 };
 </script>
 

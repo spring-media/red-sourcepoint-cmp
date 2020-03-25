@@ -1,5 +1,5 @@
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 
 export default {
   props: {
@@ -10,14 +10,11 @@ export default {
     purposes: {
       type: Array,
       default: () => ([]),
-    },
-    cmpEnabled: {
-      type: Boolean,
-      default: true,
     }
   },
   computed: {
     ...mapGetters('sourcepoint', ['hasVendorConsent', 'hasPurposeConsent']),
+    ...mapState('sourcepoint', ['cmpEnabled']),
   },
   methods: {
     hasConsent() {

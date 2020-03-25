@@ -68,6 +68,7 @@ export type State = {
   consentedVendors: Vendor[];
   consentedPurposes: Purpose[];
   privacyManagerId: number;
+  cmpEnabled: boolean;
 };
 
 export type InstagramOEmbedRequestParameters = {

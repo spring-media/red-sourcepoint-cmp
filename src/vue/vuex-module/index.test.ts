@@ -10,6 +10,7 @@ const createState = (args: Partial<State> = {}): State => {
     consentedVendors: [],
     consentedPurposes: [],
     privacyManagerId: 1,
+    cmpEnabled: true,
   };
 
   return { ...defaultState, ...args };

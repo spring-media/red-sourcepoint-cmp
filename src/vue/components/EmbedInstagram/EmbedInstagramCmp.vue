@@ -1,6 +1,6 @@
 <template>
-  <vendor-mapping v-slot="{ getVendorPurposedById }">
-    <cmp-consents :vendor-id="instagram" :purposes="getVendorPurposedById(instagram)">
+  <vendor-mapping v-slot="{ getVendorPurposesById }">
+    <cmp-consents :vendor-id="instagram" :purpose-ids="getVendorPurposesById(instagram)">
       <template #reject>
         <privacy-manager v-slot="{ loadModal }">
           <embed-placeholder-instagram @requestConsent="loadModal(privacyManagerId)"></embed-placeholder-instagram>

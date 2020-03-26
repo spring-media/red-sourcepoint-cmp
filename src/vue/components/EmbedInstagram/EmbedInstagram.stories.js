@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import Vue from 'vue';
 import { text, boolean } from '@storybook/addon-knobs';
 import { sourcepoint } from '../../vuex-module';
+import { PURPOSE_ID_SOCIAL, VENDOR_ID_INSTAGRAM } from '../../../vendor-mapping';
 
 Vue.use(Vuex);
 
@@ -27,10 +28,24 @@ export const Instagram = () => ({
     cmpEnabled: {
       default: boolean('CMP Enabled', true),
     },
+    instagramConsent: {
+      default: boolean('Consent Instagram', false),
+    },
+    socialConsent: {
+      default: boolean('Consent Social Networks', false),
+    },
   },
   watch: {
     cmpEnabled(value) {
       store.commit('sourcepoint/setCmpEnabled', value);
+    },
+    instagramConsent(value) {
+      const payload = value ? [{ _id: VENDOR_ID_INSTAGRAM }] : [];
+      store.commit('sourcepoint/setVendorConsents', payload);
+    },
+    socialConsent(value) {
+      const payload = value ? [{ _id: PURPOSE_ID_SOCIAL }] : [];
+      store.commit('sourcepoint/setPurposeConsents', payload);
     },
   },
   template: `<embed-instagram-cmp :privacy-manager-id="1234" :url="url"></embed-instagram-cmp>`,

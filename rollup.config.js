@@ -9,6 +9,7 @@ rmdirSync('./dist', { recursive: true });
 
 const tcfV2Entry = './src/tcf-v2/index.ts';
 const callbackEntry = './src/tcf-v2/callbacks/index.ts';
+const vendorMappingEntry = './src/vendor-mapping/index.ts';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const rewriteTcfModulePath = newId => id => {
@@ -44,6 +45,7 @@ export default [
     input: {
       'tcf-v2': tcfV2Entry,
       callbacks: callbackEntry,
+      'vendor-mapping': vendorMappingEntry,
     },
     output: [
       { format: 'esm', dir: './dist/esm' },

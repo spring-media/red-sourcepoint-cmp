@@ -6,7 +6,7 @@ import {
   getPurposeIdByName,
   getVendorPurposesById,
   getVendorPurposesByName,
-} from '../../../vendor-mapping';
+} from '../../../vendor-mapping/index.ts';
 
 export default {
   name: 'VendorMapping',

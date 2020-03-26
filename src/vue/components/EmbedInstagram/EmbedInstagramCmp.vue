@@ -19,7 +19,7 @@ import { EmbedPlaceholderInstagram } from '../EmbedPlaceholderInstagram/index';
 import EmbedInstagram from './EmbedInstagram.vue';
 import VendorMapping from '../VendorMapping/VendorMapping.vue';
 import PrivacyManager from '../PrivacyManager/PrivacyManager.vue';
-import { VENDOR_ID_INSTAGRAM } from '../../../vendor-mapping';
+import { VENDOR_ID_INSTAGRAM } from '../../../vendor-mapping/index.ts';
 
 export default {
   name: 'EmbedInstagramCmp',

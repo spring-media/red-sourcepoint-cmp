@@ -36,13 +36,16 @@ export const Instagram = () => ({
     },
   },
   watch: {
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     cmpEnabled(value) {
       store.commit('sourcepoint/setCmpEnabled', value);
     },
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     instagramConsent(value) {
       const payload = value ? [{ _id: VENDOR_ID_INSTAGRAM }] : [];
       store.commit('sourcepoint/setVendorConsents', payload);
     },
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     socialConsent(value) {
       const payload = value ? [{ _id: PURPOSE_ID_SOCIAL }] : [];
       store.commit('sourcepoint/setPurposeConsents', payload);

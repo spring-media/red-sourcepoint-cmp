@@ -3,14 +3,14 @@ import { mapGetters, mapState } from 'vuex';
 
 export default {
   props: {
-    vendor: {
-      type: Object,
-      default: () => ({}),
+    vendorId: {
+      type: String,
+      default: '',
     },
-    purposes: {
+    purposeIds: {
       type: Array,
-      default: () => ([]),
-    }
+      default: () => [],
+    },
   },
   computed: {
     ...mapGetters('sourcepoint', ['hasVendorConsent', 'hasPurposeConsent']),
@@ -22,7 +22,10 @@ export default {
         return true;
       }
 
-      return this.hasVendorConsent(this.vendor) || this.purposes.some(purpose => this.hasPurposeConsent(purpose));
+      return (
+        this.hasVendorConsent({ _id: this.vendorId }) ||
+        this.purposeIds.some(purpose => this.hasPurposeConsent({ _id: purpose }))
+      );
     },
   },
   render() {

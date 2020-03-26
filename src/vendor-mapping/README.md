@@ -1,6 +1,6 @@
 # Static Vendor Mapping Package
 
-As long as Sourcepoint provides no API for getting relationships between vendors and purposes, 
+As long as Sourcepoint doesn't provides an API for getting relationships between vendors and purposes, 
 we need to have some kind of static mapping between these two entities.
 
 ## API
@@ -86,5 +86,33 @@ Returns true if given vendor(id) has a relation to given purpose(id), otherwise 
 import { hasRelationById, VENDOR_ID_INSTAGRAM, PURPOSE_ID_SOCIAL } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
 console.log(hasRelationById(VENDOR_ID_INSTAGRAM, PURPOSE_ID_SOCIAL)); // true
+```
+</details>
+
+### `getVendorPurposesByName(vendorName: string): string[]`
+
+Returns the purposes (names) for which given vendor has a relationship.
+
+<details>
+<summary>Example</summary>
+    
+```javascript
+import { getVendorPurposesByName, VENDOR_NAME_INSTAGRAM } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+
+console.log(getVendorPurposesByName(VENDOR_NAME_INSTAGRAM)); // ['social']
+```
+</details>
+
+### `getVendorPurposesById(vendorId: string): string[]`
+
+Returns the purposes (ids) for which given vendor has a relationship.
+
+<details>
+<summary>Example</summary>
+    
+```javascript
+import { getVendorPurposesById, VENDOR_ID_INSTAGRAM } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+
+console.log(getVendorPurposesById(VENDOR_ID_INSTAGRAM)); // ['5e7adb1ee30e7d1bc1ec0252']
 ```
 </details>

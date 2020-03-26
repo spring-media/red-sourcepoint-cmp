@@ -1,6 +1,6 @@
 <template>
-  <vendor-mapping v-slot="{ getVendorByName, getPurposeByName }">
-    <cmp-consents :vendor="getVendorByName('instagram')" :purposes="[getPurposeByName('social')]">
+  <vendor-mapping v-slot="{ getVendorPurposedById }">
+    <cmp-consents :vendor-id="instagram" :purposes="getVendorPurposedById(instagram)">
       <template #reject>
         <privacy-manager v-slot="{ loadModal }">
           <embed-placeholder-instagram @requestConsent="loadModal(privacyManagerId)"></embed-placeholder-instagram>
@@ -18,11 +18,15 @@ import { CmpConsents } from '../CmpConsents/index';
 import { EmbedPlaceholderInstagram } from '../EmbedPlaceholderInstagram/index';
 import EmbedInstagram from './EmbedInstagram.vue';
 import VendorMapping from '../VendorMapping/VendorMapping.vue';
-import PrivacyManager from '../PrivacyManager/PrivacyManager';
+import PrivacyManager from '../PrivacyManager/PrivacyManager.vue';
+import { VENDOR_ID_INSTAGRAM } from '../../../vendor-mapping';
 
 export default {
   name: 'EmbedInstagramCmp',
   components: { PrivacyManager, VendorMapping, EmbedInstagram, EmbedPlaceholderInstagram, CmpConsents },
+  data: () => ({
+    instagram: VENDOR_ID_INSTAGRAM,
+  }),
   props: {
     url: {
       type: String,

@@ -30,3 +30,19 @@ export const hasRelationById = (vendorId: string, purposeId: string): boolean =>
 
   return false;
 };
+
+export const getVendorPurposesByName = (vendorName: VendorMappingName): PurposeMappingName[] => {
+  if (relationshipsByName.has(vendorName)) {
+    return relationshipsByName.get(vendorName) as PurposeMappingName[];
+  }
+
+  return [];
+};
+
+export const getVendorPurposesById = (vendorId: string): string[] => {
+  if (relationshipsById.has(vendorId)) {
+    return relationshipsById.get(vendorId) as string[];
+  }
+
+  return [];
+};

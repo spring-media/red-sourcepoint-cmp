@@ -5,6 +5,8 @@ import {
   getPurposeNameById,
   hasRelationByName,
   hasRelationById,
+  getVendorPurposesByName,
+  getVendorPurposesById,
 } from './';
 import {
   VENDOR_NAME_TWITTER,
@@ -74,5 +76,25 @@ describe('vendor-mapping api', () => {
     [false, VENDOR_ID_TWITTER, 'unknown-purpose-id'],
   ])('hasRelationById should return %s for given vendor id %s and purpose id %s', (expected, vendor, purpose) => {
     expect(hasRelationById(vendor, purpose)).toBe(expected);
+  });
+
+  it.each([
+    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_TWITTER],
+    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_FACEBOOK],
+    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_INSTAGRAM],
+    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_YOUTUBE],
+    [[], 'unknown-vendor-name'],
+  ])('getVendorPurposesByName should return %s for given vendor name %s', (expected, vendor) => {
+    expect(getVendorPurposesByName(vendor as VendorMappingName)).toEqual(expected);
+  });
+
+  it.each([
+    [[PURPOSE_ID_SOCIAL], VENDOR_ID_TWITTER],
+    [[PURPOSE_ID_SOCIAL], VENDOR_ID_FACEBOOK],
+    [[PURPOSE_ID_SOCIAL], VENDOR_ID_INSTAGRAM],
+    [[PURPOSE_ID_SOCIAL], VENDOR_ID_YOUTUBE],
+    [[], 'unknown-vendor-id'],
+  ])('getVendorPurposesById should return %s for given vendor id %s', (expected, vendor) => {
+    expect(getVendorPurposesById(vendor)).toEqual(expected);
   });
 });

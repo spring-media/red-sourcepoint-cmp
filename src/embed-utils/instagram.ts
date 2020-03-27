@@ -5,7 +5,7 @@ export const INSTAGRAM_JAVASCRIPT_LIBRARY_URL = 'https://www.instagram.com/embed
 
 export const requestInstagramOEmbedData = async (
   params: InstagramOEmbedRequestParameters,
-): Promise<InstagramOEmbedResponse> => {
+): Promise<InstagramOEmbedResponse | void> => {
   try {
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore

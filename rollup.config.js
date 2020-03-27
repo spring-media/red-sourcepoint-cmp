@@ -1,4 +1,4 @@
-import { rmdirSync } from 'fs';
+import { rmdirSync, existsSync } from 'fs';
 import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
 import postcss from 'rollup-plugin-postcss';
@@ -25,12 +25,21 @@ const getVueComponents = () => {
   const basePath = './src/vue/components';
   const result = readdirSync(basePath);
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const resolveIndex = path => {
+    if (existsSync(`${path}/index.ts`)) {
+      return 'index.ts';
+    }
+
+    return 'index.js';
+  };
+
   return result
     .map(file => resolve(basePath, file))
     .filter(file => lstatSync(file).isDirectory())
     .map(file => parse(file))
     .map(({ name, base }) => ({
-      input: { [name]: `${basePath}/${base}/index.js` },
+      input: { [name]: `${basePath}/${base}/${resolveIndex(`${basePath}/${base}`)}` },
       external: ['vue', 'vuex', '../../../tcf-v2/index.ts'],
       output: [
         { format: 'esm', dir: './dist/esm/vue-components', paths: rewriteTcfModulePath('../tcf-v2') },

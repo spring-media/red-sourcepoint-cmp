@@ -4,7 +4,9 @@
 
 Placeholder for Facebook embeds.
 
-![Embed Placeholder Facebook](../../../../docs/embed-placeholder-facebook.png)
+<p>
+  <img src="../../../../docs/embed-placeholder-facebook.png" alt="Embed placeholder Facebook" width="500" />
+</p>
 
 <details>
 <summary>Usage</summary>
@@ -16,6 +18,7 @@ Placeholder for Facebook embeds.
 
 <script>
 import { EmbedPlaceholderFacebook } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+
 export default {
   components: { EmbedPlaceholderFacebook },
 };
@@ -31,7 +34,9 @@ export default {
 
 Placeholder for Instagram embeds.
 
-![Embed Placeholder Instagram](../../../../docs/embed-placeholder-instagram.png)
+<p>
+  <img src="../../../../docs/embed-placeholder-instagram.png" alt="Embed placeholder Instagram" width="500" />
+</p>
 
 <details>
 <summary>Usage</summary>
@@ -43,6 +48,7 @@ Placeholder for Instagram embeds.
 
 <script>
 import { EmbedPlaceholderInstagram } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+
 export default {
   components: { EmbedPlaceholderInstagram },
 };
@@ -58,7 +64,9 @@ export default {
 
 Placeholder for Twitter embeds.
 
-![Embed Placeholder Twitter](../../../../docs/embed-placeholder-twitter.png)
+<p>
+  <img src="../../../../docs/embed-placeholder-twitter.png" alt="Embed placeholder Twitter" width="500" />
+</p>
 
 <details>
 <summary>Usage</summary>
@@ -70,6 +78,7 @@ Placeholder for Twitter embeds.
 
 <script>
 import { EmbedPlaceholderTwitter } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+
 export default {
   components: { EmbedPlaceholderTwitter },
 };
@@ -85,7 +94,9 @@ export default {
 
 Placeholder for Youtube embeds.
 
-![Embed Placeholder Youtube](../../../../docs/embed-placeholder-youtube.png)
+<p>
+  <img src="../../../../docs/embed-placeholder-youtube.png" alt="Embed placeholder Youtube" width="500" />
+</p>
 
 <details>
 <summary>Usage</summary>
@@ -97,6 +108,7 @@ Placeholder for Youtube embeds.
 
 <script>
 import { EmbedPlaceholderYoutube } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+
 export default {
   components: { EmbedPlaceholderYoutube },
 };
@@ -112,7 +124,9 @@ export default {
 
 Placeholder for all other embeds.
 
-![Embed Placeholder Generic](../../../../docs/embed-placeholder-generic.png)
+<p>
+  <img src="../../../../docs/embed-placeholder-generic.png" alt="Embed placeholder Generic" width="500" />
+</p>
 
 <details>
 <summary>Usage</summary>
@@ -124,6 +138,7 @@ Placeholder for all other embeds.
 
 <script>
 import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+
 export default {
   components: { EmbedPlaceholder },
 };

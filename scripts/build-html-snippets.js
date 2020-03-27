@@ -1,67 +1,29 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { readdirSync, writeFileSync, mkdirSync, copyFileSync, existsSync } = require('fs');
-const { resolve, basename } = require('path');
+const { writeFileSync } = require('fs');
 const { renderToString } = require('vue-server-renderer').createRenderer();
 const Vue = require('vue');
 
-const includeComponents = [
-  'EmbedPlaceholder',
-  'EmbedPlaceholderFacebook',
-  'EmbedPlaceholderInstagram',
-  'EmbedPlaceholderTwitter',
-  'EmbedPlaceholderYoutube',
-];
+const placeholder = require('../dist/cjs/vue/EmbedPlaceholder');
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const buildSnippets = () => {
-  const dir = './dist/cjs/vue-components';
-  const dist = './dist/browser/embed-placeholder';
+const dashify = str => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
-  try {
-    const { jsFiles, cssFiles } = readdirSync(dir)
-      .map(file => resolve(dir, file))
-      .reduce(
-        (acc, file) => {
-          const name = basename(file, '.js');
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const buildHTMLSnippets = ({ version }) => {
+  Object.keys(placeholder).forEach(name => {
+    const component = placeholder[name];
 
-          if (includeComponents.includes(name)) {
-            acc.jsFiles.push(file);
-
-            const cssFile = `${dir}/${name}.css`;
-
-            if (existsSync(cssFile)) {
-              acc.cssFiles.push(cssFile);
-            }
-          }
-
-          return acc;
-        },
-        { jsFiles: [], cssFiles: [] },
-      );
-
-    mkdirSync(dist, { recursive: true });
-
-    cssFiles.forEach(file => {
-      copyFileSync(file, `${dist}/${basename(file)}`);
+    const app = new Vue({
+      // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+      render: h => h(component),
     });
 
-    jsFiles.forEach(file => {
-      const imports = require(file);
-      const name = basename(file, '.js');
-      const component = imports[name];
-
-      const app = new Vue({
-        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-        render: h => h(component, { props: { privacyManagerId: 123 } }),
-      });
-
-      renderToString(app)
-        .then(html => writeFileSync(`${dist}/${name}.html`, html))
-        .catch(error => console.error(error));
-    });
-  } catch (e) {
-    console.error(e);
-  }
+    renderToString(app)
+      .then(html => writeFileSync(`.cae/red-cmp-${dashify(name)}-${version}.html`, html))
+      .catch(error => console.error(error));
+  });
 };
 
-buildSnippets();
+module.exports = {
+  buildHTMLSnippets,
+};

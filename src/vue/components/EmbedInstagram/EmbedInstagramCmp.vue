@@ -15,7 +15,7 @@
 
 <script>
 import { CmpConsents } from '../CmpConsents/index';
-import { EmbedPlaceholderInstagram } from '../EmbedPlaceholderInstagram/index';
+import { EmbedPlaceholderInstagram } from '../EmbedPlaceholder/index.ts';
 import EmbedInstagram from './EmbedInstagram.vue';
 import VendorMapping from '../VendorMapping/VendorMapping.vue';
 import PrivacyManager from '../PrivacyManager/PrivacyManager.vue';

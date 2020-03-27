@@ -42,8 +42,8 @@ const getVueComponents = () => {
       input: { [name]: `${basePath}/${base}/${resolveIndex(`${basePath}/${base}`)}` },
       external: ['vue', 'vuex', '../../../tcf-v2/index.ts'],
       output: [
-        { format: 'esm', dir: './dist/esm/vue-components', paths: rewriteTcfModulePath('../tcf-v2') },
-        { format: 'cjs', dir: './dist/cjs/vue-components', paths: rewriteTcfModulePath('../tcf-v2') },
+        { format: 'esm', dir: './dist/esm/vue', paths: rewriteTcfModulePath('../tcf-v2') },
+        { format: 'cjs', dir: './dist/cjs/vue', paths: rewriteTcfModulePath('../tcf-v2') },
       ],
       plugins: [typescript(), vue({ css: false }), postcss({ extract: true })],
     }));

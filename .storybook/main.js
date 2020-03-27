@@ -4,7 +4,13 @@ module.exports = {
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
-      use: [{ loader: require.resolve('ts-loader') }],
+      use: [{
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+          transpileOnly: true
+        },
+      }],
     });
 
     config.resolve.extensions.push('.ts', '.tsx');

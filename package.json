@@ -6,11 +6,10 @@
   "scripts": {
     "test": "jest",
     "build": "rollup -c",
-    "postbuild": "npm run build-html-snippets && npm run build-cae-package && cp src/types.d.ts dist/types.d.ts",
+    "postbuild": "npm run build-cae-package && cp src/types.d.ts dist/types.d.ts",
     "lint": "eslint --ext .js,.ts .",
     "preplayground": "npm run build",
     "playground": "node ./scripts/prepare-playground && serve ./playground",
-    "build-html-snippets": "node ./scripts/build-html-snippets.js",
     "storybook": "start-storybook -p 6006 -s playground/assets",
     "build-cae-package": "node ./scripts/build-cae-package.js"
   },

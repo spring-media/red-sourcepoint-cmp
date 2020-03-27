@@ -3,7 +3,7 @@ module.exports = {
   collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['**/*.{js,ts,vue}'],
+  collectCoverageFrom: ['**/*.{js,ts,vue}', '!**/*.stories.js'],
 
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters: ['text', 'text-summary'],

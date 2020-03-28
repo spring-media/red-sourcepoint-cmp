@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import {
   getVendorIdByName,
   getPurposeNameById,
@@ -6,19 +7,22 @@ import {
   getPurposeIdByName,
   getVendorPurposesById,
   getVendorPurposesByName,
-} from '../../../vendor-mapping/index.ts';
+} from '../../../vendor-mapping';
 
-export default {
+export default Vue.extend({
   name: 'VendorMapping',
   render() {
-    return this.$scopedSlots.default({
-      getVendorIdByName,
-      getPurposeNameById,
-      getVendorNameById,
-      getPurposeIdByName,
-      getVendorPurposesById,
-      getVendorPurposesByName,
-    });
+    return (
+      this.$scopedSlots.default &&
+      (this.$scopedSlots.default!({
+        getVendorIdByName,
+        getPurposeNameById,
+        getVendorNameById,
+        getPurposeIdByName,
+        getVendorPurposesById,
+        getVendorPurposesByName,
+      }) as any)
+    );
   },
-};
+});
 </script>

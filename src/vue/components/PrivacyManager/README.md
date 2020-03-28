@@ -1,6 +1,6 @@
 # PrivacyManager Component
 
-The PrivacyManager component is a renderless component which provides an interface to the function `loadPrivacyManagerModal` of the [tcf-v2](../../../tcf-v2) package.
+The PrivacyManager component is a renderless component which provides an interface to the [tcf-v2](../../../tcf-v2) package.
 
 ## API
 

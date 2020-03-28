@@ -9,7 +9,11 @@ describe('PrivacyManager component', () => {
       },
     });
 
-    expect(wrapper.element).toMatchSnapshot();
+    expect(wrapper.element).toMatchInlineSnapshot(`
+      <div>
+        Privacy Manager default slot
+      </div>
+    `);
   });
 
   it('should render nothing if no content for the default slot is given', () => {

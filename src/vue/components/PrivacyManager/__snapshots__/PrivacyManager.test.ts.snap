@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`PrivacyManager component should provide a default scoped slot 1`] = `
-<div>
-  Privacy Manager default slot
-</div>
-`;

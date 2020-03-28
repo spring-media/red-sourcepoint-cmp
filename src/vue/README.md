@@ -2,7 +2,14 @@
 
 ## Components
 
+* [CmpConsents](components/CmpConsents)
+* [EmbedPlaceholder](components/EmbedPlaceholder)
+* [PrivacyManager](components/PrivacyManager)
+* [VendorMapping](components/VendorMapping)
+
 ## Vuex Module
+
+[Documentation](vuex-module)
 
 ## Storybook
 

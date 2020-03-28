@@ -5,7 +5,7 @@
 * [CmpConsents](components/CmpConsents)
 * [EmbedPlaceholder](components/EmbedPlaceholder#embed-placeholder-components)
 * [PrivacyManager](components/PrivacyManager#privacymanager-component)
-* [VendorMapping](components/VendorMapping)
+* [VendorMapping](components/VendorMapping#vendormapping-component)
 
 ## Vuex Module
 

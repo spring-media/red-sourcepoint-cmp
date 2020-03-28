@@ -1,6 +1,8 @@
 # Embed Placeholder Components
 
-## Facebook
+## Components
+
+### Facebook
 
 Placeholder for Facebook embeds.
 
@@ -30,7 +32,7 @@ export default {
 ```
 </details>
 
-## Instagram
+### Instagram
 
 Placeholder for Instagram embeds.
 
@@ -60,7 +62,7 @@ export default {
 ```
 </details>
 
-## Twitter
+### Twitter
 
 Placeholder for Twitter embeds.
 
@@ -90,7 +92,7 @@ export default {
 ```
 </details>
 
-## Youtube
+### Youtube
 
 Placeholder for Youtube embeds.
 
@@ -120,7 +122,7 @@ export default {
 ```
 </details>
 
-## Generic
+### Generic
 
 Placeholder for all other embeds.
 
@@ -133,7 +135,7 @@ Placeholder for all other embeds.
 
 ```javascript
 <template>
-  <embed-placeholder</embed-placeholder>
+  <embed-placeholder></embed-placeholder>
 </template>
 
 <script>
@@ -141,6 +143,39 @@ import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue
 
 export default {
   components: { EmbedPlaceholder },
+};
+</script>
+
+<style lang="scss">
+@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder.css';
+</style>
+```
+</details>
+
+## API
+
+### Events
+
+Every placeholder component emits an event (requestConsent) by clicking either on the button or on one of the links in the footer.
+
+<details>
+<summary>Usage</summary>
+
+```javascript
+<template>
+  <embed-placeholder  @requestConsent="onRequestConsent()"></embed-placeholder>
+</template>
+
+<script>
+import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+
+export default {
+  components: { EmbedPlaceholder },
+  methods: {
+    onRequestConsent() {
+      console.log("request consent");
+    },
+  },
 };
 </script>
 

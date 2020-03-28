@@ -3,8 +3,8 @@
 ## Components
 
 * [CmpConsents](components/CmpConsents)
-* [EmbedPlaceholder](components/EmbedPlaceholder)
-* [PrivacyManager](components/PrivacyManager)
+* [EmbedPlaceholder](components/EmbedPlaceholder#embed-placeholder-components)
+* [PrivacyManager](components/PrivacyManager#privacymanager-component)
 * [VendorMapping](components/VendorMapping)
 
 ## Vuex Module

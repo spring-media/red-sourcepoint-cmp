@@ -11,7 +11,7 @@ Placeholder for Facebook embeds.
 </p>
 
 <details>
-<summary>Usage</summary>
+<summary>Example</summary>
 
 ```javascript
 <template>
@@ -41,7 +41,7 @@ Placeholder for Instagram embeds.
 </p>
 
 <details>
-<summary>Usage</summary>
+<summary>Example</summary>
 
 ```javascript
 <template>
@@ -71,7 +71,7 @@ Placeholder for Twitter embeds.
 </p>
 
 <details>
-<summary>Usage</summary>
+<summary>Example</summary>
 
 ```javascript
 <template>
@@ -101,7 +101,7 @@ Placeholder for Youtube embeds.
 </p>
 
 <details>
-<summary>Usage</summary>
+<summary>Example</summary>
 
 ```javascript
 <template>
@@ -131,7 +131,7 @@ Placeholder for all other embeds.
 </p>
 
 <details>
-<summary>Usage</summary>
+<summary>Example</summary>
 
 ```javascript
 <template>
@@ -159,7 +159,7 @@ export default {
 Every placeholder component emits an event (requestConsent) by clicking either on the button or on one of the links in the footer.
 
 <details>
-<summary>Usage</summary>
+<summary>Example</summary>
 
 ```javascript
 <template>

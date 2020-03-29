@@ -1,7 +1,7 @@
 import { InstagramOEmbedRequestParameters, InstagramOEmbedResponse } from '../types';
 
 export const INSTAGRAM_OEMBED_API_URL = 'https://api.instagram.com/oembed';
-export const INSTAGRAM_JAVASCRIPT_LIBRARY_URL = 'https://www.instagram.com/embed.js';
+export const INSTAGRAM_JAVASCRIPT_EMBEDS_LIBRARY_URL = 'https://www.instagram.com/embed.js';
 
 export const requestInstagramOEmbedData = async (
   params: InstagramOEmbedRequestParameters,
@@ -25,7 +25,7 @@ export const loadInstagramJsLibrary = (): Promise<void> => {
 
     script.async = true;
     script.onload = (): void => resolve();
-    script.src = INSTAGRAM_JAVASCRIPT_LIBRARY_URL;
+    script.src = INSTAGRAM_JAVASCRIPT_EMBEDS_LIBRARY_URL;
     script.onerror = reject;
 
     document.head.append(script);

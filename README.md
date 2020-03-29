@@ -12,3 +12,5 @@ npm i @spring-media/red-sourcepoint-cmp
 ## Vue
 [Documenation](src/vue)
 
+## Embed Utils
+[Documentation](src/embed-utils#embed-utils-package)

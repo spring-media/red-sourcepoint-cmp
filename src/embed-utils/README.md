@@ -4,7 +4,7 @@ This package provides several utilities around embeds and their vendors.
 
 ## Instagram
 
-Documentation about embedding Instagram posts can be found <a href="https://developers.facebook.com/docs/instagram/embedding" target="_blank" rel="noopener nofollow">here</a>.
+Documentation about embedding Instagram posts can be found [here](https://developers.facebook.com/docs/instagram/embedding).
 
 ### `INSTAGRAM_OEMBED_API_URL`
 
@@ -33,7 +33,7 @@ import { requestInstagramOEmbedData } from '@spring-media/red-sourcepoint-cmp/di
 requestInstagramOEmbedData({ url: 'https://www.instagram.com/p/fA9uwTtkSN/' }).then(post => console.log(post)).catch(error => console.log(error));
 ```
 
-> This function makes use of <a href="https://developer.mozilla.org/de/docs/Web/API/Fetch_API" target="_blank" rel="noopener nofollow">fetch</a> as well as <a href="https://developer.mozilla.org/de/docs/Web/API/URLSearchParams" target="_blank" rel="noopener nofollow">URLSearchParams</a>. 
+> This function makes use of [fetch](https://developer.mozilla.org/de/docs/Web/API/Fetch_API) as well as [URLSearchParams](https://developer.mozilla.org/de/docs/Web/API/URLSearchParams). 
 > If you are required to support older browsers, keep in mind to add appropriate polyfills.
 
 ### `loadInstagramJsLibrary`
@@ -50,7 +50,7 @@ loadInstagramJsLibrary().then(() => console.log("Library loaded")).catch(error =
 
 Use this function to process any Instagram posts's that were not added on initial page load.
 
-> Please refer to the <a href="https://developers.facebook.com/docs/instagram/embedding/#embed-js" target="_blank" rel="noopener nofollow">documentation</a> for more information.
+> Please refer to the [documentation](https://developers.facebook.com/docs/instagram/embedding/#embed-js) for more information.
 
 ```javascript
 import { processInstagramEmbeds } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';

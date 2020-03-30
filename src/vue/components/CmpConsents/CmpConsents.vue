@@ -1,7 +1,24 @@
-<script>
+<script lang="ts">
+import Vue, { VNode } from 'vue';
 import { mapGetters, mapState } from 'vuex';
+import { Purpose, Vendor } from '../../../types';
 
-export default {
+type Props = {
+  vendorId: string;
+  purposeIds: string[];
+};
+
+type Computed = {
+  cmpEnabled: boolean;
+  hasVendorConsent(vendor: Vendor): boolean;
+  hasPurposeConsent(purpose: Purpose): boolean;
+};
+
+type Methods = {
+  hasConsent(): boolean;
+};
+
+export default Vue.extend<{}, Methods, Computed, Props>({
   props: {
     vendorId: {
       type: String,
@@ -17,7 +34,7 @@ export default {
     ...mapState('sourcepoint', ['cmpEnabled']),
   },
   methods: {
-    hasConsent() {
+    hasConsent(): boolean {
       if (!this.cmpEnabled) {
         return true;
       }
@@ -28,12 +45,16 @@ export default {
       );
     },
   },
-  render() {
-    if (this.hasConsent() && this.$scopedSlots.consent) {
-      return this.$scopedSlots.consent();
+  render(): VNode {
+    if (this.hasConsent() && this.$scopedSlots.onConsent) {
+      return this.$scopedSlots.onConsent({}) as any;
     }
 
-    return this.$scopedSlots.reject && this.$scopedSlots.reject();
+    if (this.$scopedSlots.onReject) {
+      return this.$scopedSlots.onReject({}) as any;
+    }
+
+    return {} as VNode;
   },
-};
+});
 </script>

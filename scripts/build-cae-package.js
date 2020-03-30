@@ -5,30 +5,19 @@ const { mkdirSync, rmdirSync, existsSync, writeFileSync, readFileSync } = requir
 const { version } = require('../package.json');
 const { buildHTMLSnippets } = require('./build-html-snippets');
 
-const jsFiles = [
-  { source: './dist/browser/tcf-v2.js', dest: `.cae/red-cmp-tcf-v2-${version}.min.js` },
-  { source: './dist/browser/callbacks.js', dest: `.cae/red-cmp-callbacks-${version}.min.js` },
-  { source: './dist/browser/embed-utils.js', dest: `.cae/red-cmp-embed-utils-${version}.min.js` },
-];
-
 existsSync('.cae') && rmdirSync('.cae', { recursive: true });
 mkdirSync('.cae');
 
-jsFiles.forEach(({ source, dest }) => {
-  const code = readFileSync(source, 'utf8');
-
-  writeFileSync(dest, Terser.minify(code).code, 'utf8');
-});
+const js = readFileSync('./dist/browser/red-cmp.js', 'utf8');
+writeFileSync(`.cae/red-cmp-${version}.min.js`, Terser.minify(js).code, 'utf8');
 
 buildHTMLSnippets({ version });
 
-const css = readFileSync('./dist/cjs/vue/EmbedPlaceholder.css', 'utf8');
+const css = readFileSync('./dist/cjs/vue/components/embed-placeholder/embed-placeholder.css', 'utf8');
 writeFileSync(`.cae/red-cmp-embed-placeholder-${version}.min.css`, new CleanCSS().minify(css).styles);
 
 const config = {
-  tcfV2: `red-cmp-tcf-v2-${version}.min.js`,
-  callbacks: `red-cmp-callbacks-${version}.min.js`,
-  embedUtils: `red-cmp-embed-utils-${version}.min.js`,
+  jsLib: `red-cmp-${version}.min.js`,
   embedPlaceholderStyles: `red-cmp-embed-placeholder-${version}.min.css`,
   embedPlaceholderCommonHtml: `red-cmp-embed-placeholder-${version}.html`,
   embedPlaceholderFacebookHtml: `red-cmp-embed-placeholder-facebook-${version}.html`,

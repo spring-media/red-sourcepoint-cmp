@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import EmbedPlaceholder from './EmbedPlaceholder.vue';
+import { EmbedPlaceholder } from './';
 
 export default Vue.extend({
   name: 'EmbedPlaceholderFacebook',

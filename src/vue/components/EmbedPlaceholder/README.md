@@ -19,7 +19,7 @@ Placeholder for Facebook embeds.
 </template>
 
 <script>
-import { EmbedPlaceholderFacebook } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+import { EmbedPlaceholderFacebook } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder';
 
 export default {
   components: { EmbedPlaceholderFacebook },
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder.css';
+@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder.css';
 </style>
 ```
 </details>
@@ -49,7 +49,7 @@ Placeholder for Instagram embeds.
 </template>
 
 <script>
-import { EmbedPlaceholderInstagram } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+import { EmbedPlaceholderInstagram } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder';
 
 export default {
   components: { EmbedPlaceholderInstagram },
@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder.css';
+@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder.css';
 </style>
 ```
 </details>
@@ -79,7 +79,7 @@ Placeholder for Twitter embeds.
 </template>
 
 <script>
-import { EmbedPlaceholderTwitter } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+import { EmbedPlaceholderTwitter } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder';
 
 export default {
   components: { EmbedPlaceholderTwitter },
@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder.css';
+@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder.css';
 </style>
 ```
 </details>
@@ -109,7 +109,7 @@ Placeholder for Youtube embeds.
 </template>
 
 <script>
-import { EmbedPlaceholderYoutube } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+import { EmbedPlaceholderYoutube } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder';
 
 export default {
   components: { EmbedPlaceholderYoutube },
@@ -117,7 +117,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder.css';
+@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder.css';
 </style>
 ```
 </details>
@@ -139,7 +139,7 @@ Placeholder for all other embeds.
 </template>
 
 <script>
-import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder';
 
 export default {
   components: { EmbedPlaceholder },
@@ -147,7 +147,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder.css';
+@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder.css';
 </style>
 ```
 </details>
@@ -167,7 +167,7 @@ Every placeholder component emits an event (requestConsent) by clicking either o
 </template>
 
 <script>
-import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder';
+import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder';
 
 export default {
   components: { EmbedPlaceholder },
@@ -180,7 +180,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/EmbedPlaceholder.css';
+@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder.css';
 </style>
 ```
 </details>

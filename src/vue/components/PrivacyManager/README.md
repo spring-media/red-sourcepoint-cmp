@@ -24,7 +24,7 @@ The PrivacyManager component is a renderless component which provides an interfa
 </template>
 
 <script>
-import { PrivacyManager } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/PrivacyManager';
+import { PrivacyManager } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/privacy-manager';
 
 export default {
   data: () => ({ managerId: 1234 }),

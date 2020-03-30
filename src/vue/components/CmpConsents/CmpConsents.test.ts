@@ -1,7 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import CmpConsents from './CmpConsents.vue';
-import { sourcepoint } from '../../vuex-module';
+import { sourcepoint } from '../../vuex/sourcepoint';
 
 const localVue = createLocalVue();
 

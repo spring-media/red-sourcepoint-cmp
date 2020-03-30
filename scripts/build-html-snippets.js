@@ -3,7 +3,7 @@ const { writeFileSync } = require('fs');
 const { renderToString } = require('vue-server-renderer').createRenderer();
 const Vue = require('vue');
 
-const placeholder = require('../dist/cjs/vue/EmbedPlaceholder');
+const placeholder = require('../dist/cjs/vue/components/embed-placeholder');
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const dashify = str => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();

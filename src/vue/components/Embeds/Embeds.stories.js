@@ -2,7 +2,7 @@ import EmbedInstagramCmp from './EmbedInstagramCmp.vue';
 import Vuex from 'vuex';
 import Vue from 'vue';
 import { text, boolean } from '@storybook/addon-knobs';
-import { sourcepoint } from '../../vuex-module';
+import { sourcepoint } from '../../vuex/sourcepoint';
 import { PURPOSE_ID_SOCIAL, VENDOR_ID_INSTAGRAM } from '../../../vendor-mapping';
 
 Vue.use(Vuex);

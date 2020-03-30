@@ -17,9 +17,9 @@
 import Vue from 'vue';
 import { CmpConsents } from '../CmpConsents';
 import { EmbedPlaceholderInstagram } from '../EmbedPlaceholder';
-import EmbedInstagram from './EmbedInstagram.vue';
-import VendorMapping from '../VendorMapping/VendorMapping.vue';
-import PrivacyManager from '../PrivacyManager/PrivacyManager.vue';
+import { EmbedInstagram } from './';
+import { VendorMapping } from '../VendorMapping';
+import { PrivacyManager } from '../PrivacyManager';
 import { VENDOR_ID_INSTAGRAM } from '../../../vendor-mapping';
 
 export default Vue.extend({

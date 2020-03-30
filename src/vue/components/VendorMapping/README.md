@@ -29,7 +29,7 @@ The VendorMapping component is a renderless component which provides an interfac
 </template>
 
 <script>
-import { VendorMapping } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/VendorMapping';
+import { VendorMapping } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/vendor-mapping';
 
 export default {
   data: () => ({ vendorId: '1234' }),

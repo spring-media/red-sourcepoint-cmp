@@ -1,6 +1,10 @@
 import { EventConfigurationObject, OptionalCallback } from '../../types';
 
 export const getEventStore = (): EventConfigurationObject => {
+  if (typeof window === 'undefined') {
+    return {};
+  }
+
   const config = window?._sp_?.config;
 
   if (!config) {

@@ -1,6 +1,6 @@
 {
   "name": "@spring-media/red-sourcepoint-cmp",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Sourcepoint CMP Library for www.bild.de",
   "typings": "dist/types.d.ts",
   "scripts": {

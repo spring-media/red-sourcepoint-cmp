@@ -25,9 +25,9 @@ export const getCustomVendorConsentsBypassCache = (): Promise<CustomVendorConsen
         window._sp_ = {
           config: {
             accountId: ${accountId},
-            wrapperAPIOrigin: ${wrapperAPIOrigin},
+            wrapperAPIOrigin: '${wrapperAPIOrigin}',
             propertyId: ${propertyId},
-            mmsDomain: ${mmsDomain},
+            mmsDomain: '${mmsDomain}',
           },
         };
       </script>

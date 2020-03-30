@@ -7,7 +7,7 @@
         </privacy-manager>
       </template>
       <template #consent>
-        <embed-instagram :url="url"></embed-instagram>
+        <embed-instagram :url="url" :content="content"></embed-instagram>
       </template>
     </cmp-consents>
   </vendor-mapping>
@@ -30,12 +30,16 @@ export default {
   props: {
     url: {
       type: String,
-      required: true,
+      default: null,
     },
     privacyManagerId: {
       type: Number,
       required: true,
     },
+    content: {
+      type: String,
+      default: null,
+    }
   },
 };
 </script>

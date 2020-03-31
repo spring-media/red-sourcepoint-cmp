@@ -22,12 +22,12 @@ describe('PrivacyManager component', () => {
     expect(wrapper.isEmpty()).toBe(true);
   });
 
-  it('should provide a loadModal function through default slot', () => {
+  it('should provide a loadPrivacyManagerModal function through default slot', () => {
     mount(PrivacyManager, {
       scopedSlots: {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        default({ loadModal }: { loadModal: Function }): any {
-          expect(loadModal).toBeInstanceOf(Function);
+        default({ loadPrivacyManagerModal }: { loadPrivacyManagerModal: Function }): any {
+          expect(loadPrivacyManagerModal).toBeInstanceOf(Function);
         },
       },
     });

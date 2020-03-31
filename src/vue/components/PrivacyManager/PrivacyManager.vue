@@ -8,7 +8,7 @@ export default Vue.extend({
     return (
       this.$scopedSlots.default &&
       (this.$scopedSlots.default!({
-        loadModal: (managerId: number) => loadPrivacyManagerModal(managerId),
+        loadPrivacyManagerModal,
       }) as any)
     );
   },

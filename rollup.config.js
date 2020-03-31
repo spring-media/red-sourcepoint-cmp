@@ -3,43 +3,13 @@ import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
 import postcss from 'rollup-plugin-postcss';
 import { readdirSync, lstatSync } from 'fs';
-import { resolve, parse, relative, format } from 'path';
+import { resolve, parse, relative } from 'path';
 
 rmdirSync('./dist', { recursive: true });
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const dashify = str => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-
-const staticExternals = ['vue', 'vuex', 'vue-runtime-helpers'];
-
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const rewriteIndexImportsPathsToRelative = basePath => id => {
-  const path = relative(basePath, id);
-  const name = dashify(path.replace(/\.vue$/, '.js'));
-
-  return format({ dir: '.', name });
-};
-
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const rewriteComponentImportsPathToRelative = (basePath, format = 'esm') => id => {
-  if (new RegExp(`^[${staticExternals.join('|')}]`).test(id)) {
-    return format === 'cjs' ? id.replace('.mjs', '.js') : id;
-  }
-
-  const relativePath = relative(basePath, id);
-
-  if (!relativePath) {
-    return './';
-  }
-
-  const newId = dashify(relativePath).replace('.vue', '.js');
-
-  if (newId.startsWith('.')) {
-    return newId;
-  }
-
-  return `./${newId}`;
-};
+const typescriptPlugin = typescript();
+const vuePlugin = vue({ css: false });
+const postcssPlugin = postcss({ extract: true });
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const getVueComponents = () => {
@@ -54,31 +24,16 @@ const getVueComponents = () => {
       const components = readdirSync(`${basePath}/${base}`)
         .filter(comp => comp.match(/\.vue$/))
         .map(comp => {
-          const name = dashify(comp.replace(/\.vue$/, ''));
+          const name = comp.replace(/\.vue$/, '');
 
           return {
             input: { [name]: `${basePath}/${base}/${comp}` },
             output: [
-              {
-                format: 'esm',
-                dir: `./dist/esm/vue/components/${dashify(base)}`,
-                paths: rewriteComponentImportsPathToRelative(`${basePath}/${base}`),
-              },
-              {
-                format: 'cjs',
-                dir: `./dist/cjs/vue/components/${dashify(base)}`,
-                paths: rewriteComponentImportsPathToRelative(`${basePath}/${base}`, 'cjs'),
-              },
+              { format: 'esm', dir: `./dist/esm/vue/components/${base}` },
+              { format: 'cjs', dir: `./dist/cjs/vue/components/${base}` },
             ],
-            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-            external: id => {
-              if (!id.includes(comp)) {
-                return true;
-              }
-
-              return staticExternals.includes(id);
-            },
-            plugins: [typescript(), vue({ css: false }), postcss({ extract: true })],
+            external: ['vue', 'vuex'],
+            plugins: [typescriptPlugin, vuePlugin, postcssPlugin],
           };
         });
 
@@ -88,16 +43,18 @@ const getVueComponents = () => {
         output: [
           {
             format: 'esm',
-            dir: `./dist/esm/vue/components/${dashify(base)}`,
-            paths: rewriteIndexImportsPathsToRelative(`${basePath}/${base}`),
+            dir: `./dist/esm/vue/components/${base}`,
+            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+            paths: id => `./${relative(`${basePath}/${base}`, id).replace('.vue', '.js')}`,
           },
           {
             format: 'cjs',
-            dir: `./dist/cjs/vue/components/${dashify(base)}`,
-            paths: rewriteIndexImportsPathsToRelative(`${basePath}/${base}`),
+            dir: `./dist/cjs/vue/components/${base}`,
+            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+            paths: id => `./${relative(`${basePath}/${base}`, id).replace('.vue', '.js')}`,
           },
         ],
-        plugins: [typescript(), vue({ css: false }), postcss({ extract: true })],
+        plugins: [typescriptPlugin, vuePlugin, postcss({ extract: true })],
       });
 
       acc.push(...components);
@@ -118,7 +75,7 @@ export default [
       { format: 'esm', dir: './dist/esm' },
       { format: 'cjs', dir: './dist/cjs' },
     ],
-    plugins: [typescript()],
+    plugins: [typescriptPlugin],
   },
   {
     input: './src/index.ts',
@@ -134,7 +91,7 @@ export default [
       { format: 'esm', dir: './dist/esm/vue' },
       { format: 'cjs', dir: './dist/cjs/vue' },
     ],
-    plugins: [typescript()],
+    plugins: [typescriptPlugin],
   },
   ...getVueComponents(),
 ];

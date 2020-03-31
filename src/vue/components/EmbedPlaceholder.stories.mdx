@@ -1,0 +1,80 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import { EmbedPlaceholder } from './EmbedPlaceholder';
+import { EmbedFacebookPlaceholder } from './EmbedFacebookPlaceholder';
+import { EmbedInstagramPlaceholder } from './EmbedInstagramPlaceholder';
+import { EmbedTwitterPlaceholder } from './EmbedTwitterPlaceholder';
+import { EmbedYoutubePlaceholder } from './EmbedYoutubePlaceholder';
+
+<Meta title='Embeds | Placeholder' />
+
+# Embed Placeholder
+
+## Generic
+
+This component is used as a generic social media embed placeholder. Furthermore it's the base component for our vendor specific placeholder components.
+
+<Story name='Generic'>{{
+  components: { EmbedPlaceholder },
+  template: `<EmbedPlaceholder @requestConsent="requestConsent" />`,
+  methods: {
+    requestConsent() {
+        window.alert('Request Consent');
+    }
+  }
+}}></Story>
+
+## Facebook
+
+This placeholder is used for embeds that contains content from Facebook.
+
+<Story name='Facebook'>{{
+  components: { EmbedFacebookPlaceholder },
+  template: `<EmbedFacebookPlaceholder @requestConsent="requestConsent" />`,
+  methods: {
+    requestConsent() {
+      window.alert('Request Consent');
+    }
+  }
+}}></Story>
+
+## Instagram
+
+This placeholder is used for embeds that contains content from Instagram.
+
+<Story name='Instagram'>{{
+  components: { EmbedInstagramPlaceholder },
+  template: `<EmbedInstagramPlaceholder @requestConsent="requestConsent" />`,
+  methods: {
+    requestConsent() {
+      window.alert('Request Consent');
+    }
+  }
+}}></Story>
+
+## Twitter
+
+This placeholder is used for embeds that contains content from Twitter.
+
+<Story name='Twitter'>{{
+  components: { EmbedTwitterPlaceholder },
+  template: `<EmbedTwitterPlaceholder @requestConsent="requestConsent" />`,
+  methods: {
+    requestConsent() {
+      window.alert('Request Consent');
+    }
+  }
+}}></Story>
+
+## Youtube
+
+This placeholder is used for embeds that contains content from Youtube.
+
+<Story name='Youtube'>{{
+  components: { EmbedYoutubePlaceholder },
+  template: `<EmbedYoutubePlaceholder @requestConsent="requestConsent" />`,
+  methods: {
+    requestConsent() {
+      window.alert('Request Consent');
+    }
+  }
+}}></Story>

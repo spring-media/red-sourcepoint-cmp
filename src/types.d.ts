@@ -70,28 +70,3 @@ export type State = {
   privacyManagerId: number;
   cmpEnabled: boolean;
 };
-
-export type InstagramOEmbedRequestParameters = {
-  url: string;
-  hidecaption?: boolean;
-  maxwidth?: number;
-  omitscript?: boolean;
-};
-
-export type InstagramOEmbedResponse = {
-  version: string;
-  title: string;
-  author_name: string;
-  author_url: string;
-  author_id: number;
-  media_id: string;
-  provider_name: string;
-  provider_url: string;
-  type: string;
-  width: number;
-  height: null;
-  html: string;
-  thumbnail_url: string;
-  thumbnail_width: number;
-  thumbnail_height: number;
-};

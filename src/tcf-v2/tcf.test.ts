@@ -10,7 +10,7 @@ describe('executeMethod', () => {
 
     await executeMethod('getCustomVendorConsents', vendors);
 
-    expect(window.__tcfapi).toHaveBeenCalledWith('getCustomVendorConsents', vendors, expect.any(Function));
+    expect(window.__tcfapi).toHaveBeenCalledWith('getCustomVendorConsents', 2, expect.any(Function), vendors);
 
     delete window.__tcfapi;
   });

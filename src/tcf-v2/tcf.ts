@@ -4,7 +4,7 @@ import { tcfAction } from '../types';
 export const executeMethod = (method: tcfAction, vendors: Array<string> | null = null): Promise<any> =>
   new Promise((resolve, reject) => {
     try {
-      window.__tcfapi(method, vendors, resolve);
+      window.__tcfapi(method, 2, resolve, vendors);
     } catch (error) {
       console.error(error.message);
       reject(error.message);

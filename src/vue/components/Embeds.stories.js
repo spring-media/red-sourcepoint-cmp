@@ -24,18 +24,20 @@ const store = new Vuex.Store({
 
 export default {
   title: 'Embeds | Vendors',
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const createStory = ({ component, vendorId, content }) => ({
-  components: { component },
+const createStory = ({ cmp, vendorId, embedContent }) => ({
+  components: { cmp },
   store,
   props: {
     content: {
-      default: text('Embed Content', content),
-    },
-    cmpEnabled: {
-      default: boolean('CMP Enabled', true),
+      default: text('Embed Content', embedContent),
     },
     consent: {
       default: boolean('Consent', store.getters['sourcepoint/hasVendorConsent']({ _id: vendorId })),
@@ -49,10 +51,6 @@ const createStory = ({ component, vendorId, content }) => ({
   },
   watch: {
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    cmpEnabled(value) {
-      store.commit('sourcepoint/setCmpEnabled', value);
-    },
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     consent(value) {
       const payload = value ? [{ _id: vendorId }] : [];
       store.commit('sourcepoint/setVendorConsents', payload);
@@ -65,22 +63,22 @@ const createStory = ({ component, vendorId, content }) => ({
   },
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   render(h) {
-    return h(component, { props: { privacyManagerId: 1234, content } });
+    return h(cmp, { props: { privacyManagerId: 1234, content: this.content } });
   },
 });
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const Instagram = () =>
-  createStory({ component: EmbedInstagramConsent, vendorId: VENDOR_ID_INSTAGRAM, content: 'Instagram content' });
+  createStory({ cmp: EmbedInstagramConsent, vendorId: VENDOR_ID_INSTAGRAM, embedContent: 'Instagram content' });
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const Twitter = () =>
-  createStory({ component: EmbedTwitterConsent, vendorId: VENDOR_ID_TWITTER, content: 'Twitter content' });
+  createStory({ cmp: EmbedTwitterConsent, vendorId: VENDOR_ID_TWITTER, embedContent: 'Twitter content' });
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const Facebook = () =>
-  createStory({ component: EmbedFacebookConsent, vendorId: VENDOR_ID_FACEBOOK, content: 'Facebook content' });
+  createStory({ cmp: EmbedFacebookConsent, vendorId: VENDOR_ID_FACEBOOK, embedContent: 'Facebook content' });
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const Youtube = () =>
-  createStory({ component: EmbedYoutubeConsent, vendorId: VENDOR_ID_YOUTUBE, content: 'Youtube content' });
+  createStory({ cmp: EmbedYoutubeConsent, vendorId: VENDOR_ID_YOUTUBE, embedContent: 'Youtube content' });

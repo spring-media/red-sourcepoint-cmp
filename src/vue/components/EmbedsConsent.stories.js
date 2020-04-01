@@ -25,7 +25,7 @@ const store = new Vuex.Store({
 });
 
 export default {
-  title: 'Embeds | Vendors',
+  title: 'Embeds / Consent',
   parameters: {
     knobs: {
       escapeHTML: false,

@@ -1,6 +1,6 @@
 <script lang="ts">
 import Vue, { VNode } from 'vue';
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import { Purpose, Vendor } from '../../../types';
 
 type Props = {
@@ -9,7 +9,6 @@ type Props = {
 };
 
 type Computed = {
-  cmpEnabled: boolean;
   hasVendorConsent(vendor: Vendor): boolean;
   hasPurposeConsent(purpose: Purpose): boolean;
 };
@@ -32,14 +31,9 @@ export default Vue.extend<{}, Methods, Computed, Props>({
   },
   computed: {
     ...mapGetters('sourcepoint', ['hasVendorConsent', 'hasPurposeConsent']),
-    ...mapState('sourcepoint', ['cmpEnabled']),
   },
   methods: {
     hasConsent(): boolean {
-      if (!this.cmpEnabled) {
-        return true;
-      }
-
       return (
         this.hasVendorConsent({ _id: this.vendorId }) ||
         this.purposeIds.some(purpose => this.hasPurposeConsent({ _id: purpose }))

@@ -67,6 +67,4 @@ export declare global {
 export type State = {
   consentedVendors: Vendor[];
   consentedPurposes: Purpose[];
-  privacyManagerId: number;
-  cmpEnabled: boolean;
 };

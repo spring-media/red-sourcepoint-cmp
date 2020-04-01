@@ -21,7 +21,7 @@ import { PrivacyManager } from '../PrivacyManager';
 
 type Props = {
   vendorId: string;
-}
+};
 
 export default Vue.extend<{}, {}, {}, Props>({
   name: 'EmbedConsent',

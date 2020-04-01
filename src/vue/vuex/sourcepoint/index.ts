@@ -5,8 +5,6 @@ import { consentsAreEqual, getCustomVendorConsents, hasConsent } from '../../../
 const state: State = {
   consentedVendors: [],
   consentedPurposes: [],
-  privacyManagerId: 123456,
-  cmpEnabled: true,
 };
 
 export const getters = {
@@ -42,9 +40,6 @@ export const mutations = {
   },
   rejectPurpose(state: State, payload: Purpose): void {
     state.consentedPurposes = state.consentedPurposes.filter(purpose => consentsAreEqual(purpose, payload));
-  },
-  setCmpEnabled(state: State, payload: boolean): void {
-    state.cmpEnabled = payload;
   },
 };
 

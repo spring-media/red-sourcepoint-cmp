@@ -33,7 +33,7 @@ getTCData().then(data => console.log(data)).catch(error => console.error(error))
 ```    
 </details>
 
-### `customVendorHasConsent(vendor: Consent): Promise<boolean>;`
+### `customVendorHasConsent(vendor: Consent, options: HasConsentOptions): Promise<boolean>;`
 
 Checks whether the user has consented to given vendor.
 
@@ -49,7 +49,13 @@ customVendorHasConsent(vendor).then(hasConsent => console.log(hasConsent)).catch
 ```    
 </details>
 
-### `purposeHasConsent(purpose: Purpose): Promise<boolean>;`
+#### Options parameters
+
+| Name    | Type    | Description                                              | default |
+| ------- | ------- | -------------------------------------------------------- | ------- |
+| cache   | boolean | Set to false to fetch the newest values from Sourcepoint | true    |
+
+### `purposeHasConsent(purpose: Purpose, options: HasConsentOptions): Promise<boolean>;`
 
 Checks whether the user has consented to given purpose.
 
@@ -64,6 +70,12 @@ const purpose = { _id: '123456' };
 purposeHasConsent(purpose).then(hasConsent => console.log(hasConsent)).catch(error => console.error(error));
 ```
 </details>
+
+#### Options parameters
+
+| Name    | Type    | Description                                              | default |
+| ------- | ------- | -------------------------------------------------------- | ------- |
+| cache   | boolean | Set to false to fetch the newest values from Sourcepoint | true    |
 
 ### `loadPrivacyManagerModal(managerId: string): void;`
 
@@ -122,3 +134,30 @@ console.log(consentsAreEqual(consent1, consent3)); // true
 
 ## Optional Callbacks
 [Documentation](callbacks)
+
+
+## Types
+
+### `Consent`
+
+```javascript
+{ _id: string, name: string, vendorType: string }
+```
+
+### `Purpose`
+
+```javascript
+{ _id: string, name: string }
+```
+
+### HasConsentOptions
+
+```javascript
+{ cache: boolean }
+```
+
+### CustomVendorConsentsResult
+
+```javascript
+{ consentedPurposes: Purpose[], consentedVendors: Vendor[] }
+```

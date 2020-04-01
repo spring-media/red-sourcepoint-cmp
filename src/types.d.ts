@@ -14,6 +14,10 @@ export type CustomVendorConsentsResult = {
   consentedVendors: Vendor[];
 };
 
+export type HasConsentOptions = {
+  cache: boolean;
+};
+
 export type TCDataResult = {
   consentData: string;
   gdprApplies: boolean;

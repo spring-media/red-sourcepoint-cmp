@@ -1,10 +1,15 @@
-import { getCustomVendorConsents } from './get-custom-vendor-consents';
+import { getCustomVendorConsents, getCustomVendorConsentsBypassCache } from './get-custom-vendor-consents';
 import { customVendorHasConsent, purposeHasConsent, consentsAreEqual, hasConsent } from './has-consent';
 import { Consent } from '../types';
 
 jest.mock('./get-custom-vendor-consents');
 
 describe('has-consent module', () => {
+  afterEach(() => {
+    (getCustomVendorConsents as jest.Mock).mockReset();
+    (getCustomVendorConsentsBypassCache as jest.Mock).mockReset();
+  });
+
   describe('customVendorHasConsent', () => {
     it('should return true', async () => {
       const consents = {
@@ -43,6 +48,19 @@ describe('has-consent module', () => {
       expect(spy).toHaveBeenCalled();
 
       spy.mockRestore();
+    });
+
+    it('should bypass the cache if cache option is set to false', async () => {
+      const consents = {
+        consentedVendors: [],
+        consentedPurposes: [],
+      };
+
+      (getCustomVendorConsentsBypassCache as jest.Mock).mockReturnValueOnce(Promise.resolve(consents));
+
+      await customVendorHasConsent({ _id: '#1111' }, { cache: false });
+
+      expect(getCustomVendorConsentsBypassCache).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -84,6 +102,19 @@ describe('has-consent module', () => {
       expect(spy).toHaveBeenCalled();
 
       spy.mockRestore();
+    });
+
+    it('should bypass the cache if cache option is set to false', async () => {
+      const consents = {
+        consentedVendors: [],
+        consentedPurposes: [],
+      };
+
+      (getCustomVendorConsentsBypassCache as jest.Mock).mockReturnValueOnce(Promise.resolve(consents));
+
+      await purposeHasConsent({ _id: '#1111' }, { cache: false });
+
+      expect(getCustomVendorConsentsBypassCache).toHaveBeenCalledTimes(1);
     });
   });
 

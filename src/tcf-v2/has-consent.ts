@@ -1,5 +1,5 @@
-import { getCustomVendorConsents } from './get-custom-vendor-consents';
-import { Consent } from '../types';
+import { getCustomVendorConsents, getCustomVendorConsentsBypassCache } from './get-custom-vendor-consents';
+import { Consent, HasConsentOptions } from '../types';
 
 export const consentsAreEqual = (...consents: Consent[]): boolean => {
   const [consent, ...rest] = consents;
@@ -10,9 +10,11 @@ export const consentsAreEqual = (...consents: Consent[]): boolean => {
 export const hasConsent = (consent: Consent, collection: Consent[]): boolean =>
   collection.some((c: Consent) => consentsAreEqual(c, consent));
 
-export const customVendorHasConsent = async (vendor: Consent): Promise<boolean> => {
+export const customVendorHasConsent = async (vendor: Consent, options?: HasConsentOptions): Promise<boolean> => {
   try {
-    const { consentedVendors } = await getCustomVendorConsents();
+    const getConsents = options && !options.cache ? getCustomVendorConsentsBypassCache : getCustomVendorConsents;
+
+    const { consentedVendors } = await getConsents();
 
     return hasConsent(vendor, consentedVendors);
   } catch (error) {
@@ -21,9 +23,11 @@ export const customVendorHasConsent = async (vendor: Consent): Promise<boolean> 
   }
 };
 
-export const purposeHasConsent = async (purpose: Consent): Promise<boolean> => {
+export const purposeHasConsent = async (purpose: Consent, options?: HasConsentOptions): Promise<boolean> => {
   try {
-    const { consentedPurposes } = await getCustomVendorConsents();
+    const getConsents = options && !options.cache ? getCustomVendorConsentsBypassCache : getCustomVendorConsents;
+
+    const { consentedPurposes } = await getConsents();
 
     return hasConsent(purpose, consentedPurposes);
   } catch (error) {

@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { getScriptSrcFromOembedHTML, loadInstagramJsLibrary, processInstagramEmbeds } from '../../../embed-utils';
 
 type Data = {
   embedContent: string;
@@ -24,8 +25,16 @@ export default Vue.extend<Data, {}, {}, Props>({
       default: '',
     },
   },
-  mounted() {
+  async mounted() {
     this.embedContent = this.content;
+
+    if (this.embedContent) {
+      await this.$nextTick();
+
+      await loadInstagramJsLibrary(getScriptSrcFromOembedHTML(this.embedContent));
+
+      processInstagramEmbeds();
+    }
   },
 });
 </script>

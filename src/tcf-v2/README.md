@@ -3,7 +3,7 @@
 ## API
 
 > The following examples refer to the esm-bundle. 
-> When using the browser-bundle, all methods are properties of the global object named **RedSourcepointTCFV2**
+> When using the browser-bundle, all methods are properties of the global object named **RedCMP**
 
 ### `getCustomVendorConsents(): Promise<CustomVendorConsentsResult>;`
 
@@ -136,28 +136,28 @@ console.log(consentsAreEqual(consent1, consent3)); // true
 [Documentation](callbacks)
 
 
-## Types
+### Types`
 
-### `Consent`
+#### `Consent`
 
-```javascript
+```typescript
 { _id: string, name: string, vendorType: string }
 ```
 
-### `Purpose`
+#### `Purpose`
 
-```javascript
+```typescript
 { _id: string, name: string }
 ```
 
-### HasConsentOptions
+#### `HasConsentOptions`
 
-```javascript
+```typescript
 { cache: boolean }
 ```
 
-### CustomVendorConsentsResult
+#### `CustomVendorConsentsResult`
 
-```javascript
+```typescript
 { consentedPurposes: Purpose[], consentedVendors: Vendor[] }
 ```

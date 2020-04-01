@@ -5,6 +5,9 @@ we need to have some kind of static mapping between these two entities.
 
 ## API
 
+> The following examples refer to the esm-bundle. 
+> When using the browser-bundle, all methods are properties of the global object named **RedCMP**
+
 ### `getVendorIdByName(name: string): string | undefined`
 
 Returns the vendor id by given name or undefined if not exists.

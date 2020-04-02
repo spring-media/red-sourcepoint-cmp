@@ -1,5 +1,5 @@
 export interface Consent {
-  _id: string;
+  _id: string | number;
   name?: string;
 }
 

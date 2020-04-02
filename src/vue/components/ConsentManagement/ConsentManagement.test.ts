@@ -7,15 +7,20 @@ const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
-describe('CmpConsents component', () => {
-  it('should render the consent slot for a consented vendor', () => {
-    const store = new Vuex.Store({
-      modules: {
-        sourcepoint,
-      },
-    });
+const store = new Vuex.Store({
+  modules: {
+    sourcepoint,
+  },
+});
 
-    store.commit('sourcepoint/consentVendor', { _id: '#1234' });
+describe('CmpConsents component', () => {
+  afterEach(() => {
+    store.commit('sourcepoint/setVendorConsents', []);
+    store.commit('sourcepoint/setPurposeConsents', []);
+  });
+
+  it('should render the consent slot for a consented vendor', () => {
+    store.commit('sourcepoint/setVendorConsents', [{ _id: '#1234' }]);
 
     const wrapper = mount(ConsentManagement, {
       propsData: {
@@ -31,14 +36,22 @@ describe('CmpConsents component', () => {
     expect(wrapper.text()).toBe('Consent');
   });
 
-  it('should render the consent slot for a consented purpose', () => {
-    const store = new Vuex.Store({
-      modules: {
-        sourcepoint,
+  it('should not render the consent slot if the slot is not used', () => {
+    store.commit('sourcepoint/setVendorConsents', [{ _id: '#1234' }]);
+
+    const wrapper = mount(ConsentManagement, {
+      propsData: {
+        vendorId: '#1234',
       },
+      localVue,
+      store,
     });
 
-    store.commit('sourcepoint/consentPurpose', { _id: '#1234' });
+    expect(wrapper.isEmpty()).toBe(true);
+  });
+
+  it('should render the consent slot for a consented purpose', () => {
+    store.commit('sourcepoint/setPurposeConsents', [{ _id: '#1234' }]);
 
     const wrapper = mount(ConsentManagement, {
       propsData: {
@@ -55,12 +68,6 @@ describe('CmpConsents component', () => {
   });
 
   it('should render the reject slot for a non consented vendor', () => {
-    const store = new Vuex.Store({
-      modules: {
-        sourcepoint,
-      },
-    });
-
     const wrapper = mount(ConsentManagement, {
       propsData: {
         vendorId: '#1234',
@@ -76,16 +83,34 @@ describe('CmpConsents component', () => {
   });
 
   it('should render the reject slot for a non consented purpose', () => {
-    const store = new Vuex.Store({
-      modules: {
-        sourcepoint,
-      },
-    });
-
     const wrapper = mount(ConsentManagement, {
       propsData: {
         purposeIds: ['#1234'],
       },
+      slots: {
+        onReject: `<div>Reject</div>`,
+      },
+      localVue,
+      store,
+    });
+
+    expect(wrapper.text()).toBe('Reject');
+  });
+
+  it('should not render the reject slot for a non consented purpose if no slot is used', () => {
+    const wrapper = mount(ConsentManagement, {
+      propsData: {
+        purposeIds: ['#1234'],
+      },
+      localVue,
+      store,
+    });
+
+    expect(wrapper.isEmpty()).toBe(true);
+  });
+
+  it('should render the reject slot if the prop purposeIds is not set', () => {
+    const wrapper = mount(ConsentManagement, {
       slots: {
         onReject: `<div>Reject</div>`,
       },

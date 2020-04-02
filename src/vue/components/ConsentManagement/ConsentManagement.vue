@@ -4,7 +4,7 @@ import { mapGetters } from 'vuex';
 import { Purpose, Vendor } from '../../../types';
 
 type Props = {
-  vendorId: string;
+  vendorId: string | number;
   purposeIds: string[];
 };
 
@@ -21,8 +21,8 @@ export default Vue.extend<{}, Methods, Computed, Props>({
   name: 'ConsentManagement',
   props: {
     vendorId: {
-      type: String,
-      default: '',
+      type: [String, Number],
+      required: true,
     },
     purposeIds: {
       type: Array,

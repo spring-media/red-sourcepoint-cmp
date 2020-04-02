@@ -6,7 +6,7 @@ describe('executeMethod', () => {
       resolver(true);
     });
 
-    const vendors = ['1', '2', '3'];
+    const vendors = [1, 2, 3];
 
     await executeMethod('getCustomVendorConsents', vendors);
 

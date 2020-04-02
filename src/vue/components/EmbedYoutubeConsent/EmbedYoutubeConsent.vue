@@ -6,7 +6,7 @@
       ></embed-youtube-placeholder>
     </template>
     <template #embed>
-      <embed-twitter :content="content"></embed-twitter>
+      <embed-youtube :content="content"></embed-youtube>
     </template>
   </embed-consent>
 </template>
@@ -15,7 +15,7 @@
 import Vue from 'vue';
 import { EmbedYoutubePlaceholder } from '../EmbedYoutubePlaceholder';
 import { EmbedConsent } from '../EmbedConsent';
-import { EmbedTwitter } from '../EmbedTwitter';
+import { EmbedYoutube } from '../EmbedYoutube';
 import { VENDOR_ID_YOUTUBE } from '../../../vendor-mapping';
 
 type Data = {
@@ -28,8 +28,8 @@ type Props = {
 }
 
 export default Vue.extend<Data, {}, {}, Props>({
-  name: 'EmbedTwitterConsent',
-  components: { EmbedConsent, EmbedTwitter, EmbedYoutubePlaceholder },
+  name: 'EmbedYoutubeConsent',
+  components: { EmbedConsent, EmbedYoutube, EmbedYoutubePlaceholder },
   data: () => ({
     vendorId: VENDOR_ID_YOUTUBE,
   }),

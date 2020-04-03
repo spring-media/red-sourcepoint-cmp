@@ -2,7 +2,7 @@ import { loadScript } from './script-loader';
 
 export const TWITTER_WIDGETS_LIBRARY_URL = 'https://platform.twitter.com/widgets.js';
 
-export const loadTwitterJsLibrary = (src: string | null): Promise<void> => {
+export const loadTwitterJsLibrary = (src?: string): Promise<void> => {
   if (window?.twttr?.widgets) {
     return Promise.resolve();
   }

@@ -2,7 +2,7 @@ import { loadScript } from './script-loader';
 
 export const INSTAGRAM_JAVASCRIPT_EMBEDS_LIBRARY_URL = 'https://www.instagram.com/embed.js';
 
-export const loadInstagramJsLibrary = (src: string | null): Promise<void> => {
+export const loadInstagramJsLibrary = (src?: string): Promise<void> => {
   if (window?.instgrm?.Embeds) {
     return Promise.resolve();
   }

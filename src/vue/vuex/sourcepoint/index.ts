@@ -29,7 +29,7 @@ export const mutations = {
     consentedVendors.push(payload);
   },
   rejectVendor(state: State, payload: Vendor): void {
-    state.consentedVendors = state.consentedVendors.filter(vendor => consentsAreEqual(vendor, payload));
+    state.consentedVendors = state.consentedVendors.filter((vendor) => consentsAreEqual(vendor, payload));
   },
   consentPurpose(state: State, payload: Purpose): void {
     if (hasConsent(payload, state.consentedPurposes)) {
@@ -39,7 +39,7 @@ export const mutations = {
     state.consentedPurposes.push(payload);
   },
   rejectPurpose(state: State, payload: Purpose): void {
-    state.consentedPurposes = state.consentedPurposes.filter(purpose => consentsAreEqual(purpose, payload));
+    state.consentedPurposes = state.consentedPurposes.filter((purpose) => consentsAreEqual(purpose, payload));
   },
 };
 

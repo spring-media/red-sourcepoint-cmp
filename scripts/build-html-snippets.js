@@ -7,27 +7,27 @@ const Vue = require('vue');
 const basePath = './dist/cjs/vue/components';
 
 const components = readdirSync(basePath)
-  .filter(dir => dir.match(/Embed(.*)Placeholder/))
-  .map(dir => resolve(basePath, dir));
+  .filter((dir) => dir.match(/Embed(.*)Placeholder/))
+  .map((dir) => resolve(basePath, dir));
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const dashify = str => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+const dashify = (str) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const buildHTMLSnippets = ({ version }) => {
-  components.forEach(comp => {
+  components.forEach((comp) => {
     const { name } = parse(comp);
 
     const component = require(`${comp}/${name}.js`);
 
     const app = new Vue({
       // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-      render: h => h(component),
+      render: (h) => h(component),
     });
 
     renderToString(app)
-      .then(html => writeFileSync(`.cae/red-cmp-${dashify(name)}-${version}.html`, html))
-      .catch(error => console.error(error));
+      .then((html) => writeFileSync(`.cae/red-cmp-${dashify(name)}-${version}.html`, html))
+      .catch((error) => console.error(error));
   });
 };
 

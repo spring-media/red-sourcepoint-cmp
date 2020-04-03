@@ -4,7 +4,7 @@ import { Consent, HasConsentOptions } from '../types';
 export const consentsAreEqual = (...consents: Consent[]): boolean => {
   const [consent, ...rest] = consents;
 
-  return rest.every(c => c._id === consent._id);
+  return rest.every((c) => c._id === consent._id);
 };
 
 export const hasConsent = (consent: Consent, collection: Consent[]): boolean =>

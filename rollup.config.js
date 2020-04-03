@@ -17,13 +17,13 @@ const getVueComponents = () => {
   const result = readdirSync(basePath);
 
   return result
-    .map(file => resolve(basePath, file))
-    .filter(file => lstatSync(file).isDirectory())
-    .map(file => parse(file))
+    .map((file) => resolve(basePath, file))
+    .filter((file) => lstatSync(file).isDirectory())
+    .map((file) => parse(file))
     .reduce((acc, { base }) => {
       const components = readdirSync(`${basePath}/${base}`)
-        .filter(comp => comp.match(/\.vue$/))
-        .map(comp => {
+        .filter((comp) => comp.match(/\.vue$/))
+        .map((comp) => {
           const name = comp.replace(/\.vue$/, '');
 
           return {
@@ -45,13 +45,13 @@ const getVueComponents = () => {
             format: 'esm',
             dir: `./dist/esm/vue/components/${base}`,
             // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-            paths: id => `./${relative(`${basePath}/${base}`, id).replace('.vue', '.js')}`,
+            paths: (id) => `./${relative(`${basePath}/${base}`, id).replace('.vue', '.js')}`,
           },
           {
             format: 'cjs',
             dir: `./dist/cjs/vue/components/${base}`,
             // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-            paths: id => `./${relative(`${basePath}/${base}`, id).replace('.vue', '.js')}`,
+            paths: (id) => `./${relative(`${basePath}/${base}`, id).replace('.vue', '.js')}`,
           },
         ],
         plugins: [typescriptPlugin, vuePlugin, postcss({ extract: true })],

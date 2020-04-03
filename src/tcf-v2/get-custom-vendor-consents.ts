@@ -17,7 +17,7 @@ export const getCustomVendorConsentsBypassCache = (): Promise<CustomVendorConsen
 
   const { accountId, wrapperAPIOrigin, propertyId, mmsDomain } = window._sp_.config;
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const iframe = document.createElement('iframe');
     iframe.srcdoc = `
       <script>${getIABStubScript()}</script>

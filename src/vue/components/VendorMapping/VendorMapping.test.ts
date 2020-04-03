@@ -29,7 +29,7 @@ describe('VendorMapping component', () => {
     ['getPurposeIdByName'],
     ['getVendorPurposesById'],
     ['getVendorPurposesByName'],
-  ])('should provide a %s function', slotProp => {
+  ])('should provide a %s function', (slotProp) => {
     mount(VendorMapping, {
       scopedSlots: {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

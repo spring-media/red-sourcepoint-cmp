@@ -1,5 +1,5 @@
 <template>
-  <embed-placeholder @requestConsent="$emit('requestConsent')">
+  <embed-placeholder :privacyManagerId="privacyManagerId">
     <template #header>
       <svg width="100%" height="172" fill="none" xmlns="http://www.w3.org/2000/svg">
         <svg x="calc(50% - 25)" y="calc(50% - 20)">
@@ -23,8 +23,18 @@
 import Vue from 'vue';
 import { EmbedPlaceholder } from '../EmbedPlaceholder';
 
-export default Vue.extend({
+type Props = {
+  privacyManagerId: number;
+};
+
+export default Vue.extend<{}, {}, {}, Props>({
   name: 'EmbedPlaceholderYoutube',
   components: { EmbedPlaceholder },
+  props: {
+    privacyManagerId: {
+      type: Number,
+      required: true,
+    },
+  },
 });
 </script>

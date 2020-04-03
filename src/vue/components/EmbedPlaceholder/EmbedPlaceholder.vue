@@ -1,49 +1,78 @@
 <template>
-  <div class="embed-placeholder__container">
-    <div class="embed-placeholder__header">
-      <slot name="header">
-        <svg width="100%" height="84" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="16" fill="#E9ECEF"></circle>
-          <rect x="40" y="7" width="60" height="10" fill="#E9ECEF"></rect>
-          <rect x="40" y="19" width="40" height="6" fill="#E9ECEF"></rect>
-          <rect y="44" width="100%" height="8" fill="#E9ECEF"></rect>
-          <rect y="60" width="100%" height="8" fill="#E9ECEF"></rect>
-          <rect y="76" width="75%" height="8" fill="#E9ECEF"></rect>
-        </svg>
+  <privacy-manager v-slot="{ loadPrivacyManagerModal }">
+    <div class="embed-placeholder__container">
+      <div class="embed-placeholder__header">
+        <slot name="header">
+          <svg width="100%" height="84" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#E9ECEF"></circle>
+            <rect x="40" y="7" width="60" height="10" fill="#E9ECEF"></rect>
+            <rect x="40" y="19" width="40" height="6" fill="#E9ECEF"></rect>
+            <rect y="44" width="100%" height="8" fill="#E9ECEF"></rect>
+            <rect y="60" width="100%" height="8" fill="#E9ECEF"></rect>
+            <rect y="76" width="75%" height="8" fill="#E9ECEF"></rect>
+          </svg>
+        </slot>
+      </div>
+      <div class="embed-placeholder__headline">
+        <slot name="headline">
+          An dieser Stelle findest du Inhalte aus Sozialen Netzwerken
+        </slot>
+      </div>
+      <div class="embed-placeholder__description">
+        <slot name="description">
+          Um mit Inhalten aus Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine
+          Zustimmung.
+        </slot>
+      </div>
+      <slot name="button">
+        <button class="embed-placeholder__button" @click.prevent="loadPrivacyManagerModal(privacyManagerId)">
+          Soziale Netzwerke aktivieren
+        </button>
       </slot>
+      <div class="embed-placeholder__footer-text">
+        <slot name="footer">
+          Ich bin damit einverstanden, dass mir externe Inhalte aus Sozialen Netzwerken angezeigt werden. Damit können
+          personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
+          <a
+            class="embed-placeholder__text-link embed-placeholder__link-description"
+            href="#"
+            rel="noopener"
+            target="_blank"
+            @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
+            >Beschreibung dieses Datenverarbeitungszweck</a
+          >
+          und in den Datenschutzinformationen dieser
+          <a
+            class="embed-placeholder__text-link embed-placeholder__link-vendor-list"
+            href="#"
+            rel="noopener"
+            target="_blank"
+            @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
+            >Drittanbieter</a
+          >.
+        </slot>
+      </div>
     </div>
-    <div class="embed-placeholder__headline">
-      <slot name="headline">
-        An dieser Stelle findest du Inhalte aus Sozialen Netzwerken
-      </slot>
-    </div>
-    <div class="embed-placeholder__description">
-      <slot name="description">
-        Um mit Inhalten aus Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
-      </slot>
-    </div>
-    <slot name="button">
-      <button class="embed-placeholder__button" @click.prevent="$emit('requestConsent')">
-        Soziale Netzwerke aktivieren
-      </button>
-    </slot>
-    <div class="embed-placeholder__footer-text">
-      <slot name="footer">
-        Ich bin damit einverstanden, dass mir externe Inhalte aus Sozialen Netzwerken angezeigt werden. Damit können
-        personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-        <a class="embed-placeholder__text-link embed-placeholder__link-description" href="#" rel="noopener" target="_blank" @click.prevent="$emit('requestConsent')">Beschreibung dieses Datenverarbeitungszweck</a>
-        und in den Datenschutzinformationen dieser
-        <a class="embed-placeholder__text-link embed-placeholder__link-vendor-list" href="#" rel="noopener" target="_blank" @click.prevent="$emit('requestConsent')">Drittanbieter</a>.
-      </slot>
-    </div>
-  </div>
+  </privacy-manager>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import { PrivacyManager } from '../PrivacyManager';
 
-export default Vue.extend({
+type Props = {
+  privacyManagerId: number;
+};
+
+export default Vue.extend<{}, {}, {}, Props>({
   name: 'EmbedPlaceholder',
+  components: { PrivacyManager },
+  props: {
+    privacyManagerId: {
+      type: Number,
+      required: true,
+    },
+  },
 });
 </script>
 

@@ -3,6 +3,7 @@
 exports[`EmbedYoutubePlaceholder should render without any errors 1`] = `
 <div
   class="embed-placeholder__container"
+  privacymanager="12345"
 >
   <div
     class="embed-placeholder__header"
@@ -54,17 +55,17 @@ exports[`EmbedYoutubePlaceholder should render without any errors 1`] = `
     class="embed-placeholder__button"
   >
     
-      Soziale Netzwerke aktivieren
-    
+        Soziale Netzwerke aktivieren
+      
   </button>
    
   <div
     class="embed-placeholder__footer-text"
   >
     
-      Ich bin damit einverstanden, dass mir externe Inhalte aus Sozialen Netzwerken angezeigt werden. Damit können
-      personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      
+        Ich bin damit einverstanden, dass mir externe Inhalte aus Sozialen Netzwerken angezeigt werden. Damit können
+        personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
+        
     <a
       class="embed-placeholder__text-link embed-placeholder__link-description"
       href="#"
@@ -74,8 +75,8 @@ exports[`EmbedYoutubePlaceholder should render without any errors 1`] = `
       Beschreibung dieses Datenverarbeitungszweck
     </a>
     
-      und in den Datenschutzinformationen dieser
-      
+        und in den Datenschutzinformationen dieser
+        
     <a
       class="embed-placeholder__text-link embed-placeholder__link-vendor-list"
       href="#"
@@ -85,7 +86,7 @@ exports[`EmbedYoutubePlaceholder should render without any errors 1`] = `
       Drittanbieter
     </a>
     .
-    
+      
   </div>
 </div>
 `;

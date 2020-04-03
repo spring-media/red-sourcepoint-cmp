@@ -1,5 +1,7 @@
 # Placeholder component for generic embeds
 
+> This component is also being used as the base component for vendor specific placeholder components.
+
 <p>
   <img src="../../../../docs/embed-generic-placeholder.png" alt="Embed placeholder Generic" width="500" />
 </p>
@@ -9,7 +11,7 @@
 
 ```javascript
 <template>
-  <embed-placeholder></embed-placeholder>
+  <embed-placeholder :privacyManagerId="privacyManagerId"></embed-placeholder>
 </template>
 
 <script>
@@ -17,6 +19,9 @@ import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue
 
 export default {
   components: { EmbedPlaceholder },
+  data: () => ({
+    privacyManagerId: 12345,
+  }),
 };
 </script>
 
@@ -26,33 +31,8 @@ export default {
 ```
 </details>
 
-## Events
+## Props
 
-The placeholder component emits an event (requestConsent) by clicking either on the button or on one of the links in the footer.
-
-<details>
-<summary>Example</summary>
-
-```javascript
-<template>
-  <embed-placeholder  @requestConsent="onRequestConsent()"></embed-placeholder>
-</template>
-
-<script>
-import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder';
-
-export default {
-  components: { EmbedPlaceholder },
-  methods: {
-    onRequestConsent() {
-      console.log("request consent");
-    },
-  },
-};
-</script>
-
-<style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder.css';
-</style>
-```
-</details>
+| Name             | Type   | Required | Description |
+| ---------------- | ------ | -------- | ----------- |
+| privacyManagerId | number | true     | Id of a privacy manager to open when clicking on certain areas within the placeholder |

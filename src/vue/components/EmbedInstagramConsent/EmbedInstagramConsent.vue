@@ -1,9 +1,7 @@
 <template>
   <embed-consent :vendorId="vendorId">
-    <template #placeholder="{ loadPrivacyManagerModal }">
-      <embed-instagram-placeholder
-        @requestConsent="loadPrivacyManagerModal(privacyManagerId)"
-      ></embed-instagram-placeholder>
+    <template #placeholder>
+      <embed-instagram-placeholder :privacyManagerId="privacyManagerId"></embed-instagram-placeholder>
     </template>
     <template #embed>
       <embed-instagram :content="content"></embed-instagram>
@@ -25,7 +23,7 @@ type Data = {
 type Props = {
   content: string | null;
   privacyManagerId: number;
-}
+};
 
 export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedInstagramConsent',

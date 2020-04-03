@@ -1,9 +1,7 @@
 <template>
   <embed-consent :vendorId="vendorId">
-    <template #placeholder="{ loadPrivacyManagerModal }">
-      <embed-facebook-placeholder
-        @requestConsent="loadPrivacyManagerModal(privacyManagerId)"
-      ></embed-facebook-placeholder>
+    <template #placeholder>
+      <embed-facebook-placeholder :privacyManagerId="privacyManagerId"></embed-facebook-placeholder>
     </template>
     <template #embed>
       <embed-facebook :content="content"></embed-facebook>
@@ -25,7 +23,7 @@ type Data = {
 type Props = {
   content: string | null;
   privacyManagerId: number;
-}
+};
 
 export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedFacebookCmp',

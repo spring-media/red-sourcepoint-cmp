@@ -1,34 +1,46 @@
+import Vue from 'vue';
 import { mount } from '@vue/test-utils';
 import { EmbedFacebookPlaceholder } from './';
 
+const loadPrivacyManagerModal = jest.fn();
+
+const privacyManagerStub = Vue.extend({
+  name: 'PrivacyManager',
+  render() {
+    return (
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.$scopedSlots.default!({
+        loadPrivacyManagerModal,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      }) as any
+    );
+  },
+});
+
 describe('EmbedFacebookPlaceholder', () => {
-  it('should render without any errors', () => {
-    expect(mount(EmbedFacebookPlaceholder).element).toMatchSnapshot();
+  afterEach(() => {
+    loadPrivacyManagerModal.mockReset();
   });
 
-  describe('should emit a "requestConsent" event by clicking on', () => {
-    it('the "activate consent" button', () => {
-      const wrapper = mount(EmbedFacebookPlaceholder);
+  it('should render without any errors', () => {
+    expect(mount(EmbedFacebookPlaceholder, { propsData: { privacyManager: 12345 } }).element).toMatchSnapshot();
+  });
 
-      wrapper.find('.embed-placeholder__button').trigger('click');
+  describe('should open a privacy manager by clicking on', () => {
+    it.each([
+      ['the "activate consent" button', '.embed-placeholder__button'],
+      ['the link to the description', '.embed-placeholder__link-description'],
+      ['the link to the vendor list', '.embed-placeholder__link-vendor-list'],
+    ])('%s', (_, selector) => {
+      const wrapper = mount(EmbedFacebookPlaceholder, {
+        stubs: { PrivacyManager: privacyManagerStub },
+        propsData: { privacyManagerId: 12345 },
+      });
 
-      expect(wrapper.emitted('requestConsent')).toBeTruthy();
-    });
+      wrapper.find(selector).trigger('click');
 
-    it('the link to the description', () => {
-      const wrapper = mount(EmbedFacebookPlaceholder);
-
-      wrapper.find('.embed-placeholder__link-description').trigger('click');
-
-      expect(wrapper.emitted('requestConsent')).toBeTruthy();
-    });
-
-    it('the link to the vendor list', () => {
-      const wrapper = mount(EmbedFacebookPlaceholder);
-
-      wrapper.find('.embed-placeholder__link-vendor-list').trigger('click');
-
-      expect(wrapper.emitted('requestConsent')).toBeTruthy();
+      expect(loadPrivacyManagerModal).toHaveBeenCalledWith(12345);
+      expect(loadPrivacyManagerModal).toHaveBeenCalledTimes(1);
     });
   });
 });

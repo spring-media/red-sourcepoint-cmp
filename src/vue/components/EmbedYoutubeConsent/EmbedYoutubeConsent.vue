@@ -1,9 +1,7 @@
 <template>
   <embed-consent :vendorId="vendorId">
-    <template #placeholder="{ loadPrivacyManagerModal }">
-      <embed-youtube-placeholder
-        @requestConsent="loadPrivacyManagerModal(privacyManagerId)"
-      ></embed-youtube-placeholder>
+    <template #placeholder>
+      <embed-youtube-placeholder :privacyManagerId="privacyManagerId"></embed-youtube-placeholder>
     </template>
     <template #embed>
       <embed-youtube :content="content"></embed-youtube>

@@ -1,9 +1,7 @@
 <template>
   <embed-consent :vendorId="vendorId">
-    <template #placeholder="{ loadPrivacyManagerModal }">
-      <embed-twitter-placeholder
-        @requestConsent="loadPrivacyManagerModal(privacyManagerId)"
-      ></embed-twitter-placeholder>
+    <template #placeholder>
+      <embed-twitter-placeholder :privacyManagerId="privacyManagerId"></embed-twitter-placeholder>
     </template>
     <template #embed>
       <embed-twitter :content="content"></embed-twitter>

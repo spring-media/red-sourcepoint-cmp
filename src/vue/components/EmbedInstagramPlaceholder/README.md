@@ -9,7 +9,7 @@
 
 ```javascript
 <template>
-  <embed-instagram-placeholder></embed-instagram-placeholder>
+  <embed-instagram-placeholder :privacyManagerId="privacyManagerId"></embed-instagram-placeholder>
 </template>
 
 <script>
@@ -17,6 +17,9 @@ import { EmbedInstagramPlaceholder } from '@spring-media/red-sourcepoint-cmp/dis
 
 export default {
   components: { EmbedInstagramPlaceholder },
+  data: () => ({
+    privacyManagerId: 12345,
+  }),
 };
 </script>
 
@@ -26,33 +29,8 @@ export default {
 ```
 </details>
 
-## Events
+## Props
 
-The placeholder component emits an event (requestConsent) by clicking either on the button or on one of the links in the footer.
-
-<details>
-<summary>Example</summary>
-
-```javascript
-<template>
-  <embed-instagram-placeholder  @requestConsent="onRequestConsent()"></embed-instagram-placeholder>
-</template>
-
-<script>
-import { EmbedInstagramPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedInstagramPlaceholder';
-
-export default {
-  components: { EmbedInstagramPlaceholder },
-  methods: {
-    onRequestConsent() {
-      console.log("request consent");
-    },
-  },
-};
-</script>
-
-<style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedInstagramPlaceholder.css';
-</style>
-```
-</details>
+| Name             | Type   | Required | Description |
+| ---------------- | ------ | -------- | ----------- |
+| privacyManagerId | number | true     | Id of a privacy manager to open when clicking on certain areas within the placeholder |

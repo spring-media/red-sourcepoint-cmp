@@ -9,7 +9,7 @@
 
 ```javascript
 <template>
-  <embed-twitter-placeholder></embed-twitter-placeholder>
+  <embed-twitter-placeholder :privacyManagerId="privacyManagerId"></embed-twitter-placeholder>
 </template>
 
 <script>
@@ -17,6 +17,9 @@ import { EmbedTwitterPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/
 
 export default {
   components: { EmbedTwitterPlaceholder },
+  data: () => ({
+    privacyManagerId: 12345,
+  }),
 };
 </script>
 
@@ -26,33 +29,8 @@ export default {
 ```
 </details>
 
-## Events
+## Props
 
-The placeholder component emits an event (requestConsent) by clicking either on the button or on one of the links in the footer.
-
-<details>
-<summary>Example</summary>
-
-```javascript
-<template>
-  <embed-twitter-placeholder  @requestConsent="onRequestConsent()"></embed-twitter-placeholder>
-</template>
-
-<script>
-import { EmbedTwitterPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedTwitterPlaceholder';
-
-export default {
-  components: { EmbedTwitterPlaceholder },
-  methods: {
-    onRequestConsent() {
-      console.log("request consent");
-    },
-  },
-};
-</script>
-
-<style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedTwitterPlaceholder.css';
-</style>
-```
-</details>
+| Name             | Type   | Required | Description |
+| ---------------- | ------ | -------- | ----------- |
+| privacyManagerId | number | true     | Id of a privacy manager to open when clicking on certain areas within the placeholder |

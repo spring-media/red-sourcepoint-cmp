@@ -1,5 +1,5 @@
 <template>
-  <embed-placeholder @requestConsent="$emit('requestConsent')">
+  <embed-placeholder :privacyManagerId="privacyManagerId">
     <template #header>
       <svg width="100%" height="84" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="16" cy="16" r="16" fill="#E9ECEF"/>
@@ -26,8 +26,18 @@
 import Vue from 'vue';
 import { EmbedPlaceholder } from '../EmbedPlaceholder';
 
-export default Vue.extend({
+type Props = {
+  privacyManagerId: number;
+};
+
+export default Vue.extend<{}, {}, {}, Props>({
   name: 'EmbedTwitterPlaceholder',
   components: { EmbedPlaceholder },
+  props: {
+    privacyManagerId: {
+      type: Number,
+      required: true,
+    },
+  },
 });
 </script>

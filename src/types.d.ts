@@ -66,7 +66,6 @@ export declare global {
   interface Window {
     _sp_: SourcepointConfigurationObject;
     __tcfapi(method: tcfAction, tcfVersion: number, callback: Function, parameter?: TcfApiFunctionParameter): void;
-    instgrm: { Embeds: { process(): void } };
   }
 }
 

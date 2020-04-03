@@ -22,7 +22,7 @@ const buildHTMLSnippets = ({ version }) => {
 
     const app = new Vue({
       // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-      render: (h) => h(component),
+      render: (h) => h(component, { props: { privacyManagerId: 12345 } }),
     });
 
     renderToString(app)

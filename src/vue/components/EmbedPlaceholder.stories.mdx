@@ -15,7 +15,7 @@ This component is used as a generic social media embed placeholder. Furthermore 
 
 <Story name='Generic'>{{
   components: { EmbedPlaceholder },
-  template: `<EmbedPlaceholder @requestConsent="requestConsent" />`,
+  template: `<EmbedPlaceholder @requestConsent="requestConsent" :privacyManagerId="12345" />`,
   methods: {
     requestConsent() {
         window.alert('Request Consent');
@@ -29,7 +29,7 @@ This placeholder is used for embeds that contains content from Facebook.
 
 <Story name='Facebook'>{{
   components: { EmbedFacebookPlaceholder },
-  template: `<EmbedFacebookPlaceholder @requestConsent="requestConsent" />`,
+  template: `<EmbedFacebookPlaceholder @requestConsent="requestConsent" :privacyManagerId="12345" />`,
   methods: {
     requestConsent() {
       window.alert('Request Consent');
@@ -43,7 +43,7 @@ This placeholder is used for embeds that contains content from Instagram.
 
 <Story name='Instagram'>{{
   components: { EmbedInstagramPlaceholder },
-  template: `<EmbedInstagramPlaceholder @requestConsent="requestConsent" />`,
+  template: `<EmbedInstagramPlaceholder @requestConsent="requestConsent" :privacyManagerId="12345" />`,
   methods: {
     requestConsent() {
       window.alert('Request Consent');
@@ -57,7 +57,7 @@ This placeholder is used for embeds that contains content from Twitter.
 
 <Story name='Twitter'>{{
   components: { EmbedTwitterPlaceholder },
-  template: `<EmbedTwitterPlaceholder @requestConsent="requestConsent" />`,
+  template: `<EmbedTwitterPlaceholder @requestConsent="requestConsent" :privacyManagerId="12345" />`,
   methods: {
     requestConsent() {
       window.alert('Request Consent');
@@ -71,7 +71,7 @@ This placeholder is used for embeds that contains content from Youtube.
 
 <Story name='Youtube'>{{
   components: { EmbedYoutubePlaceholder },
-  template: `<EmbedYoutubePlaceholder @requestConsent="requestConsent" />`,
+  template: `<EmbedYoutubePlaceholder @requestConsent="requestConsent" :privacyManagerId="12345" />`,
   methods: {
     requestConsent() {
       window.alert('Request Consent');

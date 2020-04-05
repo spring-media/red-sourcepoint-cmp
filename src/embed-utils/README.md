@@ -30,7 +30,7 @@ console.log(getScriptSrcFromOembedHTML(someOembedHTML)); // https://some-oembed-
 
 ### `loadInstagramJsLibrary(src?: string | null): Promise<void>`
 
-Loads the Instagram embed.js javascript library into the browser by either given src parameter, or if omitted the official library that points to [https://www.instagram.com/embed.js](https://www.instagram.com/embed.js).
+Loads the Instagram embed.js javascript library into the browser by either given src parameter or, if omitted, the official library that points to [https://www.instagram.com/embed.js](https://www.instagram.com/embed.js).
 
 ```javascript
 import { loadInstagramJsLibrary } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
@@ -52,7 +52,7 @@ processInstagramEmbeds();
 
 ### `loadTwitterJsLibrary(src?: string | null) : Promise<void>`
 
-Loads the Twitter widgets javascript library into the browser by either given src parameter, or if omitted the official library that points to [https://platform.twitter.com/widgets.js](https://platform.twitter.com/widgets.js).
+Loads the Twitter widgets javascript library into the browser by either given src parameter or, if omitted, the official library that points to [https://platform.twitter.com/widgets.js](https://platform.twitter.com/widgets.js).
 
 ```javascript
 import { loadTwitterJsLibrary } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
@@ -72,3 +72,25 @@ import { processTwitterEmbeds } from '@spring-media/red-sourcepoint-cmp/dist/esm
 processTwitterEmbeds(/* optional element parameter */);
 ```
 
+## Iframely
+
+### `loadIframelyEmbedsLibrary(src?: string | null) : Promise<void>`
+
+Loads the Iframely embed.js javascript library into the browser by either given src parameter or, if omitted, the official library that points to [https://cdn.iframe.ly/embed.js](https://iframely.com/docs/embedjs).
+
+```javascript
+import { loadIframelyEmbedsLibrary } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
+
+loadIframelyEmbedsLibrary().then(() => console.log('loaded')).catch(() => console.log('error'));
+```
+
+
+### `processIframelyEmbeds(): void`
+
+Invokes `window.iframely.load()` if available.
+
+```javascript
+import { processIframelyEmbeds } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
+
+processIframelyEmbeds();
+```

@@ -10,7 +10,6 @@ const loadScriptMock = mocked(loadScript);
 describe('twitter utilities', () => {
   afterEach(() => {
     loadScriptMock.mockReset();
-    loadScriptMock.mockReset();
   });
 
   describe('loadTwitterJsLibrary', () => {

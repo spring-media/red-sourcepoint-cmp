@@ -14,9 +14,14 @@ export interface Instagram {
   Embeds: InstagramEmbeds;
 }
 
+export interface Iframely {
+  load(): void;
+}
+
 export declare global {
   interface Window {
-    twttr: Twitter;
-    instgrm: Instagram;
+    twttr?: Twitter;
+    instgrm?: Instagram;
+    iframely?: Iframely;
   }
 }

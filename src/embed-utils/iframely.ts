@@ -10,4 +10,4 @@ export const loadIframelyEmbedsLibrary = (src?: string | null): Promise<void> =>
   return loadScript(src || IFRAMELY_EMBEDS_LIBRARY_URL);
 };
 
-export const processIframelyEmbeds = (element?: HTMLElement): void => window?.iframely?.load(element);
+export const processIframelyEmbeds = (): void => window?.iframely?.load();

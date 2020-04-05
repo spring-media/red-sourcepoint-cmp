@@ -3,38 +3,38 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import { getScriptSrcFromOembedHTML, loadIframelyEmbedsLibrary, processIframelyEmbeds } from '../../../embed-utils';
+import Vue from 'vue';
+import { getScriptSrcFromOembedHTML, loadIframelyEmbedsLibrary, processIframelyEmbeds } from '../../../embed-utils';
 
-  type Data = {
-    embedContent: string;
-  };
+type Data = {
+  embedContent: string;
+};
 
-  type Props = {
-    content: string;
-  };
+type Props = {
+  content: string;
+};
 
-  export default Vue.extend<Data, {}, {}, Props>({
-    name: 'EmbedFacebook',
-    data: () => ({
-      embedContent: '',
-    }),
-    props: {
-      content: {
-        type: String,
-        default: '',
-      },
+export default Vue.extend<Data, {}, {}, Props>({
+  name: 'EmbedFacebook',
+  data: () => ({
+    embedContent: '',
+  }),
+  props: {
+    content: {
+      type: String,
+      default: '',
     },
-    async mounted() {
-      this.embedContent = this.content;
+  },
+  async mounted() {
+    this.embedContent = this.content;
 
-      if (this.embedContent) {
-        await this.$nextTick();
+    if (this.embedContent) {
+      await this.$nextTick();
 
-        await loadIframelyEmbedsLibrary(getScriptSrcFromOembedHTML(this.embedContent));
+      await loadIframelyEmbedsLibrary(getScriptSrcFromOembedHTML(this.embedContent));
 
-        processIframelyEmbeds();
-      }
-    },
-  });
+      processIframelyEmbeds();
+    }
+  },
+});
 </script>

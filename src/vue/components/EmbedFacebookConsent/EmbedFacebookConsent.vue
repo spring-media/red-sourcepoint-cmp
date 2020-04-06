@@ -26,7 +26,7 @@ type Props = {
 };
 
 export default Vue.extend<Data, {}, {}, Props>({
-  name: 'EmbedFacebookCmp',
+  name: 'EmbedFacebookConsent',
   components: { EmbedConsent, EmbedFacebook, EmbedFacebookPlaceholder },
   data: () => ({
     vendorId: VENDOR_ID_FACEBOOK,

@@ -23,7 +23,7 @@ describe('EmbedFacebookPlaceholder', () => {
   });
 
   it('should render without any errors', () => {
-    expect(mount(EmbedFacebookPlaceholder, { propsData: { privacyManager: 12345 } }).element).toMatchSnapshot();
+    expect(mount(EmbedFacebookPlaceholder, { propsData: { privacyManagerId: 12345 } }).element).toMatchSnapshot();
   });
 
   describe('should open a privacy manager by clicking on', () => {

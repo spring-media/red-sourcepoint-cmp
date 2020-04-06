@@ -3,7 +3,6 @@
 exports[`EmbedPlaceholder should render without any errors 1`] = `
 <div
   class="embed-placeholder__container"
-  privacymanager="12345"
 >
   <div
     class="embed-placeholder__header"

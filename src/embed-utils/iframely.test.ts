@@ -46,17 +46,5 @@ describe('iframely utilities', () => {
 
       delete window.iframely;
     });
-
-    it('should invoke the load method of iframely.load object with given parameter', () => {
-      window.iframely = { load: jest.fn() };
-
-      const element = {} as HTMLElement;
-
-      processIframelyEmbeds(element);
-
-      expect(window.iframely.load).toHaveBeenCalledWith(element);
-
-      delete window.iframely;
-    });
   });
 });

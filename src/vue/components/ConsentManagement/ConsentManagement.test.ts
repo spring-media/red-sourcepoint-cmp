@@ -55,6 +55,7 @@ describe('CmpConsents component', () => {
 
     const wrapper = mount(ConsentManagement, {
       propsData: {
+        vendorId: '#1234',
         purposeIds: ['#1234'],
       },
       slots: {
@@ -85,6 +86,7 @@ describe('CmpConsents component', () => {
   it('should render the reject slot for a non consented purpose', () => {
     const wrapper = mount(ConsentManagement, {
       propsData: {
+        vendorId: '#1234',
         purposeIds: ['#1234'],
       },
       slots: {
@@ -100,6 +102,7 @@ describe('CmpConsents component', () => {
   it('should not render the reject slot for a non consented purpose if no slot is used', () => {
     const wrapper = mount(ConsentManagement, {
       propsData: {
+        vendorId: '#1234',
         purposeIds: ['#1234'],
       },
       localVue,
@@ -111,6 +114,9 @@ describe('CmpConsents component', () => {
 
   it('should render the reject slot if the prop purposeIds is not set', () => {
     const wrapper = mount(ConsentManagement, {
+      propsData: {
+        vendorId: '#1234',
+      },
       slots: {
         onReject: `<div>Reject</div>`,
       },

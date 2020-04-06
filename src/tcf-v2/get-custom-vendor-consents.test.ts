@@ -1,12 +1,11 @@
-import { executeMethod } from './tcf';
 import { getCustomVendorConsents } from './get-custom-vendor-consents';
-
-jest.mock('./tcf');
 
 describe('getCustomVendorConsents', () => {
   it('should call the expected method that comes from the CMP API', () => {
+    window.__tcfapi = jest.fn();
+
     getCustomVendorConsents();
 
-    expect(executeMethod).toHaveBeenCalledWith('getCustomVendorConsents');
+    expect(window.__tcfapi).toHaveBeenCalledWith('getCustomVendorConsents', 2, expect.any(Function));
   });
 });

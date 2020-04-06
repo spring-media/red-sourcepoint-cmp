@@ -17,5 +17,5 @@
     "esModuleInterop": true
   },
   "include": ["src/**/*"],
-  "files": ["src/types.d.ts"]
+  "files": ["src/types.d.ts", "src/embed-utils/typings.d.ts", "src/tcf-v2/typings.d.ts"]
 }

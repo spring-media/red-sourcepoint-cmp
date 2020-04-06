@@ -18,14 +18,6 @@ export type HasConsentOptions = {
   cache: boolean;
 };
 
-export type TCDataResult = {
-  consentData: string;
-  gdprApplies: boolean;
-  hasGlobalScope: boolean;
-};
-
-export type tcfAction = 'getCustomVendorConsents' | 'getTCData' | 'ping' | 'addEventListener' | 'removeEventListener';
-
 export type ConfigurationParameters = {
   accountId: number;
   propertyId: number;
@@ -60,12 +52,9 @@ export type SourcepointConfigurationObject = {
   loadPrivacyManagerModal(managerId: string | number);
 };
 
-export type TcfApiFunctionParameter = number | number[] | string | null;
-
 export declare global {
   interface Window {
     _sp_: SourcepointConfigurationObject;
-    __tcfapi(method: tcfAction, tcfVersion: number, callback: Function, parameter?: TcfApiFunctionParameter): void;
   }
 }
 

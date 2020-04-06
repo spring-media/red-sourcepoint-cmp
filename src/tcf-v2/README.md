@@ -19,7 +19,7 @@ getCustomVendorConsents().then(result => console.log(result)).catch(error => con
 ```    
 </details>
 
-### `getTCData(): Promise<TCDataResult>;`
+### `getTCData(callback: GetTCDataCallback, vendorIds?: number[]): void;`
 
 Returns a bunch of consent data.
 
@@ -29,7 +29,7 @@ Returns a bunch of consent data.
 ```javascript
 import { getTCData } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2';
 
-getTCData().then(data => console.log(data)).catch(error => console.error(error));
+getTCData((tcData, success) => console.log(tcData), [1]);
 ```    
 </details>
 
@@ -131,6 +131,26 @@ console.log(consentsAreEqual(consent1, consent2, consent3)); // false
 console.log(consentsAreEqual(consent1, consent3)); // true 
 ```
 </details>
+
+### `addEventListener(callback: AddEventListenerCallback): void;`
+
+Registers a listener to the TCF-V2 API
+
+```javascript
+import { addEventListener } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2';
+
+addEventListener((tcData, success) => console.log(tcData));
+```
+
+### `removeEventListener(callback: RemoveEventListenerCallback, listenerId: ListenerId): void;`
+
+Removes a previously registered listener to the TCF-V2 API
+
+```javascript
+import { removeEventListener } from '@spring-media/red-sourcepoint-cmp/dist/esm/tcf-v2';
+
+removeEventListener((success) => console.log(sucess));
+```
 
 ## Optional Callbacks
 [Documentation](callbacks)

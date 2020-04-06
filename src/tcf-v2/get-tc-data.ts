@@ -1,4 +1,4 @@
-import { executeMethod } from './tcf';
-import { TCDataResult } from '../types';
+import { GetTCDataCallback } from './typings';
 
-export const getTCData = (): Promise<TCDataResult> => executeMethod('getTCData');
+export const getTCData = (callback: GetTCDataCallback, vendorIds?: number[]): void =>
+  window.__tcfapi?.('getTCData', 2, callback, vendorIds);

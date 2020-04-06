@@ -1,9 +1,11 @@
-import { executeMethod } from './tcf';
 import { CustomVendorConsentsResult } from '../types';
 import { getClientLibraryUrl, getIABStubScript } from './configurations';
 
-export const getCustomVendorConsents = (): Promise<CustomVendorConsentsResult> =>
-  executeMethod('getCustomVendorConsents');
+export const getCustomVendorConsents = (): Promise<CustomVendorConsentsResult> => {
+  return new Promise((resolve) => {
+    window?.__tcfapi('getCustomVendorConsents', 2, resolve);
+  });
+};
 
 export const getCustomVendorConsentsBypassCache = (): Promise<CustomVendorConsentsResult> => {
   // Check browser support for srcdoc attribute (i'm talking to you IE)

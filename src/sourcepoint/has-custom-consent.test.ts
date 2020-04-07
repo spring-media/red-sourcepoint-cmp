@@ -1,6 +1,6 @@
 import { getCustomVendorConsents, getCustomVendorConsentsBypassCache } from './get-custom-vendor-consents';
 import {
-  consentsAreEqual,
+  customConsentsAreEqual,
   customPurposeHasConsent,
   customVendorHasConsent,
   hasCustomConsent,
@@ -9,7 +9,7 @@ import { CustomConsent } from './typings';
 
 jest.mock('./get-custom-vendor-consents');
 
-describe('has-consent module', () => {
+describe('has-custom-consent module', () => {
   afterEach(() => {
     (getCustomVendorConsents as jest.Mock).mockReset();
     (getCustomVendorConsentsBypassCache as jest.Mock).mockReset();
@@ -69,7 +69,7 @@ describe('has-consent module', () => {
     });
   });
 
-  describe('purposeHasConsent', () => {
+  describe('customPurposeHasConsent', () => {
     it('should return true', async () => {
       const consents = {
         consentedVendors: [],
@@ -123,21 +123,21 @@ describe('has-consent module', () => {
     });
   });
 
-  describe('consentsAreEqual', () => {
+  describe('customConsentsAreEqual', () => {
     it('should return true', () => {
       const consents: CustomConsent[] = [{ _id: '#1234' }, { _id: '#1234' }, { _id: '#1234' }];
 
-      expect(consentsAreEqual(...consents)).toBe(true);
+      expect(customConsentsAreEqual(...consents)).toBe(true);
     });
 
     it('should return false', () => {
       const consents: CustomConsent[] = [{ _id: '#1234' }, { _id: '#1234' }, { _id: '#1235' }];
 
-      expect(consentsAreEqual(...consents)).toBe(false);
+      expect(customConsentsAreEqual(...consents)).toBe(false);
     });
   });
 
-  describe('hasConsent', () => {
+  describe('hasCustomConsent', () => {
     it('should return true', () => {
       const consents: CustomConsent[] = [{ _id: '#1234' }, { _id: '#12345' }];
 

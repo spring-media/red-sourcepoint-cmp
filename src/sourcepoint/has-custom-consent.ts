@@ -1,14 +1,14 @@
 import { getCustomVendorConsents, getCustomVendorConsentsBypassCache } from './get-custom-vendor-consents';
 import { CustomConsent, HasConsentOptions } from './typings';
 
-export const consentsAreEqual = (...consents: CustomConsent[]): boolean => {
+export const customConsentsAreEqual = (...consents: CustomConsent[]): boolean => {
   const [consent, ...rest] = consents;
 
   return rest.every((c) => c._id === consent._id);
 };
 
 export const hasCustomConsent = (consent: CustomConsent, collection: CustomConsent[]): boolean =>
-  collection.some((c: CustomConsent) => consentsAreEqual(c, consent));
+  collection.some((c: CustomConsent) => customConsentsAreEqual(c, consent));
 
 export const customVendorHasConsent = async (vendor: CustomConsent, options?: HasConsentOptions): Promise<boolean> => {
   try {

@@ -1,4 +1,4 @@
-import {OptionalCallback} from "../types";
+import { OptionalCallback } from '../sourcepoint-callbacks/typings';
 
 export interface CustomConsent {
   _id: string;
@@ -48,5 +48,3 @@ export type ConfigurationParameters = {
     [key: OptionalCallback]: Function;
   };
 };
-
-

@@ -1,6 +1,6 @@
 <script lang="ts">
 import Vue from 'vue';
-import { loadPrivacyManagerModal } from '../../../tcf-v2';
+import { loadPrivacyManagerModal } from '../../../sourcepoint';
 
 export default Vue.extend({
   name: 'PrivacyManager',

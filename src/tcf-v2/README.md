@@ -1,5 +1,7 @@
 # TCF-V2 Package
 
+This package acts like a thin abstraction layer for the official TCF-V2 specs that are implemented by Sourcepoint.
+
 ## API
 
 > The following examples refer to the esm-bundle. 

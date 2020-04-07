@@ -16,8 +16,8 @@ const store = new Vuex.Store({
 
 describe('EmbedFacebookConsent component', () => {
   afterEach(() => {
-    store.commit('sourcepoint/setVendorConsents', []);
-    store.commit('sourcepoint/setPurposeConsents', []);
+    store.commit('sourcepoint/setCustomVendorConsents', []);
+    store.commit('sourcepoint/setCustomPurposeConsents', []);
   });
 
   it('should render the placeholder by default', () => {
@@ -33,7 +33,7 @@ describe('EmbedFacebookConsent component', () => {
   });
 
   it('should render the embed in case of a consented vendor', async () => {
-    store.commit('sourcepoint/setVendorConsents', [{ _id: VENDOR_ID_FACEBOOK }]);
+    store.commit('sourcepoint/setCustomVendorConsents', [{ _id: VENDOR_ID_FACEBOOK }]);
 
     const wrapper = mount(EmbedFacebookConsent, {
       propsData: {
@@ -56,7 +56,7 @@ describe('EmbedFacebookConsent component', () => {
   });
 
   it('should render the embed in case of a consented purpose', async () => {
-    store.commit('sourcepoint/setPurposeConsents', [{ _id: PURPOSE_ID_SOCIAL }]);
+    store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: PURPOSE_ID_SOCIAL }]);
 
     const wrapper = mount(EmbedFacebookConsent, {
       propsData: {

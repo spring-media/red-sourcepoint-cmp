@@ -1,14 +1,15 @@
 import { getters, mutations, actions } from './index';
-import { CustomVendorConsentsResult, Purpose, State, Vendor } from '../../../types';
-import { getCustomVendorConsents, hasConsent } from '../../../tcf-v2';
+import { getCustomVendorConsents, hasCustomConsent } from '../../../sourcepoint';
 import { Commit } from 'vuex';
+import { SourcepointModuleState } from '../typings';
+import { CustomPurpose, CustomVendor, CustomVendorConsentsResult } from '../../../sourcepoint/typings';
 
-jest.mock('../../../tcf-v2');
+jest.mock('../../../sourcepoint');
 
-const createState = (args: Partial<State> = {}): State => {
-  const defaultState: State = {
-    consentedVendors: [],
-    consentedPurposes: [],
+const createState = (args: Partial<SourcepointModuleState> = {}): SourcepointModuleState => {
+  const defaultState: SourcepointModuleState = {
+    consentedCustomVendors: [],
+    consentedCustomPurposes: [],
   };
 
   return { ...defaultState, ...args };
@@ -16,98 +17,54 @@ const createState = (args: Partial<State> = {}): State => {
 
 describe('vuex-module', () => {
   describe('getter', () => {
-    it('hasVendorConsent should call hasConsent function from the tcf-v2 package', () => {
-      (hasConsent as jest.Mock).mockReturnValue(true);
+    it('hasCustomVendorConsent should call hasConsent function from the tcf-v2 package', () => {
+      (hasCustomConsent as jest.Mock).mockReturnValue(true);
 
-      const vendor: Vendor = { _id: '#1234', name: 'vendor', vendorType: 'custom' };
+      const vendor: CustomVendor = { _id: '#1234', name: 'vendor', vendorType: 'custom' };
 
-      const state = createState({ consentedVendors: [vendor] });
+      const state = createState({ consentedCustomVendors: [vendor] });
 
-      expect(getters.hasVendorConsent(state)(vendor)).toBe(true);
-      expect(hasConsent).toHaveBeenCalledWith(vendor, state.consentedVendors);
+      expect(getters.hasCustomVendorConsent(state)(vendor)).toBe(true);
+      expect(hasCustomConsent).toHaveBeenCalledWith(vendor, state.consentedCustomVendors);
 
-      (hasConsent as jest.Mock).mockReset();
+      (hasCustomConsent as jest.Mock).mockReset();
     });
 
-    it('hasPurposeConsent should call hasConsent function from the tcf-v2 package', () => {
-      (hasConsent as jest.Mock).mockReturnValue(true);
+    it('hasCustomPurposeConsent should call hasConsent function from the tcf-v2 package', () => {
+      (hasCustomConsent as jest.Mock).mockReturnValue(true);
 
-      const purpose: Purpose = { _id: '#1234', name: 'purpose' };
+      const purpose: CustomPurpose = { _id: '#1234', name: 'purpose' };
 
-      const state = createState({ consentedPurposes: [purpose] });
+      const state = createState({ consentedCustomPurposes: [purpose] });
 
-      expect(getters.hasPurposeConsent(state)(purpose)).toBe(true);
-      expect(hasConsent).toHaveBeenCalledWith(purpose, state.consentedPurposes);
+      expect(getters.hasCustomPurposeConsent(state)(purpose)).toBe(true);
+      expect(hasCustomConsent).toHaveBeenCalledWith(purpose, state.consentedCustomPurposes);
 
-      (hasConsent as jest.Mock).mockReset();
+      (hasCustomConsent as jest.Mock).mockReset();
     });
   });
 
   describe('mutation', () => {
-    it('consentVendor should add a given vendor if not exists', () => {
-      const state = createState();
+    it('setCustomVendorConsents should set state property consentedCustomVendors', () => {
+      const vendor1: CustomVendor = { _id: '#1234', name: 'vendor1', vendorType: 'custom' };
+      const vendor2: CustomVendor = { _id: '#5678', name: 'vendor2', vendorType: 'custom' };
 
-      const vendor: Vendor = { _id: '#1234', name: 'vendor', vendorType: 'custom' };
+      const state = createState({ consentedCustomVendors: [vendor1] });
 
-      mutations.consentVendor(state, vendor);
+      mutations.setCustomVendorConsents(state, [vendor2]);
 
-      expect(state.consentedVendors).toEqual([vendor]);
+      expect(state.consentedCustomVendors).toEqual([vendor2]);
     });
 
-    it('consentVendor should not add a given vendor if already exists', () => {
-      (hasConsent as jest.Mock).mockReturnValueOnce(true);
+    it('setCustomPurposeConsents should set state property consentedCustomPurposes', () => {
+      const purpose1: CustomPurpose = { _id: '#1234', name: 'purpose1' };
+      const purpose2: CustomPurpose = { _id: '#5678', name: 'purpose2' };
 
-      const vendor: Vendor = { _id: '#1234', name: 'vendor', vendorType: 'custom' };
+      const state = createState({ consentedCustomPurposes: [purpose1] });
 
-      const state = createState({ consentedVendors: [vendor] });
+      mutations.setCustomPurposeConsents(state, [purpose2]);
 
-      mutations.consentVendor(state, vendor);
-
-      expect(state.consentedVendors).toEqual([vendor]);
-    });
-
-    it('consentPurpose should add a given purpose if not exists', () => {
-      (hasConsent as jest.Mock).mockReturnValueOnce(false);
-
-      const state = createState();
-
-      const purpose: Purpose = { _id: '#1234', name: 'purpose' };
-
-      mutations.consentPurpose(state, purpose);
-
-      expect(state.consentedPurposes).toEqual([purpose]);
-    });
-
-    it('consentPurpose should not add a given purpose if already exists', () => {
-      (hasConsent as jest.Mock).mockReturnValueOnce(true);
-
-      const purpose: Purpose = { _id: '#1234', name: 'purpose' };
-
-      const state = createState({ consentedPurposes: [purpose] });
-
-      mutations.consentPurpose(state, purpose);
-
-      expect(state.consentedPurposes).toEqual([purpose]);
-    });
-
-    it('rejectVendor should remove a given vendor from the collection', () => {
-      const vendor: Vendor = { _id: '#1234', name: 'vendor', vendorType: 'custom' };
-
-      const state = createState({ consentedVendors: [vendor] });
-
-      mutations.rejectVendor(state, vendor);
-
-      expect(state.consentedVendors.length).toBe(0);
-    });
-
-    it('rejectPurpose should remove a given vendor from the collection', () => {
-      const purpose: Purpose = { _id: '#1234', name: 'purpose' };
-
-      const state = createState({ consentedPurposes: [purpose] });
-
-      mutations.rejectPurpose(state, purpose);
-
-      expect(state.consentedPurposes.length).toBe(0);
+      expect(state.consentedCustomPurposes).toEqual([purpose2]);
     });
   });
 
@@ -124,8 +81,8 @@ describe('vuex-module', () => {
 
       await actions.bootstrapConsents({ commit });
 
-      expect(commit).toHaveBeenNthCalledWith(1, 'setVendorConsents', consents.consentedVendors);
-      expect(commit).toHaveBeenNthCalledWith(2, 'setPurposeConsents', consents.consentedPurposes);
+      expect(commit).toHaveBeenNthCalledWith(1, 'setCustomVendorConsents', consents.consentedVendors);
+      expect(commit).toHaveBeenNthCalledWith(2, 'setCustomPurposeConsents', consents.consentedPurposes);
     });
   });
 });

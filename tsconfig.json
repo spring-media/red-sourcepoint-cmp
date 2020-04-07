@@ -17,5 +17,11 @@
     "esModuleInterop": true
   },
   "include": ["src/**/*"],
-  "files": ["src/types.d.ts", "src/embed-utils/typings.d.ts", "src/tcf-v2/typings.d.ts"]
+  "files": [
+    "src/embed-utils/typings.d.ts",
+    "src/sourcepoint/typings.d.ts",
+    "src/sourcepoint-callbacks/typings.d.ts",
+    "src/tcf-v2/typings.d.ts",
+    "src/vue/vuex/typings.d.ts"
+  ]
 }

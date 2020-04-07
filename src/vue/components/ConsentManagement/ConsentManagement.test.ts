@@ -15,12 +15,12 @@ const store = new Vuex.Store({
 
 describe('CmpConsents component', () => {
   afterEach(() => {
-    store.commit('sourcepoint/setVendorConsents', []);
-    store.commit('sourcepoint/setPurposeConsents', []);
+    store.commit('sourcepoint/setCustomVendorConsents', []);
+    store.commit('sourcepoint/setCustomPurposeConsents', []);
   });
 
   it('should render the consent slot for a consented vendor', () => {
-    store.commit('sourcepoint/setVendorConsents', [{ _id: '#1234' }]);
+    store.commit('sourcepoint/setCustomVendorConsents', [{ _id: '#1234' }]);
 
     const wrapper = mount(ConsentManagement, {
       propsData: {
@@ -37,7 +37,7 @@ describe('CmpConsents component', () => {
   });
 
   it('should not render the consent slot if the slot is not used', () => {
-    store.commit('sourcepoint/setVendorConsents', [{ _id: '#1234' }]);
+    store.commit('sourcepoint/setCustomVendorConsents', [{ _id: '#1234' }]);
 
     const wrapper = mount(ConsentManagement, {
       propsData: {
@@ -51,7 +51,7 @@ describe('CmpConsents component', () => {
   });
 
   it('should render the consent slot for a consented purpose', () => {
-    store.commit('sourcepoint/setPurposeConsents', [{ _id: '#1234' }]);
+    store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: '#1234' }]);
 
     const wrapper = mount(ConsentManagement, {
       propsData: {

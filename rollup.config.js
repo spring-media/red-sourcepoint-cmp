@@ -67,9 +67,10 @@ export default [
   {
     input: {
       'tcf-v2': './src/tcf-v2/index.ts',
-      callbacks: './src/tcf-v2/callbacks/index.ts',
       'vendor-mapping': './src/vendor-mapping/index.ts',
       'embed-utils': './src/embed-utils/index.ts',
+      sourcepoint: './src/sourcepoint/index.ts',
+      'sourcepoint-callbacks': './src/sourcepoint-callbacks/index.ts',
     },
     output: [
       { format: 'esm', dir: './dist/esm' },

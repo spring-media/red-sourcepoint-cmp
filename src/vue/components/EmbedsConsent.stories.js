@@ -41,12 +41,12 @@ const createStory = ({ cmp, vendorId, embedContent }) => ({
   store,
   props: {
     consent: {
-      default: boolean('Consent', store.getters['sourcepoint/hasVendorConsent']({ _id: vendorId })),
+      default: boolean('Consent', store.getters['sourcepoint/hasCustomVendorConsent']({ _id: vendorId })),
     },
     socialConsent: {
       default: boolean(
         'Consent Social Networks',
-        store.getters['sourcepoint/hasPurposeConsent']({ _id: PURPOSE_ID_SOCIAL }),
+        store.getters['sourcepoint/hasCustomPurposeConsent']({ _id: PURPOSE_ID_SOCIAL }),
       ),
     },
     content: {
@@ -57,12 +57,12 @@ const createStory = ({ cmp, vendorId, embedContent }) => ({
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     consent(value) {
       const payload = value ? [{ _id: vendorId }] : [];
-      store.commit('sourcepoint/setVendorConsents', payload);
+      store.commit('sourcepoint/setCustomVendorConsents', payload);
     },
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     socialConsent(value) {
       const payload = value ? [{ _id: PURPOSE_ID_SOCIAL }] : [];
-      store.commit('sourcepoint/setPurposeConsents', payload);
+      store.commit('sourcepoint/setCustomPurposeConsents', payload);
     },
   },
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

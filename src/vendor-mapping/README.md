@@ -5,6 +5,11 @@ we need to have some kind of static mapping between these two entities.
 
 ## API
 
+### Built in (custom) vendors and purposes
+
+* [Custom Vendors](vendors.ts)
+* [Custom Purposes](purposes.ts)
+
 > The following examples refer to the esm-bundle. 
 > When using the browser-bundle, all methods are properties of the global object named **RedCMP**
 

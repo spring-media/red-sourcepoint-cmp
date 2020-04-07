@@ -1,6 +1,6 @@
 # PrivacyManager Component
 
-The PrivacyManager component is a renderless component which provides an interface to the [tcf-v2](../../../tcf-v2) package.
+The PrivacyManager component is a renderless component which provides an interface to the [sourcepoint](../../../sourcepoint) package.
 
 ## API
 
@@ -8,17 +8,17 @@ The PrivacyManager component is a renderless component which provides an interfa
 
 #### default
 
-| Slot Props | Signature                          | 
-| ---------- |----------------------------------- |
-| loadModal  | loadModal(managerId: number): void |
+| Slot Props              | Signature                          | 
+| ----------------------- |----------------------------------- |
+| loadPrivacyManagerModal | (managerId: number): void          |
 
 ## Example
 
 ```javascript
 <template>
   <div>
-    <privacy-manager v-slot="{ loadModal }">
-      <some-other-component @someAction="loadModal(managerId)"></some-other-component>
+    <privacy-manager v-slot="{ loadPrivacyManagerModal }">
+      <some-other-component @someAction="loadPrivacyManagerModal(managerId)"></some-other-component>
     </privacy-manager>
   </div
 </template>

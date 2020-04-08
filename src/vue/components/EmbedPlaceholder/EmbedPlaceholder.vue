@@ -82,6 +82,7 @@ export default Vue.extend<{}, {}, {}, Props>({
   border-radius: 8px;
   padding: 12px;
   max-width: 500px;
+  margin: 0 auto;
 }
 
 .embed-placeholder__header {

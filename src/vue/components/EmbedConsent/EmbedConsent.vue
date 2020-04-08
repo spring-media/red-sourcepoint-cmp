@@ -1,6 +1,6 @@
 <template>
-  <vendor-mapping v-slot="{ getVendorPurposesById }">
-    <consent-management :vendorId="vendorId" :purposeIds="getVendorPurposesById(vendorId)">
+  <vendor-mapping v-slot="{ getRelations }">
+    <consent-management :vendorId="vendorId" :purposeIds="getRelations(vendorId)">
       <template #onReject>
         <privacy-manager v-slot="{ loadPrivacyManagerModal }">
           <slot name="placeholder" v-bind="{ loadPrivacyManagerModal }"></slot>

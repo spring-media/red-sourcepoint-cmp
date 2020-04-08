@@ -1,48 +1,22 @@
-import { vendorsMapByName, vendorsMapById } from './vendors';
-import { purposeMapByName, purposeMapById } from './purposes';
-import { PurposeMappingName, VendorMappingName } from './types';
-import { relationshipsById, relationshipsByName } from './relationships';
+import { customVendors } from './custom-vendors';
+import { customPurposes } from './custom-purposes';
+import { relationships } from './relationships';
 
-const getIdByName = <T>(map: Map<T, string>) => (name: T): string | undefined => map.get(name);
+export const getCustomVendor = (key: string): string | undefined => customVendors.get(key);
 
-const getNameById = <T>(map: Map<string, T>) => (id: string): T | undefined => map.get(id);
+export const getCustomPurpose = (key: string): string | undefined => customPurposes.get(key);
 
-export const getVendorIdByName = getIdByName<VendorMappingName>(vendorsMapByName);
+export const addCustomVendor = (key: string, value: string): Map<string, string> => customVendors.set(key, value);
 
-export const getPurposeIdByName = getIdByName<PurposeMappingName>(purposeMapByName);
+export const addCustomPurpose = (key: string, value: string): Map<string, string> => customPurposes.set(key, value);
 
-export const getVendorNameById = getNameById<VendorMappingName>(vendorsMapById);
+export const removeCustomVendor = (key: string): boolean => customVendors.delete(key);
 
-export const getPurposeNameById = getNameById<PurposeMappingName>(purposeMapById);
+export const removeCustomPurpose = (key: string): boolean => customPurposes.delete(key);
 
-export const hasRelationByName = (vendorName: VendorMappingName, purposeName: PurposeMappingName): boolean => {
-  if (relationshipsByName.has(purposeName)) {
-    return (relationshipsByName.get(purposeName) as VendorMappingName[]).includes(vendorName);
-  }
+export const getRelations = (key: string): string[] | undefined => relationships.get(key);
 
-  return false;
-};
+export const hasRelations = (key: string): boolean => Boolean(relationships.get(key));
 
-export const hasRelationById = (vendorId: string, purposeId: string): boolean => {
-  if (relationshipsById.has(purposeId)) {
-    return (relationshipsById.get(purposeId) as string[]).includes(vendorId);
-  }
-
-  return false;
-};
-
-export const getVendorPurposesByName = (vendorName: VendorMappingName): PurposeMappingName[] => {
-  if (relationshipsByName.has(vendorName)) {
-    return relationshipsByName.get(vendorName) as PurposeMappingName[];
-  }
-
-  return [];
-};
-
-export const getVendorPurposesById = (vendorId: string): string[] => {
-  if (relationshipsById.has(vendorId)) {
-    return relationshipsById.get(vendorId) as string[];
-  }
-
-  return [];
-};
+export const setRelations = (key: string, relations: string[]): Map<string, string[]> =>
+  relationships.set(key, relations);

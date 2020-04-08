@@ -23,12 +23,15 @@ describe('VendorMapping component', () => {
   });
 
   it.each([
-    ['getVendorIdByName'],
-    ['getPurposeNameById'],
-    ['getVendorNameById'],
-    ['getPurposeIdByName'],
-    ['getVendorPurposesById'],
-    ['getVendorPurposesByName'],
+    ['getCustomVendor'],
+    ['getCustomPurpose'],
+    ['removeCustomPurpose'],
+    ['removeCustomVendor'],
+    ['getRelations'],
+    ['setRelations'],
+    ['hasRelations'],
+    ['addCustomPurpose'],
+    ['addCustomVendor'],
   ])('should provide a %s function', (slotProp) => {
     mount(VendorMapping, {
       scopedSlots: {

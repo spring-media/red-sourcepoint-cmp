@@ -7,120 +7,141 @@ we need to have some kind of static mapping between these two entities.
 
 ### Built in (custom) vendors and purposes
 
-* [Custom Vendors](vendors.ts)
-* [Custom Purposes](purposes.ts)
+* [Custom Vendors](custom-vendors.ts)
+* [Custom Purposes](custom-purposes.ts)
 
 > The following examples refer to the esm-bundle. 
 > When using the browser-bundle, all methods are properties of the global object named **RedCMP**
 
-### `getVendorIdByName(name: string): string | undefined`
+### `getCustomVendor(key: string): string | undefined`
 
-Returns the vendor id by given name or undefined if not exists.
+Returns either a vendor id by given name or a vendor name by given id or undefined if an entry not exists.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { getVendorIdByName, VENDOR_NAME_FACEBOOK } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { getCustomVendor, VENDOR_NAME_FACEBOOK, VENDOR_ID_FACEBOOK } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-console.log(getVendorIdByName(VENDOR_NAME_FACEBOOK)); // 5e716fc09a0b5040d575080f
+console.log(getCustomVendor(VENDOR_NAME_FACEBOOK)); // 5e716fc09a0b5040d575080f
+console.log(getCustomVendor(VENDOR_ID_FACEBOOK)); // facebook
 ```    
 </details>
 
-### `getPurposeIdByName(name: string): string | undefined`
+### `getCustomPurpose(key: string): string | undefined`
 
-Returns the purpose id by given name or undefined if not exists.
+Returns either a purpose id by given name or a purpose name by given id or undefined if an entry not exists.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { getPurposeIdByName, PURPOSE_NAME_SOCIAL } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { getCustomPurpose, PURPOSE_NAME_SOCIAL, PURPOSE_ID_SOCIAL } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-console.log(getPurposeIdByName(PURPOSE_NAME_SOCIAL)); // 5e7adb1ee30e7d1bc1ec0252
+console.log(getCustomPurpose(PURPOSE_NAME_SOCIAL)); // 5e7adb1ee30e7d1bc1ec0252
+console.log(getCustomPurpose(PURPOSE_ID_SOCIAL)); // social
 ```    
 </details>
 
-### `getVendorNameById(id: string): string | undefined`
+### `addCustomVendor(key: string, value: string): Map<string, string>`
 
-Returns the vendor name by given id or undefined if not exists.
+Adds an entry to the custom vendors list.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { getVendorNameById, VENDOR_ID_FACEBOOK } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { addCustomVendor, getCustomVendor } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-console.log(getVendorNameById(VENDOR_ID_FACEBOOK)); // facebook
+addCustomVendor('key', 'value');
+console.log(getCustomVendor('key')); // value
 ```    
 </details>
 
-### `getPurposeNameById(id: string): string | undefined`
+### `addCustomPurpose(key: string, value: string): Map<string, string>`
 
-Returns the purpose name by given id or undefined if not exists.
+Adds an entry to the custom purposes list.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { getPurposeNameById, PURPOSE_ID_SOCIAL } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { addCustomPurpose, getCustomPurpose } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-console.log(getPurposeNameById(PURPOSE_ID_SOCIAL)); // 5e7adb1ee30e7d1bc1ec0252
+addCustomPurpose('key', 'value');
+console.log(getCustomPurpose('key')); // value
 ```    
 </details>
 
-### `hasRelationByName(vendorName: string, purposeName: string): boolean`
+### `removeCustomVendor(key: string, value: string): boolean`
 
-Returns true if given vendor(name) has a relation to given purpose(name), otherwise false.
+Removes an entry from the custom vendors list. Returns `true` on success, otherwise `false`.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { hasRelationByName, VENDOR_NAME_INSTAGRAM, PURPOSE_NAME_SOCIAL } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { removeCustomVendor, getCustomVendor, VENDOR_NAME_FACEBOOK } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-console.log(hasRelationByName(VENDOR_NAME_INSTAGRAM, PURPOSE_NAME_SOCIAL)); // true
-```
+removeCustomVendor(VENDOR_NAME_FACEBOOK);
+console.log(getCustomVendor(VENDOR_NAME_FACEBOOK)); // undefined
+```    
 </details>
 
-### `hasRelationById(vendorId: string, purposeId: string): boolean`
+### `removeCustomPurpose(key: string, value: string): boolean`
 
-Returns true if given vendor(id) has a relation to given purpose(id), otherwise false.
+Removes an entry from the custom purposes list. Returns `true` on success, otherwise `false`.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { hasRelationById, VENDOR_ID_INSTAGRAM, PURPOSE_ID_SOCIAL } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { removeCustomPurpose, getCustomPurpose, PURPOSE_ID_SOCIAL } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-console.log(hasRelationById(VENDOR_ID_INSTAGRAM, PURPOSE_ID_SOCIAL)); // true
-```
+removeCustomPurpose(PURPOSE_ID_SOCIAL);
+console.log(getCustomPurpose(PURPOSE_ID_SOCIAL)); // undefined
+```    
 </details>
 
-### `getVendorPurposesByName(vendorName: string): string[]`
+### `getRelations(key: string): string[] | undefined`
 
-Returns the purposes (names) for which given vendor has a relationship.
+Returns an entry from the relations list.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { getVendorPurposesByName, VENDOR_NAME_INSTAGRAM } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { getRelations, VENDOR_ID_FACEBOOK } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-console.log(getVendorPurposesByName(VENDOR_NAME_INSTAGRAM)); // ['social']
-```
+console.log(getRelations(VENDOR_ID_FACEBOOK)); // [<PURPOSE_ID_SOCIAL>]
+```    
 </details>
 
-### `getVendorPurposesById(vendorId: string): string[]`
+### `hasRelations(key: string): boolean`
 
-Returns the purposes (ids) for which given vendor has a relationship.
+Returns whether given key has relations.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { getVendorPurposesById, VENDOR_ID_INSTAGRAM } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { hasRelations, VENDOR_ID_FACEBOOK } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-console.log(getVendorPurposesById(VENDOR_ID_INSTAGRAM)); // ['5e7adb1ee30e7d1bc1ec0252']
-```
+console.log(hasRelations(VENDOR_ID_FACEBOOK)); // true
+```    
+</details>
+
+### `setRelations(key: string, relations: string[]): Map<string, string[]>`
+
+Sets an entry to the relations list.
+
+<details>
+<summary>Example</summary>
+    
+```javascript
+import { setRelations, getRelations } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+
+setRelations('someKey', ['value1', 'value2']);
+console.log(getRelations('someKey')); // ['value1', 'value2']
+```    
 </details>

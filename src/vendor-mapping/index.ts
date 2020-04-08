@@ -1,3 +1,3 @@
-export * from './vendors';
-export * from './purposes';
+export * from './custom-vendors';
+export * from './custom-purposes';
 export * from './api';

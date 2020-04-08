@@ -1,12 +1,15 @@
 <script lang="ts">
 import Vue from 'vue';
 import {
-  getVendorIdByName,
-  getPurposeNameById,
-  getVendorNameById,
-  getPurposeIdByName,
-  getVendorPurposesById,
-  getVendorPurposesByName,
+  getCustomVendor,
+  getCustomPurpose,
+  removeCustomPurpose,
+  removeCustomVendor,
+  getRelations,
+  setRelations,
+  hasRelations,
+  addCustomPurpose,
+  addCustomVendor,
 } from '../../../vendor-mapping';
 
 export default Vue.extend({
@@ -15,12 +18,15 @@ export default Vue.extend({
     return (
       this.$scopedSlots.default &&
       (this.$scopedSlots.default!({
-        getVendorIdByName,
-        getPurposeNameById,
-        getVendorNameById,
-        getPurposeIdByName,
-        getVendorPurposesById,
-        getVendorPurposesByName,
+        getCustomVendor,
+        getCustomPurpose,
+        removeCustomPurpose,
+        removeCustomVendor,
+        getRelations,
+        setRelations,
+        hasRelations,
+        addCustomPurpose,
+        addCustomVendor,
       }) as any)
     );
   },

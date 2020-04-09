@@ -15,7 +15,6 @@ module.exports = {
 
   transform: {
     '^.+\\.(vue)$': 'vue-jest',
-    '^.+\\.js$': 'babel-jest',
   },
 
   // A map from regular expressions to module names that allow to stub out resources with a single module

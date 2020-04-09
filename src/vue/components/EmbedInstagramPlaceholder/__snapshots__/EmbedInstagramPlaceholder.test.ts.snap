@@ -68,7 +68,8 @@ exports[`EmbedInstagramPlaceholder should render without any errors 1`] = `
     class="embed-placeholder__description"
   >
     
-    Um mit Inhalten aus Instagram und anderen Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
+    Um mit Inhalten aus Instagram und anderen Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen
+    wir deine Zustimmung.
   
   </div>
    

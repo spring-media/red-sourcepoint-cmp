@@ -46,7 +46,8 @@ exports[`EmbedYoutubeConsent component should render the placeholder by default 
     class="embed-placeholder__description"
   >
     
-    Um mit Inhalten aus YouTube und anderen Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
+    Um mit Inhalten aus YouTube und anderen Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
+    deine Zustimmung.
   
   </div>
    

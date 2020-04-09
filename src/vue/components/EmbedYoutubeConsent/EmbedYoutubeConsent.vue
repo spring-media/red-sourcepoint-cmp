@@ -23,7 +23,7 @@ type Data = {
 type Props = {
   content: string | null;
   privacyManagerId: number;
-}
+};
 
 export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedYoutubeConsent',

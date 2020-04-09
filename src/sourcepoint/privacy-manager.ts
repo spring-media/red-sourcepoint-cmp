@@ -1,4 +1,4 @@
-export const loadPrivacyManagerModal = (managerId: string | number): void => {
+export const loadPrivacyManagerModal = (managerId: number): void => {
   try {
     window._sp_.loadPrivacyManagerModal(managerId);
   } catch (error) {

@@ -7,8 +7,7 @@ export default Vue.extend({
   render() {
     return (
       this.$scopedSlots.default &&
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      (this.$scopedSlots.default!({
+      (this.$scopedSlots.default({
         loadPrivacyManagerModal,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }) as any)

@@ -17,8 +17,7 @@ export default Vue.extend({
   render() {
     return (
       this.$scopedSlots.default &&
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      (this.$scopedSlots.default!({
+      (this.$scopedSlots.default({
         getCustomVendor,
         getCustomPurpose,
         removeCustomPurpose,

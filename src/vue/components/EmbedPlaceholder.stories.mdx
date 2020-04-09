@@ -15,12 +15,7 @@ This component is used as a generic social media embed placeholder. Furthermore 
 
 <Story name='Generic'>{{
   components: { EmbedPlaceholder },
-  template: `<EmbedPlaceholder @requestConsent="requestConsent" :privacyManagerId="12345" />`,
-  methods: {
-    requestConsent() {
-        window.alert('Request Consent');
-    }
-  }
+  template: `<EmbedPlaceholder :privacyManagerId="12345" />`,
 }}></Story>
 
 ## Facebook
@@ -29,12 +24,7 @@ This placeholder is used for embeds that contains content from Facebook.
 
 <Story name='Facebook'>{{
   components: { EmbedFacebookPlaceholder },
-  template: `<EmbedFacebookPlaceholder @requestConsent="requestConsent" :privacyManagerId="12345" />`,
-  methods: {
-    requestConsent() {
-      window.alert('Request Consent');
-    }
-  }
+  template: `<EmbedFacebookPlaceholder :privacyManagerId="12345" />`,
 }}></Story>
 
 ## Instagram
@@ -43,12 +33,7 @@ This placeholder is used for embeds that contains content from Instagram.
 
 <Story name='Instagram'>{{
   components: { EmbedInstagramPlaceholder },
-  template: `<EmbedInstagramPlaceholder @requestConsent="requestConsent" :privacyManagerId="12345" />`,
-  methods: {
-    requestConsent() {
-      window.alert('Request Consent');
-    }
-  }
+  template: `<EmbedInstagramPlaceholder :privacyManagerId="12345" />`,
 }}></Story>
 
 ## Twitter
@@ -57,12 +42,7 @@ This placeholder is used for embeds that contains content from Twitter.
 
 <Story name='Twitter'>{{
   components: { EmbedTwitterPlaceholder },
-  template: `<EmbedTwitterPlaceholder @requestConsent="requestConsent" :privacyManagerId="12345" />`,
-  methods: {
-    requestConsent() {
-      window.alert('Request Consent');
-    }
-  }
+  template: `<EmbedTwitterPlaceholder :privacyManagerId="12345" />`,
 }}></Story>
 
 ## Youtube
@@ -71,10 +51,5 @@ This placeholder is used for embeds that contains content from Youtube.
 
 <Story name='Youtube'>{{
   components: { EmbedYoutubePlaceholder },
-  template: `<EmbedYoutubePlaceholder @requestConsent="requestConsent" :privacyManagerId="12345" />`,
-  methods: {
-    requestConsent() {
-      window.alert('Request Consent');
-    }
-  }
+  template: `<EmbedYoutubePlaceholder :privacyManagerId="12345" />`,
 }}></Story>

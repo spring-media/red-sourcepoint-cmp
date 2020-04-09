@@ -1,7 +1,6 @@
-import { EventConfigurationObject } from '../sourcepoint/typings';
-import { OptionalCallback } from './typings';
+import { OptionalCallbackKeys, OptionalCallbacks, UnregisterCallback } from './typings';
 
-export const getEventStore = (): EventConfigurationObject => {
+export const getEventStore = (): OptionalCallbacks => {
   if (typeof window === 'undefined') {
     return {};
   }
@@ -20,24 +19,24 @@ export const getEventStore = (): EventConfigurationObject => {
   return config.events;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const bindCallbacksToEvent = <T extends any[]>(
-  name: OptionalCallback,
-  eventStore: EventConfigurationObject,
+export const bindCallbacksToEvent = (
+  name: OptionalCallbackKeys,
+  eventStore: OptionalCallbacks,
   callbacks: Set<Function>,
 ): void => {
-  eventStore[name] = (...args: T): void => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  eventStore[name] = (...args: any[]): void => {
     for (const fn of callbacks) {
       fn(...args);
     }
   };
 };
 
-export const createCallback = (name: OptionalCallback): Function => {
+export const createCallback = <T extends Function>(name: OptionalCallbackKeys): ((fn: T) => UnregisterCallback) => {
   let isBound = false;
   const callbacks = new Set<Function>();
 
-  return (fn: Function): Function => {
+  return (fn: T): UnregisterCallback => {
     if (!isBound) {
       bindCallbacksToEvent(name, getEventStore(), callbacks);
 

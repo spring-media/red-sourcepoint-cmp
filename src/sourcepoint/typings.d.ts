@@ -1,4 +1,4 @@
-import { OptionalCallback } from '../sourcepoint-callbacks/typings';
+import { OptionalCallbacks } from '../sourcepoint-callbacks/typings';
 
 export interface CustomConsent {
   _id: string;
@@ -20,14 +20,12 @@ export type HasConsentOptions = {
   cache: boolean;
 };
 
-export type EventConfigurationObject = Partial<Record<OptionalCallback, Function>>;
-
 export type Configuration = {
   accountId: number;
   wrapperAPIOrigin: string;
   propertyId: number;
   mmsDomain: string;
-  events?: EventConfigurationObject;
+  events?: OptionalCallbacks;
 };
 
 export type SourcepointConfigurationObject = {
@@ -44,7 +42,5 @@ export type ConfigurationParameters = {
   accountId: number;
   propertyId: number;
   mmsDomain: string;
-  events?: {
-    [key: OptionalCallback]: Function;
-  };
+  events?: OptionalCallbacks;
 };

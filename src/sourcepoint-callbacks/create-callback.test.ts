@@ -39,9 +39,9 @@ describe('createCallback', () => {
 
     callbackCollection(callback);
 
-    window._sp_?.config?.events?.onPrivacyManagerAction && window._sp_.config.events.onPrivacyManagerAction(true);
+    window._sp_?.config?.events?.onPrivacyManagerAction && window._sp_.config.events.onPrivacyManagerAction('action');
 
-    expect(callback).toHaveBeenCalledWith(true);
+    expect(callback).toHaveBeenCalledWith('action');
   });
 
   it('should return a deregister function for given callback', () => {
@@ -55,7 +55,7 @@ describe('createCallback', () => {
 
     deregister();
 
-    window._sp_?.config?.events?.onPrivacyManagerAction && window._sp_.config.events.onPrivacyManagerAction(true);
+    window._sp_?.config?.events?.onPrivacyManagerAction && window._sp_.config.events.onPrivacyManagerAction('action');
 
     expect(callback).not.toHaveBeenCalledWith();
   });

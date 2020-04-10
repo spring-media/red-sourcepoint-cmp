@@ -1,4 +1,4 @@
-# Static Vendor Mapping Package
+# Static Vendor Mapping Module
 
 As long as Sourcepoint doesn't provides an API for getting relationships between vendors and purposes, 
 we need to have some kind of static mapping between these two entities.

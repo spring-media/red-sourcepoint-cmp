@@ -1,4 +1,4 @@
-## Sourcepoint Callbacks Package
+## Sourcepoint Callbacks Module
 
 Sourcepoint provides [callbacks](https://documentation.sourcepoint.com/web-implementation/sourcepoint-set-up-and-configuration-v2/optional-callbacks) as part of the configuration to react on certain user interactions or lifecycle events.
 

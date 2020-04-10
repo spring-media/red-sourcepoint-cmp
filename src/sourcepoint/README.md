@@ -1,4 +1,4 @@
-# Sourcepoint Package
+# Sourcepoint Module
 
 ### `getCustomVendorConsents(): Promise<CustomVendorConsentsResult>;`
 

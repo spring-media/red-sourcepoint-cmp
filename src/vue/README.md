@@ -1,4 +1,4 @@
-# Vue Integration Package
+# Vue Integration Module
 
 ## Components
 

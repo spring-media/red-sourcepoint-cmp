@@ -1,4 +1,4 @@
-# TCF-V2 API Package
+# TCF-V2 API Module
 
 This package acts like a thin abstraction layer for the official TCF-V2 specs that are implemented by Sourcepoint.
 

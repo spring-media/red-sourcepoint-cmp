@@ -1,4 +1,4 @@
-# Embed Utils Package
+# Embed Utils Module
 
 This package provides several utilities around embeds and their vendors.
 

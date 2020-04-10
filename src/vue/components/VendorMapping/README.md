@@ -1,6 +1,6 @@
 # VendorMapping component
 
-The VendorMapping component is a renderless component which provides an interface to the [vendor-mapping](../../../vendor-mapping) package.
+The VendorMapping component is a renderless component which provides an interface to the [vendor-mapping](../../../vendor-mapping) module.
 
 ## API
 

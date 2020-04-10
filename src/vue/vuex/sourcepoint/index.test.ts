@@ -1,5 +1,5 @@
-import { getters, mutations, actions } from './index';
-import { getCustomVendorConsents, hasCustomConsent } from '../../../sourcepoint';
+import { mutations, actions } from './index';
+import { getCustomVendorConsents } from '../../../sourcepoint';
 import { Commit } from 'vuex';
 import { SourcepointModuleState } from '../typings';
 import { CustomPurpose, CustomVendor, CustomVendorConsentsResult } from '../../../sourcepoint/typings';
@@ -16,34 +16,6 @@ const createState = (args: Partial<SourcepointModuleState> = {}): SourcepointMod
 };
 
 describe('vuex-module', () => {
-  describe('getter', () => {
-    it('hasCustomVendorConsent should call hasConsent function from the tcf-v2 package', () => {
-      (hasCustomConsent as jest.Mock).mockReturnValue(true);
-
-      const vendor: CustomVendor = { _id: '#1234', name: 'vendor', vendorType: 'custom' };
-
-      const state = createState({ consentedCustomVendors: [vendor] });
-
-      expect(getters.hasCustomVendorConsent(state)(vendor)).toBe(true);
-      expect(hasCustomConsent).toHaveBeenCalledWith(vendor, state.consentedCustomVendors);
-
-      (hasCustomConsent as jest.Mock).mockReset();
-    });
-
-    it('hasCustomPurposeConsent should call hasConsent function from the tcf-v2 package', () => {
-      (hasCustomConsent as jest.Mock).mockReturnValue(true);
-
-      const purpose: CustomPurpose = { _id: '#1234', name: 'purpose' };
-
-      const state = createState({ consentedCustomPurposes: [purpose] });
-
-      expect(getters.hasCustomPurposeConsent(state)(purpose)).toBe(true);
-      expect(hasCustomConsent).toHaveBeenCalledWith(purpose, state.consentedCustomPurposes);
-
-      (hasCustomConsent as jest.Mock).mockReset();
-    });
-  });
-
   describe('mutation', () => {
     it('setCustomVendorConsents should set state property consentedCustomVendors', () => {
       const vendor1: CustomVendor = { _id: '#1234', name: 'vendor1', vendorType: 'custom' };

@@ -1,24 +1,17 @@
 <template>
-  <div ref="container" v-html="embedContent"></div>
+  <div ref="container" v-html="content"></div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { getScriptSrcFromOembedHTML, loadTwitterJsLibrary, processTwitterEmbeds } from '../../../embed-utils';
-
-type Data = {
-  embedContent: string;
-};
+import { processTwitterEmbedContent } from '../../../embed-utils';
 
 type Props = {
   content: string;
 };
 
-export default Vue.extend<Data, {}, {}, Props>({
+export default Vue.extend<{}, {}, {}, Props>({
   name: 'EmbedTwitter',
-  data: () => ({
-    embedContent: '',
-  }),
   props: {
     content: {
       type: String,
@@ -26,15 +19,7 @@ export default Vue.extend<Data, {}, {}, Props>({
     },
   },
   async mounted() {
-    this.embedContent = this.content;
-
-    if (this.embedContent) {
-      await this.$nextTick();
-
-      await loadTwitterJsLibrary(getScriptSrcFromOembedHTML(this.embedContent));
-
-      processTwitterEmbeds(this.$refs.container as HTMLElement);
-    }
+    await processTwitterEmbedContent(this.content, this.$refs.container as HTMLElement);
   },
 });
 </script>

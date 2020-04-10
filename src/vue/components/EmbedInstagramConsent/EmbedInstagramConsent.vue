@@ -21,7 +21,7 @@ type Data = {
 };
 
 type Props = {
-  content: string | null;
+  content: string;
   privacyManagerId: number;
 };
 
@@ -38,7 +38,7 @@ export default Vue.extend<Data, {}, {}, Props>({
     },
     content: {
       type: String,
-      default: null,
+      default: '',
     },
   },
 });

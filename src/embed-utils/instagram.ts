@@ -1,12 +1,20 @@
 import { loadScript } from './script-loader';
+import { getScriptSrcFromOembedHTML } from './oembed';
 
 export const INSTAGRAM_JAVASCRIPT_EMBEDS_LIBRARY_URL = 'https://www.instagram.com/embed.js';
 
-export const loadInstagramJsLibrary = (src?: string | null): Promise<void> => {
-  if (window?.instgrm?.Embeds) {
+export const processInstagramEmbedContent = async (content: string): Promise<void | string> => {
+  if (window.instgrm?.Embeds?.process) {
+    window.instgrm.Embeds.process();
+
     return Promise.resolve();
   }
-  return loadScript(src || INSTAGRAM_JAVASCRIPT_EMBEDS_LIBRARY_URL);
-};
 
-export const processInstagramEmbeds = (): void => window?.instgrm?.Embeds?.process();
+  try {
+    await loadScript(getScriptSrcFromOembedHTML(content) || INSTAGRAM_JAVASCRIPT_EMBEDS_LIBRARY_URL);
+
+    window.instgrm?.Embeds?.process();
+  } catch (error) {
+    return Promise.reject(error.message);
+  }
+};

@@ -1,20 +1,11 @@
 import { Commit, Module } from 'vuex';
-import { getCustomVendorConsents, hasCustomConsent } from '../../../sourcepoint';
+import { getCustomVendorConsents } from '../../../sourcepoint';
 import { SourcepointModuleState } from '../typings';
 import { CustomPurpose, CustomVendor } from '../../../sourcepoint/typings';
 
 const state: SourcepointModuleState = {
   consentedCustomVendors: [],
   consentedCustomPurposes: [],
-};
-
-export const getters = {
-  hasCustomVendorConsent: ({ consentedCustomVendors }: SourcepointModuleState): Function => (
-    payload: CustomVendor,
-  ): boolean => hasCustomConsent(payload, consentedCustomVendors),
-  hasCustomPurposeConsent: ({ consentedCustomPurposes }: SourcepointModuleState): Function => (
-    payload: CustomPurpose,
-  ): boolean => hasCustomConsent(payload, consentedCustomPurposes),
 };
 
 export const mutations = {
@@ -38,7 +29,6 @@ export const actions = {
 export const sourcepoint: Module<SourcepointModuleState, SourcepointModuleState> = {
   namespaced: true,
   state,
-  getters,
   mutations,
   actions,
 };

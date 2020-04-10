@@ -1,40 +1,25 @@
 <template>
-  <div v-html="embedContent"></div>
+  <div v-html="content"></div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { getScriptSrcFromOembedHTML, loadIframelyEmbedsLibrary, processIframelyEmbeds } from '../../../embed-utils';
-
-type Data = {
-  embedContent: string;
-};
+import { processIframelyEmbedContent } from '../../../embed-utils';
 
 type Props = {
   content: string;
 };
 
-export default Vue.extend<Data, {}, {}, Props>({
+export default Vue.extend<{}, {}, {}, Props>({
   name: 'EmbedFacebook',
-  data: () => ({
-    embedContent: '',
-  }),
   props: {
     content: {
       type: String,
       default: '',
     },
   },
-  async mounted() {
-    this.embedContent = this.content;
-
-    if (this.embedContent) {
-      await this.$nextTick();
-
-      await loadIframelyEmbedsLibrary(getScriptSrcFromOembedHTML(this.embedContent));
-
-      processIframelyEmbeds();
-    }
+  mounted() {
+    processIframelyEmbedContent(this.content);
   },
 });
 </script>

@@ -1,10 +1,10 @@
 <template>
-  <div v-html="embedContent"></div>
+  <div v-html="content"></div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { getScriptSrcFromOembedHTML, loadInstagramJsLibrary, processInstagramEmbeds } from '../../../embed-utils';
+import { processInstagramEmbedContent } from '../../../embed-utils';
 
 type Data = {
   embedContent: string;
@@ -16,25 +16,14 @@ type Props = {
 
 export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedInstagram',
-  data: () => ({
-    embedContent: '',
-  }),
   props: {
     content: {
       type: String,
       default: '',
     },
   },
-  async mounted() {
-    this.embedContent = this.content;
-
-    if (this.embedContent) {
-      await this.$nextTick();
-
-      await loadInstagramJsLibrary(getScriptSrcFromOembedHTML(this.embedContent));
-
-      processInstagramEmbeds();
-    }
+  mounted() {
+    processInstagramEmbedContent(this.content);
   },
 });
 </script>

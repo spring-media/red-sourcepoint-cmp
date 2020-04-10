@@ -4,6 +4,7 @@ import {
   customPurposeHasConsent,
   customVendorHasConsent,
   hasCustomConsent,
+  hasCustomConsentById,
 } from './has-custom-consent';
 import { CustomConsent } from './typings';
 
@@ -148,6 +149,20 @@ describe('has-custom-consent module', () => {
       const consents: CustomConsent[] = [{ _id: '#1234' }, { _id: '#12345' }];
 
       expect(hasCustomConsent({ _id: '#123' }, consents)).toBe(false);
+    });
+  });
+
+  describe('hasCustomConsentById', () => {
+    it('should return true', () => {
+      const consents: CustomConsent[] = [{ _id: '#1234' }, { _id: '#12345' }];
+
+      expect(hasCustomConsentById('#12345', consents)).toBe(true);
+    });
+
+    it('should return false', () => {
+      const consents: CustomConsent[] = [{ _id: '#1234' }, { _id: '#12345' }];
+
+      expect(hasCustomConsentById('#123', consents)).toBe(false);
     });
   });
 });

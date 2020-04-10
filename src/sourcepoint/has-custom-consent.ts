@@ -10,6 +10,9 @@ export const customConsentsAreEqual = (...consents: CustomConsent[]): boolean =>
 export const hasCustomConsent = (consent: CustomConsent, collection: CustomConsent[]): boolean =>
   collection.some((c: CustomConsent) => customConsentsAreEqual(c, consent));
 
+export const hasCustomConsentById = (_id: string, collection: CustomConsent[]): boolean =>
+  hasCustomConsent({ _id }, collection);
+
 export const customVendorHasConsent = async (vendor: CustomConsent, options?: HasConsentOptions): Promise<boolean> => {
   try {
     const getConsents = options && !options.cache ? getCustomVendorConsentsBypassCache : getCustomVendorConsents;

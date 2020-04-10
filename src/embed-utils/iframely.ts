@@ -1,13 +1,20 @@
 import { loadScript } from './script-loader';
+import { getScriptSrcFromOembedHTML } from './oembed';
 
 export const IFRAMELY_EMBEDS_LIBRARY_URL = 'https://cdn.iframe.ly/embed.js';
 
-export const loadIframelyEmbedsLibrary = (src?: string | null): Promise<void> => {
-  if (window?.iframely) {
+export const processIframelyEmbedContent = async (content: string): Promise<void | string> => {
+  if (window.iframely?.load) {
+    window.iframely.load();
+
     return Promise.resolve();
   }
 
-  return loadScript(src || IFRAMELY_EMBEDS_LIBRARY_URL);
-};
+  try {
+    await loadScript(getScriptSrcFromOembedHTML(content) || IFRAMELY_EMBEDS_LIBRARY_URL);
 
-export const processIframelyEmbeds = (): void => window?.iframely?.load();
+    window.iframely?.load();
+  } catch (error) {
+    return Promise.reject(error.message);
+  }
+};

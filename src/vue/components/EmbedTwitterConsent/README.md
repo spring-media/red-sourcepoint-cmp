@@ -13,7 +13,7 @@ This component handles the consent for Twitter embeds. It will render either the
 
 ## Example
 
-```javascript
+```vue
 <template>
   <embed-twitter-consent :privacyManagerId="privacyManagerId" :content="content"></embed-twitter-consent>
 </template>

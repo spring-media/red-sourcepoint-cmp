@@ -13,7 +13,7 @@ This component handles the consent for Youtube embeds. It will render either the
 
 ## Example
 
-```javascript
+```vue
 <template>
   <embed-youtube-consent :privacyManagerId="privacyManagerId" :content="content"></embed-youtube-consent>
 </template>

@@ -22,7 +22,7 @@ You can use it to build consent-components if the provided consent components (e
 
 ## Example
 
-```javascript
+```vue
 <template>
   <embed-consent :vendorId="vendorId">
       <template #placeholder>

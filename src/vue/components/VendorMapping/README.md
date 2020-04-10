@@ -22,7 +22,7 @@ The VendorMapping component is a renderless component which provides an interfac
 
 ## Example
 
-```javascript
+```vue
 <template>
   <div>
     <vendor-mapping v-slot="{ getVendorPurposesById }">

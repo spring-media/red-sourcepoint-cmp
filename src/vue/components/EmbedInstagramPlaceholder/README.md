@@ -7,7 +7,7 @@
 <details>
 <summary>Example</summary>
 
-```javascript
+```vue
 <template>
   <embed-instagram-placeholder :privacyManagerId="privacyManagerId"></embed-instagram-placeholder>
 </template>

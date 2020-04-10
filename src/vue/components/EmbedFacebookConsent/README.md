@@ -13,7 +13,7 @@ This component handles the consent for Facebook embeds. It will render either th
 
 ## Example
 
-```javascript
+```vue
 <template>
   <embed-facebook-consent :privacyManagerId="privacyManagerId" :content="content"></embed-facebook-consent>
 </template>

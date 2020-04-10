@@ -7,7 +7,7 @@
 <details>
 <summary>Example</summary>
 
-```javascript
+```vue
 <template>
   <embed-twitter-placeholder :privacyManagerId="privacyManagerId"></embed-twitter-placeholder>
 </template>

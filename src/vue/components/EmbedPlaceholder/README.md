@@ -9,7 +9,7 @@
 <details>
 <summary>Example</summary>
 
-```javascript
+```vue
 <template>
   <embed-placeholder :privacyManagerId="privacyManagerId"></embed-placeholder>
 </template>

@@ -2,7 +2,7 @@
 
 The ConsentedData component is a renderless component that provides access to the state of the Vuex [sourcepoint](../../vuex/sourcepoint) module through the default (scoped) slot.
 
-## Slots
+## Default Slot Props
 
 | Name           | Type                                                 | Description                                       |
 | -------------- | ---------------------------------------------------- |-------------------------------------------------- |

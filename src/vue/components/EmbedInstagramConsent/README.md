@@ -13,7 +13,7 @@ This component handles the consent for Instagram embeds. It will render either t
 
 ## Example
 
-```javascript
+```vue
 <template>
   <embed-instagram-consent :privacyManagerId="privacyManagerId" :content="content"></embed-instagram-consent>
 </template>

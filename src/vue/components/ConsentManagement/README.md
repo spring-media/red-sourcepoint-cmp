@@ -14,7 +14,7 @@ In order to render the #onConsent slot, either the prop vendorId or one of purpo
 
 ## Example
 
-```javascript
+```vue
 <template>
   <consent-management 
     :vendorId="vendorId" 

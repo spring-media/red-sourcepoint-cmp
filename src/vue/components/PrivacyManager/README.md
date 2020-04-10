@@ -14,7 +14,7 @@ The PrivacyManager component is a renderless component which provides an interfa
 
 ## Example
 
-```javascript
+```vue
 <template>
   <div>
     <privacy-manager v-slot="{ loadPrivacyManagerModal }">

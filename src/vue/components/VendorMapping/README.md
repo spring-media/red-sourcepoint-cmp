@@ -8,14 +8,17 @@ The VendorMapping component is a renderless component which provides an interfac
 
 #### default
 
-| Slot Props              | Signature                                  |
-| ----------------------- |------------------------------------------- |
-| getVendorIdByName       | (vendorName: string): string \| undefined  |
-| getVendorNameById       | (vendorId: string): string \| undefined    |
-| getPurposeIdByName      | (purposeName: string): string \| undefined |
-| getPurposeNameById      | (purposeId: string): string \| undefined   |
-| getVendorPurposesByName | (vendorName: string): string[]             |
-| getVendorPurposesById   | (vendorId: string): string[]               |
+| Slot Props          | Documentation                                                                     |
+| ------------------- |---------------------------------------------------------------------------------- |
+| getCustomVendor     | [vendor-mapping/getCustomVendor](../../../vendor-mapping#getcustomvendor)         |
+| getCustomPurpose    | [vendor-mapping/getCustomPurpose](../../../vendor-mapping#getcustompurpose)       |
+| removeCustomVendor  | [vendor-mapping/removeCustomVendor](../../../vendor-mapping#removecustomvendor)   |
+| removeCustomPurpose | [vendor-mapping/removeCustomPurpose](../../../vendor-mapping#removecustompurpose) |
+| addCustomVendor     | [vendor-mapping/addCustomVendor](../../../vendor-mapping#addcustomvendor)         |
+| addCustomPurpose    | [vendor-mapping/addCustomPurpose](../../../vendor-mapping#addcustompurpose)       |
+| getRelations        | [vendor-mapping/getRelations](../../../vendor-mapping#getrelations)               |
+| hasRelations        | [vendor-mapping/hasRelations](../../../vendor-mapping#hasrelations)               |
+| setRelations        | [vendor-mapping/setRelations](../../../vendor-mapping#setrelations)               |
 
 ## Example
 

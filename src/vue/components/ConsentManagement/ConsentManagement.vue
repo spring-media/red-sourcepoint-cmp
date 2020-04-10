@@ -1,17 +1,13 @@
 <script lang="ts">
 import Vue, { VNode } from 'vue';
-import { mapState } from 'vuex';
 import { CustomPurpose, CustomVendor } from '../../../sourcepoint/typings';
 import { hasCustomConsentById } from '../../../sourcepoint';
-
-type Computed = {
-  consentedCustomVendors: CustomVendor[];
-  consentedCustomPurposes: CustomPurpose[];
-};
 
 type Props = {
   vendorId: string;
   purposeIds: string[];
+  customVendors: CustomVendor[];
+  customPurposes: CustomPurpose[];
 };
 
 type Methods = {
@@ -20,7 +16,7 @@ type Methods = {
   hasCustomPurposeConsent(id: string): boolean;
 };
 
-export default Vue.extend<{}, Methods, Computed, Props>({
+export default Vue.extend<{}, Methods, {}, Props>({
   name: 'ConsentManagement',
   props: {
     vendorId: {
@@ -31,16 +27,21 @@ export default Vue.extend<{}, Methods, Computed, Props>({
       type: Array,
       default: () => [],
     },
-  },
-  computed: {
-    ...mapState('sourcepoint', ['consentedCustomVendors', 'consentedCustomPurposes']),
+    customVendors: {
+      type: Array,
+      default: () => [],
+    },
+    customPurposes: {
+      type: Array,
+      default: () => [],
+    },
   },
   methods: {
     hasCustomPurposeConsent(id: string): boolean {
-      return hasCustomConsentById(id, this.consentedCustomPurposes);
+      return hasCustomConsentById(id, this.customPurposes);
     },
     hasCustomVendorConsent(id: string): boolean {
-      return hasCustomConsentById(id, this.consentedCustomVendors);
+      return hasCustomConsentById(id, this.customVendors);
     },
     hasConsent(): boolean {
       return (

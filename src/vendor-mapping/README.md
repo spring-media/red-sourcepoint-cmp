@@ -10,10 +10,11 @@ we need to have some kind of static mapping between these two entities.
 * [Custom Vendors](custom-vendors.ts)
 * [Custom Purposes](custom-purposes.ts)
 
-> The following examples refer to the esm-bundle. 
-> When using the browser-bundle, all methods are properties of the global object named **RedCMP**
+### `getCustomVendor`
 
-### `getCustomVendor(key: string): string | undefined`
+```typescript
+getCustomVendor(key: string): string | undefined
+```
 
 Returns either a vendor id by given name or a vendor name by given id or undefined if an entry not exists.
 
@@ -28,7 +29,11 @@ console.log(getCustomVendor(VENDOR_ID_FACEBOOK)); // facebook
 ```    
 </details>
 
-### `getCustomPurpose(key: string): string | undefined`
+### `getCustomPurpose`
+
+```typescript
+getCustomPurpose(key: string): string | undefined
+```
 
 Returns either a purpose id by given name or a purpose name by given id or undefined if an entry not exists.
 
@@ -43,7 +48,11 @@ console.log(getCustomPurpose(PURPOSE_ID_SOCIAL)); // social
 ```    
 </details>
 
-### `addCustomVendor(key: string, value: string): Map<string, string>`
+### `addCustomVendor`
+
+```typescript
+addCustomVendor(key: string, value: string): Map<string, string>
+```
 
 Adds an entry to the custom vendors list.
 
@@ -58,7 +67,11 @@ console.log(getCustomVendor('key')); // value
 ```    
 </details>
 
-### `addCustomPurpose(key: string, value: string): Map<string, string>`
+### `addCustomPurpose`
+
+```typescript
+addCustomPurpose(key: string, value: string): Map<string, string>
+```
 
 Adds an entry to the custom purposes list.
 
@@ -73,7 +86,11 @@ console.log(getCustomPurpose('key')); // value
 ```    
 </details>
 
-### `removeCustomVendor(key: string, value: string): boolean`
+### `removeCustomVendor`
+
+```typescript
+removeCustomVendor(key: string, value: string): boolean
+```
 
 Removes an entry from the custom vendors list. Returns `true` on success, otherwise `false`.
 
@@ -88,7 +105,11 @@ console.log(getCustomVendor(VENDOR_NAME_FACEBOOK)); // undefined
 ```    
 </details>
 
-### `removeCustomPurpose(key: string, value: string): boolean`
+### `removeCustomPurpose`
+
+```typescript
+removeCustomPurpose(key: string, value: string): boolean
+```
 
 Removes an entry from the custom purposes list. Returns `true` on success, otherwise `false`.
 
@@ -103,7 +124,11 @@ console.log(getCustomPurpose(PURPOSE_ID_SOCIAL)); // undefined
 ```    
 </details>
 
-### `getRelations(key: string): string[] | undefined`
+### `getRelations`
+
+```typescript
+getRelations(key: string): string[] | undefined
+```
 
 Returns an entry from the relations list.
 
@@ -117,7 +142,11 @@ console.log(getRelations(VENDOR_ID_FACEBOOK)); // [<PURPOSE_ID_SOCIAL>]
 ```    
 </details>
 
-### `hasRelations(key: string): boolean`
+### `hasRelations`
+
+```typescript
+hasRelations(key: string): boolean
+```
 
 Returns whether given key has relations.
 
@@ -131,7 +160,11 @@ console.log(hasRelations(VENDOR_ID_FACEBOOK)); // true
 ```    
 </details>
 
-### `setRelations(key: string, relations: string[]): Map<string, string[]>`
+### `setRelations`
+
+```typescript
+setRelations(key: string, relations: string[]): Map<string, string[]>
+```
 
 Sets an entry to the relations list.
 

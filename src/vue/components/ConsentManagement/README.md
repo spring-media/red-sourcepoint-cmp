@@ -3,20 +3,25 @@
 The Consent-Management Component renders is a renderless component that renders either a slot on given consent (#onConsent) or a slot if no consent is given (#onReject).
 In order to render the #onConsent slot, either the prop vendorId or one of purposeIds have a consent.
 
-> Internally it uses the [sourcepoint](../../vuex/sourcepoint) Vuex module. Make sure you setup the store properly.
-
 ## Props
 
-| Name       | Type   | Required | Default | Description                      |
-| ---------- | ------ | -------- | ------- |--------------------------------- |
-| vendorId   | string | true     | -       | ID of a (custom) vendor          |
-| purposeIds | number | false    | []      | List of IDs of (custom) purposes |
+| Name           | Type                                                 | Required | Default | Description                                       |
+| -------------- | ---------------------------------------------------- | -------- | ------- |-------------------------------------------------- |
+| vendorId       | string                                               | true     | -       | ID of a (custom) vendor                           |
+| purposeIds     | number                                               | false    | []      | List of IDs of (custom) purposes                  |
+| customVendors  | [CustomVendor[]](../../../sourcepoint/typings.d.ts)  | false    | []      | List of custom vendors the user has consented to  |
+| customPurposes | [CustomPurpose[]](../../../sourcepoint/typings.d.ts) | false    | []      | List of custom purposes the user has consented to |
 
 ## Example
 
 ```javascript
 <template>
-  <consent-management :vendorId="vendorId" :purposeIds="purposeIds">
+  <consent-management 
+    :vendorId="vendorId" 
+    :purposeIds="purposeIds"
+    :customVendors="customVendors"
+    :customPurposes="customPurposes"
+  >
     <template #onConsent>
       <div>Consent</div>
     </template>
@@ -33,7 +38,9 @@ export default {
   components: { ConsentManagement },
   data: () => ({
     vendorId: '#12345',
-    purposeIds: ['#54321']
+    purposeIds: ['#54321'],
+    customVendors: ['#12345', '#67890'],
+    customPurposes: ['#99999'],
   }),
 };
 </script>

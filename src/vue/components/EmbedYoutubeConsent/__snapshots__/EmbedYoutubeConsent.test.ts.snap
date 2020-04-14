@@ -14,8 +14,8 @@ exports[`EmbedYoutubeConsent component should render the placeholder by default 
       xmlns="http://www.w3.org/2000/svg"
     >
       <svg
-        x="calc(50% - 25)"
-        y="calc(50% - 20)"
+        x="calc(50% - 25px)"
+        y="calc(50% - 20px)"
       >
         <g
           transform="scale(0.42)"

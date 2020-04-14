@@ -4,7 +4,11 @@ This package provides several utilities around embeds and their vendors.
 
 ## General
 
-### `loadScript(src: string): Promise<void>`
+### `loadScript`
+
+```typescript
+loadScript(src: string): Promise<void>
+```
 
 Loads given script asynchronously into the browser.
 
@@ -14,7 +18,11 @@ import { loadScript } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-uti
 loadScript('https://some-domain.com/some-script.js').then(() => console.log('loaded')).catch(() => console.log('error'));
 ```
 
-### `getScriptSrcFromOembedHTML(html: string): string | null`
+### `getScriptSrcFromOembedHTML`
+
+```typescript
+getScriptSrcFromOembedHTML(html: string, fallback: string): string | null
+```
 
 Get the script source from given (oEmbed) html string.
 
@@ -23,74 +31,95 @@ import { getScriptSrcFromOembedHTML } from '@spring-media/red-sourcepoint-cmp/di
 
 const someOembedHTML = '<div></div><script async src="https://some-oembed-provider.com"></script>';
 
-console.log(getScriptSrcFromOembedHTML(someOembedHTML)); // https://some-oembed-provider.com
+console.log(getScriptSrcFromOembedHTML(someOembedHTML, 'https://domain.com/fallback.js')); // https://some-oembed-provider.com
 ```
 
 ## Instagram
 
-### `loadInstagramJsLibrary(src?: string | null): Promise<void>`
+### `libraryIsAvailable`
 
-Loads the Instagram embed.js javascript library into the browser by either given src parameter or, if omitted, the official library that points to [https://www.instagram.com/embed.js](https://www.instagram.com/embed.js).
+```typescript
+libraryIsAvailable(): boolean
+````
+
+Checks whether the Instagram embeds library (`window.instgrm.Embeds`) is present.
 
 ```javascript
-import { loadInstagramJsLibrary } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
+import { instagram } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
 
-loadInstagramJsLibrary().then(() => console.log('loaded')).catch(() => console.log('error'));
+console.log(instagram.libraryIsAvailable())
 ```
 
-### `processInstagramEmbeds(): void`
+### `processEmbeds`
 
-Invokes `window.instgrm.Embeds.process()` if available.
+```typescript
+processEmbeds(): void
+```
+
+Calls `window.instgrm.Embeds.process()` if available.
 
 ```javascript
-import { processInstagramEmbeds } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
+import { instagram } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
 
-processInstagramEmbeds();
+instagram.processEmbeds();
 ```
 
 ## Twitter
 
-### `loadTwitterJsLibrary(src?: string | null) : Promise<void>`
+### `libraryIsAvailable`
 
-Loads the Twitter widgets javascript library into the browser by either given src parameter or, if omitted, the official library that points to [https://platform.twitter.com/widgets.js](https://platform.twitter.com/widgets.js).
+```typescript
+libraryIsAvailable(): boolean
+````
+
+Checks whether the Twitter embeds library (`window.twttr.widgets`) is present.
 
 ```javascript
-import { loadTwitterJsLibrary } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
+import { twitter } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
 
-loadTwitterJsLibrary().then(() => console.log('loaded')).catch(() => console.log('error'));
+console.log(twitter.libraryIsAvailable())
 ```
 
-### `processTwitterEmbeds(element?: HTMLElement): void`
+### `processEmbeds`
 
-Invokes `window.twttr.widgets.load()` if available.
+```typescript
+processEmbeds(): void
+```
 
-As mentioned in the [official documentation](https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/scripting-loading-and-initialization), you can pass a HTMl element as a parameter for performance reasons.
+Calls `window.twttr.widgets.load()` if available.
 
 ```javascript
-import { processTwitterEmbeds } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
+import { twitter } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
 
-processTwitterEmbeds(/* optional element parameter */);
+twitter.processEmbeds(/* optional html element */);
 ```
 
 ## Iframely
 
-### `loadIframelyEmbedsLibrary(src?: string | null) : Promise<void>`
+### `libraryIsAvailable`
 
-Loads the Iframely embed.js javascript library into the browser by either given src parameter or, if omitted, the official library that points to [https://cdn.iframe.ly/embed.js](https://iframely.com/docs/embedjs).
+```typescript
+libraryIsAvailable(): boolean
+````
+
+Checks whether the Iframely embeds library (`window.iframely`) is present.
 
 ```javascript
-import { loadIframelyEmbedsLibrary } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
+import { iframely } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
 
-loadIframelyEmbedsLibrary().then(() => console.log('loaded')).catch(() => console.log('error'));
+console.log(iframely.libraryIsAvailable())
 ```
 
+### `processEmbeds`
 
-### `processIframelyEmbeds(): void`
+```typescript
+processEmbeds(): void
+```
 
-Invokes `window.iframely.load()` if available.
+Calls `window.iframely.load()` if available.
 
 ```javascript
-import { processIframelyEmbeds } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
+import { iframely } from '@spring-media/red-sourcepoint-cmp/dist/esm/embed-utils';
 
-processIframelyEmbeds();
+iframely.processEmbeds();
 ```

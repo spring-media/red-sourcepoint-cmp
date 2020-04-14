@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
 import EmbedTwitter from './EmbedTwitter.vue';
-import { processTwitterEmbedContent } from '../../../embed-utils';
+import { processEmbedContent } from '../../../embed-utils/twitter';
 
-jest.mock('../../../embed-utils');
+jest.mock('../../../embed-utils/twitter');
 
-describe('EmbedFacebook component', () => {
+describe('EmbedTwitter component', () => {
   it('should render given (html) content', async () => {
-    (processTwitterEmbedContent as jest.Mock).mockReturnValueOnce(Promise.resolve());
+    (processEmbedContent as jest.Mock).mockReturnValueOnce(Promise.resolve());
 
     const wrapper = mount(EmbedTwitter, {
       propsData: {

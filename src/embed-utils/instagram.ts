@@ -1,20 +1,15 @@
-import { loadScript } from './script-loader';
-import { getScriptSrcFromOembedHTML } from './oembed';
+import { process } from './embeds';
 
 export const INSTAGRAM_JAVASCRIPT_EMBEDS_LIBRARY_URL = 'https://www.instagram.com/embed.js';
 
-export const processInstagramEmbedContent = async (content: string): Promise<void | string> => {
-  if (window.instgrm?.Embeds?.process) {
-    window.instgrm.Embeds.process();
+export const libraryIsAvailable = (): boolean => Boolean(window.instgrm?.Embeds);
 
-    return Promise.resolve();
-  }
+export const processEmbeds = (): void => window.instgrm?.Embeds?.process();
 
-  try {
-    await loadScript(getScriptSrcFromOembedHTML(content) || INSTAGRAM_JAVASCRIPT_EMBEDS_LIBRARY_URL);
-
-    window.instgrm?.Embeds?.process();
-  } catch (error) {
-    return Promise.reject(error.message);
-  }
-};
+export const processEmbedContent = async (content: string): Promise<void> =>
+  process({
+    libraryIsAvailable,
+    processEmbeds,
+    defaultEmbedLibrary: INSTAGRAM_JAVASCRIPT_EMBEDS_LIBRARY_URL,
+    content,
+  });

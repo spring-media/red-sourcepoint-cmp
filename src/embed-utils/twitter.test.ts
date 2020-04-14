@@ -1,65 +1,61 @@
 import { mocked } from 'ts-jest/utils';
-import { loadScript } from './script-loader';
-import { processTwitterEmbedContent, TWITTER_WIDGETS_LIBRARY_URL } from './twitter';
+import { libraryIsAvailable, processEmbedContent, processEmbeds } from './twitter';
+import { process } from './embeds';
+import { Twitter } from './typings';
 
-jest.mock('./script-loader');
+jest.mock('./embeds');
 
-const loadScriptMock = mocked(loadScript);
+const processMock = mocked(process);
 
 describe('twitter utilities', () => {
   afterEach(() => {
-    loadScriptMock.mockReset();
+    processMock.mockReset();
+    delete window.twttr;
   });
 
-  describe('processTwitterEmbedContent', () => {
-    it('should invoke the load method of twttr.widgets object', () => {
+  describe('processEmbedContent', () => {
+    it('should call the process function', () => {
+      processEmbedContent('embed content');
+
+      expect(processMock).toHaveBeenCalled();
+    });
+  });
+
+  describe('libraryIsAvailable', () => {
+    it('should return false if twttr object is not present', () => {
+      expect(libraryIsAvailable()).toBe(false);
+    });
+
+    it('should return false if twttr.widgets object is not present', () => {
+      window.twttr = {} as Twitter;
+
+      expect(libraryIsAvailable()).toBe(false);
+    });
+
+    it('should return true', () => {
       window.twttr = { widgets: { load: jest.fn() } };
 
-      processTwitterEmbedContent('foo');
+      expect(libraryIsAvailable()).toBe(true);
+    });
+  });
+
+  describe('processEmbeds', () => {
+    it('should not throw an error if twttr object not exists', () => {
+      expect(() => processEmbeds()).not.toThrow();
+    });
+
+    it('should not throw an error if twttr.widgets object not exists', () => {
+      window.twttr = {} as Twitter;
+
+      expect(() => processEmbeds()).not.toThrow();
+    });
+
+    it('should call process method of Embeds object', () => {
+      window.twttr = { widgets: { load: jest.fn() } };
+
+      processEmbeds();
 
       expect(window.twttr.widgets.load).toHaveBeenCalled();
-
-      delete window.twttr;
-    });
-
-    it('should invoke the load method of twttr.widgets object with given parameter', () => {
-      window.twttr = { widgets: { load: jest.fn() } };
-
-      const element = {} as HTMLElement;
-
-      processTwitterEmbedContent('foo', element);
-
-      expect(window.twttr.widgets.load).toHaveBeenCalledWith(element);
-
-      delete window.twttr;
-    });
-
-    it('should load the library script provided by content parameter', async () => {
-      loadScriptMock.mockImplementationOnce(() => {
-        window.twttr = { widgets: { load: jest.fn() } };
-        return Promise.resolve();
-      });
-
-      await processTwitterEmbedContent('<div>foo</div><script async src="https://domain.com/lib.js"');
-
-      expect(loadScriptMock).toHaveBeenCalledWith('https://domain.com/lib.js');
-      expect(window.twttr?.widgets.load).toHaveBeenCalled();
-
-      delete window.twttr;
-    });
-
-    it('should load the default library script if no script is found in content parameter', async () => {
-      loadScriptMock.mockImplementationOnce(() => {
-        window.twttr = { widgets: { load: jest.fn() } };
-        return Promise.resolve();
-      });
-
-      await processTwitterEmbedContent('<div>foo</div>');
-
-      expect(loadScriptMock).toHaveBeenCalledWith(TWITTER_WIDGETS_LIBRARY_URL);
-      expect(window.twttr?.widgets.load).toHaveBeenCalled();
-
-      delete window.twttr;
     });
   });
 });

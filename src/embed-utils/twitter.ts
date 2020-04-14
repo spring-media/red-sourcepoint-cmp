@@ -1,20 +1,15 @@
-import { loadScript } from './script-loader';
-import { getScriptSrcFromOembedHTML } from './oembed';
+import { process } from './embeds';
 
 export const TWITTER_WIDGETS_LIBRARY_URL = 'https://platform.twitter.com/widgets.js';
 
-export const processTwitterEmbedContent = async (content: string, element?: HTMLElement): Promise<void | string> => {
-  if (window.twttr?.widgets?.load) {
-    window.twttr.widgets.load(element);
+export const libraryIsAvailable = (): boolean => Boolean(window.twttr?.widgets);
 
-    return Promise.resolve();
-  }
+export const processEmbeds = (element?: HTMLElement): void => window.twttr?.widgets?.load(element);
 
-  try {
-    await loadScript(getScriptSrcFromOembedHTML(content) || TWITTER_WIDGETS_LIBRARY_URL);
-
-    window.twttr?.widgets?.load(element);
-  } catch (error) {
-    return Promise.reject(error.message);
-  }
-};
+export const processEmbedContent = async (content: string, element?: HTMLElement): Promise<void> =>
+  process({
+    libraryIsAvailable,
+    processEmbeds: () => processEmbeds(element),
+    defaultEmbedLibrary: TWITTER_WIDGETS_LIBRARY_URL,
+    content,
+  });

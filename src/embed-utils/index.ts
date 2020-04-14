@@ -1,5 +1,5 @@
-export * from './instagram';
-export * from './twitter';
-export * from './iframely';
+export * as instagram from './instagram';
+export * as twitter from './twitter';
+export * as iframely from './iframely';
 export * from './oembed';
 export * from './script-loader';

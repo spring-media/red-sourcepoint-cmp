@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { processInstagramEmbedContent } from '../../../embed-utils';
+import { processEmbedContent } from '../../../embed-utils/instagram';
 
 type Data = {
   embedContent: string;
@@ -23,7 +23,7 @@ export default Vue.extend<Data, {}, {}, Props>({
     },
   },
   mounted() {
-    processInstagramEmbedContent(this.content);
+    processEmbedContent(this.content);
   },
 });
 </script>

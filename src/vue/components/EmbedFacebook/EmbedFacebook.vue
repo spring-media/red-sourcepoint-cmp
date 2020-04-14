@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { processIframelyEmbedContent } from '../../../embed-utils';
+import { processEmbedContent } from '../../../embed-utils/iframely';
 
 type Props = {
   content: string;
@@ -19,7 +19,7 @@ export default Vue.extend<{}, {}, {}, Props>({
     },
   },
   mounted() {
-    processIframelyEmbedContent(this.content);
+    processEmbedContent(this.content);
   },
 });
 </script>

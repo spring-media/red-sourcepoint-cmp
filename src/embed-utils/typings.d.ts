@@ -25,3 +25,10 @@ export declare global {
     iframely?: Iframely;
   }
 }
+
+export type ProcessEmbedContentParameters = {
+  defaultEmbedLibrary: string;
+  libraryIsAvailable: () => boolean;
+  processEmbeds: () => void;
+  content: string;
+};

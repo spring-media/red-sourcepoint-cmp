@@ -1,65 +1,49 @@
 import { mocked } from 'ts-jest/utils';
-import { loadScript } from './script-loader';
-import { IFRAMELY_EMBEDS_LIBRARY_URL, processIframelyEmbedContent } from './iframely';
+import { libraryIsAvailable, processEmbedContent, processEmbeds } from './iframely';
+import { process } from './embeds';
 import { Iframely } from './typings';
 
-jest.mock('./script-loader');
+jest.mock('./embeds');
 
-const loadScriptMock = mocked(loadScript);
+const processMock = mocked(process);
 
 describe('iframely utilities', () => {
   afterEach(() => {
-    loadScriptMock.mockReset();
+    processMock.mockReset();
+    delete window.iframely;
   });
 
-  describe('processIframelyEmbedContent', () => {
-    it('should invoke the load method of the iframely object', () => {
-      window.iframely = { load: jest.fn() };
+  describe('processEmbedContent', () => {
+    it('should call the process function', () => {
+      processEmbedContent('embed content');
 
-      processIframelyEmbedContent('foo');
+      expect(processMock).toHaveBeenCalled();
+    });
+  });
 
-      expect(window.iframely.load).toHaveBeenCalled();
-      expect(loadScriptMock).not.toHaveBeenCalled();
-
-      delete window.iframely;
+  describe('libraryIsAvailable', () => {
+    it('should return false', () => {
+      expect(libraryIsAvailable()).toBe(false);
     });
 
-    it('should load the library script if iframely object is not valid', () => {
+    it('should return true', () => {
       window.iframely = {} as Iframely;
 
-      processIframelyEmbedContent('foo');
+      expect(libraryIsAvailable()).toBe(true);
+    });
+  });
 
-      expect(loadScriptMock).toHaveBeenCalled();
-
-      delete window.iframely;
+  describe('processEmbeds', () => {
+    it('should not throw an error if iframely object not exists', () => {
+      expect(() => processEmbeds()).not.toThrow();
     });
 
-    it('should load the library script provided by content parameter', async () => {
-      loadScriptMock.mockImplementationOnce(() => {
-        window.iframely = { load: jest.fn() };
-        return Promise.resolve();
-      });
+    it('should call load method of iframely object', () => {
+      window.iframely = { load: jest.fn() };
 
-      await processIframelyEmbedContent('<div>foo</div><script async src="https://domain.com/lib.js"');
+      processEmbeds();
 
-      expect(loadScriptMock).toHaveBeenCalledWith('https://domain.com/lib.js');
-      expect(window?.iframely?.load).toHaveBeenCalled();
-
-      delete window.iframely;
-    });
-
-    it('should load the default library script if no script is found in content parameter', async () => {
-      loadScriptMock.mockImplementationOnce(() => {
-        window.iframely = { load: jest.fn() };
-        return Promise.resolve();
-      });
-
-      await processIframelyEmbedContent('<div>foo</div>');
-
-      expect(loadScriptMock).toHaveBeenCalledWith(IFRAMELY_EMBEDS_LIBRARY_URL);
-      expect(window?.iframely?.load).toHaveBeenCalled();
-
-      delete window.iframely;
+      expect(window.iframely.load).toHaveBeenCalled();
     });
   });
 });

@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { processTwitterEmbedContent } from '../../../embed-utils';
+import { processEmbedContent } from '../../../embed-utils/twitter';
 
 type Props = {
   content: string;
@@ -19,7 +19,7 @@ export default Vue.extend<{}, {}, {}, Props>({
     },
   },
   async mounted() {
-    await processTwitterEmbedContent(this.content, this.$refs.container as HTMLElement);
+    await processEmbedContent(this.content, this.$refs.container as HTMLElement);
   },
 });
 </script>

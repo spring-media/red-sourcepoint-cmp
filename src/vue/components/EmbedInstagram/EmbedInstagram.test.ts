@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
 import EmbedInstagram from './EmbedInstagram.vue';
-import { processInstagramEmbedContent } from '../../../embed-utils';
+import { processEmbedContent } from '../../../embed-utils/instagram';
 
-jest.mock('../../../embed-utils');
+jest.mock('../../../embed-utils/instagram');
 
-describe('EmbedFacebook component', () => {
+describe('EmbedInstagram component', () => {
   it('should render given (html) content', async () => {
-    (processInstagramEmbedContent as jest.Mock).mockReturnValueOnce(Promise.resolve());
+    (processEmbedContent as jest.Mock).mockReturnValueOnce(Promise.resolve());
 
     const wrapper = mount(EmbedInstagram, {
       propsData: {

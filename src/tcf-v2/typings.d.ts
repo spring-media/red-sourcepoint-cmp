@@ -30,15 +30,15 @@ export interface TCFV2API {
 }
 
 export interface PingReturn {
-  gdprApplies: boolean | undefined;
+  gdprApplies?: boolean;
   cmpLoaded: boolean;
   cmpStatus: CMPStatus;
   displayStatus: DisplayStatus;
   apiVersion: string;
-  cmpVersion: number | undefined;
-  cmpId: number | undefined;
-  gvlVersion: number | undefined;
-  tcfPolicyVersion: number | undefined;
+  cmpVersion?: number;
+  cmpId?: number;
+  gvlVersion?: number;
+  tcfPolicyVersion?: number;
 }
 
 export declare global {

@@ -3,7 +3,7 @@
   "version": "0.20.1",
   "description": "Sourcepoint CMP Library for www.bild.de",
   "scripts": {
-    "test": "jest",
+    "test": "jest --config tests/jest.config.js",
     "build": "rollup -c",
     "postbuild": "npm run build-cae-package",
     "lint": "eslint --ext .js,.ts,.vue .",
@@ -14,9 +14,9 @@
     "storybook:build": "build-storybook --quiet -c .storybook -o .storybook-static && cp -R playground/assets/* .storybook-static",
     "build-cae-package": "node ./scripts/build-cae-package.js",
     "preimage-snapshots": "docker run -p 9222:3000 --name chrome --rm -d browserless/chrome:1.32.0-chrome-stable",
-    "image-snapshots": "jest --config jest.image-snapshots.config.js image-snapshots.runner.js",
+    "image-snapshots": "jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js",
     "postimage-snapshots": "docker stop chrome || exit 0",
-    "image-snapshots:ci": "CI=true jest --config jest.image-snapshots.config.js image-snapshots.runner.js"
+    "image-snapshots:ci": "CI=true jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js"
   },
   "files": [
     "dist",

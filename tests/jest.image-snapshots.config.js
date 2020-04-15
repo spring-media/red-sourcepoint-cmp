@@ -1,5 +1,5 @@
 module.exports = {
-  rootDir: '.',
+  rootDir: '../',
   clearMocks: true,
   moduleFileExtensions: ['js', 'ts', 'json', 'vue'],
   moduleNameMapper: {},
@@ -8,6 +8,6 @@ module.exports = {
     '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
     '\\.(vue)$': 'jest-transform-stub',
   },
-  testMatch: ['<rootDir>/image-snapshots.runner.js'],
+  testMatch: ['<rootDir>/tests/image-snapshots.runner.js'],
   preset: 'ts-jest',
 };

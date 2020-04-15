@@ -30,7 +30,7 @@ exports[`EmbedInstagramPlaceholder should render without any errors 1`] = `
        
       <rect
         fill="#E9ECEF"
-        height="calc(100% - 32)"
+        height="calc(100% - 32px)"
         width="100%"
         y="32"
       />

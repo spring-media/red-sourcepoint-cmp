@@ -6,3 +6,7 @@ dist
 node_modules
 
 playground/**/bundles
+
+.storybook-static
+
+.image-snapshots/__diff_output__

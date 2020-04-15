@@ -13,7 +13,7 @@ import { EmbedYoutubePlaceholder } from './EmbedYoutubePlaceholder';
 
 This component is used as a generic social media embed placeholder. Furthermore it's the base component for our vendor specific placeholder components.
 
-<Story name='Generic'>{{
+<Story name='Generic' parameters={{ imageSnapshots: { waitForNetwork: true, selector: '.embed-placeholder__container' } }}>{{
   components: { EmbedPlaceholder },
   template: `<EmbedPlaceholder :privacyManagerId="12345" />`,
 }}></Story>
@@ -22,7 +22,7 @@ This component is used as a generic social media embed placeholder. Furthermore 
 
 This placeholder is used for embeds that contains content from Facebook.
 
-<Story name='Facebook'>{{
+<Story name='Facebook' parameters={{ imageSnapshots: { waitForNetwork: true, selector: '.embed-placeholder__container' } }}>{{
   components: { EmbedFacebookPlaceholder },
   template: `<EmbedFacebookPlaceholder :privacyManagerId="12345" />`,
 }}></Story>
@@ -31,7 +31,7 @@ This placeholder is used for embeds that contains content from Facebook.
 
 This placeholder is used for embeds that contains content from Instagram.
 
-<Story name='Instagram'>{{
+<Story name='Instagram' parameters={{ imageSnapshots: { waitForNetwork: true, selector: '.embed-placeholder__container' } }}>{{
   components: { EmbedInstagramPlaceholder },
   template: `<EmbedInstagramPlaceholder :privacyManagerId="12345" />`,
 }}></Story>
@@ -40,7 +40,7 @@ This placeholder is used for embeds that contains content from Instagram.
 
 This placeholder is used for embeds that contains content from Twitter.
 
-<Story name='Twitter'>{{
+<Story name='Twitter' parameters={{ imageSnapshots: { waitForNetwork: true, selector: '.embed-placeholder__container' } }}>{{
   components: { EmbedTwitterPlaceholder },
   template: `<EmbedTwitterPlaceholder :privacyManagerId="12345" />`,
 }}></Story>
@@ -49,7 +49,7 @@ This placeholder is used for embeds that contains content from Twitter.
 
 This placeholder is used for embeds that contains content from Youtube.
 
-<Story name='Youtube'>{{
+<Story name='Youtube' parameters={{ imageSnapshots: { waitForNetwork: true, selector: '.embed-placeholder__container' } }}>{{
   components: { EmbedYoutubePlaceholder },
   template: `<EmbedYoutubePlaceholder :privacyManagerId="12345" />`,
 }}></Story>

@@ -27,6 +27,14 @@ const store = new Vuex.Store({
   },
 });
 
+const storyParameters = {
+  parameters: {
+    storyshots: {
+      disable: true,
+    },
+  },
+};
+
 export default {
   title: 'Embeds / Consent',
   parameters: {
@@ -79,15 +87,19 @@ export const Instagram = () =>
     vendorId: VENDOR_ID_INSTAGRAM,
     embedContent: defaultInstagramEmbedContent,
   });
+Instagram.story = storyParameters;
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const Twitter = () =>
   createStory({ cmp: EmbedTwitterConsent, vendorId: VENDOR_ID_TWITTER, embedContent: defaultTwitterEmbedContent });
+Twitter.story = storyParameters;
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const Facebook = () =>
   createStory({ cmp: EmbedFacebookConsent, vendorId: VENDOR_ID_FACEBOOK, embedContent: defaultFacebookEmbedContent });
+Facebook.story = storyParameters;
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const Youtube = () =>
   createStory({ cmp: EmbedYoutubeConsent, vendorId: VENDOR_ID_YOUTUBE, embedContent: 'Youtube content' });
+Youtube.story = storyParameters;

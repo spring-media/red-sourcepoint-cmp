@@ -9,8 +9,14 @@
     "lint": "eslint --ext .js,.ts,.vue .",
     "preplayground": "npm run build",
     "playground": "node ./scripts/prepare-playground && serve ./playground",
-    "storybook": "start-storybook -p 6006 -s playground/assets",
-    "build-cae-package": "node ./scripts/build-cae-package.js"
+    "storybook": "start-storybook -p 9001 -s playground/assets",
+    "storybook:static": "serve .storybook-static",
+    "storybook:build": "build-storybook --quiet -c .storybook -o .storybook-static && cp -R playground/assets/* .storybook-static",
+    "build-cae-package": "node ./scripts/build-cae-package.js",
+    "preimage-snapshots": "docker run -p 9222:3000 --name chrome --rm -d browserless/chrome:1.32.0-chrome-stable",
+    "image-snapshots": "jest --config jest.image-snapshots.config.js image-snapshots.runner.js",
+    "postimage-snapshots": "docker stop chrome || exit 0",
+    "image-snapshots:ci": "CI=true jest --config jest.image-snapshots.config.js image-snapshots.runner.js"
   },
   "files": [
     "dist",
@@ -41,6 +47,8 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@babel/preset-react": "7.9.4",
+    "@spring-media/storybook-addon-image-snapshots": "0.10.3",
     "@storybook/addon-docs": "5.3.18",
     "@storybook/addon-knobs": "5.3.18",
     "@storybook/addon-viewport": "5.3.18",
@@ -51,6 +59,7 @@
     "@typescript-eslint/parser": "2.28.0",
     "@vue/eslint-config-typescript": "5.0.2",
     "@vue/test-utils": "1.0.0-beta.33",
+    "babel-jest": "25.3.0",
     "babel-loader": "8.1.0",
     "babel-preset-vue": "2.0.2",
     "clean-css": "4.2.3",
@@ -60,6 +69,7 @@
     "eslint-plugin-vue": "6.2.2",
     "fs-extra": "9.0.0",
     "jest": "25.3.0",
+    "jest-transform-stub": "2.0.0",
     "prettier": "2.0.4",
     "rollup": "2.6.1",
     "rollup-plugin-postcss": "2.6.2",

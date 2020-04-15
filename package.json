@@ -16,7 +16,8 @@
     "preimage-snapshots": "docker run -p 9222:3000 --name chrome --rm -d browserless/chrome:1.32.0-chrome-stable",
     "image-snapshots": "jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js",
     "postimage-snapshots": "docker stop chrome || exit 0",
-    "image-snapshots:ci": "CI=true jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js"
+    "image-snapshots:ci": "CI=true jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js",
+    "check-cae-bundle": "es-check es5 .cae/*.js"
   },
   "files": [
     "dist",
@@ -63,6 +64,7 @@
     "babel-loader": "8.1.0",
     "babel-preset-vue": "2.0.2",
     "clean-css": "4.2.3",
+    "es-check": "5.1.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.10.1",
     "eslint-plugin-prettier": "3.1.3",

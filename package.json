@@ -1,11 +1,12 @@
 {
   "name": "@spring-media/red-sourcepoint-cmp",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "description": "CMP (Content Management Platform) implementation for www.bild.de by using the Sourcepoint API",
   "scripts": {
     "test": "jest --config tests/jest.config.js",
     "test:cae:files": "jest tests/cae-files.test.js",
     "test:cae:bundle": "es-check es5 .cae/*.js",
+    "test:all": "npm run build && npm run test && npm run test:cae:bundle && npm run test:cae:files",
     "build": "rollup -c",
     "postbuild": "npm run build:cae:package",
     "build:cae:package": "node ./scripts/build-cae-package.js",

@@ -1,10 +1,13 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
-    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
   overrides: [
+    {
+      files: ['*.ts'],
+      extends: ['plugin:@typescript-eslint/recommended']
+    },
     {
       files: ['*.vue'],
       extends: ['plugin:vue/essential', '@vue/typescript/recommended']

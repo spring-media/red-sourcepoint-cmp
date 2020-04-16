@@ -1,14 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { initImageSnapshots } = require('@spring-media/storybook-addon-image-snapshots');
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const config = () => {
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const getMatchOptions = () => ({
     customSnapshotsDir: '.image-snapshots',
   });
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const getGotoOptions = ({ context: { parameters } }) => {
     const { imageSnapshots = { waitForNetwork: false } } = parameters;
 

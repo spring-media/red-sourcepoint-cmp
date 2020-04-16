@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const { mkdirSync, rmdirSync } = require('fs');
 const { copySync } = require('fs-extra');
 

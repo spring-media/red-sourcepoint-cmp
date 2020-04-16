@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const Terser = require('terser');
 const CleanCSS = require('clean-css');
 const { mkdirSync, rmdirSync, existsSync, writeFileSync, readFileSync } = require('fs');

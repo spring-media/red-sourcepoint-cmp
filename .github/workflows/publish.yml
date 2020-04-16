@@ -42,8 +42,11 @@ jobs:
         env:
           CI: true
 
-      - name: Check CAE browser bundle
-        run: npm run check-cae-bundle
+      - name: Test CAE browser bundle
+        run: npm run test:cae:bundle
+
+      - name: Test CAE files
+        run: npm run test:cae:files
 
       - name: Publish to NPM
         run: npm publish --access public

@@ -4,20 +4,21 @@
   "description": "Sourcepoint CMP Library for www.bild.de",
   "scripts": {
     "test": "jest --config tests/jest.config.js",
+    "test:cae:files": "jest tests/cae-files.test.js",
+    "test:cae:bundle": "es-check es5 .cae/*.js",
     "build": "rollup -c",
-    "postbuild": "npm run build-cae-package",
+    "postbuild": "npm run build:cae:package",
+    "build:cae:package": "node ./scripts/build-cae-package.js",
     "lint": "eslint --ext .js,.ts,.vue .",
     "preplayground": "npm run build",
     "playground": "node ./scripts/prepare-playground && serve ./playground",
     "storybook": "start-storybook -p 9001 -s playground/assets",
     "storybook:static": "serve .storybook-static",
     "storybook:build": "build-storybook --quiet -c .storybook -o .storybook-static && cp -R playground/assets/* .storybook-static",
-    "build-cae-package": "node ./scripts/build-cae-package.js",
     "preimage-snapshots": "docker run -p 9222:3000 --name chrome --rm -d browserless/chrome:1.32.0-chrome-stable",
     "image-snapshots": "jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js",
     "postimage-snapshots": "docker stop chrome || exit 0",
-    "image-snapshots:ci": "CI=true jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js",
-    "check-cae-bundle": "es-check es5 .cae/*.js"
+    "image-snapshots:ci": "CI=true jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js"
   },
   "files": [
     "dist",

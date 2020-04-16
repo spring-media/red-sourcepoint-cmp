@@ -11,9 +11,9 @@ Sourcepoint provides [callbacks](https://documentation.sourcepoint.com/web-imple
 <summary>Example</summary>
 
 ```javascript
-import { onPrivacyManagerAction } from '@spring-media/red-sourcepoint-cmp/dist/esm/callbacks';
+import { onPrivacyManagerAction } from '@spring-media/red-sourcepoint-cmp/dist/esm/sourcepoint-callbacks';
 
-onPrivacyManagerAction(() => console.log('onPrivacyManagerAction'));
+onPrivacyManagerAction((action) => console.log(action));
 ```
 
 </details>
@@ -24,7 +24,7 @@ onPrivacyManagerAction(() => console.log('onPrivacyManagerAction'));
 <summary>Example</summary>
     
 ```javascript
-import { onPMCancel } from '@spring-media/red-sourcepoint-cmp/dist/esm/callbacks';
+import { onPMCancel } from '@spring-media/red-sourcepoint-cmp/dist/esm/sourcepoint-callbacks';
 
 onPMCancel(() => console.log('onPMCancel'));
 ```
@@ -37,7 +37,7 @@ onPMCancel(() => console.log('onPMCancel'));
 <summary>Example</summary>
     
 ```javascript
-import { onConsentReady } from '@spring-media/red-sourcepoint-cmp/dist/esm/callbacks';
+import { onConsentReady } from '@spring-media/red-sourcepoint-cmp/dist/esm/sourcepoint-callbacks';
 
 onConsentReady(() => console.log('onConsentReady'));
 ```
@@ -50,9 +50,35 @@ onConsentReady(() => console.log('onConsentReady'));
 <summary>Example</summary>
         
 ```javascript
-import { onMessageReady } from '@spring-media/red-sourcepoint-cmp/dist/esm/callbacks';
+import { onMessageReady } from '@spring-media/red-sourcepoint-cmp/dist/esm/sourcepoint-callbacks';
 
 onMessageReady(() => console.log('onMessageReady'));
+```
+
+</details>
+
+### onMessageChoiceSelect
+
+<details>
+<summary>Example</summary>
+        
+```javascript
+import { onMessageChoiceSelect } from '@spring-media/red-sourcepoint-cmp/dist/esm/sourcepoint-callbacks';
+
+onMessageChoiceSelect((choiceId, choiceTypeId) => console.log(choiceId, choiceTypeId));
+```
+
+</details>
+
+### onMessageChoiceError
+
+<details>
+<summary>Example</summary>
+        
+```javascript
+import { onMessageChoiceError } from '@spring-media/red-sourcepoint-cmp/dist/esm/sourcepoint-callbacks';
+
+onMessageChoiceError((error) => console.log(error));
 ```
 
 </details>

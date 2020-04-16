@@ -1,4 +1,4 @@
 import { createCallback } from './create-callback';
-import { onPMCancelCallback } from './typings';
+import { OnPMCancelCallback } from './typings';
 
-export const onPMCancel = createCallback<onPMCancelCallback>('onPMCancel');
+export const onPMCancel = createCallback<OnPMCancelCallback>('onPMCancel');

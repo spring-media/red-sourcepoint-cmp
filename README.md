@@ -3,6 +3,9 @@
 <a href="https://www.npmjs.com/package/@spring-media/red-sourcepoint-cmp">
     <img src="https://img.shields.io/npm/v/@spring-media/red-sourcepoint-cmp" alt="npm version" >
 </a>
+<a href="https://github.com/spring-media/red-sourcepoint-cmp/blob/master/LICENSE">
+    <img src="https://img.shields.io/npm/l/@spring-media/red-sourcepoint-cmp" alt="license" >
+</a>
 
 # Introduction
 

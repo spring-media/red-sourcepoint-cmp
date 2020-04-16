@@ -1,6 +1,6 @@
 export type UnregisterCallback = () => boolean;
 
-export type OnConsentReadyCallback = () => void;
+export type OnConsentReadyCallback = (consentUUID: string, euconsent: string) => void;
 export type OnMessageReadyCallback = () => void;
 export type OnPMCancelCallback = () => void;
 export type OnMessageChoiceSelectCallback = (choiceId: number, choiceTypeId: number) => void;

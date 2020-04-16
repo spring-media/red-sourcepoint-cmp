@@ -49,4 +49,4 @@ jobs:
 
       - name: Stop chrome container
         if: always()
-        run: docker stop chrome
+        run: docker stop chrome || exit 0

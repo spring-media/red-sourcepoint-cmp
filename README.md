@@ -1,3 +1,7 @@
+# Red Sourcepoint CMP
+
+![npm (scoped)](https://img.shields.io/npm/v/@spring-media/red-sourcepoint-cmp)
+
 # Introduction
 
 This repository covers the implementation of CMP (Content Management Platform) for www.bild.de by using the Sourcepoint API.

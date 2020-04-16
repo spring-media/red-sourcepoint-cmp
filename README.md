@@ -1,6 +1,8 @@
 # Red Sourcepoint CMP
 
-![npm (scoped)](https://img.shields.io/npm/v/@spring-media/red-sourcepoint-cmp)
+<a href="https://www.npmjs.com/package/@spring-media/red-sourcepoint-cmp">
+    <img src="https://img.shields.io/npm/v/@spring-media/red-sourcepoint-cmp" alt="npm version" >
+</a>
 
 # Introduction
 

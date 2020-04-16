@@ -20,27 +20,21 @@ export type HasConsentOptions = {
   cache: boolean;
 };
 
-export type Configuration = {
+export type Config = {
   accountId: number;
-  wrapperAPIOrigin: string;
+  wrapperAPIOrigin?: string;
   propertyId: number;
-  mmsDomain: string;
+  mmsDomain?: string;
   events?: OptionalCallbacks;
 };
 
-export type SourcepointConfigurationObject = {
-  config: Configuration;
-  loadPrivacyManagerModal(managerId: string | number);
+export type SourcepointConfigObject = {
+  config: Config;
+  loadPrivacyManagerModal(managerId: number);
 };
 
 export declare global {
   interface Window {
-    _sp_: SourcepointConfigurationObject;
+    _sp_: SourcepointConfigObject;
   }
 }
-export type ConfigurationParameters = {
-  accountId: number;
-  propertyId: number;
-  mmsDomain: string;
-  events?: OptionalCallbacks;
-};

@@ -1,4 +1,5 @@
-import { getCustomVendorConsents, getCustomVendorConsentsBypassCache } from './get-custom-vendor-consents';
+import { getCustomVendorConsents } from './get-custom-vendor-consents';
+import { getCustomVendorConsentsBypassCache } from './get-custom-vendor-consents-bypass-cache';
 import {
   customConsentsAreEqual,
   customPurposeHasConsent,
@@ -9,6 +10,7 @@ import {
 import { CustomConsent } from './typings';
 
 jest.mock('./get-custom-vendor-consents');
+jest.mock('./get-custom-vendor-consents-bypass-cache');
 
 describe('has-custom-consent module', () => {
   afterEach(() => {

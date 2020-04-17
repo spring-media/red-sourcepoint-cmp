@@ -1,4 +1,5 @@
-import { getCustomVendorConsents, getCustomVendorConsentsBypassCache } from './get-custom-vendor-consents';
+import { getCustomVendorConsents } from './get-custom-vendor-consents';
+import { getCustomVendorConsentsBypassCache } from './get-custom-vendor-consents-bypass-cache';
 import { CustomConsent, HasConsentOptions } from './typings';
 
 export const customConsentsAreEqual = (...consents: CustomConsent[]): boolean => {

@@ -1,14 +1,13 @@
 import { OptionalCallbackKeys, OptionalCallbacks, UnregisterCallback } from './typings';
 
-export const getEventStore = (): OptionalCallbacks => {
+const getEventStore = (): OptionalCallbacks => {
   if (typeof window === 'undefined') {
     return {};
   }
 
-  const config = window?._sp_?.config;
+  const config = window._sp_?.config;
 
   if (!config) {
-    console.error('Sourcepoint config object not found. Callbacks will never be invoked');
     return {};
   }
 
@@ -19,7 +18,7 @@ export const getEventStore = (): OptionalCallbacks => {
   return config.events;
 };
 
-export const bindCallbacksToEvent = (
+const bindCallbacksToEvent = (
   name: OptionalCallbackKeys,
   eventStore: OptionalCallbacks,
   callbacks: Set<Function>,

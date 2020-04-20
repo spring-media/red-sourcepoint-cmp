@@ -32,16 +32,20 @@ export const getCustomVendorConsentsBypassCache = (): Promise<CustomVendorConsen
       <script src="${getClientLibraryUrl()}"></script>
       <script>
         __tcfapi('getCustomVendorConsents', null, function(consents) {
-          window.parent.postMessage(consents, '*');
+          window.parent.postMessage({ type: 'cmp', consents: consents }, '*');
         });
       </script>
     `;
 
     const onMessage = (event: MessageEvent): void => {
+      if (!event.data || event.data.type !== 'cmp') {
+        return;
+      }
+
       window.removeEventListener('message', onMessage);
       document.body.removeChild(iframe);
 
-      return resolve(event.data);
+      return resolve(event.data.consents);
     };
 
     window.addEventListener('message', onMessage, false);

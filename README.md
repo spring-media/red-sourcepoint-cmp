@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@spring-media/red-sourcepoint-cmp)](https://www.npmjs.com/package/@spring-media/red-sourcepoint-cmp)
 [![license](https://img.shields.io/npm/l/@spring-media/red-sourcepoint-cmp)](https://github.com/spring-media/red-sourcepoint-cmp/blob/master/LICENSE)
+[![storybook](https://img.shields.io/badge/Storybook-Live-informational?logo=storybook&style=flat)](https://spring-media.github.io/red-sourcepoint-cmp)
 
 # Introduction
 

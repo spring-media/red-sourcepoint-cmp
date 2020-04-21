@@ -1,6 +1,6 @@
 {
   "name": "@spring-media/red-sourcepoint-cmp",
-  "version": "0.22.0",
+  "version": "0.22.1",
   "description": "CMP (Content Management Platform) implementation for www.bild.de by using the Sourcepoint API",
   "scripts": {
     "test": "jest --config tests/jest.config.js",
@@ -16,6 +16,7 @@
     "storybook": "start-storybook -p 9001 -s playground/assets",
     "storybook:static": "serve .storybook-static",
     "storybook:build": "build-storybook --quiet -c .storybook -o .storybook-static && cp -R playground/assets/* .storybook-static",
+    "storybook:deploy": "npm run storybook:build && storybook-to-ghpages -e .storybook-static",
     "preimage-snapshots": "docker run -p 9222:3000 --name chrome --rm -d browserless/chrome:1.32.0-chrome-stable",
     "image-snapshots": "jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js",
     "postimage-snapshots": "docker stop chrome || exit 0",
@@ -48,6 +49,11 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "storybook-deployer": {
+    "gitUsername": "Spring Media",
+    "gitEmail": "developer@spring-media.de",
+    "commitMessage": "Deploy Storybook to GitHub Pages"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/preset-react": "7.9.4",
@@ -55,6 +61,7 @@
     "@storybook/addon-docs": "5.3.18",
     "@storybook/addon-knobs": "5.3.18",
     "@storybook/addon-viewport": "5.3.18",
+    "@storybook/storybook-deployer": "2.8.5",
     "@storybook/vue": "5.3.18",
     "@types/jest": "25.2.1",
     "@types/node": "13.13.1",

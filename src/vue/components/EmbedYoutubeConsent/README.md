@@ -19,7 +19,7 @@ This component handles the consent for Youtube embeds. It will render either the
 </template>
 
 <script>
-import { EmbedYoutubeConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedYoutubeConsent';
+import { EmbedYoutubeConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
   components: { EmbedYoutubeConsent },

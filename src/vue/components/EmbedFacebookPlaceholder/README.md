@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { EmbedFacebookPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedFacebookPlaceholder';
+import { EmbedFacebookPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
   components: { EmbedFacebookPlaceholder },
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedFacebookPlaceholder.css';
+@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components.css';
 </style>
 ```
 </details>

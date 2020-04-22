@@ -19,7 +19,7 @@ This component handles the consent for Instagram embeds. It will render either t
 </template>
 
 <script>
-import { EmbedInstagramConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedInstagramConsent';
+import { EmbedInstagramConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
   components: { EmbedInstagramConsent },

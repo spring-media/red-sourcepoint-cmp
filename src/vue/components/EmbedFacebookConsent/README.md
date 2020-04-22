@@ -19,7 +19,7 @@ This component handles the consent for Facebook embeds. It will render either th
 </template>
 
 <script>
-import { EmbedFacebookConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedFacebookConsent';
+import { EmbedFacebookConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
   components: { EmbedFacebookConsent },

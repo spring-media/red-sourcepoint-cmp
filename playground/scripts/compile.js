@@ -1,4 +1,4 @@
-const { rmdirSync, existsSync, writeFileSync } = require('fs');
+const { rmdirSync, existsSync, writeFileSync, copyFileSync } = require('fs');
 const { extname } = require('path');
 const rollup = require('rollup');
 
@@ -49,6 +49,13 @@ const compileTemplate = (opts) => ({
           };
         </script>
         <script src="${parameters.libraryURL}"></script>
+        <script>
+          window.__playground__ = {
+            parameters: ${JSON.stringify(parameters)},
+          }
+        </script>
+        <link href="../assets/fonts.css" rel="stylesheet">
+        <link href="components.css" rel="stylesheet">
         ${links}
     </head>
     <body>
@@ -68,7 +75,7 @@ const compileTemplate = (opts) => ({
 });
 
 const compile = async (parameters) => {
-  const buildDir = './playground/build';
+  const buildDir = './playground/public/build';
 
   existsSync(buildDir) && rmdirSync(buildDir, { recursive: true });
 
@@ -109,7 +116,8 @@ const compile = async (parameters) => {
     });
   }
 
-  writeFileSync('./playground/build/parameters.json', JSON.stringify(parameters));
+  writeFileSync('./playground/public/build/parameters.json', JSON.stringify(parameters));
+  copyFileSync('./dist/esm/vue/components.css', './playground/public/build/components.css');
 };
 
 module.exports = {

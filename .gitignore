@@ -5,7 +5,7 @@ dist
 
 node_modules
 
-playground/build
+playground/public/build
 
 .storybook-static
 

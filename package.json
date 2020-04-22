@@ -1,7 +1,7 @@
 {
   "name": "@spring-media/red-sourcepoint-cmp",
   "version": "0.23.0",
-  "description": "CMP (Content Management Platform) implementation for www.bild.de by using the Sourcepoint API",
+  "description": "CMP (Content Management Platform) implementation for www.bild.de using the Sourcepoint API",
   "scripts": {
     "test": "jest --config tests/jest.config.js",
     "test:cae:files": "jest tests/cae-files.test.js",
@@ -13,9 +13,8 @@
     "lint": "eslint --ext .js,.ts,.vue .",
     "playground:start": "node ./playground/scripts/serve.js",
     "playground:prepare": "node ./playground/scripts/prepare.js",
-    "storybook": "start-storybook -p 9001 -s playground/assets",
-    "storybook:static": "serve .storybook-static",
-    "storybook:build": "build-storybook --quiet -c .storybook -o .storybook-static && cp -R playground/assets/* .storybook-static",
+    "storybook": "start-storybook -p 9001 -s playground/public/assets",
+    "storybook:build": "build-storybook --quiet -c .storybook -o .storybook-static && cp -R playground/public/assets/* .storybook-static",
     "storybook:deploy": "npm run storybook:build && storybook-to-ghpages -e .storybook-static",
     "preimage-snapshots": "docker run -p 9222:3000 --name chrome --rm -d browserless/chrome:1.32.0-chrome-stable",
     "image-snapshots": "jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js",

@@ -12,7 +12,7 @@ writeFileSync(`.cae/red-cmp-${version}.min.js`, Terser.minify(js).code, 'utf8');
 
 buildHTMLSnippets({ version });
 
-const css = readFileSync('./dist/cjs/vue/components/EmbedPlaceholder/EmbedPlaceholder.css', 'utf8');
+const css = readFileSync('./dist/cjs/vue/components.css', 'utf8');
 writeFileSync(`.cae/red-cmp-embed-placeholder-${version}.min.css`, new CleanCSS().minify(css).styles);
 
 const config = {

@@ -19,7 +19,7 @@ This component handles the consent for Twitter embeds. It will render either the
 </template>
 
 <script>
-import { EmbedTwitterConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedTwitterConsent';
+import { EmbedTwitterConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
   components: { EmbedTwitterConsent },

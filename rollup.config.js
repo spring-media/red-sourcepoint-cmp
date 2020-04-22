@@ -2,63 +2,10 @@ import { rmdirSync } from 'fs';
 import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
 import postcss from 'rollup-plugin-postcss';
-import { readdirSync, lstatSync } from 'fs';
-import { resolve, parse, relative } from 'path';
 
 rmdirSync('./dist', { recursive: true });
 
 const typescriptPlugin = typescript();
-const vuePlugin = vue({ css: false });
-const postcssPlugin = postcss({ extract: true });
-
-const getVueComponents = () => {
-  const basePath = './src/vue/components';
-  const result = readdirSync(basePath);
-
-  return result
-    .map((file) => resolve(basePath, file))
-    .filter((file) => lstatSync(file).isDirectory())
-    .map((file) => parse(file))
-    .reduce((acc, { base }) => {
-      const components = readdirSync(`${basePath}/${base}`)
-        .filter((comp) => comp.match(/\.vue$/))
-        .map((comp) => {
-          const name = comp.replace(/\.vue$/, '');
-
-          return {
-            input: { [name]: `${basePath}/${base}/${comp}` },
-            output: [
-              { format: 'esm', dir: `./dist/esm/vue/components/${base}` },
-              { format: 'cjs', dir: `./dist/cjs/vue/components/${base}` },
-            ],
-            external: ['vue', 'vuex'],
-            plugins: [typescriptPlugin, vuePlugin, postcssPlugin],
-          };
-        });
-
-      acc.push({
-        input: { index: `${basePath}/${base}/index.ts` },
-        external: () => true,
-        output: [
-          {
-            format: 'esm',
-            dir: `./dist/esm/vue/components/${base}`,
-            paths: (id) => `./${relative(`${basePath}/${base}`, id).replace('.vue', '.js')}`,
-          },
-          {
-            format: 'cjs',
-            dir: `./dist/cjs/vue/components/${base}`,
-            paths: (id) => `./${relative(`${basePath}/${base}`, id).replace('.vue', '.js')}`,
-          },
-        ],
-        plugins: [typescriptPlugin, vuePlugin, postcss({ extract: true })],
-      });
-
-      acc.push(...components);
-
-      return acc;
-    }, []);
-};
 
 export default [
   {
@@ -91,5 +38,13 @@ export default [
     ],
     plugins: [typescriptPlugin],
   },
-  ...getVueComponents(),
+  {
+    input: './src/vue/components/index.ts',
+    output: [
+      { format: 'esm', file: `./dist/esm/vue/components.js` },
+      { format: 'cjs', file: `./dist/cjs/vue/components.js` },
+    ],
+    external: ['vue', 'vuex'],
+    plugins: [typescriptPlugin, vue({ css: false }), postcss({ extract: true })],
+  },
 ];

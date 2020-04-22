@@ -35,7 +35,7 @@ You can use it to build consent-components if the provided consent components (e
 </template>
 
 <script>
-import { EmbedConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedConsent';
+import { EmbedConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
   components: { EmbedConsent },

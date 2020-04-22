@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { EmbedTwitterPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedTwitterPlaceholder';
+import { EmbedTwitterPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
   components: { EmbedTwitterPlaceholder },
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/EmbedTwitterPlaceholder.css';
+@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components.css';
 </style>
 ```
 </details>

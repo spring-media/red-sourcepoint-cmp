@@ -19,7 +19,7 @@ The ConsentedData component is a renderless component that provides access to th
 </template>
 
 <script>
-import { ConsentedData } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/ConsentedData';
+import { ConsentedData } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
   components: { ConsentedData },

@@ -32,7 +32,7 @@ In order to render the #onConsent slot, either the prop vendorId or one of purpo
 </template>
 
 <script>
-import { ConsentManagement } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/ConsentManagement';
+import { ConsentManagement } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
   components: { ConsentManagement },

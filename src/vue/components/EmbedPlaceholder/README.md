@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder';
+import { EmbedPlaceholder } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
   components: { EmbedPlaceholder },
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components/embed-placeholder.css';
+@import '~@spring-media/red-sourcepoint-cmp/dist/esm/vue/components.css';
 </style>
 ```
 </details>

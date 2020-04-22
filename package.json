@@ -1,7 +1,7 @@
 {
   "name": "@spring-media/red-sourcepoint-cmp",
-  "version": "0.23.0",
-  "description": "CMP (Content Management Platform) implementation for www.bild.de using the Sourcepoint API",
+  "version": "0.23.1",
+  "description": "CMP (Content Management Platform) implementation for www.bild.de by using the Sourcepoint API",
   "scripts": {
     "test": "jest --config tests/jest.config.js",
     "test:cae:files": "jest tests/cae-files.test.js",

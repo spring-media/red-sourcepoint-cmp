@@ -31,7 +31,7 @@ export const getCustomVendorConsentsBypassCache = (): Promise<CustomVendorConsen
       </script>
       <script src="${getClientLibraryUrl()}"></script>
       <script>
-        __tcfapi('getCustomVendorConsents', null, function(consents) {
+        __tcfapi('getCustomVendorConsents', 2, function(consents) {
           window.parent.postMessage({ type: 'cmp', consents: consents }, '*');
         });
       </script>

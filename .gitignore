@@ -5,7 +5,7 @@ dist
 
 node_modules
 
-playground/**/bundles
+playground/build
 
 .storybook-static
 

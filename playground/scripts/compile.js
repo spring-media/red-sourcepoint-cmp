@@ -58,7 +58,7 @@ const compileTemplate = (opts) => ({
         <link href="components.css" rel="stylesheet">
         ${links}
     </head>
-    <body>
+    <body style="margin: 0; padding: 0;">
        ${template()}
        ${scripts}
     </body>

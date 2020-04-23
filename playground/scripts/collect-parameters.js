@@ -1,4 +1,7 @@
 const prompts = require('prompts');
+const chalk = require('chalk');
+const { existsSync } = require('fs');
+const { parse } = require('url');
 
 const collectParameters = async () => {
   const onSubmit = ({ name }, answer) => {
@@ -6,12 +9,31 @@ const collectParameters = async () => {
       return;
     }
 
-    const { hostname } = new URL(answer);
+    const { hostname, protocol } = parse(answer);
 
     if (hostname !== 'localhost') {
-      console.log(`Make sure your hosts file contains an entry for ${answer}`);
+      console.log(`
+${chalk.yellow('Make sure your hosts file contains an entry for')} ${protocol}//${hostname}
+`);
     }
   };
+
+  const defaults = {
+    accountId: 75,
+    propertyId: null,
+    mmsDomain: 'https://message75.sp-prod.net',
+    wrapperAPIOrigin: 'https://wrapper-api.sp-prod.net/tcfv2',
+    libraryURL: 'https://gdpr-tcfv2.sp-prod.net/wrapperMessagingWithoutDetection.js',
+    privacyManagerId: null,
+    host: 'http://localhost:5000',
+  };
+
+  let parameters = {};
+  if (existsSync('./playground/public/build/parameters.json')) {
+    parameters = require('../public/build/parameters.json');
+  }
+
+  const initials = { ...defaults, ...parameters };
 
   return prompts(
     [
@@ -19,49 +41,52 @@ const collectParameters = async () => {
         type: 'number',
         name: 'accountId',
         message: 'Account ID',
-        initial: 75,
+        initial: initials.accountId,
       },
       {
         type: 'number',
         name: 'propertyId',
         message: 'Property ID',
-        initial: 6867,
+        initial: initials.propertyId,
       },
       {
         type: 'text',
         name: 'mmsDomain',
         message: 'MMS Domain',
-        initial: 'https://message75.sp-prod.net',
+        initial: initials.mmsDomain,
       },
       {
         type: 'text',
         name: 'wrapperAPIOrigin',
         message: 'Wrapper API Origin',
-        initial: 'https://wrapper-api.sp-prod.net/tcfv2',
-      },
-      {
-        type: 'number',
-        name: 'privacyManagerId',
-        message: 'Privacy Manager ID',
-        initial: 114406,
+        initial: initials.wrapperAPIOrigin,
       },
       {
         type: 'text',
         name: 'libraryURL',
         message: 'Library URL',
-        initial: 'https://gdpr-tcfv2.sp-prod.net/wrapperMessagingWithoutDetection.js',
+        initial: initials.libraryURL,
+      },
+      {
+        type: 'number',
+        name: 'privacyManagerId',
+        message: 'Privacy Manager ID',
+        initial: initials.privacyManagerId,
       },
       {
         type: 'text',
         name: 'host',
-        message: '(Local)Host',
-        initial: 'http://localhost:5000',
-      },
-      {
-        type: 'confirm',
-        name: 'serve',
-        message: 'Start Playground',
-        initial: true,
+        message: 'Host',
+        initial: initials.host,
+        validate: (value) => {
+          const { port } = parse(value);
+
+          if (!port) {
+            return `${value} must contain a port`;
+          }
+
+          return true;
+        },
       },
     ],
     {

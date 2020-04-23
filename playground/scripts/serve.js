@@ -1,16 +1,30 @@
+const chalk = require('chalk');
 const { existsSync } = require('fs');
 const handler = require('serve-handler');
 const http = require('http');
+const { prepare } = require('./prepare');
 
-const serve = () => {
+const serve = async () => {
   const publicDir = './playground/public';
 
-  if (!existsSync(publicDir)) {
-    console.error('Build directory not found. Please run "npm run playground:prepare".');
-    return;
+  if (!existsSync(publicDir) || !existsSync(`${publicDir}/build/parameters.json`)) {
+    await prepare();
   }
 
   const parameters = require('../public/build/parameters.json');
+
+  const printParameters = () =>
+    [...Object.entries(parameters)].map(([key, value]) => `${chalk.green(key)}: ${value}`).join('\n');
+
+  console.log(`
+${chalk.grey('----------------------------')}
+Using following parameters for playground:
+
+${printParameters()}
+
+Run ${chalk.yellow('npm run playground:prepare')} to change the parameters. 
+${chalk.grey('----------------------------')}
+  `);
 
   const server = http.createServer((request, response) => {
     return handler(request, response, { public: publicDir });
@@ -19,9 +33,10 @@ const serve = () => {
   const { port = 5000 } = new URL(parameters.host);
 
   server.listen(port, () => {
-    console.log(
-      `Running at:\n${parameters.host}/build/esm (esm bundle)\n${parameters.host}/build/browser (browser bundle)`,
-    );
+    console.log(`Running at:
+${parameters.host}/build/esm ${chalk.grey('(esm bundle)')}
+${parameters.host}/build/browser ${chalk.grey('(browser bundle)')}
+`);
   });
 };
 
@@ -30,5 +45,5 @@ module.exports = {
 };
 
 if (require.main === module) {
-  serve();
+  serve().catch((error) => console.error(error));
 }

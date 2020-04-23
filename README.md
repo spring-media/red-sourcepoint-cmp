@@ -47,3 +47,21 @@ A collection of utils for handling (social) embeds.
 A collection of Vue components for the integration of the API's above.
 
 [Documentation](src/vue#vue-integration-module)
+
+## Playground
+
+The purpose of the playground is to test the feature set of our library (manually and automated) within a browser.
+It uses the compiled modules from the dist folder to provide two small applications, one for the esm bundle and one for the browser bundle.
+
+Start the playground by running the following command:
+```shell
+npm run playground:start
+```
+
+Some questions are asking the first time, with some predefined sensible default settings.
+
+<p>
+  <img src="./docs/playground-prepare-dialogue.png" alt="Playground Prepare Dialogue" width="678" />
+</p>
+
+> Use a modern browser for testing because the code is not transformed to be compatible with older browsers that do not fully support ES6.

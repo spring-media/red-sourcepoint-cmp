@@ -17,6 +17,7 @@ import {
 import { sourcepoint } from '../../dist/esm/vue/vuex/sourcepoint';
 import { addEventListener } from '../../dist/esm/tcf-v2';
 import { getCustomVendorConsentsBypassCache, loadPrivacyManagerModal } from '../../dist/esm/sourcepoint';
+import '../../dist/esm/vue/components.css';
 
 onPrivacyManagerAction((...args) => console.log('onPrivacyManagerAction', ...args));
 onMessageReady((...args) => console.log('onMessageReady', ...args));

@@ -1,6 +1,8 @@
-const { rmdirSync, existsSync, writeFileSync, copyFileSync } = require('fs');
-const { extname } = require('path');
+const { rmdirSync, existsSync, writeFileSync } = require('fs');
+const { extname, resolve } = require('path');
 const rollup = require('rollup');
+const postcss = require('rollup-plugin-postcss');
+const { version } = require('../../package.json');
 
 const esmTemplate = () => {
   return `
@@ -19,7 +21,7 @@ const compileTemplate = (opts) => ({
   generateBundle(output, bundle) {
     const { fileName, parameters, template } = opts;
 
-    const files = Object.values(bundle).filter((file) => file.isEntry || file.type === 'asset');
+    const files = Object.values(bundle).filter((file) => file.isEntry || file.type === 'asset' || file.isAsset);
     const links = files
       .filter(({ fileName }) => extname(fileName).substring(1) === 'css')
       .map(({ fileName }) => `<link href="${fileName}" rel="stylesheet">`)
@@ -55,7 +57,6 @@ const compileTemplate = (opts) => ({
           }
         </script>
         <link href="../assets/fonts.css" rel="stylesheet">
-        <link href="components.css" rel="stylesheet">
         ${links}
     </head>
     <body style="margin: 0; padding: 0;">
@@ -95,14 +96,29 @@ const compile = async (parameters) => {
           vuex: 'Vuex',
         },
       },
-      plugins: [compileTemplate({ parameters, fileName: 'esm.html', template: esmTemplate })],
+      plugins: [
+        postcss({ extract: true }),
+        compileTemplate({ parameters, fileName: 'esm.html', template: esmTemplate }),
+      ],
     },
     {
       input: './playground/apps/browser-bundle.js',
       output: {
         format: 'es',
       },
-      plugins: [compileTemplate({ parameters, fileName: 'browser.html', template: browserTemplate })],
+      plugins: [
+        postcss({ extract: true }),
+        compileTemplate({ parameters, fileName: 'browser.html', template: browserTemplate }),
+        {
+          resolveId(source) {
+            if (source === 'cmp-embed-placeholder.css') {
+              return `.cae/red-cmp-embed-placeholder-${version}.min.css`;
+            }
+
+            return null;
+          },
+        },
+      ],
     },
   ];
 
@@ -117,7 +133,6 @@ const compile = async (parameters) => {
   }
 
   writeFileSync('./playground/public/build/parameters.json', JSON.stringify(parameters));
-  copyFileSync('./dist/esm/vue/components.css', './playground/public/build/components.css');
 };
 
 module.exports = {

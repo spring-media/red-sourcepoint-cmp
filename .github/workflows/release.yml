@@ -53,11 +53,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Publish to NPM
-        run: npm publish --access public
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Upload to Akamai
         uses: ./.github/actions/akamai_uploader
         env:

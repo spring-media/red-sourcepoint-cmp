@@ -16,7 +16,7 @@ import {
 } from '../../dist/esm/vue/components';
 import { sourcepoint } from '../../dist/esm/vue/vuex/sourcepoint';
 import { addEventListener } from '../../dist/esm/tcf-v2';
-import { getCustomVendorConsentsBypassCache, loadPrivacyManagerModal } from '../../dist/esm/sourcepoint';
+import { getCustomVendorConsents, loadPrivacyManagerModal } from '../../dist/esm/sourcepoint';
 import '../../dist/esm/vue/components.css';
 
 onPrivacyManagerAction((...args) => console.log('onPrivacyManagerAction', ...args));
@@ -39,7 +39,7 @@ const store = new Vuex.Store({
 });
 
 const getConsents = async () => {
-  const { consentedPurposes = [], consentedVendors = [] } = await getCustomVendorConsentsBypassCache();
+  const { consentedPurposes = [], consentedVendors = [] } = await getCustomVendorConsents();
 
   store.commit('sourcepoint/setCustomVendorConsents', consentedVendors);
   store.commit('sourcepoint/setCustomPurposeConsents', consentedPurposes);

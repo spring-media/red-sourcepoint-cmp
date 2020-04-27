@@ -18,6 +18,7 @@ import { sourcepoint } from '../../dist/esm/vue/vuex/sourcepoint';
 import { addEventListener } from '../../dist/esm/tcf-v2';
 import { getCustomVendorConsents, loadPrivacyManagerModal } from '../../dist/esm/sourcepoint';
 import '../../dist/esm/vue/components.css';
+import './common.css';
 
 onPrivacyManagerAction((...args) => console.log('onPrivacyManagerAction', ...args));
 onMessageReady((...args) => console.log('onMessageReady', ...args));
@@ -77,18 +78,18 @@ const PlaygroundApp = Vue.extend({
   }),
   template: `
     <div>
-        <div style="text-align: center; position: sticky; top: 0; z-index: 1; font-family: Gotham XNarrow; font-style: normal; font-weight: bold; font-size: 15px; line-height: 18px; letter-spacing: 0.03em; text-transform: uppercase; color: #fff;"><button class="embed-placeholder__button" style="border-radius: 0;" @click="openPrivacyManager">Open Privacy Manager</button></div>
-        <ul style="display: flex; flex-direction: column; align-items: center; list-style-type: none;">
-            <li style="margin-bottom: 20px; width: 100%; max-width: 600px;">
+        <div class="privacy-manager__container"><button class="embed-placeholder__button" style="border-radius: 0;" @click="openPrivacyManager">Open Privacy Manager</button></div>
+        <ul class="embed__container">
+            <li class="embed__item">
                 <embed-facebook-consent :privacyManagerId="privacyManagerId" :content="facebookContent"></embed-facebook-consent>
             </li>
-            <li style="margin-bottom: 20px; width: 100%; max-width: 600px;">
+            <li class="embed__item">
                 <embed-instagram-consent :privacyManagerId="privacyManagerId" :content="instagramContent"></embed-instagram-consent>
             </li>
-            <li style="margin-bottom: 20px; width: 100%; max-width: 600px;">
+            <li class="embed__item">
                 <embed-twitter-consent :privacyManagerId="privacyManagerId" :content="twitterContent"></embed-twitter-consent>
             </li>
-            <li style="margin-bottom: 20px; width: 100%; max-width: 600px;">
+            <li class="embed__item">
                 <embed-youtube-consent :privacyManagerId="privacyManagerId" :content="youtubeContent"></embed-youtube-consent>
             </li>
         </ul>

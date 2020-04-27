@@ -1,4 +1,4 @@
-const { rmdirSync, existsSync, writeFileSync } = require('fs');
+const { rmdirSync, existsSync, writeFileSync, readFileSync } = require('fs');
 const { extname, resolve } = require('path');
 const rollup = require('rollup');
 const postcss = require('rollup-plugin-postcss');
@@ -13,7 +13,44 @@ const esmTemplate = () => {
 };
 
 const browserTemplate = () => {
-  return '';
+  const caeConfig = require(`../../.cae/red-cmp-config-${version}.json`);
+
+  const facebookPlaceholder = readFileSync(`.cae/${caeConfig.embedPlaceholderFacebookHtml}`, 'utf8');
+  const twitterPlaceholder = readFileSync(`.cae/${caeConfig.embedPlaceholderTwitterHtml}`, 'utf8');
+  const youtubePlaceholder = readFileSync(`.cae/${caeConfig.embedPlaceholderYoutubeHtml}`, 'utf8');
+  const instagramPlaceholder = readFileSync(`.cae/${caeConfig.embedPlaceholderInstagramHtml}`, 'utf8');
+
+  return `
+    <div>
+        <div class="privacy-manager__container"><button class="embed-placeholder__button" style="border-radius: 0;" @click="openPrivacyManager">Open Privacy Manager</button></div>
+        <ul class="embed__container">
+            <li class="embed__item" data-vendor-name="facebook">
+                <div>${facebookPlaceholder}</div>
+                <script type="embed/content">
+                    facebook content
+                </script>
+            </li>
+            <li class="embed__item" data-vendor-name="instagram">
+                <div>${instagramPlaceholder}</div>
+                <script type="embed/content">
+                    instagram content
+                </script>
+            </li>
+            <li class="embed__item" data-vendor-name="twitter">
+                <div>${twitterPlaceholder}</div>
+                <script type="embed/content">
+                    twitter content
+                </script>
+            </li>
+            <li class="embed__item" data-vendor-name="youtube">
+                <div>${youtubePlaceholder}</div>
+                <script type="embed/content">
+                    youtube content
+                </script>
+            </li>
+        </ul>
+    </div>
+  `;
 };
 
 const compileTemplate = (opts) => ({

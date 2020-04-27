@@ -2,7 +2,9 @@ const { rmdirSync, existsSync, writeFileSync, readFileSync } = require('fs');
 const { extname, resolve } = require('path');
 const rollup = require('rollup');
 const postcss = require('rollup-plugin-postcss');
+const commonjs = require('@rollup/plugin-commonjs');
 const { version } = require('../../package.json');
+const { facebook, youtube, twitter, instagram } = require('./embed-contents');
 
 const esmTemplate = () => {
   return `
@@ -26,26 +28,26 @@ const browserTemplate = () => {
         <ul class="embed__container">
             <li class="embed__item" data-vendor-name="facebook">
                 <div>${facebookPlaceholder}</div>
-                <script type="embed/content">
-                    facebook content
+                <script type="text/embed-content">
+                    ${facebook}
                 </script>
             </li>
             <li class="embed__item" data-vendor-name="instagram">
                 <div>${instagramPlaceholder}</div>
-                <script type="embed/content">
-                    instagram content
+                <script type="text/embed-content">
+                    ${instagram}
                 </script>
             </li>
             <li class="embed__item" data-vendor-name="twitter">
                 <div>${twitterPlaceholder}</div>
-                <script type="embed/content">
-                    twitter content
+                <script type="text/embed-content">
+                    ${twitter}
                 </script>
             </li>
             <li class="embed__item" data-vendor-name="youtube">
                 <div>${youtubePlaceholder}</div>
-                <script type="embed/content">
-                    youtube content
+                <script type="text/embed-content">
+                    ${youtube}
                 </script>
             </li>
         </ul>
@@ -134,6 +136,7 @@ const compile = async (parameters) => {
         },
       },
       plugins: [
+        commonjs(),
         postcss({ extract: true }),
         compileTemplate({ parameters, fileName: 'esm.html', template: esmTemplate }),
       ],

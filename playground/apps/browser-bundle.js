@@ -25,7 +25,7 @@ import './common.css';
         const container = element.querySelector(':scope > div:first-child:not(.processed)');
         if (container) {
           element.dataset.embedPlaceholder = container.innerHTML;
-          container.innerHTML = element.querySelector(':scope > script[type="embed/content"]').innerHTML;
+          container.innerHTML = element.querySelector(':scope > script[type="text/embed-content"]').innerHTML;
           container.classList.add('processed');
         }
       } else {

@@ -16,10 +16,6 @@ export type CustomVendorConsentsResult = {
   consentedVendors: CustomVendor[];
 };
 
-export type HasConsentOptions = {
-  cache: boolean;
-};
-
 export type Config = {
   accountId: number;
   wrapperAPIOrigin?: string;

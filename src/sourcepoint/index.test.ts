@@ -15,7 +15,6 @@ describe('sourcepoint index', () => {
       'loadPrivacyManagerModal',
       'createConfig',
       'getCustomVendorConsents',
-      'getCustomVendorConsentsBypassCache',
     ]);
   });
 });

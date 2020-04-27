@@ -33,6 +33,7 @@ const prepare = [
     '@semantic-release/git',
     {
       assets: ['package.json'],
+      message: 'chore(release): bump version ${nextRelease.version}',
     },
   ],
 ];

@@ -4,6 +4,16 @@
 [![license](https://img.shields.io/npm/l/@spring-media/red-sourcepoint-cmp)](https://github.com/spring-media/red-sourcepoint-cmp/blob/master/LICENSE)
 [![storybook](https://img.shields.io/badge/Storybook-Vue-informational?logo=storybook&style=flat)](https://spring-media.github.io/red-sourcepoint-cmp)
 
+* [Introduction](#introduction)
+* [Installation](#installation)
+* [Modules](#modules)
+  * [Vendor Mapping](#static-vendor-mapping-module)
+  * [TCF V2](#tcf-v2-api-module)
+  * [Sourcepoint](#sourcepoint-module)
+  * [Embed Utils](#embed-utils-module)
+  * [Vue](#vue-module)
+* [Playground](#playground)
+
 # Introduction
 
 This repository covers the implementation of CMP (Content Management Platform) for www.bild.de by using the Sourcepoint API.

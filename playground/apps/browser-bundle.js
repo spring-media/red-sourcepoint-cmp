@@ -12,11 +12,18 @@ import './common.css';
 
   lib.addEventListener((...args) => console.log('addEventListener', ...args));
 
+  const processors = {
+    instagram: lib.instagram.processEmbedContent,
+    twitter: lib.twitter.processEmbedContent,
+    facebook: lib.iframely.processEmbedContent,
+  };
+
   const checkConsents = async () => {
     const { consentedPurposes = [], consentedVendors = [] } = await lib.getCustomVendorConsents();
 
     document.querySelectorAll('[data-vendor-name]').forEach((element) => {
-      const vendorId = lib.getCustomVendor(element.dataset.vendorName);
+      const vendorName = element.dataset.vendorName;
+      const vendorId = lib.getCustomVendor(vendorName);
 
       if (
         lib.hasCustomConsentById(vendorId, consentedVendors) ||
@@ -25,8 +32,15 @@ import './common.css';
         const container = element.querySelector(':scope > div:first-child:not(.processed)');
         if (container) {
           element.dataset.embedPlaceholder = container.innerHTML;
-          container.innerHTML = element.querySelector(':scope > script[type="text/embed-content"]').innerHTML;
+
+          const content = element.querySelector(':scope > script[type="text/embed-content"]').innerHTML;
+
+          container.innerHTML = content;
           container.classList.add('processed');
+
+          if (processors[vendorName]) {
+            processors[vendorName](content);
+          }
         }
       } else {
         if (element.dataset.embedPlaceholder) {

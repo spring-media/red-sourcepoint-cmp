@@ -14,7 +14,7 @@ getCustomVendorConsents().then(result => console.log(result)).catch(error => con
 ```    
 </details>
 
-### `customVendorHasConsent(vendor: Consent, options: HasConsentOptions): Promise<boolean>;`
+### `customVendorHasConsent(vendor: Consent): Promise<boolean>;`
 
 Checks whether the user has consented to given vendor.
 
@@ -30,13 +30,7 @@ customVendorHasConsent(vendor).then(hasConsent => console.log(hasConsent)).catch
 ```    
 </details>
 
-#### Options parameters
-
-| Name    | Type    | Description                                              | default |
-| ------- | ------- | -------------------------------------------------------- | ------- |
-| cache   | boolean | Set to false to fetch the newest values from Sourcepoint | true    |
-
-### `customPurposeHasConsent(purpose: CustomPurpose, options: HasConsentOptions): Promise<boolean>;`
+### `customPurposeHasConsent(purpose: CustomPurpose): Promise<boolean>;`
 
 Checks whether the user has consented to given purpose.
 
@@ -51,12 +45,6 @@ const purpose = { _id: '123456' };
 customPurposeHasConsent(purpose).then(hasConsent => console.log(hasConsent)).catch(error => console.error(error));
 ```
 </details>
-
-#### Options parameters
-
-| Name    | Type    | Description                                              | default |
-| ------- | ------- | -------------------------------------------------------- | ------- |
-| cache   | boolean | Set to false to fetch the newest values from Sourcepoint | true    |
 
 ### `loadPrivacyManagerModal(managerId: string): void;`
 

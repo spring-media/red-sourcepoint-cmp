@@ -44,9 +44,6 @@ jobs:
       - name: Test CAE browser bundle
         run: npm run test:cae:bundle
 
-      - name: Test CAE files
-        run: npm run test:cae:files
-
       - name: Release
         if: success()
         run: npx semantic-release
@@ -54,7 +51,11 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Test CAE files
+        run: npm run test:cae:files
+
       - name: Upload to Akamai
+        if: success()
         uses: ./.github/actions/akamai_uploader
         env:
           SSH_KEY_AKAMAI: ${{ secrets.AKAMAI_SSH_KEY }}

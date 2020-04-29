@@ -1,8 +1,7 @@
-name: Publish package to npm
+name: Release
 
 on:
-  release:
-    types: [created]
+  push:
     branches:
       - master
 
@@ -48,10 +47,12 @@ jobs:
       - name: Test CAE files
         run: npm run test:cae:files
 
-      - name: Publish to NPM
-        run: npm publish --access public
+      - name: Release
+        if: success()
+        run: npx semantic-release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to Akamai
         uses: ./.github/actions/akamai_uploader
@@ -60,4 +61,3 @@ jobs:
           BUILD_OUTPUT_DIR: ".cae"
           DOMAIN_NAME_PREFIX: ${{ secrets.AKAMAI_DOMAIN_NAME_PREFIX }}
           TARGET_PATH: "/"
-

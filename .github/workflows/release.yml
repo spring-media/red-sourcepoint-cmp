@@ -48,6 +48,7 @@ jobs:
         run: npm run test:cae:files
 
       - name: Release
+        if: success()
         run: npx semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

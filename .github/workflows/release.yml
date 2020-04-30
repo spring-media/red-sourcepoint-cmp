@@ -45,7 +45,10 @@ jobs:
         run: npm run test:cae:bundle
 
       - name: Remove .npmrc
-        run: rm -f .npmrc
+        run: rm ./.npmrc
+
+      - name: Debug working directory
+        run: ls .
 
       - name: Release
         if: success()

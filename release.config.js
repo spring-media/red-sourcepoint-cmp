@@ -28,6 +28,7 @@ const analyzeCommits = [
 const generateNotes = ['@semantic-release/release-notes-generator'];
 
 const prepare = [
+  ['@semantic-release/changelog'],
   ['@semantic-release/npm'],
   [
     '@semantic-release/git',

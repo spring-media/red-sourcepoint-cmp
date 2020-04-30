@@ -44,6 +44,9 @@ jobs:
       - name: Test CAE browser bundle
         run: npm run test:cae:bundle
 
+      - name: Remove .npmrc
+        run: rm -f .npmrc
+
       - name: Release
         if: success()
         run: npx semantic-release

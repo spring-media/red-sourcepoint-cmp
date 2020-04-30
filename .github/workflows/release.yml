@@ -41,9 +41,6 @@ jobs:
         env:
           CI: true
 
-      - name: Test CAE browser bundle
-        run: npm run test:cae:bundle
-
       - name: Release
         if: success()
         run: npx semantic-release
@@ -52,8 +49,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Test CAE files
-        run: npm run test:cae:files
+      - name: Build CAE package
+        run: npm run build:cae:package
+
+      - name: Test CAE package
+        run: npm run test:cae:package
 
       - name: Upload to Akamai
         if: success()

@@ -10,3 +10,5 @@ playground/public/build
 .storybook-static
 
 .image-snapshots/__diff_output__
+
+playground/specs/e2e/output

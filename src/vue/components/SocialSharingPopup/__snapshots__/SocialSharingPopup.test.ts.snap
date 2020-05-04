@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SocialSharingPopup should initially render visible without any errors 1`] = `
+<div
+  class="social-sharing-popup__container"
+>
+  <div
+    class="social-sharing-popup__headline"
+  >
+    
+        Deine Datensicherheit bei der Nutzung der Teilen-Funktion
+      
+  </div>
+   
+  <div
+    class="social-sharing-popup__description"
+  >
+    
+        Um diesen Artikel oder andere Inhalte über Soziale Netzwerke zu teilen, brauchen wir deine Zustimmung für
+       
+    <a
+      href="#"
+      rel="noopener"
+      target="_blank"
+    >
+      
+        diesen Zweck der Datenverarbeitung
+      
+    </a>
+  </div>
+   
+  <div
+    class="social-sharing-popup__button-container"
+  >
+    <button
+      class="social-sharing-popup__button social-sharing-popup__button--close"
+    >
+      
+          Schließen
+        
+    </button>
+     
+    <button
+      class="social-sharing-popup__button social-sharing-popup__button--accept"
+    >
+      
+          Akzeptieren
+        
+    </button>
+  </div>
+</div>
+`;

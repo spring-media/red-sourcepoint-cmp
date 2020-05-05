@@ -4,7 +4,7 @@ const verifyConditions = [
   [
     '@semantic-release/git',
     {
-      assets: ['package.json'],
+      assets: ['package.json', 'CHANGELOG.md'],
     },
   ],
 ];
@@ -28,11 +28,12 @@ const analyzeCommits = [
 const generateNotes = ['@semantic-release/release-notes-generator'];
 
 const prepare = [
+  ['@semantic-release/changelog'],
   ['@semantic-release/npm'],
   [
     '@semantic-release/git',
     {
-      assets: ['package.json'],
+      assets: ['package.json', 'CHANGELOG.md'],
       message: 'chore(release): bump version ${nextRelease.version}',
     },
   ],

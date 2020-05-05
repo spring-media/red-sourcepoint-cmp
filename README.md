@@ -77,6 +77,14 @@ Some questions are asking the first time, with some predefined sensible default 
 
 > Use a modern browser for testing because the code is not transformed to be compatible with older browsers that do not fully support ES6.
 
+### Running automatic end-2-end tests
+
+In addition to manual testing, there is also the option of automatically testing the playground through end-2-end tests.
+
+In order to do so, make sure the playground application is running (`npm run playground:start`) and then (in another terminal) run `npm run playground:test:e2e`.
+
+> The tests use some values from the parameters.json file, which is automatically created in the build directory after the playground has been prepared.
+
 ## Releasing and Publishing
 
 This repository uses [semantic release](https://semantic-release.gitbook.io/semantic-release/) 

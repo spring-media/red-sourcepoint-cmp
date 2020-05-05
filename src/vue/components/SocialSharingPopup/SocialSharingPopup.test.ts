@@ -39,7 +39,9 @@ describe('SocialSharingPopup', () => {
     });
 
     const button = wrapper.find('.social-sharing-popup__button--close');
+
     button.trigger('click');
+
     await Vue.nextTick();
     expect(wrapper.element).toMatchSnapshot();
   });

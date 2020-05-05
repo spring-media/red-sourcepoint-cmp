@@ -1,3 +1,5 @@
 dist
 
 playground/public/build
+
+playground/specs/e2e/typings/steps*

@@ -1,6 +1,6 @@
 <template>
   <privacy-manager v-slot="{ loadPrivacyManagerModal }">
-    <div v-show="isVisible" class="social-sharing-popup__container">
+    <div v-if="isVisible" class="social-sharing-popup__container">
       <div class="social-sharing-popup__headline">
         <slot name="headline">
           Deine Datensicherheit bei der Nutzung der Teilen-Funktion
@@ -9,16 +9,16 @@
       <div class="social-sharing-popup__description">
         <slot name="description">
           Um diesen Artikel oder andere Inhalte über Soziale Netzwerke zu teilen, brauchen wir deine Zustimmung für
+          <a href="#" rel="noopener" target="_blank" @click.prevent="loadPrivacyManagerModal(privacyManagerId)">
+            diesen Zweck der Datenverarbeitung
+          </a>
         </slot>
-        <a href="#" rel="noopener" target="_blank" @click.prevent="loadPrivacyManagerModal(privacyManagerId)">
-          diesen Zweck der Datenverarbeitung
-        </a>
       </div>
-      <slot name="button">
+      <slot name="buttons">
         <div class="social-sharing-popup__button-container">
           <button
             class="social-sharing-popup__button social-sharing-popup__button--close"
-            @click.prevent="toggleVisibility()"
+            @click.prevent="setVisibility(false)"
           >
             Schließen
           </button>
@@ -43,7 +43,7 @@ type Data = {
 };
 
 type Methods = {
-  toggleVisibility(): void;
+  setVisibility(visible: boolean): void;
 };
 
 type Props = {
@@ -70,8 +70,8 @@ export default Vue.extend<Data, Methods, {}, Props>({
     },
   },
   methods: {
-    toggleVisibility(): void {
-      this.isVisible = !this.isVisible;
+    setVisibility(visible: boolean): void {
+      this.isVisible = visible;
     },
   },
 });

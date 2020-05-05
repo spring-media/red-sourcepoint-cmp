@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SocialSharingPopup button click should hide the popup 1`] = `<!---->`;
+
 exports[`SocialSharingPopup should initially render visible without any errors 1`] = `
 <div
   class="social-sharing-popup__container"
@@ -17,15 +19,15 @@ exports[`SocialSharingPopup should initially render visible without any errors 1
   >
     
         Um diesen Artikel oder andere Inhalte über Soziale Netzwerke zu teilen, brauchen wir deine Zustimmung für
-       
+        
     <a
       href="#"
       rel="noopener"
       target="_blank"
     >
       
-        diesen Zweck der Datenverarbeitung
-      
+          diesen Zweck der Datenverarbeitung
+        
     </a>
   </div>
    

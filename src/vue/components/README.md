@@ -22,4 +22,4 @@
 * [PrivacyManager](PrivacyManager#privacymanager-component)
 * [VendorMapping](VendorMapping#vendormapping-component)
 * Social Sharing Components
-   * [Popup](SocialSharingPopup)
+   * [Popup](SocialSharingPopup#component-for-social-sharing-popup)

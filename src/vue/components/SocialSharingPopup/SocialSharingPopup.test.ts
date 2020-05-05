@@ -30,19 +30,18 @@ describe('SocialSharingPopup', () => {
       propsData: { privacyManagerId: 12345, initialVisibility: false },
     });
 
-    expect(wrapper.isVisible()).toBe(false);
+    expect(wrapper.find('.social-sharing-popup__container').exists()).toBeFalsy();
   });
 
-  it('should call the toggleVisibility method on close button', function () {
+  it('button click should hide the popup', async () => {
     const wrapper = mount(SocialSharingPopup, {
       propsData: { privacyManagerId: 12345, initialVisibility: true },
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (wrapper.vm as any).toggleVisibility = jest.fn();
-    wrapper.find('.social-sharing-popup__button--close').trigger('click');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect((wrapper.vm as any).toggleVisibility).toHaveBeenCalledTimes(1);
+    const button = wrapper.find('.social-sharing-popup__button--close');
+    button.trigger('click');
+    await Vue.nextTick();
+    expect(wrapper.element).toMatchSnapshot();
   });
 
   it('should open the privacy manager', () => {

@@ -21,3 +21,5 @@
 * [ConsentManagement](ConsentManagement#consent-management-component)
 * [PrivacyManager](PrivacyManager#privacymanager-component)
 * [VendorMapping](VendorMapping#vendormapping-component)
+* Social Sharing Components
+   * [Popup](SocialSharingPopup#component-for-social-sharing-popup)

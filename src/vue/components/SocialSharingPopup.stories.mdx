@@ -1,0 +1,15 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import {SocialSharingPopup} from './SocialSharingPopup';
+
+<Meta title='Social Sharing Components / Popup' />
+
+# Social Sharing Popup
+
+## Generic
+
+This component is used as a generic social media sharing popup that will be shown if a user is going to share content on social platforms.
+
+<Story name='Generic'>{{
+  components: { SocialSharingPopup },
+  template: `<social-sharing-popup :initialVisibility="true" :privacyManagerId="12345"></social-sharing-popup>`,
+}}></Story>

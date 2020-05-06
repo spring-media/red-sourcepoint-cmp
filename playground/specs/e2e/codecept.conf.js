@@ -22,6 +22,7 @@ exports.config = {
       url: playgroundParams.host,
       show: false,
       browser: 'chromium',
+      waitForNavigation: 'networkidle0',
     },
   },
   include: {

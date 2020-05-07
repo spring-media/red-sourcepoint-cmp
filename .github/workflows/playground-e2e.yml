@@ -1,0 +1,45 @@
+name: Playground E2E
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Build project
+        run: npm run build
+
+      - name: Build CAE package
+        run: npm run build:cae:package
+
+      - name: Prepare playground
+        run: npm run playground:prepare --yes --accountId 75 --propertyId 6804 --privacyManagerId 134074
+
+      - name: Start playground (in background)
+        run: npm run playground:start &
+
+      - name: Run e2e tests
+        run: npm run playground:test:e2e

@@ -7,10 +7,11 @@ const { prepare } = require('./prepare');
 const serve = async () => {
   const publicDir = './playground/public';
 
-  if (!existsSync(publicDir) || !existsSync(`${publicDir}/build/parameters.json`)) {
+  if (!existsSync(publicDir) || !existsSync(`${publicDir}/build/parameters.json`) || process.argv.length > 2) {
     await prepare();
   }
 
+  delete require.cache[require.resolve('../public/build/parameters.json')];
   const parameters = require('../public/build/parameters.json');
 
   const printParameters = () =>
@@ -22,7 +23,7 @@ Using following parameters for playground:
 
 ${printParameters()}
 
-Run ${chalk.yellow('npm run playground:prepare')} to change the parameters. 
+Run ${chalk.yellow('npm run playground:prepare (or use cli parameters)')} to change the parameters. 
 ${chalk.grey('----------------------------')}
   `);
 

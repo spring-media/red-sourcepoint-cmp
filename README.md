@@ -75,6 +75,14 @@ Some questions are asking the first time, with some predefined sensible default 
   <img src="./docs/playground-prepare-dialogue.png" alt="Playground Prepare Dialogue" width="678" />
 </p>
 
+You can use cli parameters to overwrite internal default values as follows:
+```shell
+npm run playground:start -- --propertyId 1234
+```
+The example above sets the default value for propertyId to 1234.
+
+> You can also use --yes to skip the questionnaire altogether. In this case, the internal default values (or provided by cli) will be used as the parameters for the playground.
+
 > Use a modern browser for testing because the code is not transformed to be compatible with older browsers that do not fully support ES6.
 
 ### Running automatic end-2-end tests

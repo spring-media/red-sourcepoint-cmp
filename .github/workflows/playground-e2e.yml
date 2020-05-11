@@ -5,7 +5,7 @@ on:
     - cron: '*/10 * * * *'
 
 jobs:
-  test:
+  playground-e2e:
 
     runs-on: ubuntu-latest
 

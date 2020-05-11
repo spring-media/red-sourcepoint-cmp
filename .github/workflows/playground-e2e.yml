@@ -38,11 +38,8 @@ jobs:
       - name: Build CAE package
         run: npm run build:cae:package
 
-      - name: Prepare playground
-        run: npm run playground:prepare --yes --accountId 75 --propertyId 6804 --privacyManagerId 134074
-
       - name: Start playground (in background)
-        run: npm run playground:start &
+        run: npm run playground:start -- --yes --accountId 75 --propertyId 6804 --privacyManagerId 134074 &
 
       - name: Run e2e tests
         run: npm run playground:test:e2e

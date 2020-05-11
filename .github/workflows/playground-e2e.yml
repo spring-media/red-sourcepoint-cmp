@@ -18,6 +18,9 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
 
+      - name: Add host
+        run: sudo echo "127.0.0.1 local.bild.de" >> /etc/hosts
+
       - name: Cache node modules
         uses: actions/cache@v1
         with:

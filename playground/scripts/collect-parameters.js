@@ -3,6 +3,8 @@ const chalk = require('chalk');
 const { existsSync } = require('fs');
 const { parse } = require('url');
 
+const cliParams = require('yargs-parser')(process.argv.slice(2));
+
 const collectParameters = async () => {
   const onSubmit = ({ name }, answer) => {
     if (name !== 'host') {
@@ -19,17 +21,22 @@ ${chalk.yellow('Make sure your hosts file contains an entry for')} ${protocol}//
   };
 
   const defaults = {
-    accountId: 75,
-    propertyId: null,
-    mmsDomain: 'https://message75.sp-prod.net',
-    wrapperAPIOrigin: 'https://wrapper-api.sp-prod.net/tcfv2',
-    libraryURL: 'https://gdpr-tcfv2.sp-prod.net/wrapperMessagingWithoutDetection.js',
-    privacyManagerId: null,
-    host: 'http://localhost:5000',
+    accountId: cliParams.accountId || 75,
+    propertyId: cliParams.propertyId || null,
+    mmsDomain: cliParams.mmsDomain || 'https://message75.sp-prod.net',
+    wrapperAPIOrigin: cliParams.wrapperAPIOrigin || 'https://wrapper-api.sp-prod.net/tcfv2',
+    libraryURL: cliParams.libraryURL || 'https://gdpr-tcfv2.sp-prod.net/wrapperMessagingWithoutDetection.js',
+    privacyManagerId: cliParams.privacyManagerId || null,
+    host: cliParams.host || 'http://localhost:5000',
   };
+
+  if (cliParams.yes === true) {
+    prompts.override(defaults);
+  }
 
   let parameters = {};
   if (existsSync('./playground/public/build/parameters.json')) {
+    delete require.cache[require.resolve('../public/build/parameters.json')];
     parameters = require('../public/build/parameters.json');
   }
 

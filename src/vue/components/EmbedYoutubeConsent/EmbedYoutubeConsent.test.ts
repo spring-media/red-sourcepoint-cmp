@@ -32,28 +32,8 @@ describe('EmbedYoutubeConsent component', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-  it('should render the embed in case of a consented vendor', () => {
+  it('should render the embed in case of a consented vendor and his purpose(s)', () => {
     store.commit('sourcepoint/setCustomVendorConsents', [{ _id: VENDOR_ID_YOUTUBE }]);
-
-    const wrapper = mount(EmbedYoutubeConsent, {
-      propsData: {
-        privacyManagerId: 12345,
-        content: '<div>Youtube Embed Content</div>',
-      },
-      store,
-      localVue,
-    });
-
-    expect(wrapper.element).toMatchInlineSnapshot(`
-      <div>
-        <div>
-          Youtube Embed Content
-        </div>
-      </div>
-    `);
-  });
-
-  it('should render the embed in case of a consented purpose', () => {
     store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: PURPOSE_ID_SOCIAL }]);
 
     const wrapper = mount(EmbedYoutubeConsent, {

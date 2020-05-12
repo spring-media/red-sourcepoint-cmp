@@ -32,30 +32,8 @@ describe('EmbedTwitterConsent component', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-  it('should render the embed in case of a consented vendor', async () => {
+  it('should render the embed in case of a consented vendor and consented purpose(s)', async () => {
     store.commit('sourcepoint/setCustomVendorConsents', [{ _id: VENDOR_ID_TWITTER }]);
-
-    const wrapper = mount(EmbedTwitterConsent, {
-      propsData: {
-        privacyManagerId: 12345,
-        content: '<div>Twitter Embed Content</div>',
-      },
-      store,
-      localVue,
-    });
-
-    await wrapper.vm.$nextTick();
-
-    expect(wrapper.element).toMatchInlineSnapshot(`
-      <div>
-        <div>
-          Twitter Embed Content
-        </div>
-      </div>
-    `);
-  });
-
-  it('should render the embed in case of a consented purpose', async () => {
     store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: PURPOSE_ID_SOCIAL }]);
 
     const wrapper = mount(EmbedTwitterConsent, {

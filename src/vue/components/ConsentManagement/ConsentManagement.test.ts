@@ -31,8 +31,9 @@ describe('ConsentManagement component', () => {
     const wrapper = mount(ConsentManagement, {
       propsData: {
         vendorId: '#1234',
-        purposeIds: ['#1234'],
-        customPurposes: [{ _id: '#1234' }],
+        purposeIds: ['#5678'],
+        customPurposes: [{ _id: '#5678' }],
+        customVendors: [{ _id: '#1234' }],
       },
       slots: {
         onConsent: `<div>Consent</div>`,

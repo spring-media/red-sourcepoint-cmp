@@ -32,30 +32,8 @@ describe('EmbedFacebookConsent component', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-  it('should render the embed in case of a consented vendor', async () => {
+  it('should render the embed in case of a consented vendor and his purpose(s)', async () => {
     store.commit('sourcepoint/setCustomVendorConsents', [{ _id: VENDOR_ID_FACEBOOK }]);
-
-    const wrapper = mount(EmbedFacebookConsent, {
-      propsData: {
-        privacyManagerId: 12345,
-        content: '<div>Facebook Embed Content</div>',
-      },
-      store,
-      localVue,
-    });
-
-    await wrapper.vm.$nextTick();
-
-    expect(wrapper.element).toMatchInlineSnapshot(`
-      <div>
-        <div>
-          Facebook Embed Content
-        </div>
-      </div>
-    `);
-  });
-
-  it('should render the embed in case of a consented purpose', async () => {
     store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: PURPOSE_ID_SOCIAL }]);
 
     const wrapper = mount(EmbedFacebookConsent, {

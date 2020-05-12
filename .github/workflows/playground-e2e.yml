@@ -19,7 +19,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Add host
-        run: sudo echo "127.0.0.1 local.bild.de" >> /etc/hosts
+        run: sudo echo "172.16.18.16  www.example.com example" | sudo tee -a /etc/hosts
 
       - name: Cache node modules
         uses: actions/cache@v1

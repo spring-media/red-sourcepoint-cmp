@@ -19,7 +19,7 @@ describe('PrivacyManager component', () => {
   it('should render nothing if no content for the default slot is given', () => {
     const wrapper = mount(PrivacyManager);
 
-    expect(wrapper.isEmpty()).toBe(true);
+    expect(wrapper.element).toMatchInlineSnapshot(`<!---->`);
   });
 
   it('should provide a loadPrivacyManagerModal function through default slot', () => {

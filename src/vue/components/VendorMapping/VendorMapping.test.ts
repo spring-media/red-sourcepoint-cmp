@@ -19,7 +19,7 @@ describe('VendorMapping component', () => {
   it('should render nothing if no content for the default slot is given', () => {
     const wrapper = mount(VendorMapping);
 
-    expect(wrapper.isEmpty()).toBe(true);
+    expect(wrapper.element).toMatchInlineSnapshot(`<!---->`);
   });
 
   it.each([

@@ -2,7 +2,7 @@ name: Playground E2E
 
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/30 * * * *'
 
 jobs:
   playground-e2e:
@@ -39,7 +39,7 @@ jobs:
         run: npm run build:cae:package
 
       - name: Start playground (in background)
-        run: npm run playground:start -- --yes --accountId 75 --propertyId 6804 --privacyManagerId 134074 --host http://local.bild.de:5000 &
+        run: npm run playground:start -- --yes --accountId 75 --propertyId 6804 --privacyManagerId 134074 --host http://local.bild.de:5000 > stdout.txt 2> stderr.txt &
 
       - name: Run e2e tests
         run: npm run playground:test:e2e

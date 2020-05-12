@@ -45,7 +45,7 @@ export default Vue.extend<{}, Methods, {}, Props>({
     },
     hasConsent(): boolean {
       return (
-        this.hasCustomVendorConsent(this.vendorId) || this.purposeIds.some((id) => this.hasCustomPurposeConsent(id))
+        this.hasCustomVendorConsent(this.vendorId) && this.purposeIds.every((id) => this.hasCustomPurposeConsent(id))
       );
     },
   },

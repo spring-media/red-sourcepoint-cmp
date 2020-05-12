@@ -24,7 +24,7 @@ describe('ConsentManagement component', () => {
       },
     });
 
-    expect(wrapper.isEmpty()).toBe(true);
+    expect(wrapper.element).toMatchInlineSnapshot(`<!---->`);
   });
 
   it('should render the consent slot for a consented purpose', () => {
@@ -78,6 +78,6 @@ describe('ConsentManagement component', () => {
       },
     });
 
-    expect(wrapper.isEmpty()).toBe(true);
+    expect(wrapper.element).toMatchInlineSnapshot(`<!---->`);
   });
 });

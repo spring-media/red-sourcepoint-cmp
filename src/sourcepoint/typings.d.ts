@@ -16,6 +16,23 @@ export type CustomVendorConsentsResult = {
   consentedVendors: CustomVendor[];
 };
 
+export type PostCustomConsentResult = {
+  categories: string[];
+  consentUUID: string;
+  legIntCategories: string[];
+  rejectAny: boolean;
+  specialFeatures: string[];
+  vendors: string[];
+};
+
+export type PostCustomConsentPayload = {
+  vendorIds?: string[];
+  purposeIds?: string[];
+  legitimateInterestIds?: string[];
+};
+
+export type PostCustomConsentCallback = (data: PostCustomConsentResult | null, success: boolean) => void;
+
 export type Config = {
   accountId: number;
   wrapperAPIOrigin?: string;

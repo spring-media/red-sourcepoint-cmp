@@ -1,3 +1,5 @@
+## [0.25.5](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.25.4...v0.25.5) (2020-05-13)
+
 ## [0.25.4](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.25.3...v0.25.4) (2020-05-05)
 
 

@@ -14,6 +14,20 @@ getCustomVendorConsents().then(result => console.log(result)).catch(error => con
 ```    
 </details>
 
+### `postCustomConsent({vendorIds?: string[], purposeIds?: string[], legitimateInterestIds?: string[]}): Promise<PostCustomConsentResult | null>;`
+
+Function to give consents to vendors, purposes or legitimate interests programmatically.
+
+<details>
+<summary>Example</summary>
+    
+```javascript
+import { postCustomConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/sourcepoint';
+
+postCustomConsent({vendorIds: [], purposeIds: [], legitimateInterestIds: []}).then(result => console.log(result)).catch(error => console.error(error));
+```    
+</details>
+
 ### `customVendorHasConsent(vendor: Consent): Promise<boolean>;`
 
 Checks whether the user has consented to given vendor.

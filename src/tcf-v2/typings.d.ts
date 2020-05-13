@@ -1,3 +1,5 @@
+import { PostCustomConsentCallback } from '../sourcepoint/typings';
+
 export type TCDataEventStatus = 'tcloaded' | 'cmpuishown' | 'useractioncomplete';
 
 export type CMPStatus = 'stub' | 'loading' | 'loaded' | 'error';
@@ -27,6 +29,16 @@ export interface TCFV2API {
   (command: 'removeEventListener', version: 2, callback: RemoveEventListenerCallback, listenerId: ListenerId): void;
   (command: 'getTCData', version: 2, callback: GetTCDataCallback, vendorIds?: number[]): void;
   (command: 'ping', version: 2, callback: PingCallback): void;
+
+  // additional Sourcepoint commands
+  (
+    command: 'postCustomConsent',
+    version: 2,
+    callback: PostCustomConsentCallback,
+    vendorIds: string[],
+    purposeIds: string[],
+    legitimateInterestIds: string[],
+  ): void;
 }
 
 export interface PingReturn {

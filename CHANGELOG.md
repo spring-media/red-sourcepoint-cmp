@@ -1,3 +1,10 @@
+## [0.25.6](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.25.5...v0.25.6) (2020-05-13)
+
+
+### Bug Fixes
+
+* render the embed content only if the vendor and all of its purposes have consents ([c455178](https://github.com/spring-media/red-sourcepoint-cmp/commit/c455178f4abdabd548efc37ba999c4cf2b58485b))
+
 ## [0.25.5](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.25.4...v0.25.5) (2020-05-13)
 
 ## [0.25.4](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.25.3...v0.25.4) (2020-05-05)

@@ -4,7 +4,8 @@
   "description": "CMP (Content Management Platform) implementation for www.bild.de using the Sourcepoint API",
   "scripts": {
     "test": "jest --config tests/jest.config.js",
-    "test:cae:package": "jest tests/cae-files.test.js && es-check es5 .cae/*.js",
+    "test:cae:files": "jest tests/cae-files.test.js",
+    "test:cae:package": "npm run test:cae:files && es-check es5 .cae/*.js",
     "test:all": "npm run build && npm run test && npm run test:cae:package",
     "build": "rollup -c",
     "postbuild": "npm run build:cae:package",

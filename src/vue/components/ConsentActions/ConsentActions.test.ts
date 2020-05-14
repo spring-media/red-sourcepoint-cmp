@@ -47,7 +47,7 @@ describe('ConsentActions component', () => {
     });
 
     it('should dispatch an (vuex) action to update the consents in the store', () => {
-      expect.assertions(2);
+      expect.assertions(3);
 
       const localVue = createLocalVue();
       localVue.use(Vuex);
@@ -56,6 +56,7 @@ describe('ConsentActions component', () => {
       const store = new Vuex.Store({
         modules: {
           sourcepoint: {
+            namespaced: true,
             actions: {
               bootstrapConsents: bootstrapSpy,
             },

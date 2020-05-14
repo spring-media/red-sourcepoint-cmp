@@ -25,9 +25,11 @@
         </slot>
       </div>
       <slot name="button">
-        <button class="embed-placeholder__button" @click.prevent="loadPrivacyManagerModal(privacyManagerId)">
-          Soziale Netzwerke aktivieren
-        </button>
+        <consent-actions v-slot="{ consentCustomPurpose }">
+          <button class="embed-placeholder__button" @click.prevent="consentCustomPurpose(socialPurposeId)">
+            Soziale Netzwerke aktivieren
+          </button>
+        </consent-actions>
       </slot>
       <div class="embed-placeholder__footer-text">
         <slot name="footer">
@@ -59,14 +61,23 @@
 <script lang="ts">
 import Vue from 'vue';
 import { PrivacyManager } from '../PrivacyManager';
+import { ConsentActions } from '../ConsentActions';
+import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
 
 type Props = {
   privacyManagerId: number;
 };
 
-export default Vue.extend<{}, {}, {}, Props>({
+type Data = {
+  socialPurposeId: string;
+};
+
+export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedPlaceholder',
-  components: { PrivacyManager },
+  components: { PrivacyManager, ConsentActions },
+  data: () => ({
+    socialPurposeId: PURPOSE_ID_SOCIAL,
+  }),
   props: {
     privacyManagerId: {
       type: Number,

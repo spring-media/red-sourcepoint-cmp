@@ -55,25 +55,4 @@ describe('EmbedFacebookConsent component', () => {
       </div>
     `);
   });
-
-  it('should load the privacy manager', () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore
-    window._sp_ = {
-      loadPrivacyManagerModal: jest.fn(),
-    };
-
-    const wrapper = mount(EmbedFacebookConsent, {
-      propsData: {
-        privacyManagerId: 12345,
-        content: '<div>Facebook Embed Content</div>',
-      },
-      store,
-      localVue,
-    });
-
-    wrapper.find('.embed-placeholder__button').trigger('click');
-
-    expect(window._sp_.loadPrivacyManagerModal).toHaveBeenCalledWith(12345);
-  });
 });

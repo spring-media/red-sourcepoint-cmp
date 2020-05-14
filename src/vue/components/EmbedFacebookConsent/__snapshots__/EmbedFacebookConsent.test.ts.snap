@@ -89,8 +89,8 @@ exports[`EmbedFacebookConsent component should render the placeholder by default
     class="embed-placeholder__button"
   >
     
-        Soziale Netzwerke aktivieren
-      
+          Soziale Netzwerke aktivieren
+        
   </button>
    
   <div

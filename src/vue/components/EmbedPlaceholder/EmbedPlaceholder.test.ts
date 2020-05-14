@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { mount } from '@vue/test-utils';
 import { EmbedPlaceholder } from './';
+import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
 
 const loadPrivacyManagerModal = jest.fn();
 
@@ -17,6 +18,21 @@ const privacyManagerStub = Vue.extend({
   },
 });
 
+const consentCustomPurpose = jest.fn();
+
+const consentActionsStub = Vue.extend({
+  name: 'ConsentActions',
+  render() {
+    return (
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.$scopedSlots.default!({
+        consentCustomPurpose,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      }) as any
+    );
+  },
+});
+
 describe('EmbedPlaceholder', () => {
   afterEach(() => {
     loadPrivacyManagerModal.mockReset();
@@ -26,9 +42,19 @@ describe('EmbedPlaceholder', () => {
     expect(mount(EmbedPlaceholder, { propsData: { privacyManagerId: 12345 } }).element).toMatchSnapshot();
   });
 
+  it('should give a consent to the purpose social media', () => {
+    const wrapper = mount(EmbedPlaceholder, {
+      stubs: { ConsentActions: consentActionsStub },
+      propsData: { privacyManagerId: 1234 },
+    });
+
+    wrapper.find('.embed-placeholder__button').trigger('click');
+
+    expect(consentCustomPurpose).toHaveBeenCalledWith(PURPOSE_ID_SOCIAL);
+  });
+
   describe('should open a privacy manager by clicking on', () => {
     it.each([
-      ['the "activate consent" button', '.embed-placeholder__button'],
       ['the link to the description', '.embed-placeholder__link-description'],
       ['the link to the vendor list', '.embed-placeholder__link-vendor-list'],
     ])('%s', (_, selector) => {

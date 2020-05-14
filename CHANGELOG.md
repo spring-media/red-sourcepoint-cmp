@@ -1,3 +1,10 @@
+# [0.26.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.25.6...v0.26.0) (2020-05-14)
+
+
+### Features
+
+* **sourcepoint:** add new function `postCustomConsent` to give consents programmatically ([36c1062](https://github.com/spring-media/red-sourcepoint-cmp/commit/36c10624c43396563f73151b444278b369a2d625))
+
 ## [0.25.6](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.25.5...v0.25.6) (2020-05-13)
 
 

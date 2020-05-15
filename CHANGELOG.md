@@ -1,3 +1,10 @@
+# [0.27.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.26.0...v0.27.0) (2020-05-15)
+
+
+### Features
+
+* **vue:** implement new component that provides an interface for give consents programmatically ([7ab572c](https://github.com/spring-media/red-sourcepoint-cmp/commit/7ab572c314aa55f13ab1509824aa0cbdc2bf73cc))
+
 # [0.26.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.25.6...v0.26.0) (2020-05-14)
 
 

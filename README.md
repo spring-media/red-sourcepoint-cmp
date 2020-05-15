@@ -17,7 +17,7 @@
 
 # Introduction
 
-This repository covers the implementation of CMP (Content Management Platform) for www.bild.de by using the Sourcepoint API.
+This repository covers the implementation of CMP (Consent Management Platform) for www.bild.de by using the Sourcepoint API.
 
 ## Installation
 

@@ -22,12 +22,14 @@
           >
             Schließen
           </button>
-          <button
-            class="social-sharing-popup__button social-sharing-popup__button--accept"
-            @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
-          >
-            Akzeptieren
-          </button>
+          <consent-actions v-slot="{ consentCustomPurpose }">
+            <button
+              class="social-sharing-popup__button social-sharing-popup__button--accept"
+              @click.prevent="[consentCustomPurpose(socialPurposeId), setVisibility(false)]"
+            >
+              Akzeptieren
+            </button>
+          </consent-actions>
         </div>
       </slot>
     </div>
@@ -37,9 +39,12 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue';
 import { PrivacyManager } from '../PrivacyManager';
+import { ConsentActions } from '../ConsentActions';
+import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
 
 type Data = {
   isVisible: boolean;
+  socialPurposeId: string;
 };
 
 type Methods = {
@@ -53,10 +58,11 @@ type Props = {
 
 export default Vue.extend<Data, Methods, {}, Props>({
   name: 'SocialSharingPopup',
-  components: { PrivacyManager },
-  data(): { isVisible: boolean } {
+  components: { PrivacyManager, ConsentActions },
+  data(): { isVisible: boolean; socialPurposeId: string } {
     return {
       isVisible: this.initialVisibility,
+      socialPurposeId: PURPOSE_ID_SOCIAL,
     };
   },
   props: {

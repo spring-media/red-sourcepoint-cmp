@@ -1,6 +1,6 @@
 <template>
   <privacy-manager v-slot="{ loadPrivacyManagerModal }">
-    <div v-if="isVisible" class="social-sharing-popup__container">
+    <div class="social-sharing-popup__container">
       <div class="social-sharing-popup__headline">
         <slot name="headline">
           Deine Datensicherheit bei der Nutzung der Teilen-Funktion
@@ -18,16 +18,18 @@
         <div class="social-sharing-popup__button-container">
           <button
             class="social-sharing-popup__button social-sharing-popup__button--close"
-            @click.prevent="setVisibility(false)"
+            @click.prevent="$emit('close')"
           >
             Schließen
           </button>
-          <button
-            class="social-sharing-popup__button social-sharing-popup__button--accept"
-            @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
-          >
-            Akzeptieren
-          </button>
+          <consent-actions v-slot="{ consentCustomPurpose }">
+            <button
+              class="social-sharing-popup__button social-sharing-popup__button--accept"
+              @click.prevent="[consentCustomPurpose(socialPurposeId), $emit('close')]"
+            >
+              Akzeptieren
+            </button>
+          </consent-actions>
         </div>
       </slot>
     </div>
@@ -37,41 +39,29 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue';
 import { PrivacyManager } from '../PrivacyManager';
+import { ConsentActions } from '../ConsentActions';
+import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
 
 type Data = {
-  isVisible: boolean;
-};
-
-type Methods = {
-  setVisibility(visible: boolean): void;
+  socialPurposeId: string;
 };
 
 type Props = {
   privacyManagerId: number;
-  initialVisibility: boolean;
 };
 
-export default Vue.extend<Data, Methods, {}, Props>({
+export default Vue.extend<Data, {}, {}, Props>({
   name: 'SocialSharingPopup',
-  components: { PrivacyManager },
-  data(): { isVisible: boolean } {
+  components: { PrivacyManager, ConsentActions },
+  data(): { socialPurposeId: string } {
     return {
-      isVisible: this.initialVisibility,
+      socialPurposeId: PURPOSE_ID_SOCIAL,
     };
   },
   props: {
     privacyManagerId: {
       type: Number as PropType<number>,
       required: true,
-    },
-    initialVisibility: {
-      type: Boolean as PropType<boolean>,
-      default: true,
-    },
-  },
-  methods: {
-    setVisibility(visible: boolean): void {
-      this.isVisible = visible;
     },
   },
 });

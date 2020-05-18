@@ -23,6 +23,7 @@ const config = {
   embedPlaceholderInstagramHtml: `red-cmp-embed-instagram-placeholder-${version}.html`,
   embedPlaceholderTwitterHtml: `red-cmp-embed-twitter-placeholder-${version}.html`,
   embedPlaceholderYoutubeHtml: `red-cmp-embed-youtube-placeholder-${version}.html`,
+  socialSharingPopup: `red-cmp-social-sharing-popup-${version}.html`,
 };
 
 writeFileSync(`.cae/red-cmp-config-${version}.json`, JSON.stringify(config));

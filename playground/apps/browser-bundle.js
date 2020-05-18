@@ -26,7 +26,7 @@ import './common.css';
       const vendorId = lib.getCustomVendor(vendorName);
 
       if (
-        lib.hasCustomConsentById(vendorId, consentedVendors) ||
+        lib.hasCustomConsentById(vendorId, consentedVendors) &&
         lib.hasCustomConsentById(lib.PURPOSE_ID_SOCIAL, consentedPurposes)
       ) {
         const container = element.querySelector(':scope > div:first-child:not(.processed)');
@@ -60,9 +60,18 @@ import './common.css';
     }
   });
 
-  document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('embed-placeholder__button')) {
+  document.addEventListener('click', async (event) => {
+    if (event.target.classList.contains('open-privacy-manager')) {
       lib.loadPrivacyManagerModal(window.__playground__.parameters.privacyManagerId);
+    }
+
+    if (
+      event.target.classList.contains('embed-placeholder__button') &&
+      !event.target.classList.contains('open-privacy-manager')
+    ) {
+      await lib.postCustomConsent({ purposeIds: [lib.PURPOSE_ID_SOCIAL] });
+
+      checkConsents();
     }
   });
 

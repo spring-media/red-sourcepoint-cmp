@@ -24,7 +24,7 @@ const browserTemplate = () => {
 
   return `
     <div>
-        <div class="privacy-manager__container"><button class="embed-placeholder__button" style="border-radius: 0;" @click="openPrivacyManager">Open Privacy Manager</button></div>
+        <div class="privacy-manager__container"><button class="embed-placeholder__button open-privacy-manager" style="border-radius: 0;" @click="openPrivacyManager">Open Privacy Manager</button></div>
         <ul class="embed__container">
             <li class="embed__item" data-vendor-name="facebook">
                 <div>${facebookPlaceholder}</div>

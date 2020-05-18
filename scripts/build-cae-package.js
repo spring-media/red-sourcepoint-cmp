@@ -13,11 +13,11 @@ writeFileSync(`.cae/red-cmp-${version}.min.js`, Terser.minify(js).code, 'utf8');
 buildHTMLSnippets({ version });
 
 const css = readFileSync('./dist/cjs/vue/components.css', 'utf8');
-writeFileSync(`.cae/red-cmp-embed-placeholder-${version}.min.css`, new CleanCSS().minify(css).styles);
+writeFileSync(`.cae/red-cmp-components-${version}.min.css`, new CleanCSS().minify(css).styles);
 
 const config = {
   jsLib: `red-cmp-${version}.min.js`,
-  embedPlaceholderStyles: `red-cmp-embed-placeholder-${version}.min.css`,
+  redCmpComponents: `red-cmp-components-${version}.min.css`,
   embedPlaceholderCommonHtml: `red-cmp-embed-placeholder-${version}.html`,
   embedPlaceholderFacebookHtml: `red-cmp-embed-facebook-placeholder-${version}.html`,
   embedPlaceholderInstagramHtml: `red-cmp-embed-instagram-placeholder-${version}.html`,

@@ -16,6 +16,7 @@ describe('sourcepoint index', () => {
       'createConfig',
       'getCustomVendorConsents',
       'postCustomConsent',
+      'getRemovedCustomConsents',
     ]);
   });
 });

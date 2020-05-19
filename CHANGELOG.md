@@ -1,3 +1,12 @@
+# [0.29.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.28.0...v0.29.0) (2020-05-19)
+
+
+### Features
+
+* **cae:** extend tests with popup for CAE ([ce95da4](https://github.com/spring-media/red-sourcepoint-cmp/commit/ce95da43b6e76eea8d18e0b8b631ce6d30117f0b))
+* **cae:** offer html snippet for sharing popup ([fa6b183](https://github.com/spring-media/red-sourcepoint-cmp/commit/fa6b183af68a5ac518cebbd490ef11a356e8f5bc))
+* **vue:** create a generic wrapper consent component, make example for sharing link consent, adjust popup ([8b80d61](https://github.com/spring-media/red-sourcepoint-cmp/commit/8b80d61d5032933548274d3186afecd867c7c210))
+
 # [0.28.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.27.0...v0.28.0) (2020-05-15)
 
 # [0.27.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.26.0...v0.27.0) (2020-05-15)

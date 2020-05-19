@@ -30,12 +30,14 @@ exports[`EmbedInstagramPlaceholder should render without any errors 1`] = `
        
       <rect
         fill="#E9ECEF"
-        height="calc(100% - 32px)"
+        height="100%"
+        style="height: calc(100% - 32px);"
         width="100%"
         y="32"
       />
        
       <svg
+        style="transform: translateX(calc(50% - 20px));"
         x="calc(50% - 20px)"
         y="50%"
       >
@@ -46,6 +48,7 @@ exports[`EmbedInstagramPlaceholder should render without any errors 1`] = `
       </svg>
        
       <svg
+        style="transform: translateX(calc(100% - 20px));"
         x="calc(100% - 20px)"
       >
         <path

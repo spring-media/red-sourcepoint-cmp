@@ -1,6 +1,6 @@
 export * from './ConsentedData';
 export * from './ConsentManagement';
-export * from './EmbedConsent';
+export * from './ConsentWrapper';
 export * from './EmbedFacebook';
 export * from './EmbedFacebookConsent';
 export * from './EmbedFacebookPlaceholder';

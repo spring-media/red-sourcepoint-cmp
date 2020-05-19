@@ -1,18 +1,18 @@
 <template>
-  <embed-consent :vendorId="vendorId">
-    <template #placeholder>
+  <consent-wrapper :vendorId="vendorId">
+    <template #disabledContent>
       <embed-twitter-placeholder :privacyManagerId="privacyManagerId"></embed-twitter-placeholder>
     </template>
-    <template #embed>
+    <template #enabledContent>
       <embed-twitter :content="content"></embed-twitter>
     </template>
-  </embed-consent>
+  </consent-wrapper>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import { EmbedTwitterPlaceholder } from '../EmbedTwitterPlaceholder';
-import { EmbedConsent } from '../EmbedConsent';
+import { ConsentWrapper } from '../ConsentWrapper';
 import { EmbedTwitter } from '../EmbedTwitter';
 import { VENDOR_ID_TWITTER } from '../../../vendor-mapping';
 
@@ -27,7 +27,7 @@ type Props = {
 
 export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedTwitterConsent',
-  components: { EmbedConsent, EmbedTwitter, EmbedTwitterPlaceholder },
+  components: { ConsentWrapper, EmbedTwitter, EmbedTwitterPlaceholder },
   data: () => ({
     vendorId: VENDOR_ID_TWITTER,
   }),

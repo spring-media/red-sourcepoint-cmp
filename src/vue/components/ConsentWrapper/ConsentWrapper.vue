@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue';
+import Vue from 'vue';
 import { ConsentManagement } from '../ConsentManagement';
 import { VendorMapping } from '../VendorMapping';
 import { PrivacyManager } from '../PrivacyManager';
@@ -36,7 +36,7 @@ export default Vue.extend<{}, {}, {}, Props>({
   components: { PrivacyManager, VendorMapping, ConsentManagement, ConsentedData },
   props: {
     vendorId: {
-      type: String as PropType<string>,
+      type: String,
       required: true,
     },
   },

@@ -16,12 +16,16 @@ const store = new Vuex.Store({
 });
 
 const defaultStyle =
-  'display: flex; width: 250px; height: 50px; color: white; background-color: #495057; padding: 5px; justify-content: center';
-const anchorStyle = 'text-decoration: none; color: #495057; border: 1px solid #495057; padding: 5px';
+  'display: flex; justify-content: center; align-items: center; width: 250px; height: 50px; color: white; background-color: #495057; padding: 5px;';
+const anchorStyleDisabled =
+  'text-decoration: none; color: #ffffff; background-color: #495057; border: 1px solid #495057; padding: 5px';
+const anchorStyleEnabled =
+  'text-decoration: none; color: #ffffff; background-color: #00c373; border: 1px solid #495057; padding: 5px';
 const popupStyle = 'position: absolute; top: -5px; left: 100px';
+const consentWrapperStyle = 'position: relative; min-height: 200px';
 
 export default {
-  title: 'ConsentWrapper',
+  title: 'Consent Wrapper',
   components: { ConsentWrapper },
 };
 
@@ -67,17 +71,17 @@ export const consentWrapperDefault = () => ({
   },
 });
 
-export const consentWrapperWithPopup = () => ({
+export const consentWrapperWithSharingPopup = () => ({
   components: { ConsentWrapper, SocialSharingPopup },
   template:
-    '<consent-wrapper :vendorId="vendorId" style="position: relative">' +
+    '<consent-wrapper :vendorId="vendorId" :style="consentWrapperStyle">' +
     '<template #disabledContent>' +
     '<div>' +
     '<social-sharing-popup v-if="isVisible" :privacyManagerId="privacyManagerId" @close="isVisible = false" :style="popupStyle"></social-sharing-popup>' +
-    '<a href="#" @click.prevent="isVisible = true" :style="style" >disabled</a> ' +
+    '<a href="#" @click.prevent="isVisible = true" :style="anchorStyleDisabled" >disabled</a> ' +
     '</div>' +
     '</template>' +
-    '<template #enabledContent><a href="#" :style="style">enabled</a></template>' +
+    '<template #enabledContent><a href="#" :style="anchorStyleEnabled">enabled</a></template>' +
     '</consent-wrapper>',
   store,
   data() {
@@ -104,11 +108,17 @@ export const consentWrapperWithPopup = () => ({
         hasCustomConsentById(PURPOSE_ID_SOCIAL, store.state.sourcepoint.consentedCustomPurposes),
       ),
     },
-    style: {
-      default: anchorStyle,
+    anchorStyleDisabled: {
+      default: anchorStyleDisabled,
+    },
+    anchorStyleEnabled: {
+      default: anchorStyleEnabled,
     },
     popupStyle: {
       default: popupStyle,
+    },
+    consentWrapperStyle: {
+      default: consentWrapperStyle,
     },
   },
   watch: {

@@ -28,7 +28,8 @@ export default Vue.extend<{}, Methods, {}, {}>({
     return (
       this.$scopedSlots.default &&
       (this.$scopedSlots.default({
-        consentCustomPurpose: (id: string) => this.customConsent({ purposeIds: [id] }),
+        consentCustomPurpose: (id: string): Promise<void> => this.customConsent({ purposeIds: [id] }),
+        customConsent: (payload: PostCustomConsentPayload): Promise<void> => this.customConsent(payload),
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }) as any)
     );

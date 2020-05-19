@@ -9,11 +9,11 @@
       >
         <template #onReject>
           <privacy-manager v-slot="{ loadPrivacyManagerModal }">
-            <slot name="placeholder" v-bind="{ loadPrivacyManagerModal }"></slot>
+            <slot name="disabledContent" v-bind="{ loadPrivacyManagerModal }"></slot>
           </privacy-manager>
         </template>
         <template #onConsent>
-          <slot name="embed"></slot>
+          <slot name="enabledContent"></slot>
         </template>
       </consent-management>
     </consented-data>
@@ -32,7 +32,7 @@ type Props = {
 };
 
 export default Vue.extend<{}, {}, {}, Props>({
-  name: 'EmbedConsent',
+  name: 'ConsentWrapper',
   components: { PrivacyManager, VendorMapping, ConsentManagement, ConsentedData },
   props: {
     vendorId: {

@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SocialSharingPopup button click should hide the popup 1`] = `<!---->`;
-
-exports[`SocialSharingPopup should initially render visible without any errors 1`] = `
+exports[`SocialSharingPopup should initially render without any errors 1`] = `
 <div
   class="social-sharing-popup__container"
 >
@@ -46,8 +44,8 @@ exports[`SocialSharingPopup should initially render visible without any errors 1
       class="social-sharing-popup__button social-sharing-popup__button--accept"
     >
       
-          Akzeptieren
-        
+            Akzeptieren
+          
     </button>
   </div>
 </div>

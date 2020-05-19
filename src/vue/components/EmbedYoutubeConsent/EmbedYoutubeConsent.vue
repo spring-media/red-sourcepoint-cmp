@@ -1,18 +1,18 @@
 <template>
-  <embed-consent :vendorId="vendorId">
-    <template #placeholder>
+  <consent-wrapper :vendorId="vendorId">
+    <template #disabledContent>
       <embed-youtube-placeholder :privacyManagerId="privacyManagerId"></embed-youtube-placeholder>
     </template>
-    <template #embed>
+    <template #enabledContent>
       <embed-youtube :content="content"></embed-youtube>
     </template>
-  </embed-consent>
+  </consent-wrapper>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import { EmbedYoutubePlaceholder } from '../EmbedYoutubePlaceholder';
-import { EmbedConsent } from '../EmbedConsent';
+import { ConsentWrapper } from '../ConsentWrapper';
 import { EmbedYoutube } from '../EmbedYoutube';
 import { VENDOR_ID_YOUTUBE } from '../../../vendor-mapping';
 
@@ -27,7 +27,7 @@ type Props = {
 
 export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedYoutubeConsent',
-  components: { EmbedConsent, EmbedYoutube, EmbedYoutubePlaceholder },
+  components: { ConsentWrapper, EmbedYoutube, EmbedYoutubePlaceholder },
   data: () => ({
     vendorId: VENDOR_ID_YOUTUBE,
   }),

@@ -17,28 +17,28 @@ You can use it to build consent-components if the provided consent components (e
 
 | Name             | Description                          |
 | ---------------- | ------------------------------------ |
-| placeholder      | Renders the slot on no given consent |
-| embed            | Renders the slot on given consent    |
+| disabledContent      | Renders the slot on no given consent |
+| enabledContent       | Renders the slot on given consent    |
 
 ## Example
 
 ```vue
 <template>
   <embed-consent :vendorId="vendorId">
-      <template #placeholder>
+      <template #disabledContent>
         <some-embed-placeholder :privacyManagerId="privacyManagerId"></some-embed-placeholder>
       </template>
-      <template #embed>
+      <template #enabledContent>
         <some-embed :content="content"></some-embed>
       </template>
     </embed-consent>
 </template>
 
 <script>
-import { EmbedConsent } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
+import { ConsentWrapper } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/components';
 
 export default {
-  components: { EmbedConsent },
+  components: { ConsentWrapper },
   data: () => ({
     vendorId: '#12345',
     privacyManagerId: 12345,

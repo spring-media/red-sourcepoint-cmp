@@ -16,7 +16,7 @@
   * [Instagram](EmbedInstagramConsent#consent-component-for-instagram-embeds)
   * [Twitter](EmbedTwitterConsent#consent-component-for-twitter-embeds)
   * [Youtube](EmbedYoutubeConsent#consent-component-for-youtube-embeds)
-  * [EmbedConsent](EmbedConsent#consent-component-for-general-use)
+  * [EmbedConsent](ConsentWrapper#consent-component-for-general-use)
 * [ConsentedData](ConsentedData#consented-data-component)
 * [ConsentManagement](ConsentManagement#consent-management-component)
 * [PrivacyManager](PrivacyManager#privacymanager-component)

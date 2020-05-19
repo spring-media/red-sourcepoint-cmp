@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { mount } from '@vue/test-utils';
 import { SocialSharingPopup } from './';
+import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
 
 const loadPrivacyManagerModal = jest.fn();
 
@@ -16,45 +17,64 @@ const privacyManagerStub = Vue.extend({
   },
 });
 
+const consentCustomPurpose = jest.fn();
+
+const consentActionsStub = Vue.extend({
+  name: 'ConsentActions',
+  render() {
+    return (
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this.$scopedSlots.default!({
+        consentCustomPurpose,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      }) as any
+    );
+  },
+});
+
 describe('SocialSharingPopup', () => {
   afterEach(() => {
     loadPrivacyManagerModal.mockReset();
   });
 
-  it('should initially render visible without any errors', () => {
+  it('should initially render without any errors', () => {
     expect(mount(SocialSharingPopup, { propsData: { privacyManagerId: 12345 } }).element).toMatchSnapshot();
   });
 
-  it('should be not visible if initialVisibility is set to false', function () {
+  it('should emit close event on button click ', async () => {
     const wrapper = mount(SocialSharingPopup, {
-      propsData: { privacyManagerId: 12345, initialVisibility: false },
-    });
-
-    expect(wrapper.find('.social-sharing-popup__container').exists()).toBeFalsy();
-  });
-
-  it('button click should hide the popup', async () => {
-    const wrapper = mount(SocialSharingPopup, {
-      propsData: { privacyManagerId: 12345, initialVisibility: true },
+      propsData: { privacyManagerId: 12345 },
     });
 
     const button = wrapper.find('.social-sharing-popup__button--close');
 
     button.trigger('click');
+    wrapper.vm.$emit('close');
 
     await Vue.nextTick();
-    expect(wrapper.element).toMatchSnapshot();
+    expect(wrapper.emitted().close).toBeTruthy();
   });
 
   it('should open the privacy manager', () => {
     const wrapper = mount(SocialSharingPopup, {
       stubs: { PrivacyManager: privacyManagerStub },
-      propsData: { privacyManagerId: 12345, initialVisibility: true },
+      propsData: { privacyManagerId: 12345 },
+    });
+
+    wrapper.find('.social-sharing-popup__description > a').trigger('click');
+
+    expect(loadPrivacyManagerModal).toHaveBeenCalledWith(12345);
+    expect(loadPrivacyManagerModal).toHaveBeenCalledTimes(1);
+  });
+
+  it('should give a consent to the purpose social media', () => {
+    const wrapper = mount(SocialSharingPopup, {
+      stubs: { ConsentActions: consentActionsStub },
+      propsData: { privacyManagerId: 12345 },
     });
 
     wrapper.find('.social-sharing-popup__button--accept').trigger('click');
 
-    expect(loadPrivacyManagerModal).toHaveBeenCalledWith(12345);
-    expect(loadPrivacyManagerModal).toHaveBeenCalledTimes(1);
+    expect(consentCustomPurpose).toHaveBeenCalledWith(PURPOSE_ID_SOCIAL);
   });
 });

@@ -115,5 +115,22 @@ console.log(customConsentsAreEqual(consent1, consent3)); // true
 ```
 </details>
 
+### `getRemovedCustomConsents(consents: CustomConsent[], compareTo: CustomConsent[]): CustomConsent[];`
+
+Helper utility to get all custom vendors 
+
+<details>
+<summary>Example</summary>
+    
+```javascript
+import { getRemovedCustomConsents } from '@spring-media/red-sourcepoint-cmp/dist/esm/sourcepoint';
+
+const vendors = [{ _id: '1' }, { _id: '2' }, { _id: '3' }];
+const compareTo = [{ _id: '1' }, { _id: '2' }, { _id: '4' }, { _id: '5' }];
+
+console.log(getRemovedCustomConsents(vendors, compareTo)); // [{ _id: 3 }]
+```
+</details>
+
 ## Optional Callbacks
 [Documentation](../sourcepoint-callbacks)

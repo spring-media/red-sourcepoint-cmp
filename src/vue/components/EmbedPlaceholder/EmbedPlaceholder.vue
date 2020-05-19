@@ -25,8 +25,8 @@
         </slot>
       </div>
       <slot name="button">
-        <consent-actions v-slot="{ consentCustomPurpose }">
-          <button class="embed-placeholder__button" @click.prevent="consentCustomPurpose(socialPurposeId)">
+        <consent-actions v-slot="{ customConsent }">
+          <button class="embed-placeholder__button" @click.prevent="customConsent(getCustomConsentPayload())">
             Soziale Netzwerke aktivieren
           </button>
         </consent-actions>
@@ -62,7 +62,14 @@
 import Vue from 'vue';
 import { PrivacyManager } from '../PrivacyManager';
 import { ConsentActions } from '../ConsentActions';
-import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
+import {
+  PURPOSE_ID_SOCIAL,
+  VENDOR_ID_FACEBOOK,
+  VENDOR_ID_INSTAGRAM,
+  VENDOR_ID_TWITTER,
+  VENDOR_ID_YOUTUBE,
+} from '../../../vendor-mapping';
+import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
 
 type Props = {
   privacyManagerId: number;
@@ -75,13 +82,18 @@ type Data = {
 export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedPlaceholder',
   components: { PrivacyManager, ConsentActions },
-  data: () => ({
-    socialPurposeId: PURPOSE_ID_SOCIAL,
-  }),
   props: {
     privacyManagerId: {
       type: Number,
       required: true,
+    },
+  },
+  methods: {
+    getCustomConsentPayload(): PostCustomConsentPayload {
+      return {
+        purposeIds: [PURPOSE_ID_SOCIAL],
+        vendorIds: [VENDOR_ID_FACEBOOK, VENDOR_ID_INSTAGRAM, VENDOR_ID_TWITTER, VENDOR_ID_YOUTUBE],
+      };
     },
   },
 });

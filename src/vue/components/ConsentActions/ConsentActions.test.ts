@@ -2,10 +2,15 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import { postCustomConsent } from '../../../sourcepoint';
 import { ConsentActions } from './';
+import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
 
 jest.mock('../../../sourcepoint');
 
 describe('ConsentActions component', () => {
+  afterEach(() => {
+    (postCustomConsent as jest.Mock).mockReset();
+  });
+
   it('should provide a default scoped slot', () => {
     const wrapper = mount(ConsentActions, {
       slots: {
@@ -33,7 +38,6 @@ describe('ConsentActions component', () => {
 
       mount(ConsentActions, {
         scopedSlots: {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           async default({ consentCustomPurpose }: { consentCustomPurpose: (id: string) => void }): Promise<void> {
             await consentCustomPurpose('1234');
 
@@ -69,7 +73,6 @@ describe('ConsentActions component', () => {
 
       mount(ConsentActions, {
         scopedSlots: {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           async default({ consentCustomPurpose }: { consentCustomPurpose: (id: string) => void }): Promise<void> {
             await consentCustomPurpose('1234');
 
@@ -82,6 +85,29 @@ describe('ConsentActions component', () => {
         },
         localVue,
         store,
+      });
+    });
+  });
+
+  describe('slot function customConsent', () => {
+    it('should call postCustomConsent with the expected parameters', () => {
+      expect.assertions(1);
+
+      (postCustomConsent as jest.Mock).mockImplementationOnce(() => Promise.reject(null));
+
+      mount(ConsentActions, {
+        scopedSlots: {
+          async default({
+            customConsent,
+          }: {
+            customConsent: (payload: PostCustomConsentPayload) => void;
+          }): Promise<void> {
+            const payload: PostCustomConsentPayload = { vendorIds: ['123'], purposeIds: ['456'] };
+            await customConsent(payload);
+
+            expect(postCustomConsent).toHaveBeenCalledWith(payload);
+          },
+        },
       });
     });
   });

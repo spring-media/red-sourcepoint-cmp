@@ -1,7 +1,13 @@
 import Vue from 'vue';
 import { mount } from '@vue/test-utils';
 import { EmbedPlaceholder } from './';
-import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
+import {
+  PURPOSE_ID_SOCIAL,
+  VENDOR_ID_FACEBOOK,
+  VENDOR_ID_INSTAGRAM,
+  VENDOR_ID_TWITTER,
+  VENDOR_ID_YOUTUBE,
+} from '../../../vendor-mapping';
 
 const loadPrivacyManagerModal = jest.fn();
 
@@ -18,7 +24,7 @@ const privacyManagerStub = Vue.extend({
   },
 });
 
-const consentCustomPurpose = jest.fn();
+const customConsent = jest.fn();
 
 const consentActionsStub = Vue.extend({
   name: 'ConsentActions',
@@ -26,7 +32,7 @@ const consentActionsStub = Vue.extend({
     return (
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.$scopedSlots.default!({
-        consentCustomPurpose,
+        customConsent,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }) as any
     );
@@ -50,7 +56,10 @@ describe('EmbedPlaceholder', () => {
 
     wrapper.find('.embed-placeholder__button').trigger('click');
 
-    expect(consentCustomPurpose).toHaveBeenCalledWith(PURPOSE_ID_SOCIAL);
+    expect(customConsent).toHaveBeenCalledWith({
+      vendorIds: [VENDOR_ID_FACEBOOK, VENDOR_ID_INSTAGRAM, VENDOR_ID_TWITTER, VENDOR_ID_YOUTUBE],
+      purposeIds: [PURPOSE_ID_SOCIAL],
+    });
   });
 
   describe('should open a privacy manager by clicking on', () => {

@@ -152,7 +152,7 @@ const compile = async (parameters) => {
         {
           resolveId(source) {
             if (source === 'cmp-embed-placeholder.css') {
-              return `.cae/red-cmp-embed-placeholder-${version}.min.css`;
+              return `.cae/red-cmp-components-${version}.min.css`;
             }
 
             return null;

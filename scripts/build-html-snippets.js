@@ -8,6 +8,7 @@ const {
   EmbedInstagramPlaceholder,
   EmbedTwitterPlaceholder,
   EmbedYoutubePlaceholder,
+  SocialSharingPopup,
 } = require('../dist/cjs/vue/components.js');
 
 const components = {
@@ -16,6 +17,7 @@ const components = {
   'embed-instagram-placeholder': EmbedInstagramPlaceholder,
   'embed-twitter-placeholder': EmbedTwitterPlaceholder,
   'embed-youtube-placeholder': EmbedYoutubePlaceholder,
+  'social-sharing-popup': SocialSharingPopup,
 };
 
 const buildHTMLSnippets = ({ version }) => {

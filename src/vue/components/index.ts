@@ -16,3 +16,4 @@ export * from './EmbedYoutubeConsent';
 export * from './EmbedYoutubePlaceholder';
 export * from './PrivacyManager';
 export * from './VendorMapping';
+export * from './SocialSharingPopup';

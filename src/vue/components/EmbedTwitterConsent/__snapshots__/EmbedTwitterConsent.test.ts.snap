@@ -58,6 +58,7 @@ exports[`EmbedTwitterConsent component should render the placeholder by default 
       />
        
       <svg
+        style="transform: translateX(calc(100% - 20px));"
         x="calc(100% - 20px)"
       >
         <path

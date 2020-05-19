@@ -14,6 +14,7 @@ exports[`EmbedYoutubePlaceholder should render without any errors 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <svg
+        style="transform: translate(calc(50% - 20px), calc(50% - 20px));"
         x="calc(50% - 25px)"
         y="calc(50% - 20px)"
       >

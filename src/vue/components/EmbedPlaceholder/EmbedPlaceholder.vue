@@ -26,7 +26,7 @@
       </div>
       <slot name="button">
         <consent-actions v-slot="{ customConsent }">
-          <button class="embed-placeholder__button" @click.prevent="customConsent(getCustomConsentPayload())">
+          <button class="embed-placeholder__button" @click.prevent="customConsent(customConsents)">
             Soziale Netzwerke aktivieren
           </button>
         </consent-actions>
@@ -76,24 +76,22 @@ type Props = {
 };
 
 type Data = {
-  socialPurposeId: string;
+  customConsents: PostCustomConsentPayload;
 };
 
 export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedPlaceholder',
   components: { PrivacyManager, ConsentActions },
+  data: () => ({
+    customConsents: {
+      purposeIds: [PURPOSE_ID_SOCIAL],
+      vendorIds: [VENDOR_ID_FACEBOOK, VENDOR_ID_INSTAGRAM, VENDOR_ID_TWITTER, VENDOR_ID_YOUTUBE],
+    },
+  }),
   props: {
     privacyManagerId: {
       type: Number,
       required: true,
-    },
-  },
-  methods: {
-    getCustomConsentPayload(): PostCustomConsentPayload {
-      return {
-        purposeIds: [PURPOSE_ID_SOCIAL],
-        vendorIds: [VENDOR_ID_FACEBOOK, VENDOR_ID_INSTAGRAM, VENDOR_ID_TWITTER, VENDOR_ID_YOUTUBE],
-      };
     },
   },
 });

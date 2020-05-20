@@ -1,13 +1,7 @@
 import Vue from 'vue';
 import { mount } from '@vue/test-utils';
 import { EmbedPlaceholder } from './';
-import {
-  PURPOSE_ID_SOCIAL,
-  VENDOR_ID_FACEBOOK,
-  VENDOR_ID_INSTAGRAM,
-  VENDOR_ID_TWITTER,
-  VENDOR_ID_YOUTUBE,
-} from '../../../vendor-mapping';
+import { getRelations, PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
 
 const loadPrivacyManagerModal = jest.fn();
 
@@ -57,8 +51,8 @@ describe('EmbedPlaceholder', () => {
     wrapper.find('.embed-placeholder__button').trigger('click');
 
     expect(customConsent).toHaveBeenCalledWith({
-      vendorIds: [VENDOR_ID_FACEBOOK, VENDOR_ID_INSTAGRAM, VENDOR_ID_TWITTER, VENDOR_ID_YOUTUBE],
       purposeIds: [PURPOSE_ID_SOCIAL],
+      vendorIds: getRelations(PURPOSE_ID_SOCIAL),
     });
   });
 

@@ -62,13 +62,7 @@
 import Vue from 'vue';
 import { PrivacyManager } from '../PrivacyManager';
 import { ConsentActions } from '../ConsentActions';
-import {
-  PURPOSE_ID_SOCIAL,
-  VENDOR_ID_FACEBOOK,
-  VENDOR_ID_INSTAGRAM,
-  VENDOR_ID_TWITTER,
-  VENDOR_ID_YOUTUBE,
-} from '../../../vendor-mapping';
+import { PURPOSE_ID_SOCIAL, getRelations } from '../../../vendor-mapping';
 import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
 
 type Props = {
@@ -85,7 +79,7 @@ export default Vue.extend<Data, {}, {}, Props>({
   data: () => ({
     customConsents: {
       purposeIds: [PURPOSE_ID_SOCIAL],
-      vendorIds: [VENDOR_ID_FACEBOOK, VENDOR_ID_INSTAGRAM, VENDOR_ID_TWITTER, VENDOR_ID_YOUTUBE],
+      vendorIds: getRelations(PURPOSE_ID_SOCIAL),
     },
   }),
   props: {

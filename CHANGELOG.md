@@ -1,3 +1,10 @@
+## [0.30.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.30.1...v0.30.2) (2020-05-20)
+
+
+### Bug Fixes
+
+* **vue:** use the recently implemented method `customConsent` in social-sharing-popup component ([20cbb86](https://github.com/spring-media/red-sourcepoint-cmp/commit/20cbb86df8163979e517513b4c491b882e8f53d7))
+
 ## [0.30.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.30.0...v0.30.1) (2020-05-20)
 
 

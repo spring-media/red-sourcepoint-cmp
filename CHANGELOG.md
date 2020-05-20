@@ -1,3 +1,11 @@
+# [0.31.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.30.2...v0.31.0) (2020-05-20)
+
+
+### Features
+
+* **sourcepoint:** add new function to compare two arrays of custom consents and returns all consents that are removed from the first array ([d6ccb52](https://github.com/spring-media/red-sourcepoint-cmp/commit/d6ccb52fda5a70f8e7cb7e2acbae6267c379b8d4))
+* **vue:** add vuex effect that reloads the page after a vendor or purpose has been rejected ([6155543](https://github.com/spring-media/red-sourcepoint-cmp/commit/6155543b767b9f96c48dbeddaefd78b4a8711adc))
+
 ## [0.30.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.30.1...v0.30.2) (2020-05-20)
 
 

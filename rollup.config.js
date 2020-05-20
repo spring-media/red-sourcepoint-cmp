@@ -30,8 +30,9 @@ export default [
   {
     input: {
       'vuex/sourcepoint': './src/vue/vuex/sourcepoint/index.ts',
+      'vuex/sourcepoint/effects': './src/vue/vuex/sourcepoint/effects/index.ts',
     },
-    external: ['vue', 'vuex', '../../../tcf-v2'],
+    external: ['vue', 'vuex'],
     output: [
       { format: 'esm', dir: './dist/esm/vue' },
       { format: 'cjs', dir: './dist/cjs/vue' },

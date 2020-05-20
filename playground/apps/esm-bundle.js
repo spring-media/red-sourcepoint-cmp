@@ -15,6 +15,7 @@ import {
   EmbedInstagramConsent,
 } from '../../dist/esm/vue/components';
 import { sourcepoint } from '../../dist/esm/vue/vuex/sourcepoint';
+import { reloadPageOnReject } from '../../dist/esm/vue/vuex/sourcepoint/effects';
 import { addEventListener } from '../../dist/esm/tcf-v2';
 import { getCustomVendorConsents, loadPrivacyManagerModal } from '../../dist/esm/sourcepoint';
 import '../../dist/esm/vue/components.css';
@@ -39,6 +40,8 @@ const store = new Vuex.Store({
     sourcepoint,
   },
 });
+
+reloadPageOnReject(store);
 
 const getConsents = async () => {
   const { consentedPurposes = [], consentedVendors = [] } = await getCustomVendorConsents();

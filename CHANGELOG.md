@@ -1,3 +1,10 @@
+# [0.30.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.29.0...v0.30.0) (2020-05-20)
+
+
+### Features
+
+* **vue:** implement a new method `customConsent` that can be used to give consents to vendors and purposes at once ([af48697](https://github.com/spring-media/red-sourcepoint-cmp/commit/af48697d6de6ba1536ab7f7f081cf653da905f20))
+
 # [0.29.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.28.0...v0.29.0) (2020-05-19)
 
 

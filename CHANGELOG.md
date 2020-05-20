@@ -1,3 +1,10 @@
+# [0.32.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.31.0...v0.32.0) (2020-05-20)
+
+
+### Features
+
+* **sourcepoint:** update IAB stub script ([2498634](https://github.com/spring-media/red-sourcepoint-cmp/commit/2498634ef5066d57955b384a53904d05c10571ac))
+
 # [0.31.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.30.2...v0.31.0) (2020-05-20)
 
 

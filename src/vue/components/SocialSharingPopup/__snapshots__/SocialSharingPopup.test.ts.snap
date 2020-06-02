@@ -16,7 +16,7 @@ exports[`SocialSharingPopup should initially render without any errors 1`] = `
     class="social-sharing-popup__description"
   >
     
-        Um diesen Artikel oder andere Inhalte über Soziale Netzwerke zu teilen, brauchen wir deine Zustimmung für
+        Um diesen Artikel oder andere Inhalte über soziale Netzwerke zu teilen, brauchen wir deine Zustimmung für
         
     <a
       href="#"

@@ -81,7 +81,7 @@ exports[`EmbedTwitterConsent component should render the placeholder by default 
     class="embed-placeholder__description"
   >
     
-    Um mit Inhalten aus Twitter und anderen Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
+    Um mit Inhalten aus Twitter und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
     deine Zustimmung.
   
   </div>
@@ -90,7 +90,7 @@ exports[`EmbedTwitterConsent component should render the placeholder by default 
     class="embed-placeholder__button"
   >
     
-          Soziale Netzwerke aktivieren
+          soziale Netzwerke aktivieren
         
   </button>
    
@@ -98,7 +98,7 @@ exports[`EmbedTwitterConsent component should render the placeholder by default 
     class="embed-placeholder__footer-text"
   >
     
-        Ich bin damit einverstanden, dass mir externe Inhalte aus Sozialen Netzwerken angezeigt werden. Damit können
+        Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
         personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
         
     <a

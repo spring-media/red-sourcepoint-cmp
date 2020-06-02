@@ -15,25 +15,25 @@
       </div>
       <div class="embed-placeholder__headline">
         <slot name="headline">
-          An dieser Stelle findest du Inhalte aus Sozialen Netzwerken
+          An dieser Stelle findest du Inhalte aus sozialen Netzwerken
         </slot>
       </div>
       <div class="embed-placeholder__description">
         <slot name="description">
-          Um mit Inhalten aus Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine
+          Um mit Inhalten aus sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine
           Zustimmung.
         </slot>
       </div>
       <slot name="button">
         <consent-actions v-slot="{ customConsent }">
           <button class="embed-placeholder__button" @click.prevent="customConsent(customConsents)">
-            Soziale Netzwerke aktivieren
+            soziale Netzwerke aktivieren
           </button>
         </consent-actions>
       </slot>
       <div class="embed-placeholder__footer-text">
         <slot name="footer">
-          Ich bin damit einverstanden, dass mir externe Inhalte aus Sozialen Netzwerken angezeigt werden. Damit können
+          Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
           personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
           <a
             class="embed-placeholder__text-link embed-placeholder__link-description"

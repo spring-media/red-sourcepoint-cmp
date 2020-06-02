@@ -135,6 +135,7 @@ export default Vue.extend<Data, {}, {}, Props>({
   width: 100%;
   background: #00c373;
   border-radius: 8px;
+  border-style: none;
   margin-bottom: 10px;
 
   font-family: Gotham XNarrow;

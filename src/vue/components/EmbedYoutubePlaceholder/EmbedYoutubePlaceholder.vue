@@ -15,7 +15,7 @@
       An dieser Stelle findest du Inhalte aus YouTube
     </template>
     <template #description>
-      Um mit Inhalten aus YouTube und anderen Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
+      Um mit Inhalten aus YouTube und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
       deine Zustimmung.
     </template>
   </embed-placeholder>

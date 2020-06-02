@@ -8,7 +8,7 @@
       </div>
       <div class="social-sharing-popup__description">
         <slot name="description">
-          Um diesen Artikel oder andere Inhalte über Soziale Netzwerke zu teilen, brauchen wir deine Zustimmung für
+          Um diesen Artikel oder andere Inhalte über soziale Netzwerke zu teilen, brauchen wir deine Zustimmung für
           <a href="#" rel="noopener" target="_blank" @click.prevent="loadPrivacyManagerModal(privacyManagerId)">
             diesen Zweck der Datenverarbeitung
           </a>

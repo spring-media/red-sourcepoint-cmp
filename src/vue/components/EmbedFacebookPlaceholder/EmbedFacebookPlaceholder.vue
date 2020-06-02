@@ -19,7 +19,7 @@
       An dieser Stelle findest du Inhalte aus Facebook
     </template>
     <template #description>
-      Um mit Inhalten aus Facebook und anderen Sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
+      Um mit Inhalten aus Facebook und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
       deine Zustimmung.
     </template>
   </embed-placeholder>

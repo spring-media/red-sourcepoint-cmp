@@ -1,3 +1,10 @@
+## [0.32.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.32.0...v0.32.1) (2020-06-03)
+
+
+### Bug Fixes
+
+* **vue:** fix icon position in embed placeholdern ([8d0db3f](https://github.com/spring-media/red-sourcepoint-cmp/commit/8d0db3fe0c6b013c618e3f5e02298341c55f19f8))
+
 # [0.32.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.31.0...v0.32.0) (2020-05-20)
 
 

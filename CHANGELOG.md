@@ -1,3 +1,10 @@
+# [0.33.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.32.2...v0.33.0) (2020-06-03)
+
+
+### Features
+
+* **vendor-mapping:** Add three new social network vendors (Soundcloud, Reddit, Podigee) to vendor-mapping module ([78caeb7](https://github.com/spring-media/red-sourcepoint-cmp/commit/78caeb73b887c5d207e7745dbf5c0e91c6ecf01c))
+
 ## [0.32.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.32.1...v0.32.2) (2020-06-03)
 
 

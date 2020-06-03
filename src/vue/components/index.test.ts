@@ -24,6 +24,7 @@ describe('vue components index', () => {
       'PrivacyManager',
       'VendorMapping',
       'SocialSharingPopup',
+      'EmbedConsent',
     ]);
   });
 });

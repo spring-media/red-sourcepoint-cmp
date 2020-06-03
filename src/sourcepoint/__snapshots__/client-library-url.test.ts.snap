@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sourcepoint getClientLibraryUrl should return the expected content 1`] = `"https://gdpr-tcfv2.sp-prod.net/wrapperMessagingWithoutDetection.js"`;

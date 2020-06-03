@@ -19,6 +19,21 @@ describe('twitter utilities', () => {
 
       expect(processMock).toHaveBeenCalled();
     });
+
+    it('should call the process function with given parameter', () => {
+      window.twttr = { widgets: { load: jest.fn() } };
+
+      processMock.mockImplementation((config) => {
+        config.processEmbeds();
+        return Promise.resolve();
+      });
+
+      const element = document.createElement('DIV');
+
+      processEmbedContent('embed content', element);
+
+      expect(window.twttr.widgets.load).toHaveBeenCalledWith(element);
+    });
   });
 
   describe('libraryIsAvailable', () => {

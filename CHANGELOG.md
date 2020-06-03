@@ -1,3 +1,10 @@
+## [0.32.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.32.1...v0.32.2) (2020-06-03)
+
+
+### Bug Fixes
+
+* **vue:** Fix typo in embed placeholder description ([a3663e8](https://github.com/spring-media/red-sourcepoint-cmp/commit/a3663e84b9e030d620e29a528cc44c067c22647f))
+
 ## [0.32.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.32.0...v0.32.1) (2020-06-03)
 
 

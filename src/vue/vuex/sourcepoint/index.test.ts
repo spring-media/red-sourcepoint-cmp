@@ -56,5 +56,18 @@ describe('vuex-module', () => {
       expect(commit).toHaveBeenNthCalledWith(1, 'setCustomVendorConsents', consents.consentedVendors);
       expect(commit).toHaveBeenNthCalledWith(2, 'setCustomPurposeConsents', consents.consentedPurposes);
     });
+
+    it('bootstrapConsents should use default values if not set', async () => {
+      const consents: CustomVendorConsentsResult = {} as CustomVendorConsentsResult;
+
+      const commit: Commit = jest.fn();
+
+      (getCustomVendorConsents as jest.Mock).mockImplementation(() => Promise.resolve(consents));
+
+      await actions.bootstrapConsents({ commit });
+
+      expect(commit).toHaveBeenNthCalledWith(1, 'setCustomVendorConsents', []);
+      expect(commit).toHaveBeenNthCalledWith(2, 'setCustomPurposeConsents', []);
+    });
   });
 });

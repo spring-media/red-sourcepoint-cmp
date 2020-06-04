@@ -1,5 +1,5 @@
 <template>
-  <embed-placeholder :privacyManagerId="privacyManagerId">
+  <embed-social-networks-placeholder :privacyManagerId="privacyManagerId">
     <template #header>
       <svg width="100%" height="172" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g style="transform: translate(calc(50% - 20px), calc(50% - 20px)) scale(0.42);">
@@ -18,12 +18,12 @@
       Um mit Inhalten aus YouTube und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
       deine Zustimmung.
     </template>
-  </embed-placeholder>
+  </embed-social-networks-placeholder>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { EmbedPlaceholder } from '../EmbedPlaceholder';
+import { EmbedSocialNetworksPlaceholder } from '../EmbedSocialNetworksPlaceholder';
 
 type Props = {
   privacyManagerId: number;
@@ -31,7 +31,7 @@ type Props = {
 
 export default Vue.extend<{}, {}, {}, Props>({
   name: 'EmbedPlaceholderYoutube',
-  components: { EmbedPlaceholder },
+  components: { EmbedSocialNetworksPlaceholder },
   props: {
     privacyManagerId: {
       type: Number,

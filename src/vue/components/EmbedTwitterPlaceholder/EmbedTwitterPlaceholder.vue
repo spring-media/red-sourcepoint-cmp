@@ -1,5 +1,5 @@
 <template>
-  <embed-placeholder :privacyManagerId="privacyManagerId">
+  <embed-social-networks-placeholder :privacyManagerId="privacyManagerId">
     <template #header>
       <svg width="100%" height="84" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="16" cy="16" r="16" fill="#E9ECEF" />
@@ -22,12 +22,12 @@
       Um mit Inhalten aus Twitter und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
       deine Zustimmung.
     </template>
-  </embed-placeholder>
+  </embed-social-networks-placeholder>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { EmbedPlaceholder } from '../EmbedPlaceholder';
+import { EmbedSocialNetworksPlaceholder } from '../EmbedSocialNetworksPlaceholder';
 
 type Props = {
   privacyManagerId: number;
@@ -35,7 +35,7 @@ type Props = {
 
 export default Vue.extend<{}, {}, {}, Props>({
   name: 'EmbedTwitterPlaceholder',
-  components: { EmbedPlaceholder },
+  components: { EmbedSocialNetworksPlaceholder },
   props: {
     privacyManagerId: {
       type: Number,

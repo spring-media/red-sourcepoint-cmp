@@ -1,5 +1,5 @@
 <template>
-  <embed-placeholder :privacyManagerId="privacyManagerId">
+  <embed-social-networks-placeholder :privacyManagerId="privacyManagerId">
     <template #header>
       <svg width="100%" height="312" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="12" cy="12" r="12" fill="#E9ECEF" />
@@ -24,20 +24,20 @@
       Um mit Inhalten aus Instagram und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen
       wir deine Zustimmung.
     </template>
-  </embed-placeholder>
+  </embed-social-networks-placeholder>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { EmbedPlaceholder } from '../EmbedPlaceholder';
+import { EmbedSocialNetworksPlaceholder } from '../EmbedSocialNetworksPlaceholder';
 
 type Props = {
   privacyManagerId: number;
 };
 
 export default Vue.extend<{}, {}, {}, Props>({
-  name: 'EmbedPlaceholderInstagram',
-  components: { EmbedPlaceholder },
+  name: 'EmbedInstagramPlaceholder',
+  components: { EmbedSocialNetworksPlaceholder },
   props: {
     privacyManagerId: {
       type: Number,

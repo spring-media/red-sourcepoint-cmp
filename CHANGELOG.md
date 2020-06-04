@@ -1,3 +1,10 @@
+# [0.34.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.33.0...v0.34.0) (2020-06-04)
+
+
+### Features
+
+* **vue:** adds a generic embed-consent component for (social) vendors who doesn't have a dedicated component ([3e41d40](https://github.com/spring-media/red-sourcepoint-cmp/commit/3e41d4043b57dbc95cec0478f78c38379ec14ba6))
+
 # [0.33.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.32.2...v0.33.0) (2020-06-03)
 
 

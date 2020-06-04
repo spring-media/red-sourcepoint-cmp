@@ -71,17 +71,17 @@ exports[`EmbedInstagramConsent component should render the placeholder by defaul
     class="embed-placeholder__button"
   >
     
-          soziale Netzwerke aktivieren
-        
+      soziale Netzwerke aktivieren
+    
   </button>
    
   <div
     class="embed-placeholder__footer-text"
   >
     
-        Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
-        personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-        
+      Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
+      personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
+      
     <a
       class="embed-placeholder__text-link embed-placeholder__link-description"
       href="#"
@@ -91,8 +91,8 @@ exports[`EmbedInstagramConsent component should render the placeholder by defaul
       Beschreibung dieses Datenverarbeitungszweck
     </a>
     
-        und in den Datenschutzinformationen dieser
-        
+      und in den Datenschutzinformationen dieser
+      
     <a
       class="embed-placeholder__text-link embed-placeholder__link-vendor-list"
       href="#"
@@ -102,7 +102,7 @@ exports[`EmbedInstagramConsent component should render the placeholder by defaul
       Drittanbieter
     </a>
     .
-      
+    
   </div>
 </div>
 `;

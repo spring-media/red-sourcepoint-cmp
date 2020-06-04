@@ -19,6 +19,7 @@ const config = {
   jsLib: `red-cmp-${version}.min.js`,
   redCmpComponents: `red-cmp-components-${version}.min.css`,
   embedPlaceholderCommonHtml: `red-cmp-embed-placeholder-${version}.html`,
+  embedPlaceholderSocialNetworksHtml: `red-cmp-embed-social-networks-placeholder-${version}.html`,
   embedPlaceholderFacebookHtml: `red-cmp-embed-facebook-placeholder-${version}.html`,
   embedPlaceholderInstagramHtml: `red-cmp-embed-instagram-placeholder-${version}.html`,
   embedPlaceholderTwitterHtml: `red-cmp-embed-twitter-placeholder-${version}.html`,

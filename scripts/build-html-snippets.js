@@ -4,6 +4,7 @@ const Vue = require('vue');
 
 const {
   EmbedPlaceholder,
+  EmbedSocialNetworksPlaceholder,
   EmbedFacebookPlaceholder,
   EmbedInstagramPlaceholder,
   EmbedTwitterPlaceholder,
@@ -13,6 +14,7 @@ const {
 
 const components = {
   'embed-placeholder': EmbedPlaceholder,
+  'embed-social-networks-placeholder': EmbedSocialNetworksPlaceholder,
   'embed-facebook-placeholder': EmbedFacebookPlaceholder,
   'embed-instagram-placeholder': EmbedInstagramPlaceholder,
   'embed-twitter-placeholder': EmbedTwitterPlaceholder,
@@ -23,7 +25,7 @@ const components = {
 const buildHTMLSnippets = ({ version }) => {
   for (const [name, component] of Object.entries(components)) {
     const app = new Vue({
-      render: (h) => h(component, { props: { privacyManagerId: 12345 } }),
+      render: (h) => h(component, { props: { privacyManagerId: 12345, customConsents: {} } }),
     });
 
     renderToString(app)

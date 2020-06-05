@@ -4,7 +4,7 @@
       <embed-placeholder :privacyManagerId="privacyManagerId"></embed-placeholder>
     </template>
     <template #enabledContent>
-      <div v-html="content"></div>
+      <embed-content :content="content"></embed-content>
     </template>
   </consent-wrapper>
 </template>
@@ -13,6 +13,7 @@
 import Vue from 'vue';
 import { ConsentWrapper } from '../ConsentWrapper';
 import { EmbedPlaceholder } from '../EmbedPlaceholder';
+import { EmbedContent } from '../EmbedContent';
 
 type Props = {
   vendorId: string;
@@ -22,7 +23,7 @@ type Props = {
 
 export default Vue.extend<{}, {}, {}, Props>({
   name: 'EmbedInstagramConsent',
-  components: { EmbedPlaceholder, ConsentWrapper },
+  components: { EmbedPlaceholder, ConsentWrapper, EmbedContent },
   props: {
     privacyManagerId: {
       type: Number,

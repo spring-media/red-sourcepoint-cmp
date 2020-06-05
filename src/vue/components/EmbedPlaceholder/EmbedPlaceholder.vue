@@ -60,7 +60,9 @@ type Props = {
   customConsents: PostCustomConsentPayload;
 };
 
-export default Vue.extend<{}, {}, {}, Props>({
+type NonNullish = Record<string, unknown>;
+
+export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   name: 'EmbedPlaceholder',
   components: { ConsentActions },
   props: {

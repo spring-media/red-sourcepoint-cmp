@@ -9,7 +9,9 @@ type Methods = {
   refreshConsents(): void;
 };
 
-export default Vue.extend<{}, Methods, {}, {}>({
+type NonNullish = Record<string, unknown>;
+
+export default Vue.extend<NonNullish, Methods, NonNullish, NonNullish>({
   name: 'ConsentActions',
   methods: {
     ...mapActions({ refreshConsents: 'sourcepoint/bootstrapConsents' }),

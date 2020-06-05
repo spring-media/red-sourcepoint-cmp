@@ -1,4 +1,5 @@
 import { postCustomConsent } from './post-custom-consent';
+import { GenericCallback } from '../tcf-v2/typings';
 
 describe('postCustomConsent', () => {
   it('should call the __tcfapi function', () => {
@@ -23,7 +24,7 @@ describe('postCustomConsent', () => {
   });
 
   it('should reject the command if the success parameter of the callback is false', async () => {
-    window.__tcfapi = (_command: string, _version: number, callback: Function): void => {
+    window.__tcfapi = (_command: string, _version: number, callback: GenericCallback): void => {
       callback(null, false);
     };
 
@@ -35,7 +36,7 @@ describe('postCustomConsent', () => {
   it('should resolve the command with the expected result', async () => {
     const result = {};
 
-    window.__tcfapi = (_command: string, _version: number, callback: Function): void => {
+    window.__tcfapi = (_command: string, _version: number, callback: GenericCallback): void => {
       callback(result, true);
     };
 

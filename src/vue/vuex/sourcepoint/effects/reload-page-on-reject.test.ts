@@ -3,7 +3,7 @@ import Vuex, { Store } from 'vuex';
 import { sourcepoint } from '../index';
 import { reloadPageOnReject } from './reload-page-on-reject';
 
-const createStore = (): Store<{}> => {
+const createStore = (): Store<Record<string, unknown>> => {
   Vue.use(Vuex);
 
   return new Vuex.Store({
@@ -18,7 +18,7 @@ const { location } = window;
 describe('effect reloadPageOnReject', () => {
   beforeEach(() => {
     delete window.location;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     window.location = {
       reload: jest.fn(),

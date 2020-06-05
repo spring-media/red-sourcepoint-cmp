@@ -26,7 +26,7 @@ export const actions = {
   },
 };
 
-export const sourcepoint: Module<SourcepointModuleState, {}> = {
+export const sourcepoint: Module<SourcepointModuleState, Record<string, unknown>> = {
   namespaced: true,
   state,
   mutations,

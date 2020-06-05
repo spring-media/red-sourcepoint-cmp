@@ -1,5 +1,8 @@
 import { OptionalCallbackKeys, OptionalCallbacks, UnregisterCallback } from './typings';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Callback = (...args: any) => void;
+
 const getEventStore = (): OptionalCallbacks => {
   if (typeof window === 'undefined') {
     return {};
@@ -21,7 +24,7 @@ const getEventStore = (): OptionalCallbacks => {
 const bindCallbacksToEvent = (
   name: OptionalCallbackKeys,
   eventStore: OptionalCallbacks,
-  callbacks: Set<Function>,
+  callbacks: Set<Callback>,
 ): void => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   eventStore[name] = (...args: any[]): void => {
@@ -31,9 +34,9 @@ const bindCallbacksToEvent = (
   };
 };
 
-export const createCallback = <T extends Function>(name: OptionalCallbackKeys): ((fn: T) => UnregisterCallback) => {
+export const createCallback = <T extends Callback>(name: OptionalCallbackKeys): ((fn: T) => UnregisterCallback) => {
   let isBound = false;
-  const callbacks = new Set<Function>();
+  const callbacks = new Set<Callback>();
 
   return (fn: T): UnregisterCallback => {
     if (!isBound) {

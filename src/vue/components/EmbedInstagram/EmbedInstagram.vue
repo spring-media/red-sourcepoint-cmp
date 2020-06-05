@@ -14,7 +14,9 @@ type Props = {
   content: string;
 };
 
-export default Vue.extend<Data, {}, {}, Props>({
+type NonNullish = Record<string, unknown>;
+
+export default Vue.extend<Data, NonNullish, NonNullish, Props>({
   name: 'EmbedInstagram',
   components: { EmbedContent },
   props: {

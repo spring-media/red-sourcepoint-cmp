@@ -67,7 +67,9 @@ type Data = {
   customConsents: PostCustomConsentPayload;
 };
 
-export default Vue.extend<Data, {}, {}, Props>({
+type NonNullish = Record<string, unknown>;
+
+export default Vue.extend<Data, NonNullish, NonNullish, Props>({
   name: 'EmbedSocialNetworksPlaceholder',
   components: { PrivacyManager, EmbedPlaceholder },
   data: () => ({

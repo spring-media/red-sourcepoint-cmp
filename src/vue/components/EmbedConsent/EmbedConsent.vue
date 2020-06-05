@@ -22,7 +22,9 @@ type Props = {
   customConsents: CustomConsent;
 };
 
-export default Vue.extend<{}, {}, {}, Props>({
+type NonNullish = Record<string, unknown>;
+
+export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   name: 'EmbedInstagramConsent',
   components: { EmbedPlaceholder, ConsentWrapper, EmbedContent },
   props: {

@@ -41,7 +41,9 @@ exports[`Testsuite CAE files red-cmp-embed-placeholder.html should have the expe
       An dieser Stelle findest du Inhalte von Drittanbietern
     </div> <div class=\\"embed-placeholder__description\\">
       Um mit Inhalten von Drittanbietern zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
-    </div> <button class=\\"embed-placeholder__button\\">externen Inhalt aktivieren</button> <div class=\\"embed-placeholder__footer-text\\"></div></div>"
+    </div> <button class=\\"embed-placeholder__button\\">
+          externen Inhalt aktivieren
+        </button> <div class=\\"embed-placeholder__footer-text\\"></div></div>"
 `;
 
 exports[`Testsuite CAE files red-cmp-embed-social-networks-placeholder.html should have the expected content 1`] = `"<!---->"`;

@@ -127,7 +127,9 @@ exports[`EmbedPlaceholder should render without any errors 1`] = `
   <button
     class="embed-placeholder__button"
   >
-    externen Inhalt aktivieren
+    
+          externen Inhalt aktivieren
+        
   </button>
    
   <div

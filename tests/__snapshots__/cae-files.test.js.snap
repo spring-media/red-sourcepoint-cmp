@@ -13,7 +13,7 @@ exports[`Testsuite CAE files red-cmp-embed-facebook-placeholder.html should have
     </button> <div class=\\"embed-placeholder__footer-text\\">
       Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
       personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweck</a>
+      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweckes</a>
       und in den Datenschutzinformationen dieser
       <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-vendor-list\\">Drittanbieter</a>.
     </div></div>"
@@ -30,7 +30,7 @@ exports[`Testsuite CAE files red-cmp-embed-instagram-placeholder.html should hav
     </button> <div class=\\"embed-placeholder__footer-text\\">
       Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
       personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweck</a>
+      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweckes</a>
       und in den Datenschutzinformationen dieser
       <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-vendor-list\\">Drittanbieter</a>.
     </div></div>"
@@ -59,7 +59,7 @@ exports[`Testsuite CAE files red-cmp-embed-twitter-placeholder.html should have 
     </button> <div class=\\"embed-placeholder__footer-text\\">
       Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
       personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweck</a>
+      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweckes</a>
       und in den Datenschutzinformationen dieser
       <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-vendor-list\\">Drittanbieter</a>.
     </div></div>"
@@ -76,7 +76,7 @@ exports[`Testsuite CAE files red-cmp-embed-youtube-placeholder.html should have 
     </button> <div class=\\"embed-placeholder__footer-text\\">
       Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
       personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweck</a>
+      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweckes</a>
       und in den Datenschutzinformationen dieser
       <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-vendor-list\\">Drittanbieter</a>.
     </div></div>"

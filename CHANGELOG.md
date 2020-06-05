@@ -1,3 +1,10 @@
+## [0.34.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.34.0...v0.34.1) (2020-06-05)
+
+
+### Bug Fixes
+
+* **vue:** fix embed-consents component ([5a42fc7](https://github.com/spring-media/red-sourcepoint-cmp/commit/5a42fc7ce4e0932c602ba67536924587cdefd1e8))
+
 # [0.34.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.33.0...v0.34.0) (2020-06-04)
 
 

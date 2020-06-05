@@ -1,3 +1,10 @@
+# [0.35.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.34.1...v0.35.0) (2020-06-05)
+
+
+### Features
+
+* **vue:** add embed-content component for embedding arbitrary html content ([2dba739](https://github.com/spring-media/red-sourcepoint-cmp/commit/2dba739e44b2feae31dcf8a3eaa8a0025c8691be))
+
 ## [0.34.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.34.0...v0.34.1) (2020-06-05)
 
 

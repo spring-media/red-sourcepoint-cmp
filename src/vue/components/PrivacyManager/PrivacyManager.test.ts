@@ -26,7 +26,7 @@ describe('PrivacyManager component', () => {
     mount(PrivacyManager, {
       scopedSlots: {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        default({ loadPrivacyManagerModal }: { loadPrivacyManagerModal: Function }): any {
+        default({ loadPrivacyManagerModal }: { loadPrivacyManagerModal: (id: number) => void }): any {
           expect(loadPrivacyManagerModal).toBeInstanceOf(Function);
         },
       },

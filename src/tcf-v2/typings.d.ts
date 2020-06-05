@@ -22,9 +22,12 @@ export type RemoveEventListenerCallback = (success: boolean) => void;
 
 export type PingCallback = (ping: PingReturn) => void;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type GenericCallback = (...args: any) => void;
+
 export interface TCFV2API {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (command: string, version: 2, callback: (...args: any) => void, parameter?: any): void;
+  (command: string, version: 2, callback: GenericCallback, parameter?: any): void;
   (command: 'addEventListener', version: 2, callback: AddEventListenerCallback): void;
   (command: 'removeEventListener', version: 2, callback: RemoveEventListenerCallback, listenerId: ListenerId): void;
   (command: 'getTCData', version: 2, callback: GetTCDataCallback, vendorIds?: number[]): void;

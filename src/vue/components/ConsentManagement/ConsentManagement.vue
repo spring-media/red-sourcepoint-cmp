@@ -16,7 +16,9 @@ type Methods = {
   hasCustomPurposeConsent(id: string): boolean;
 };
 
-export default Vue.extend<{}, Methods, {}, Props>({
+type NonNullish = Record<string, unknown>;
+
+export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   name: 'ConsentManagement',
   props: {
     vendorId: {

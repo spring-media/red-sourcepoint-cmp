@@ -51,7 +51,9 @@ type Props = {
   privacyManagerId: number;
 };
 
-export default Vue.extend<Data, {}, {}, Props>({
+type NonNullish = Record<string, unknown>;
+
+export default Vue.extend<Data, NonNullish, NonNullish, Props>({
   name: 'SocialSharingPopup',
   components: { PrivacyManager, ConsentActions },
   data: () => ({

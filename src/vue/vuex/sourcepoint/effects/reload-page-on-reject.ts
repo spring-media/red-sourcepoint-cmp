@@ -7,7 +7,7 @@ type RootState = {
   sourcepoint: SourcepointModuleState;
 };
 
-export const reloadPageOnReject = (store: Store<{}>): (() => void) => {
+export const reloadPageOnReject = (store: Store<Record<string, unknown>>): (() => void) => {
   let vendors: CustomConsent[] = [];
   let purposes: CustomConsent[] = [];
 

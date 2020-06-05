@@ -4,6 +4,6 @@ describe('embed-utils index', () => {
     const imports = require('./index');
     const keys = Object.keys(imports);
 
-    expect(keys).toEqual(['instagram', 'twitter', 'iframely', 'getScriptSrcFromOembedHTML', 'loadScript']);
+    expect(keys).toEqual(['getScriptSrcFromOembedHTML', 'loadScript']);
   });
 });

@@ -4,7 +4,7 @@
       <embed-facebook-placeholder :privacyManagerId="privacyManagerId"></embed-facebook-placeholder>
     </template>
     <template #enabledContent>
-      <embed-facebook :content="content"></embed-facebook>
+      <embed-content :content="content"></embed-content>
     </template>
   </consent-wrapper>
 </template>
@@ -13,7 +13,7 @@
 import Vue from 'vue';
 import { EmbedFacebookPlaceholder } from '../EmbedFacebookPlaceholder';
 import { ConsentWrapper } from '../ConsentWrapper';
-import { EmbedFacebook } from '../EmbedFacebook';
+import { EmbedContent } from '../EmbedContent';
 import { VENDOR_ID_FACEBOOK } from '../../../vendor-mapping';
 
 type Data = {
@@ -27,7 +27,7 @@ type Props = {
 
 export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedFacebookConsent',
-  components: { ConsentWrapper, EmbedFacebook, EmbedFacebookPlaceholder },
+  components: { ConsentWrapper, EmbedFacebookPlaceholder, EmbedContent },
   data: () => ({
     vendorId: VENDOR_ID_FACEBOOK,
   }),

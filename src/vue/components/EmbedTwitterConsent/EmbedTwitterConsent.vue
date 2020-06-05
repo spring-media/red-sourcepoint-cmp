@@ -4,7 +4,7 @@
       <embed-twitter-placeholder :privacyManagerId="privacyManagerId"></embed-twitter-placeholder>
     </template>
     <template #enabledContent>
-      <embed-twitter :content="content"></embed-twitter>
+      <embed-content :content="content"></embed-content>
     </template>
   </consent-wrapper>
 </template>
@@ -13,7 +13,7 @@
 import Vue from 'vue';
 import { EmbedTwitterPlaceholder } from '../EmbedTwitterPlaceholder';
 import { ConsentWrapper } from '../ConsentWrapper';
-import { EmbedTwitter } from '../EmbedTwitter';
+import { EmbedContent } from '../EmbedContent';
 import { VENDOR_ID_TWITTER } from '../../../vendor-mapping';
 
 type Data = {
@@ -27,7 +27,7 @@ type Props = {
 
 export default Vue.extend<Data, {}, {}, Props>({
   name: 'EmbedTwitterConsent',
-  components: { ConsentWrapper, EmbedTwitter, EmbedTwitterPlaceholder },
+  components: { ConsentWrapper, EmbedTwitterPlaceholder, EmbedContent },
   data: () => ({
     vendorId: VENDOR_ID_TWITTER,
   }),

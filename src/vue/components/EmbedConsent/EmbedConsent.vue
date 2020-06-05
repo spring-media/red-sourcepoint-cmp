@@ -4,7 +4,7 @@
       <embed-placeholder :customConsents="customConsents"></embed-placeholder>
     </template>
     <template #enabledContent>
-      <div v-html="content"></div>
+      <embed-content :content="content"></embed-content>
     </template>
   </consent-wrapper>
 </template>
@@ -13,6 +13,7 @@
 import Vue, { PropType } from 'vue';
 import { ConsentWrapper } from '../ConsentWrapper';
 import { EmbedPlaceholder } from '../EmbedPlaceholder';
+import { EmbedContent } from '../EmbedContent';
 import { CustomConsent } from '../../../sourcepoint/typings';
 
 type Props = {
@@ -22,8 +23,8 @@ type Props = {
 };
 
 export default Vue.extend<{}, {}, {}, Props>({
-  name: 'EmbedConsent',
-  components: { EmbedPlaceholder, ConsentWrapper },
+  name: 'EmbedInstagramConsent',
+  components: { EmbedPlaceholder, ConsentWrapper, EmbedContent },
   props: {
     customConsents: {
       type: Object as PropType<CustomConsent>,

@@ -17,9 +17,13 @@ type Props = {
   content: string;
 };
 
+type Methods = {
+  scriptLoaded: () => void;
+}
+
 type NonNullish = Record<string, unknown>;
 
-export default Vue.extend<Data, NonNullish, NonNullish, Props>({
+export default Vue.extend<Data, Methods, NonNullish, Props>({
   name: 'EmbedInstagram',
   components: { EmbedContent },
   props: {

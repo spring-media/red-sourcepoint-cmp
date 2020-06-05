@@ -67,7 +67,7 @@ exports[`EmbedYoutubePlaceholder should render without any errors 1`] = `
       rel="noopener"
       target="_blank"
     >
-      Beschreibung dieses Datenverarbeitungszweck
+      Beschreibung dieses Datenverarbeitungszweckes
     </a>
     
       und in den Datenschutzinformationen dieser

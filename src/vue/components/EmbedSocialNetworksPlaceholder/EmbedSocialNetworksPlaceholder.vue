@@ -73,7 +73,7 @@
           rel="noopener"
           target="_blank"
           @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
-        >Beschreibung dieses Datenverarbeitungszweck</a>
+        >Beschreibung dieses Datenverarbeitungszweckes</a>
         und in den Datenschutzinformationen dieser
         <a
           class="embed-placeholder__text-link embed-placeholder__link-vendor-list"

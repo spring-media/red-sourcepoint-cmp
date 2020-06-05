@@ -19,4 +19,18 @@ describe('EmbedInstagram component', () => {
       </div>
     `);
   });
+
+  it('should not throw an error if it tries to access the instagram embed lib', () => {
+    interface Combined extends Vue {
+      scriptLoaded: () => void;
+    }
+
+    const wrapper = mount<Combined>(EmbedInstagram, {
+      propsData: {
+        content: '<div>some (html) content</div>',
+      },
+    });
+
+    expect(() => wrapper.vm.scriptLoaded()).not.toThrow();
+  });
 });

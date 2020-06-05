@@ -67,7 +67,7 @@ exports[`EmbedYoutubeConsent component should render the placeholder by default 
       rel="noopener"
       target="_blank"
     >
-      Beschreibung dieses Datenverarbeitungszweck
+      Beschreibung dieses Datenverarbeitungszweckes
     </a>
     
       und in den Datenschutzinformationen dieser

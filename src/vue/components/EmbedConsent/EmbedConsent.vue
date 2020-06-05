@@ -1,7 +1,7 @@
 <template>
   <consent-wrapper :vendorId="vendorId">
     <template #disabledContent>
-      <embed-placeholder :privacyManagerId="privacyManagerId"></embed-placeholder>
+      <embed-placeholder :customConsents="customConsents"></embed-placeholder>
     </template>
     <template #enabledContent>
       <div v-html="content"></div>
@@ -10,22 +10,23 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropType } from 'vue';
 import { ConsentWrapper } from '../ConsentWrapper';
 import { EmbedPlaceholder } from '../EmbedPlaceholder';
+import { CustomConsent } from '../../../sourcepoint/typings';
 
 type Props = {
   vendorId: string;
   content: string;
-  privacyManagerId: number;
+  customConsents: CustomConsent;
 };
 
 export default Vue.extend<{}, {}, {}, Props>({
-  name: 'EmbedInstagramConsent',
+  name: 'EmbedConsent',
   components: { EmbedPlaceholder, ConsentWrapper },
   props: {
-    privacyManagerId: {
-      type: Number,
+    customConsents: {
+      type: Object as PropType<CustomConsent>,
       required: true,
     },
     content: {

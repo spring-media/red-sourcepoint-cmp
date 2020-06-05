@@ -22,7 +22,7 @@ describe('EmbedConsent component', () => {
   it('should render the placeholder by default', () => {
     const wrapper = mount(EmbedConsent, {
       propsData: {
-        privacyManagerId: 12345,
+        customConsents: {},
         vendorId: 'abc',
       },
       store,
@@ -37,7 +37,7 @@ describe('EmbedConsent component', () => {
 
     const wrapper = mount(EmbedConsent, {
       propsData: {
-        privacyManagerId: 12345,
+        customConsents: {},
         content: '<div>Embed Content</div>',
         vendorId: 'abc',
       },

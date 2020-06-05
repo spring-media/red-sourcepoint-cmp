@@ -1,10 +1,10 @@
 <template>
-  <consent-wrapper :vendorId="vendorId">
+  <consent-wrapper :vendor-id="vendorId">
     <template #disabledContent>
-      <embed-instagram-placeholder :privacyManagerId="privacyManagerId"></embed-instagram-placeholder>
+      <embed-instagram-placeholder :privacy-manager-id="privacyManagerId" />
     </template>
     <template #enabledContent>
-      <embed-instagram :content="content"></embed-instagram>
+      <embed-instagram :content="content" />
     </template>
   </consent-wrapper>
 </template>

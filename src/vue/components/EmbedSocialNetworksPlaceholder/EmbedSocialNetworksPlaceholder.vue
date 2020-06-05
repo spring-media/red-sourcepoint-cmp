@@ -1,15 +1,52 @@
 <template>
   <privacy-manager v-slot="{ loadPrivacyManagerModal }">
-    <embed-placeholder :customConsents="customConsents">
+    <embed-placeholder :custom-consents="customConsents">
       <template #header>
         <slot name="header">
-          <svg width="100%" height="84" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="16" fill="#E9ECEF"></circle>
-            <rect x="40" y="7" width="60" height="10" fill="#E9ECEF"></rect>
-            <rect x="40" y="19" width="40" height="6" fill="#E9ECEF"></rect>
-            <rect y="44" width="100%" height="8" fill="#E9ECEF"></rect>
-            <rect y="60" width="100%" height="8" fill="#E9ECEF"></rect>
-            <rect y="76" width="75%" height="8" fill="#E9ECEF"></rect>
+          <svg
+            width="100%"
+            height="84"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="16"
+              cy="16"
+              r="16"
+              fill="#E9ECEF"
+            />
+            <rect
+              x="40"
+              y="7"
+              width="60"
+              height="10"
+              fill="#E9ECEF"
+            />
+            <rect
+              x="40"
+              y="19"
+              width="40"
+              height="6"
+              fill="#E9ECEF"
+            />
+            <rect
+              y="44"
+              width="100%"
+              height="8"
+              fill="#E9ECEF"
+            />
+            <rect
+              y="60"
+              width="100%"
+              height="8"
+              fill="#E9ECEF"
+            />
+            <rect
+              y="76"
+              width="75%"
+              height="8"
+              fill="#E9ECEF"
+            />
           </svg>
         </slot>
       </template>
@@ -36,8 +73,7 @@
           rel="noopener"
           target="_blank"
           @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
-          >Beschreibung dieses Datenverarbeitungszweck</a
-        >
+        >Beschreibung dieses Datenverarbeitungszweck</a>
         und in den Datenschutzinformationen dieser
         <a
           class="embed-placeholder__text-link embed-placeholder__link-vendor-list"
@@ -45,8 +81,7 @@
           rel="noopener"
           target="_blank"
           @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
-          >Drittanbieter</a
-        >.
+        >Drittanbieter</a>.
       </template>
     </embed-placeholder>
   </privacy-manager>

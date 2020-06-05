@@ -1,10 +1,10 @@
 <template>
-  <consent-wrapper :vendorId="vendorId">
+  <consent-wrapper :vendor-id="vendorId">
     <template #disabledContent>
-      <embed-youtube-placeholder :privacyManagerId="privacyManagerId"></embed-youtube-placeholder>
+      <embed-youtube-placeholder :privacy-manager-id="privacyManagerId" />
     </template>
     <template #enabledContent>
-      <embed-content :content="content"></embed-content>
+      <embed-content :content="content" />
     </template>
   </consent-wrapper>
 </template>

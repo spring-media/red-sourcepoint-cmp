@@ -1,5 +1,8 @@
 <template>
-  <embed-content :content="content" @scriptLoaded="scriptLoaded"></embed-content>
+  <embed-content
+    :content="content"
+    @scriptLoaded="scriptLoaded"
+  />
 </template>
 
 <script lang="ts">

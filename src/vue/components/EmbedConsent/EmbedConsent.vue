@@ -1,10 +1,10 @@
 <template>
-  <consent-wrapper :vendorId="vendorId">
+  <consent-wrapper :vendor-id="vendorId">
     <template #disabledContent>
-      <embed-placeholder :customConsents="customConsents"></embed-placeholder>
+      <embed-placeholder :custom-consents="customConsents" />
     </template>
     <template #enabledContent>
-      <embed-content :content="content"></embed-content>
+      <embed-content :content="content" />
     </template>
   </consent-wrapper>
 </template>

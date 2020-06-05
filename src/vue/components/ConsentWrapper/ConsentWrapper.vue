@@ -2,18 +2,21 @@
   <vendor-mapping v-slot="{ getRelations }">
     <consented-data v-slot="{ customVendors, customPurposes }">
       <consent-management
-        :vendorId="vendorId"
-        :purposeIds="getRelations(vendorId)"
-        :customVendors="customVendors"
-        :customPurposes="customPurposes"
+        :vendor-id="vendorId"
+        :purpose-ids="getRelations(vendorId)"
+        :custom-vendors="customVendors"
+        :custom-purposes="customPurposes"
       >
         <template #onReject>
           <privacy-manager v-slot="{ loadPrivacyManagerModal }">
-            <slot name="disabledContent" v-bind="{ loadPrivacyManagerModal }"></slot>
+            <slot
+              name="disabledContent"
+              v-bind="{ loadPrivacyManagerModal }"
+            />
           </privacy-manager>
         </template>
         <template #onConsent>
-          <slot name="enabledContent"></slot>
+          <slot name="enabledContent" />
         </template>
       </consent-management>
     </consented-data>

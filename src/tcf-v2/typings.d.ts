@@ -6,13 +6,73 @@ export type CMPStatus = 'stub' | 'loading' | 'loaded' | 'error';
 
 export type DisplayStatus = 'visible' | 'hidden' | 'disabled';
 
+/**
+ * https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md#tcdata
+ */
 export type TCData = {
+  tcString: string;
+  tcfPolicyVersion: number;
+  cmpId: number;
+  cmpVersion: number;
+  gdprApplies?: boolean;
   eventStatus: TCDataEventStatus;
-  listenerId: ListenerId;
   cmpStatus: CMPStatus;
+  listenerId?: ListenerId;
+  isServiceSpecific: boolean;
+  useNonStandardStacks: boolean;
+  publisherCC: string;
+  purposeOneTreatment: boolean;
+  outOfBand: {
+    allowedVendors: {
+      [key: number | string]: boolean;
+    };
+    disclosedVendors: {
+      [key: number | string]: boolean;
+    };
+  };
+  purpose: {
+    consents: {
+      [key: number | string]: boolean;
+    };
+    legitimateInterests: {
+      [key: number | string]: boolean;
+    };
+  };
+  vendor: {
+    consents: {
+      [key: number | string]: boolean;
+    };
+    legitimateInterests: {
+      [key: number | string]: boolean;
+    };
+  };
+  specialFeatureOptins: {
+    [key: number | string]: boolean;
+  };
+  publisher: {
+    consents: {
+      [key: number | string]: boolean;
+    };
+    legitimateInterests: {
+      [key: number | string]: boolean;
+    };
+    customPurpose: {
+      consents: {
+        [key: number | string]: boolean;
+      };
+      legitimateInterests: {
+        [key: number | string]: boolean;
+      };
+    };
+    restrictions: {
+      [key: number | string]: {
+        [key: number | string]: 0 | 1 | 2;
+      };
+    };
+  };
 };
 
-export type ListenerId = string | number;
+export type ListenerId = number | undefined;
 
 export type AddEventListenerCallback = (tcData: TCData, success: boolean) => void;
 

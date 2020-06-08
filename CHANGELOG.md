@@ -1,3 +1,10 @@
+## [0.37.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.37.1...v0.37.2) (2020-06-08)
+
+
+### Bug Fixes
+
+* add polyfills to cae bundle (IE 11 support needed) ([f0d4725](https://github.com/spring-media/red-sourcepoint-cmp/commit/f0d4725c1c8edf7d6f5a8a465765c97942662ea2))
+
 ## [0.37.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.37.0...v0.37.1) (2020-06-08)
 
 

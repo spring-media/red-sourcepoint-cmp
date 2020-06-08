@@ -2,6 +2,9 @@ import { rmdirSync } from 'fs';
 import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
 import postcss from 'rollup-plugin-postcss';
+import babel from '@rollup/plugin-babel';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 rmdirSync('./dist', { recursive: true });
 
@@ -25,7 +28,32 @@ export default [
   {
     input: './src/index.ts',
     output: { format: 'iife', file: './dist/browser/red-cmp.js', name: 'RedCMP' },
-    plugins: [typescript({ tsconfigOverride: { compilerOptions: { target: 'ES5' } } })],
+    plugins: [
+      typescript({ tsconfigOverride: { compilerOptions: { target: 'ES5' } } }),
+      nodeResolve({
+        extensions: ['.js', '.ts'],
+      }),
+      commonjs({
+        extensions: ['.js', '.ts'],
+      }),
+      babel({
+        babelHelpers: 'bundled',
+        exclude: [/\/core-js\//],
+        extensions: ['.js', '.ts'],
+        babelrc: false,
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              useBuiltIns: 'usage',
+              corejs: 3,
+              modules: false,
+              targets: 'ie >= 11',
+            },
+          ],
+        ],
+      }),
+    ],
   },
   {
     input: {

@@ -13,6 +13,7 @@ import {
   EmbedTwitterConsent,
   EmbedYoutubeConsent,
   EmbedInstagramConsent,
+  EmbedSocialNetworksConsent,
 } from '../../dist/esm/vue/components';
 import { sourcepoint } from '../../dist/esm/vue/vuex/sourcepoint';
 import { reloadPageOnReject } from '../../dist/esm/vue/vuex/sourcepoint/effects';
@@ -67,6 +68,7 @@ const PlaygroundApp = Vue.extend({
     EmbedInstagramConsent,
     EmbedTwitterConsent,
     EmbedYoutubeConsent,
+    EmbedSocialNetworksConsent,
   },
   data: () => ({
     privacyManagerId: window.__playground__.parameters.privacyManagerId,
@@ -90,6 +92,9 @@ const PlaygroundApp = Vue.extend({
             </li>
             <li class="embed__item">
                 <embed-youtube-consent :privacyManagerId="privacyManagerId" :content="youtube"></embed-youtube-consent>
+            </li>
+            <li class="embed__item">
+                <embed-social-networks-consent :privacyManagerId="privacyManagerId" :content="youtube" vendorId="5e7179e49a0b5040d5750812"></embed-social-networks-consent>
             </li>
         </ul>
     </div>

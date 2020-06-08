@@ -16,3 +16,5 @@ export * from './VendorMapping';
 export * from './SocialSharingPopup';
 export * from './EmbedConsent';
 export * from './EmbedContent';
+export * from './EmbedSocialNetworksConsent';
+export * from './EmbedSocialNetworksPlaceholder';

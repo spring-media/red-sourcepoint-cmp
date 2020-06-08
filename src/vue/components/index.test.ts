@@ -1,28 +1,33 @@
+import { readdirSync, lstatSync } from 'fs';
+
 describe('vue components index', () => {
   it('should export the expected modules', () => {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const imports = require('./index');
-    const keys = Object.keys(imports);
+    const directories = readdirSync('./src/vue/components').filter((file) => {
+      return lstatSync(`./src/vue/components/${file}`).isDirectory();
+    });
 
-    expect(keys).toEqual([
-      'ConsentedData',
+    expect(directories).toEqual([
+      'ConsentActions',
       'ConsentManagement',
       'ConsentWrapper',
+      'ConsentedData',
+      'EmbedConsent',
+      'EmbedContent',
       'EmbedFacebookConsent',
       'EmbedFacebookPlaceholder',
       'EmbedInstagram',
       'EmbedInstagramConsent',
       'EmbedInstagramPlaceholder',
       'EmbedPlaceholder',
+      'EmbedSocialNetworksConsent',
+      'EmbedSocialNetworksPlaceholder',
       'EmbedTwitterConsent',
       'EmbedTwitterPlaceholder',
       'EmbedYoutubeConsent',
       'EmbedYoutubePlaceholder',
       'PrivacyManager',
-      'VendorMapping',
       'SocialSharingPopup',
-      'EmbedConsent',
-      'EmbedContent',
+      'VendorMapping',
     ]);
   });
 });

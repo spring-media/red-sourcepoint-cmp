@@ -113,18 +113,33 @@
         </button>
       </consent-actions>
     </slot>
-    <div class="embed-placeholder__footer-text">
-      <slot name="footer" />
-    </div>
+    <privacy-manager v-slot="{ loadPrivacyManagerModal }">
+      <div class="embed-placeholder__footer-text">
+        <slot name="footer">
+          Ich bin damit einverstanden, dass mir Inhalte von Drittanbietern angezeigt werden. Damit können
+          personenbezogene Daten an Drittanbieter übermittelt werden. Dazu ist ggf. die Speicherung von Cookies auf
+          deinem Gerät notwendig. Mehr Informationen dazu findest du
+          <a
+            class="embed-placeholder__text-link"
+            href="#"
+            rel="noopener"
+            target="_blank"
+            @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
+          >hier</a>.
+        </slot>
+      </div>
+    </privacy-manager>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropType } from 'vue';
 import { ConsentActions } from '../ConsentActions';
+import { PrivacyManager } from '../PrivacyManager';
 import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
 
 type Props = {
+  privacyManagerId: number;
   customConsents: PostCustomConsentPayload;
 };
 
@@ -132,8 +147,12 @@ type NonNullish = Record<string, unknown>;
 
 export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   name: 'EmbedPlaceholder',
-  components: { ConsentActions },
+  components: { ConsentActions, PrivacyManager },
   props: {
+    privacyManagerId: {
+      type: Number as PropType<number>,
+      required: true,
+    },
     customConsents: {
       type: Object as PropType<PostCustomConsentPayload>,
       required: true,

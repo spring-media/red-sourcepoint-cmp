@@ -134,6 +134,22 @@ exports[`EmbedPlaceholder should render without any errors 1`] = `
    
   <div
     class="embed-placeholder__footer-text"
-  />
+  >
+    
+        Ich bin damit einverstanden, dass mir Inhalte von Drittanbietern angezeigt werden. Damit können
+        personenbezogene Daten an Drittanbieter übermittelt werden. Dazu ist ggf. die Speicherung von Cookies auf
+        deinem Gerät notwendig. Mehr Informationen dazu findest du
+        
+    <a
+      class="embed-placeholder__text-link"
+      href="#"
+      rel="noopener"
+      target="_blank"
+    >
+      hier
+    </a>
+    .
+      
+  </div>
 </div>
 `;

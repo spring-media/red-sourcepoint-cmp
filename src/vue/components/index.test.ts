@@ -6,28 +6,10 @@ describe('vue components index', () => {
       return lstatSync(`./src/vue/components/${file}`).isDirectory();
     });
 
-    expect(directories).toEqual([
-      'ConsentActions',
-      'ConsentManagement',
-      'ConsentWrapper',
-      'ConsentedData',
-      'EmbedConsent',
-      'EmbedContent',
-      'EmbedFacebookConsent',
-      'EmbedFacebookPlaceholder',
-      'EmbedInstagram',
-      'EmbedInstagramConsent',
-      'EmbedInstagramPlaceholder',
-      'EmbedPlaceholder',
-      'EmbedSocialNetworksConsent',
-      'EmbedSocialNetworksPlaceholder',
-      'EmbedTwitterConsent',
-      'EmbedTwitterPlaceholder',
-      'EmbedYoutubeConsent',
-      'EmbedYoutubePlaceholder',
-      'PrivacyManager',
-      'SocialSharingPopup',
-      'VendorMapping',
-    ]);
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const imports = require('./index');
+    const keys = Object.keys(imports);
+
+    expect(keys).toEqual(directories);
   });
 });

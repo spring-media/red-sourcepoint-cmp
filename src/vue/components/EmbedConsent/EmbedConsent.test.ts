@@ -24,6 +24,7 @@ describe('EmbedConsent component', () => {
       propsData: {
         customConsents: {},
         vendorId: 'abc',
+        privacyManagerId: 123,
       },
       store,
       localVue,
@@ -40,6 +41,7 @@ describe('EmbedConsent component', () => {
         customConsents: {},
         content: '<div>Embed Content</div>',
         vendorId: 'abc',
+        privacyManagerId: 123,
       },
       store,
       localVue,

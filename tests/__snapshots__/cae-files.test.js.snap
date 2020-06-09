@@ -9,14 +9,13 @@ exports[`Testsuite CAE files red-cmp-embed-facebook-placeholder.html should have
     Um mit Inhalten aus Facebook und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
     deine Zustimmung.
   </div> <button class=\\"embed-placeholder__button\\">
-      soziale Netzwerke aktivieren
-    </button> <div class=\\"embed-placeholder__footer-text\\">
-      Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
-      personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweckes</a>
-      und in den Datenschutzinformationen dieser
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-vendor-list\\">Drittanbieter</a>.
-    </div></div>"
+    soziale Netzwerke aktivieren
+  </button> <div class=\\"embed-placeholder__footer-text\\">
+        Ich bin damit einverstanden, dass mir Inhalte von Drittanbietern angezeigt werden. Damit können
+        personenbezogene Daten an Drittanbieter übermittelt werden. Dazu ist ggf. die Speicherung von Cookies auf
+        deinem Gerät notwendig. Mehr Informationen dazu findest du
+        <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link\\">hier</a>.
+      </div></div>"
 `;
 
 exports[`Testsuite CAE files red-cmp-embed-instagram-placeholder.html should have the expected content 1`] = `
@@ -26,14 +25,13 @@ exports[`Testsuite CAE files red-cmp-embed-instagram-placeholder.html should hav
     Um mit Inhalten aus Instagram und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen
     wir deine Zustimmung.
   </div> <button class=\\"embed-placeholder__button\\">
-      soziale Netzwerke aktivieren
-    </button> <div class=\\"embed-placeholder__footer-text\\">
-      Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
-      personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweckes</a>
-      und in den Datenschutzinformationen dieser
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-vendor-list\\">Drittanbieter</a>.
-    </div></div>"
+    soziale Netzwerke aktivieren
+  </button> <div class=\\"embed-placeholder__footer-text\\">
+        Ich bin damit einverstanden, dass mir Inhalte von Drittanbietern angezeigt werden. Damit können
+        personenbezogene Daten an Drittanbieter übermittelt werden. Dazu ist ggf. die Speicherung von Cookies auf
+        deinem Gerät notwendig. Mehr Informationen dazu findest du
+        <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link\\">hier</a>.
+      </div></div>"
 `;
 
 exports[`Testsuite CAE files red-cmp-embed-placeholder.html should have the expected content 1`] = `
@@ -43,24 +41,27 @@ exports[`Testsuite CAE files red-cmp-embed-placeholder.html should have the expe
       Um mit Inhalten von Drittanbietern zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
     </div> <button class=\\"embed-placeholder__button\\">
           externen Inhalt aktivieren
-        </button> <div class=\\"embed-placeholder__footer-text\\"></div></div>"
+        </button> <div class=\\"embed-placeholder__footer-text\\">
+        Ich bin damit einverstanden, dass mir Inhalte von Drittanbietern angezeigt werden. Damit können
+        personenbezogene Daten an Drittanbieter übermittelt werden. Dazu ist ggf. die Speicherung von Cookies auf
+        deinem Gerät notwendig. Mehr Informationen dazu findest du
+        <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link\\">hier</a>.
+      </div></div>"
 `;
 
 exports[`Testsuite CAE files red-cmp-embed-social-networks-placeholder.html should have the expected content 1`] = `
 "<div data-server-rendered=\\"true\\" class=\\"embed-placeholder__container\\"><div class=\\"embed-placeholder__header\\"><svg width=\\"100%\\" height=\\"84\\" fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\"><circle cx=\\"16\\" cy=\\"16\\" r=\\"16\\" fill=\\"#E9ECEF\\"></circle> <rect x=\\"40\\" y=\\"7\\" width=\\"60\\" height=\\"10\\" fill=\\"#E9ECEF\\"></rect> <rect x=\\"40\\" y=\\"19\\" width=\\"40\\" height=\\"6\\" fill=\\"#E9ECEF\\"></rect> <rect y=\\"44\\" width=\\"100%\\" height=\\"8\\" fill=\\"#E9ECEF\\"></rect> <rect y=\\"60\\" width=\\"100%\\" height=\\"8\\" fill=\\"#E9ECEF\\"></rect> <rect y=\\"76\\" width=\\"75%\\" height=\\"8\\" fill=\\"#E9ECEF\\"></rect></svg></div> <div class=\\"embed-placeholder__headline\\">
-        An dieser Stelle findest du Inhalte aus sozialen Netzwerken
-      </div> <div class=\\"embed-placeholder__description\\">
-        Um mit Inhalten aus sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine
-        Zustimmung.
-      </div> <button class=\\"embed-placeholder__button\\">
-      soziale Netzwerke aktivieren
-    </button> <div class=\\"embed-placeholder__footer-text\\">
-      Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
-      personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweckes</a>
-      und in den Datenschutzinformationen dieser
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-vendor-list\\">Drittanbieter</a>.
-    </div></div>"
+      An dieser Stelle findest du Inhalte aus sozialen Netzwerken
+    </div> <div class=\\"embed-placeholder__description\\">
+      Um mit Inhalten aus sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
+    </div> <button class=\\"embed-placeholder__button\\">
+    soziale Netzwerke aktivieren
+  </button> <div class=\\"embed-placeholder__footer-text\\">
+        Ich bin damit einverstanden, dass mir Inhalte von Drittanbietern angezeigt werden. Damit können
+        personenbezogene Daten an Drittanbieter übermittelt werden. Dazu ist ggf. die Speicherung von Cookies auf
+        deinem Gerät notwendig. Mehr Informationen dazu findest du
+        <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link\\">hier</a>.
+      </div></div>"
 `;
 
 exports[`Testsuite CAE files red-cmp-embed-twitter-placeholder.html should have the expected content 1`] = `
@@ -70,14 +71,13 @@ exports[`Testsuite CAE files red-cmp-embed-twitter-placeholder.html should have 
     Um mit Inhalten aus Twitter und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
     deine Zustimmung.
   </div> <button class=\\"embed-placeholder__button\\">
-      soziale Netzwerke aktivieren
-    </button> <div class=\\"embed-placeholder__footer-text\\">
-      Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
-      personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweckes</a>
-      und in den Datenschutzinformationen dieser
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-vendor-list\\">Drittanbieter</a>.
-    </div></div>"
+    soziale Netzwerke aktivieren
+  </button> <div class=\\"embed-placeholder__footer-text\\">
+        Ich bin damit einverstanden, dass mir Inhalte von Drittanbietern angezeigt werden. Damit können
+        personenbezogene Daten an Drittanbieter übermittelt werden. Dazu ist ggf. die Speicherung von Cookies auf
+        deinem Gerät notwendig. Mehr Informationen dazu findest du
+        <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link\\">hier</a>.
+      </div></div>"
 `;
 
 exports[`Testsuite CAE files red-cmp-embed-youtube-placeholder.html should have the expected content 1`] = `
@@ -87,14 +87,13 @@ exports[`Testsuite CAE files red-cmp-embed-youtube-placeholder.html should have 
     Um mit Inhalten aus YouTube und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
     deine Zustimmung.
   </div> <button class=\\"embed-placeholder__button\\">
-      soziale Netzwerke aktivieren
-    </button> <div class=\\"embed-placeholder__footer-text\\">
-      Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
-      personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-description\\">Beschreibung dieses Datenverarbeitungszweckes</a>
-      und in den Datenschutzinformationen dieser
-      <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link embed-placeholder__link-vendor-list\\">Drittanbieter</a>.
-    </div></div>"
+    soziale Netzwerke aktivieren
+  </button> <div class=\\"embed-placeholder__footer-text\\">
+        Ich bin damit einverstanden, dass mir Inhalte von Drittanbietern angezeigt werden. Damit können
+        personenbezogene Daten an Drittanbieter übermittelt werden. Dazu ist ggf. die Speicherung von Cookies auf
+        deinem Gerät notwendig. Mehr Informationen dazu findest du
+        <a href=\\"#\\" rel=\\"noopener\\" target=\\"_blank\\" class=\\"embed-placeholder__text-link\\">hier</a>.
+      </div></div>"
 `;
 
 exports[`Testsuite CAE files red-cmp-social-sharing-popup.html should have the expected content 1`] = `

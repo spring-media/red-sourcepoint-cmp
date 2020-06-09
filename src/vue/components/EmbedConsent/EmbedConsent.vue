@@ -1,7 +1,10 @@
 <template>
   <consent-wrapper :vendor-id="vendorId">
     <template #disabledContent>
-      <embed-placeholder :custom-consents="customConsents" />
+      <embed-placeholder
+        :custom-consents="customConsents"
+        :privacy-manager-id="privacyManagerId"
+      />
     </template>
     <template #enabledContent>
       <embed-content :content="content" />
@@ -20,6 +23,7 @@ type Props = {
   vendorId: string;
   content: string;
   customConsents: CustomConsent;
+  privacyManagerId: number;
 };
 
 type NonNullish = Record<string, unknown>;
@@ -38,6 +42,10 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
     },
     vendorId: {
       type: String,
+      required: true,
+    },
+    privacyManagerId: {
+      type: Number,
       required: true,
     },
   },

@@ -50,38 +50,28 @@ exports[`EmbedYoutubePlaceholder should render without any errors 1`] = `
     class="embed-placeholder__button"
   >
     
-      soziale Netzwerke aktivieren
-    
+    soziale Netzwerke aktivieren
+  
   </button>
    
   <div
     class="embed-placeholder__footer-text"
   >
     
-      Ich bin damit einverstanden, dass mir externe Inhalte aus sozialen Netzwerken angezeigt werden. Damit können
-      personenbezogene Daten an Drittanbieter übermittelt werden. Mehr dazu findest du in der
-      
+        Ich bin damit einverstanden, dass mir Inhalte von Drittanbietern angezeigt werden. Damit können
+        personenbezogene Daten an Drittanbieter übermittelt werden. Dazu ist ggf. die Speicherung von Cookies auf
+        deinem Gerät notwendig. Mehr Informationen dazu findest du
+        
     <a
-      class="embed-placeholder__text-link embed-placeholder__link-description"
+      class="embed-placeholder__text-link"
       href="#"
       rel="noopener"
       target="_blank"
     >
-      Beschreibung dieses Datenverarbeitungszweckes
-    </a>
-    
-      und in den Datenschutzinformationen dieser
-      
-    <a
-      class="embed-placeholder__text-link embed-placeholder__link-vendor-list"
-      href="#"
-      rel="noopener"
-      target="_blank"
-    >
-      Drittanbieter
+      hier
     </a>
     .
-    
+      
   </div>
 </div>
 `;

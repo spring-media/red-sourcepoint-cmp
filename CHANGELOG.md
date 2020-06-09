@@ -1,3 +1,10 @@
+# [0.39.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.38.0...v0.39.0) (2020-06-09)
+
+
+### Features
+
+* **vue:** add footer text to generic embed-placeholder component and remove them from the embed-social-networks-placeholder component ([738cace](https://github.com/spring-media/red-sourcepoint-cmp/commit/738caceb58e06c2abf38673c687ea81e759b9bc9))
+
 # [0.38.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.37.2...v0.38.0) (2020-06-08)
 
 ## [0.37.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.37.1...v0.37.2) (2020-06-08)

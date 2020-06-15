@@ -1,3 +1,10 @@
+# [0.40.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.39.0...v0.40.0) (2020-06-15)
+
+
+### Features
+
+* **vendor-mapping:** add function to process grants object from the getCustomVendorConsents API function ([e50a93a](https://github.com/spring-media/red-sourcepoint-cmp/commit/e50a93ab0d7e8bcc4d0d9e1363b1de1b938bd1be))
+
 # [0.39.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.38.0...v0.39.0) (2020-06-09)
 
 

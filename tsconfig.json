@@ -12,9 +12,12 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
     "downlevelIteration": true,
     "removeComments": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "lib": ["es2019", "dom"]
   },
   "include": ["src/**/*"],
   "files": [

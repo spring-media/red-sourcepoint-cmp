@@ -11,9 +11,17 @@ export interface CustomVendor extends CustomConsent {
 
 export type CustomPurpose = CustomConsent;
 
+export type CustomVendorGrants = {
+  [key: string]: {
+    purposeGrants: { [key: string]: boolean };
+    vendorGrant: boolean;
+  };
+};
+
 export type CustomVendorConsentsResult = {
   consentedPurposes: CustomPurpose[];
   consentedVendors: CustomVendor[];
+  grants: CustomVendorGrants;
 };
 
 export type PostCustomConsentResult = {
@@ -42,8 +50,8 @@ export type Config = {
 };
 
 export type SourcepointConfigObject = {
-  config: Config;
-  loadPrivacyManagerModal(managerId: number);
+  config?: Config;
+  loadPrivacyManagerModal(managerId: number): void;
 };
 
 export declare global {

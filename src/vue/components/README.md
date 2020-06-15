@@ -16,10 +16,8 @@
   * [Instagram](EmbedInstagramConsent#consent-component-for-instagram-embeds)
   * [Twitter](EmbedTwitterConsent#consent-component-for-twitter-embeds)
   * [Youtube](EmbedYoutubeConsent#consent-component-for-youtube-embeds)
-  * [EmbedConsent](ConsentWrapper#consent-component-for-general-use)
-* [ConsentedData](ConsentedData#consented-data-component)
-* [ConsentManagement](ConsentManagement#consent-management-component)
+  * [EmbedConsent](ConsentWrapper#generic-consent-component)
+* [ConsentWrapper](ConsentWrapper#consent-wrapper-component)
 * [PrivacyManager](PrivacyManager#privacymanager-component)
-* [VendorMapping](VendorMapping#vendormapping-component)
 * Social Sharing Components
    * [Popup](SocialSharingPopup#component-for-social-sharing-popup)

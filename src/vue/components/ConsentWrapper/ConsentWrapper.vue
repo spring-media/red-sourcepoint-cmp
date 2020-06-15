@@ -1,49 +1,40 @@
-<template>
-  <vendor-mapping v-slot="{ getRelations }">
-    <consented-data v-slot="{ customVendors, customPurposes }">
-      <consent-management
-        :vendor-id="vendorId"
-        :purpose-ids="getRelations(vendorId)"
-        :custom-vendors="customVendors"
-        :custom-purposes="customPurposes"
-      >
-        <template #onReject>
-          <privacy-manager v-slot="{ loadPrivacyManagerModal }">
-            <slot
-              name="disabledContent"
-              v-bind="{ loadPrivacyManagerModal }"
-            />
-          </privacy-manager>
-        </template>
-        <template #onConsent>
-          <slot name="enabledContent" />
-        </template>
-      </consent-management>
-    </consented-data>
-  </vendor-mapping>
-</template>
-
 <script lang="ts">
-import Vue from 'vue';
-import { ConsentManagement } from '../ConsentManagement';
-import { VendorMapping } from '../VendorMapping';
-import { PrivacyManager } from '../PrivacyManager';
-import { ConsentedData } from '../ConsentedData';
+import { mapGetters } from 'vuex';
+import Vue, { VNode } from 'vue';
 
 type Props = {
   vendorId: string;
 };
 
+type Computed = {
+  vendorHasConsent(vendorId: string): boolean;
+};
+
 type NonNullish = Record<string, unknown>;
 
-export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
-  name: 'ConsentWrapper',
-  components: { PrivacyManager, VendorMapping, ConsentManagement, ConsentedData },
+export default Vue.extend<NonNullish, NonNullish, Computed, Props>({
+  name: 'ConsentManagement',
   props: {
     vendorId: {
       type: String,
       required: true,
     },
+  },
+  computed: {
+    ...mapGetters({ vendorHasConsent: 'sourcepoint/vendorHasConsent' }),
+  },
+  render(): VNode {
+    if (this.$scopedSlots.enabledContent && this.vendorHasConsent(this.vendorId)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return this.$scopedSlots.enabledContent({}) as any;
+    }
+
+    if (this.$scopedSlots.disabledContent) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return this.$scopedSlots.disabledContent({}) as any;
+    }
+
+    return {} as VNode;
   },
 });
 </script>

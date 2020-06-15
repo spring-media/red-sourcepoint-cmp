@@ -36,7 +36,7 @@ export default Vue.extend<Data, NonNullish, NonNullish, Props>({
   props: {
     content: {
       type: String,
-      default: null,
+      default: '',
     },
     privacyManagerId: {
       type: Number,

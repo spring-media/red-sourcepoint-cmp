@@ -1,7 +1,6 @@
-# Static Vendor Mapping Module
+# Vendor Mapping Module
 
-As long as Sourcepoint doesn't provides an API for getting relationships between vendors and purposes, 
-we need to have some kind of static mapping between these two entities.
+This module is being supposed to handle the grants-object from the result of the [getCustomVendorConsents](../sourcepoint/README.md#getcustomvendorconsents) API call.
 
 ## API
 
@@ -10,171 +9,207 @@ we need to have some kind of static mapping between these two entities.
 * [Custom Vendors](custom-vendors.ts)
 * [Custom Purposes](custom-purposes.ts)
 
-### `getCustomVendor`
+### `configureGrants`
 
 ```typescript
-getCustomVendor(key: string): string | undefined
+configureGrants(grants): void;
 ```
 
-Returns either a vendor id by given name or a vendor name by given id or undefined if an entry not exists.
+Configures the module by given grants-object that comes usually from the return value of the [getCustomVendorConsents](../sourcepoint/README.md#getcustomvendorconsents) API call.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { getCustomVendor, VENDOR_NAME_FACEBOOK, VENDOR_ID_FACEBOOK } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { configureGrants, vendorHasGrant } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-console.log(getCustomVendor(VENDOR_NAME_FACEBOOK)); // 5e716fc09a0b5040d575080f
-console.log(getCustomVendor(VENDOR_ID_FACEBOOK)); // facebook
+const grants = {
+  '123': {
+    purposeGrants: { '123': true, '456': true },
+    vendorGrant: true,
+  },
+};
+
+configureGrants(grants);
+
+console.log(vendorHasGrant('123')); // true
 ```    
 </details>
 
-### `getCustomPurpose`
+### `vendorHasGrant`
 
 ```typescript
-getCustomPurpose(key: string): string | undefined
+vendorHasGrant(vendorId: string): boolean;
 ```
 
-Returns either a purpose id by given name or a purpose name by given id or undefined if an entry not exists.
+Returns true whether given vendor has consent.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { getCustomPurpose, PURPOSE_NAME_SOCIAL, PURPOSE_ID_SOCIAL } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { vendorHasGrant, configureGrants } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-console.log(getCustomPurpose(PURPOSE_NAME_SOCIAL)); // 5e7adb1ee30e7d1bc1ec0252
-console.log(getCustomPurpose(PURPOSE_ID_SOCIAL)); // social
+const grants = {
+  '123': {
+    purposeGrants: { '123': true, '456': true },
+    vendorGrant: true,
+  },
+};
+
+configureGrants(grants);
+
+console.log(vendorHasGrant('123')); // true
+
+// ------------------------
+
+const grants = {
+  '123': {
+    purposeGrants: { '123': true, '456': false },
+    vendorGrant: true,
+  },
+};
+
+configureGrants(grants);
+
+console.log(vendorHasGrant('123')); // false
 ```    
 </details>
 
-### `addCustomVendor`
+### `getGrantedVendors`
 
 ```typescript
-addCustomVendor(key: string, value: string): Map<string, string>
+getGrantedVendors(): string[];
 ```
 
-Adds an entry to the custom vendors list.
+Returns a list of consented (vendor) ids.
+
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { addCustomVendor, getCustomVendor } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { getGrantedVendors, configureGrants } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-addCustomVendor('key', 'value');
-console.log(getCustomVendor('key')); // value
+const grants = {
+  '123': {
+    purposeGrants: { '123': true, '456': false },
+    vendorGrant: true,
+  },
+  '456': {
+    purposeGrants: { '123': true, '456': true },
+    vendorGrant: true,
+  },
+  '789': {
+    purposeGrants: { '123': true, '456': true },
+    vendorGrant: false,
+  },
+};
+
+configureGrants(grants);
+
+console.log(getGrantedVendors()); /// ['456']
+
 ```    
 </details>
 
-### `addCustomPurpose`
+### `getPurposeIdsForVendor`
 
 ```typescript
-addCustomPurpose(key: string, value: string): Map<string, string>
+getPurposeIdsForVendor(vendorId: string): string[];
 ```
 
-Adds an entry to the custom purposes list.
+Returns a list of purpose ids that are linked to given vendor id.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { addCustomPurpose, getCustomPurpose } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { getPurposeIdsForVendor, configureGrants } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-addCustomPurpose('key', 'value');
-console.log(getCustomPurpose('key')); // value
+const grants = {
+  '123': {
+    purposeGrants: { '456': true, '789': false },
+    vendorGrant: true,
+  },
+};
+
+configureGrants(grants);
+
+console.log(getPurposeIdsForVendor('123')); // ['456', '789']
 ```    
 </details>
 
 ### `removeCustomVendor`
 
 ```typescript
-removeCustomVendor(key: string, value: string): boolean
+getVendorIdsForPurpose(purposeId: string): string[];
 ```
 
-Removes an entry from the custom vendors list. Returns `true` on success, otherwise `false`.
+Returns a list of vendor ids that are linked to given purpose id.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { removeCustomVendor, getCustomVendor, VENDOR_NAME_FACEBOOK } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { getVendorIdsForPurpose, configureGrants } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-removeCustomVendor(VENDOR_NAME_FACEBOOK);
-console.log(getCustomVendor(VENDOR_NAME_FACEBOOK)); // undefined
+const grants = {
+  '1': {
+    purposeGrants: { '4': true, '5': false },
+    vendorGrant: true,
+  },
+  '2': {
+    purposeGrants: { '6': true, '7': false },
+    vendorGrant: true,
+  },
+  '3': {
+    purposeGrants: { '8': true, '4': false },
+    vendorGrant: true,
+  },
+};
+
+configureGrants(grants);
+
+console.log(getVendorIdsForPurpose('4')); // ['1', '3']
+
 ```    
 </details>
 
-### `removeCustomPurpose`
+### `dumpPurposeRelations`
 
 ```typescript
-removeCustomPurpose(key: string, value: string): boolean
+dumpPurposeRelations(purposeId: string): { vendorIds: string[], purposeIds: string[] };
 ```
 
-Removes an entry from the custom purposes list. Returns `true` on success, otherwise `false`.
+This function performs a deep dump of the relations of given purpose id. 
+The result will include the vendor ids linked to given purpose id as well as the purpose ids linked to the resulting vendor ids.
+
+> Use the return value of this function to give consents programmatically through [postCustomConsent](../sourcepoint/README.md#postcustomconsent)
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { removeCustomPurpose, getCustomPurpose, PURPOSE_ID_SOCIAL } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { dumpPurposeRelations, configureGrants } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-removeCustomPurpose(PURPOSE_ID_SOCIAL);
-console.log(getCustomPurpose(PURPOSE_ID_SOCIAL)); // undefined
-```    
-</details>
+const grants = {
+  '1': {
+    purposeGrants: { '4': true, '5': false },
+    vendorGrant: true,
+  },
+  '2': {
+    purposeGrants: { '6': true, '7': false },
+    vendorGrant: true,
+  },
+  '3': {
+    purposeGrants: { '8': true, '4': false },
+    vendorGrant: true,
+  },
+};
 
-### `getRelations`
+configureGrants(grants);
 
-```typescript
-getRelations(key: string): string[] | undefined
-```
-
-Returns an entry from the relations list.
-
-<details>
-<summary>Example</summary>
-    
-```javascript
-import { getRelations, VENDOR_ID_FACEBOOK } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
-
-console.log(getRelations(VENDOR_ID_FACEBOOK)); // [<PURPOSE_ID_SOCIAL>]
-```    
-</details>
-
-### `hasRelations`
-
-```typescript
-hasRelations(key: string): boolean
-```
-
-Returns whether given key has relations.
-
-<details>
-<summary>Example</summary>
-    
-```javascript
-import { hasRelations, VENDOR_ID_FACEBOOK } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
-
-console.log(hasRelations(VENDOR_ID_FACEBOOK)); // true
-```    
-</details>
-
-### `setRelations`
-
-```typescript
-setRelations(key: string, relations: string[]): Map<string, string[]>
-```
-
-Sets an entry to the relations list.
-
-<details>
-<summary>Example</summary>
-    
-```javascript
-import { setRelations, getRelations } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
-
-setRelations('someKey', ['value1', 'value2']);
-console.log(getRelations('someKey')); // ['value1', 'value2']
+console.log(dumpPurposeRelations('4')); // { vendorIds: ['1', '3'], purposeIds: ['4', '5', '8'] }
 ```    
 </details>

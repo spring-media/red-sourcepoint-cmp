@@ -86,7 +86,7 @@ exports[`EmbedInstagramConsent component should render the placeholder by defaul
     <a
       class="embed-placeholder__text-link"
       href="#"
-      rel="noopener"
+      rel="noopener noreferrer"
       target="_blank"
     >
       hier

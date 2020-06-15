@@ -3,29 +3,29 @@ import { OptionalCallbackKeys, OptionalCallbacks, UnregisterCallback } from './t
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Callback = (...args: any) => void;
 
-const getEventStore = (): OptionalCallbacks => {
+const getEventStore = (): OptionalCallbacks | null => {
   if (typeof window === 'undefined') {
-    return {};
+    return null;
   }
 
-  const config = window._sp_?.config;
+  const events = window._sp_?.config?.events;
 
-  if (!config) {
-    return {};
+  if (!events) {
+    return null;
   }
 
-  if (!config.events) {
-    config.events = {};
-  }
-
-  return config.events;
+  return events;
 };
 
 const bindCallbacksToEvent = (
   name: OptionalCallbackKeys,
-  eventStore: OptionalCallbacks,
+  eventStore: OptionalCallbacks | null,
   callbacks: Set<Callback>,
 ): void => {
+  if (eventStore === null) {
+    return;
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   eventStore[name] = (...args: any[]): void => {
     for (const fn of callbacks) {

@@ -15,14 +15,12 @@ const store = new Vuex.Store({
 
 describe('EmbedConsent component', () => {
   afterEach(() => {
-    store.commit('sourcepoint/setCustomVendorConsents', []);
-    store.commit('sourcepoint/setCustomPurposeConsents', []);
+    store.commit('sourcepoint/setGrantedVendors', []);
   });
 
   it('should render the placeholder by default', () => {
     const wrapper = mount(EmbedConsent, {
       propsData: {
-        customConsents: {},
         vendorId: 'abc',
         privacyManagerId: 123,
       },
@@ -33,12 +31,11 @@ describe('EmbedConsent component', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-  it('should render the embed in case of a consented vendor', async () => {
-    store.commit('sourcepoint/setCustomVendorConsents', [{ _id: 'abc' }]);
+  it('should render the embed in case of a consented vendor', () => {
+    store.commit('sourcepoint/setGrantedVendors', ['abc']);
 
     const wrapper = mount(EmbedConsent, {
       propsData: {
-        customConsents: {},
         content: '<div>Embed Content</div>',
         vendorId: 'abc',
         privacyManagerId: 123,
@@ -46,8 +43,6 @@ describe('EmbedConsent component', () => {
       store,
       localVue,
     });
-
-    await wrapper.vm.$nextTick();
 
     expect(wrapper.element).toMatchInlineSnapshot(`
       <div>

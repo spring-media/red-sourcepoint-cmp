@@ -1,158 +1,127 @@
 import {
-  getCustomVendor,
-  getCustomPurpose,
-  removeCustomPurpose,
-  removeCustomVendor,
+  getPurposeIdsForVendor,
   getRelations,
-  hasRelations,
-  setRelations,
-  addCustomPurpose,
-  addCustomVendor,
-} from './';
-import {
-  VENDOR_NAME_TWITTER,
-  VENDOR_NAME_INSTAGRAM,
-  VENDOR_NAME_FACEBOOK,
-  VENDOR_NAME_YOUTUBE,
-  VENDOR_NAME_SOUNDCLOUD,
-  VENDOR_NAME_REDDIT,
-  VENDOR_NAME_PODIGEE,
-  VENDOR_ID_TWITTER,
-  VENDOR_ID_FACEBOOK,
-  VENDOR_ID_INSTAGRAM,
-  VENDOR_ID_YOUTUBE,
-  VENDOR_ID_SOUNDCLOUD,
-  VENDOR_ID_REDDIT,
-  VENDOR_ID_PODIGEE,
-} from './custom-vendors';
-import { PURPOSE_ID_SOCIAL, PURPOSE_NAME_SOCIAL } from './custom-purposes';
+  getVendorIdsForPurpose,
+  configureGrants,
+  vendorHasGrant,
+  dumpPurposeRelations,
+} from './api';
 
-describe('vendor-mapping api', () => {
-  it.each([
-    [VENDOR_NAME_YOUTUBE, VENDOR_ID_YOUTUBE],
-    [VENDOR_NAME_FACEBOOK, VENDOR_ID_FACEBOOK],
-    [VENDOR_NAME_INSTAGRAM, VENDOR_ID_INSTAGRAM],
-    [VENDOR_NAME_TWITTER, VENDOR_ID_TWITTER],
-    [VENDOR_NAME_SOUNDCLOUD, VENDOR_ID_SOUNDCLOUD],
-    [VENDOR_NAME_REDDIT, VENDOR_ID_REDDIT],
-    [VENDOR_NAME_PODIGEE, VENDOR_ID_PODIGEE],
-    [VENDOR_ID_YOUTUBE, VENDOR_NAME_YOUTUBE],
-    [VENDOR_ID_FACEBOOK, VENDOR_NAME_FACEBOOK],
-    [VENDOR_ID_INSTAGRAM, VENDOR_NAME_INSTAGRAM],
-    [VENDOR_ID_TWITTER, VENDOR_NAME_TWITTER],
-    [VENDOR_ID_SOUNDCLOUD, VENDOR_NAME_SOUNDCLOUD],
-    [VENDOR_ID_REDDIT, VENDOR_NAME_REDDIT],
-    [VENDOR_ID_PODIGEE, VENDOR_NAME_PODIGEE],
-    [undefined, 'unknown-vendor-id'],
-  ])('getCustomVendor should return the value %s for given key %s', (expected, given) => {
-    expect(getCustomVendor(given)).toBe(expected);
+describe('custom-vendor-grants module', () => {
+  describe('vendorHasGrant', () => {
+    it('should return false if the module is not initialized', () => {
+      expect(vendorHasGrant('123')).toBe(false);
+    });
+
+    it('should return false if vendorGrant is false', () => {
+      const grants = {
+        '123': {
+          purposeGrants: {},
+          vendorGrant: false,
+        },
+      };
+
+      configureGrants(grants);
+
+      expect(vendorHasGrant('123')).toBe(false);
+    });
+
+    it('should return false if at least one purpose has no grant', () => {
+      const grants = {
+        '123': {
+          purposeGrants: { '123': true, '456': false },
+          vendorGrant: true,
+        },
+      };
+
+      configureGrants(grants);
+
+      expect(vendorHasGrant('123')).toBe(false);
+    });
+
+    it('should return true', () => {
+      const grants = {
+        '123': {
+          purposeGrants: { '123': true, '456': true },
+          vendorGrant: true,
+        },
+      };
+
+      configureGrants(grants);
+
+      expect(vendorHasGrant('123')).toBe(true);
+    });
   });
 
-  it.each([
-    [PURPOSE_ID_SOCIAL, PURPOSE_NAME_SOCIAL],
-    [PURPOSE_NAME_SOCIAL, PURPOSE_ID_SOCIAL],
-    [undefined, 'unknown-purpose-name'],
-  ])('getPurposeIdByName should return the value %s for given key %s', (expected, given) => {
-    expect(getCustomPurpose(given as string)).toBe(expected);
+  it('getPurposeIdsForVendor should return a list of purpose ids for given vendor id', () => {
+    const grants = {
+      '123': {
+        purposeGrants: { '567': true, '890': true },
+        vendorGrant: true,
+      },
+    };
+
+    configureGrants(grants);
+
+    expect(getPurposeIdsForVendor('123')).toEqual(['567', '890']);
   });
 
-  it.each([
-    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_TWITTER],
-    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_FACEBOOK],
-    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_INSTAGRAM],
-    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_YOUTUBE],
-    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_SOUNDCLOUD],
-    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_REDDIT],
-    [[PURPOSE_NAME_SOCIAL], VENDOR_NAME_PODIGEE],
-    [[PURPOSE_ID_SOCIAL], VENDOR_ID_TWITTER],
-    [[PURPOSE_ID_SOCIAL], VENDOR_ID_FACEBOOK],
-    [[PURPOSE_ID_SOCIAL], VENDOR_ID_INSTAGRAM],
-    [[PURPOSE_ID_SOCIAL], VENDOR_ID_YOUTUBE],
-    [[PURPOSE_ID_SOCIAL], VENDOR_ID_SOUNDCLOUD],
-    [[PURPOSE_ID_SOCIAL], VENDOR_ID_REDDIT],
-    [[PURPOSE_ID_SOCIAL], VENDOR_ID_PODIGEE],
-    [
-      [
-        VENDOR_NAME_FACEBOOK,
-        VENDOR_NAME_YOUTUBE,
-        VENDOR_NAME_INSTAGRAM,
-        VENDOR_NAME_TWITTER,
-        VENDOR_NAME_SOUNDCLOUD,
-        VENDOR_NAME_REDDIT,
-        VENDOR_NAME_PODIGEE,
-      ],
-      PURPOSE_NAME_SOCIAL,
-    ],
-    [
-      [
-        VENDOR_ID_FACEBOOK,
-        VENDOR_ID_YOUTUBE,
-        VENDOR_ID_INSTAGRAM,
-        VENDOR_ID_TWITTER,
-        VENDOR_ID_SOUNDCLOUD,
-        VENDOR_ID_REDDIT,
-        VENDOR_ID_PODIGEE,
-      ],
-      PURPOSE_ID_SOCIAL,
-    ],
-    [undefined, 'unknown'],
-  ])('getRelations should return %s for given key %s', (expected, key) => {
-    expect(getRelations(key as string)).toEqual(expected);
+  it('getVendorIdsForPurpose should return a list of vendor ids for given purpose id', () => {
+    const grants = {
+      '1': {
+        purposeGrants: { '4': true, '5': true },
+        vendorGrant: true,
+      },
+      '2': {
+        purposeGrants: { '4': true, '5': true, '8': false },
+        vendorGrant: true,
+      },
+      '3': {
+        purposeGrants: { '5': true, '6': true },
+        vendorGrant: true,
+      },
+    };
+
+    configureGrants(grants);
+
+    expect(getVendorIdsForPurpose('5')).toEqual(['1', '2', '3']);
   });
 
-  it.each([
-    [true, VENDOR_NAME_TWITTER],
-    [true, VENDOR_NAME_FACEBOOK],
-    [true, VENDOR_NAME_INSTAGRAM],
-    [true, VENDOR_NAME_YOUTUBE],
-    [true, VENDOR_ID_TWITTER],
-    [true, VENDOR_ID_FACEBOOK],
-    [true, VENDOR_ID_INSTAGRAM],
-    [true, VENDOR_ID_YOUTUBE],
-    [true, PURPOSE_NAME_SOCIAL],
-    [true, PURPOSE_ID_SOCIAL],
-    [false, 'unknown'],
-  ])('hasRelations should return %s true for given key %s', (expected, key) => {
-    expect(hasRelations(key as string)).toBe(expected);
+  it('getRelations should return the value of given key from given map', () => {
+    const map = new Map<string, Set<string>>();
+    map.set('5', new Set(['1', '2', '3']));
+
+    expect(getRelations('5', map)).toEqual(['1', '2', '3']);
   });
 
-  it('addCustomVendor should add an entry to custom vendors list', () => {
-    expect(getCustomVendor('customVendor')).toBeUndefined();
+  it('getRelations should return an empty array if given key not exists', () => {
+    const map = new Map<string, Set<string>>();
 
-    addCustomVendor('customVendor', 'valueForCustomVendor');
-
-    expect(getCustomVendor('customVendor')).toBe('valueForCustomVendor');
+    expect(getRelations('5', map).length).toBe(0);
   });
 
-  it('addCustomPurpose should add an entry to custom purposes list', () => {
-    expect(getCustomPurpose('customPurpose')).toBeUndefined();
+  it('dumpPurposeRelations should ...', () => {
+    const grants = {
+      '1': {
+        purposeGrants: { '4': true, '5': true },
+        vendorGrant: true,
+      },
+      '2': {
+        purposeGrants: { '4': true, '5': true, '8': false },
+        vendorGrant: false,
+      },
+      '3': {
+        purposeGrants: { '5': true, '6': true },
+        vendorGrant: true,
+      },
+      '9': {
+        purposeGrants: { '10': true },
+        vendorGrant: true,
+      },
+    };
 
-    addCustomPurpose('customPurpose', 'valueForCustomPurpose');
+    configureGrants(grants);
 
-    expect(getCustomPurpose('customPurpose')).toBe('valueForCustomPurpose');
-  });
-
-  it('removeCustomVendor should remove an entry from the custom vendors list', () => {
-    addCustomVendor('customVendor', 'value');
-
-    removeCustomVendor('customVendor');
-
-    expect(getCustomVendor('customVendor')).toBeUndefined();
-  });
-
-  it('removeCustomPurpose should remove an entry from the custom purposes list', () => {
-    addCustomPurpose('customPurpose', 'value');
-
-    removeCustomPurpose('customPurpose');
-
-    expect(getCustomPurpose('customPurpose')).toBeUndefined();
-  });
-
-  it('setRelations should set an entry to the relations list', () => {
-    expect(getRelations('relation')).toBeUndefined();
-
-    setRelations('relation', ['relation']);
-
-    expect(getRelations('relation')).toEqual(['relation']);
+    expect(dumpPurposeRelations('5')).toEqual({ vendorIds: ['1', '2', '3'], purposeIds: ['5', '4', '8', '6'] });
   });
 });

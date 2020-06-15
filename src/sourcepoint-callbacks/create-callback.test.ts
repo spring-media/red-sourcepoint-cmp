@@ -59,4 +59,27 @@ describe('createCallback', () => {
 
     expect(callback).not.toHaveBeenCalledWith();
   });
+
+  it('should not break if window._sp_ is not available', () => {
+    expect(() => createCallback('onPrivacyManagerAction')(() => null)).not.toThrow();
+  });
+
+  it('should not break if window._sp_.config is not available', () => {
+    window._sp_ = {
+      loadPrivacyManagerModal() {
+        return null;
+      },
+    };
+    expect(() => createCallback('onPrivacyManagerAction')(() => null)).not.toThrow();
+  });
+
+  it('should not break if window._sp_.config.events is not available', () => {
+    window._sp_ = {
+      loadPrivacyManagerModal() {
+        return null;
+      },
+      config: {},
+    };
+    expect(() => createCallback('onPrivacyManagerAction')(() => null)).not.toThrow();
+  });
 });

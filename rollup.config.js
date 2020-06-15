@@ -60,7 +60,7 @@ export default [
       'vuex/sourcepoint': './src/vue/vuex/sourcepoint/index.ts',
       'vuex/sourcepoint/effects': './src/vue/vuex/sourcepoint/effects/index.ts',
     },
-    external: ['vue', 'vuex'],
+    external: (id) => /vendor-mapping/.test(id) || id === 'vue' || id === 'vuex',
     output: [
       { format: 'esm', dir: './dist/esm/vue' },
       { format: 'cjs', dir: './dist/cjs/vue' },
@@ -70,10 +70,28 @@ export default [
   {
     input: './src/vue/components/index.ts',
     output: [
-      { format: 'esm', file: `./dist/esm/vue/components.js` },
-      { format: 'cjs', file: `./dist/cjs/vue/components.js` },
+      {
+        format: 'esm',
+        file: `./dist/esm/vue/components.js`,
+        paths: (id) => {
+          if (/\/vendor-mapping$/.test(id)) {
+            return '../vendor-mapping';
+          }
+          return id;
+        },
+      },
+      {
+        format: 'cjs',
+        file: `./dist/cjs/vue/components.js`,
+        paths: (id) => {
+          if (/\/vendor-mapping$/.test(id)) {
+            return '../vendor-mapping';
+          }
+          return id;
+        },
+      },
     ],
-    external: ['vue', 'vuex'],
+    external: (id) => /vendor-mapping/.test(id) || id === 'vue' || id === 'vuex',
     plugins: [typescriptPlugin, vue({ css: false }), postcss({ extract: true })],
   },
 ];

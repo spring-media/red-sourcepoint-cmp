@@ -2,8 +2,8 @@
   <consent-wrapper :vendor-id="vendorId">
     <template #disabledContent>
       <embed-placeholder
-        :custom-consents="customConsents"
         :privacy-manager-id="privacyManagerId"
+        :vendor-id="vendorId"
       />
     </template>
     <template #enabledContent>
@@ -13,16 +13,14 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue';
+import Vue from 'vue';
 import { ConsentWrapper } from '../ConsentWrapper';
 import { EmbedPlaceholder } from '../EmbedPlaceholder';
 import { EmbedContent } from '../EmbedContent';
-import { CustomConsent } from '../../../sourcepoint/typings';
 
 type Props = {
   vendorId: string;
   content: string;
-  customConsents: CustomConsent;
   privacyManagerId: number;
 };
 
@@ -32,10 +30,6 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   name: 'EmbedConsent',
   components: { EmbedPlaceholder, ConsentWrapper, EmbedContent },
   props: {
-    customConsents: {
-      type: Object as PropType<CustomConsent>,
-      required: true,
-    },
     content: {
       type: String,
       default: '',

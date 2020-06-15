@@ -16,7 +16,7 @@ This component is used as a generic social media embed placeholder. Furthermore 
 
 <Story name='Generic' parameters={{ imageSnapshots: { waitForNetwork: true, selector: '.embed-placeholder__container' } }}>{{
   components: { EmbedPlaceholder },
-  template: `<EmbedPlaceholder :customConsents="{}" />`,
+  template: `<EmbedPlaceholder :privacyManagerId="12345" :vendorId="'456'" />`,
 }}></Story>
 
 ## Generic (Social Networks)

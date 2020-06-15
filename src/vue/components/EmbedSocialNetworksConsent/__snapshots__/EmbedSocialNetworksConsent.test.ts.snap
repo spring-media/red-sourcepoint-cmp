@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`EmbedSocialNetworksConsent component should render the embed in case of a consented vendor 1`] = `
+<div>
+  <div>
+    Social Network Embed Content
+  </div>
+</div>
+`;
+
 exports[`EmbedSocialNetworksConsent component should render the placeholder by default 1`] = `
 <div
   class="embed-placeholder__container"
@@ -94,7 +102,7 @@ exports[`EmbedSocialNetworksConsent component should render the placeholder by d
     <a
       class="embed-placeholder__text-link"
       href="#"
-      rel="noopener"
+      rel="noopener noreferrer"
       target="_blank"
     >
       hier

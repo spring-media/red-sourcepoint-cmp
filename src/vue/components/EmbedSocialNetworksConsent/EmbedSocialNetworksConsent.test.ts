@@ -2,7 +2,7 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import { EmbedSocialNetworksConsent } from './';
 import { sourcepoint } from '../../vuex/sourcepoint';
-import { PURPOSE_ID_SOCIAL, VENDOR_ID_FACEBOOK } from '../../../vendor-mapping';
+import { VENDOR_ID_FACEBOOK } from '../../../vendor-mapping';
 
 const localVue = createLocalVue();
 
@@ -16,8 +16,7 @@ const store = new Vuex.Store({
 
 describe('EmbedSocialNetworksConsent component', () => {
   afterEach(() => {
-    store.commit('sourcepoint/setCustomVendorConsents', []);
-    store.commit('sourcepoint/setCustomPurposeConsents', []);
+    store.commit('sourcepoint/setGrantedVendors', []);
   });
 
   it('should render the placeholder by default', () => {
@@ -33,9 +32,8 @@ describe('EmbedSocialNetworksConsent component', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-  it('should render the embed in case of a consented vendor and his purpose(s)', async () => {
-    store.commit('sourcepoint/setCustomVendorConsents', [{ _id: VENDOR_ID_FACEBOOK }]);
-    store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: PURPOSE_ID_SOCIAL }]);
+  it('should render the embed in case of a consented vendor', async () => {
+    store.commit('sourcepoint/setGrantedVendors', [VENDOR_ID_FACEBOOK]);
 
     const wrapper = mount(EmbedSocialNetworksConsent, {
       propsData: {
@@ -49,12 +47,6 @@ describe('EmbedSocialNetworksConsent component', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.element).toMatchInlineSnapshot(`
-      <div>
-        <div>
-          Social Network Embed Content
-        </div>
-      </div>
-    `);
+    expect(wrapper.element).toMatchSnapshot();
   });
 });

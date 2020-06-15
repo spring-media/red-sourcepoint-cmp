@@ -3,6 +3,7 @@ import Vue from 'vue';
 import { mapActions } from 'vuex';
 import { postCustomConsent } from '../../../sourcepoint';
 import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
+import { dumpPurposeRelations, getPurposeIdsForVendor } from '../../../vendor-mapping';
 
 type Methods = {
   customConsent(payload: PostCustomConsentPayload): Promise<void>;
@@ -19,8 +20,7 @@ export default Vue.extend<NonNullish, Methods, NonNullish, NonNullish>({
       try {
         await postCustomConsent(payload);
       } catch (e) {
-        console.error('Could not create custom consent.');
-        return;
+        console.error(e.message);
       }
 
       this.refreshConsents();
@@ -30,7 +30,9 @@ export default Vue.extend<NonNullish, Methods, NonNullish, NonNullish>({
     return (
       this.$scopedSlots.default &&
       (this.$scopedSlots.default({
-        consentCustomPurpose: (id: string): Promise<void> => this.customConsent({ purposeIds: [id] }),
+        consentPurpose: (id: string): Promise<void> => this.customConsent(dumpPurposeRelations(id)),
+        consentVendor: (id: string): Promise<void> =>
+          this.customConsent({ vendorIds: [id], purposeIds: getPurposeIdsForVendor(id) }),
         customConsent: (payload: PostCustomConsentPayload): Promise<void> => this.customConsent(payload),
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }) as any)

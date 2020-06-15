@@ -10,6 +10,7 @@ const createState = (args: Partial<SourcepointModuleState> = {}): SourcepointMod
   const defaultState: SourcepointModuleState = {
     consentedCustomVendors: [],
     consentedCustomPurposes: [],
+    grantedVendors: [],
   };
 
   return { ...defaultState, ...args };
@@ -38,6 +39,17 @@ describe('vuex-module', () => {
 
       expect(state.consentedCustomPurposes).toEqual([purpose2]);
     });
+
+    it('setGrantedVendors should set state property grantedVendors', () => {
+      const grant1 = '1';
+      const grant2 = '2';
+
+      const state = createState({ grantedVendors: [grant1] });
+
+      mutations.setGrantedVendors(state, [grant2]);
+
+      expect(state.grantedVendors).toEqual([grant2]);
+    });
   });
 
   describe('action', () => {
@@ -45,6 +57,7 @@ describe('vuex-module', () => {
       const consents: CustomVendorConsentsResult = {
         consentedPurposes: [],
         consentedVendors: [],
+        grants: {},
       };
 
       const commit: Commit = jest.fn();
@@ -55,6 +68,7 @@ describe('vuex-module', () => {
 
       expect(commit).toHaveBeenNthCalledWith(1, 'setCustomVendorConsents', consents.consentedVendors);
       expect(commit).toHaveBeenNthCalledWith(2, 'setCustomPurposeConsents', consents.consentedPurposes);
+      expect(commit).toHaveBeenNthCalledWith(3, 'setGrantedVendors', []);
     });
 
     it('bootstrapConsents should use default values if not set', async () => {

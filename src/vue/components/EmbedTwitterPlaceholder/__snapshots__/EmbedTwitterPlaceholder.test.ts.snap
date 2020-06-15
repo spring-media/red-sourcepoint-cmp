@@ -101,7 +101,7 @@ exports[`EmbedTwitterPlaceholder should render without any errors 1`] = `
     <a
       class="embed-placeholder__text-link"
       href="#"
-      rel="noopener"
+      rel="noopener noreferrer"
       target="_blank"
     >
       hier

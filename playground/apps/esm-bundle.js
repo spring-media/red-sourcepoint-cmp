@@ -22,6 +22,7 @@ import { getCustomVendorConsents, loadPrivacyManagerModal } from '../../dist/esm
 import '../../dist/esm/vue/components.css';
 import './common.css';
 import { facebook, youtube, twitter, instagram } from '../scripts/embed-contents';
+import { configureGrants, getGrantedVendors } from '../../dist/esm/vendor-mapping';
 
 onPrivacyManagerAction((...args) => console.log('onPrivacyManagerAction', ...args));
 onMessageReady((...args) => console.log('onMessageReady', ...args));
@@ -45,10 +46,13 @@ const store = new Vuex.Store({
 reloadPageOnReject(store);
 
 const getConsents = async () => {
-  const { consentedPurposes = [], consentedVendors = [] } = await getCustomVendorConsents();
+  const { consentedPurposes = [], consentedVendors = [], grants } = await getCustomVendorConsents();
+
+  configureGrants(grants);
 
   store.commit('sourcepoint/setCustomVendorConsents', consentedVendors);
   store.commit('sourcepoint/setCustomPurposeConsents', consentedPurposes);
+  store.commit('sourcepoint/setGrantedVendors', getGrantedVendors());
 };
 
 onConsentReady(getConsents);

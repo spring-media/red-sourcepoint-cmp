@@ -11,7 +11,7 @@
           Um diesen Artikel oder andere Inhalte über soziale Netzwerke zu teilen, brauchen wir deine Zustimmung für
           <a
             href="#"
-            rel="noopener"
+            rel="noopener noreferrer"
             target="_blank"
             @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
           >
@@ -27,10 +27,10 @@
           >
             Schließen
           </button>
-          <consent-actions v-slot="{ customConsent }">
+          <consent-actions v-slot="{ consentPurpose }">
             <button
               class="social-sharing-popup__button social-sharing-popup__button--accept"
-              @click.prevent="[customConsent(customConsents), $emit('close')]"
+              @click.prevent="[consentPurpose(purposeId), $emit('close')]"
             >
               Akzeptieren
             </button>
@@ -42,14 +42,13 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue';
+import Vue from 'vue';
 import { PrivacyManager } from '../PrivacyManager';
 import { ConsentActions } from '../ConsentActions';
-import { getRelations, PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
-import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
+import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
 
 type Data = {
-  customConsents: PostCustomConsentPayload;
+  purposeId: string;
 };
 
 type Props = {
@@ -62,14 +61,11 @@ export default Vue.extend<Data, NonNullish, NonNullish, Props>({
   name: 'SocialSharingPopup',
   components: { PrivacyManager, ConsentActions },
   data: () => ({
-    customConsents: {
-      purposeIds: [PURPOSE_ID_SOCIAL],
-      vendorIds: getRelations(PURPOSE_ID_SOCIAL),
-    },
+    purposeId: PURPOSE_ID_SOCIAL,
   }),
   props: {
     privacyManagerId: {
-      type: Number as PropType<number>,
+      type: Number,
       required: true,
     },
   },

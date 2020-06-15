@@ -2,13 +2,13 @@
 
 [![npm](https://img.shields.io/npm/v/@spring-media/red-sourcepoint-cmp)](https://www.npmjs.com/package/@spring-media/red-sourcepoint-cmp)
 [![license](https://img.shields.io/npm/l/@spring-media/red-sourcepoint-cmp)](https://github.com/spring-media/red-sourcepoint-cmp/blob/master/LICENSE)
-[![storybook](https://img.shields.io/badge/Storybook-Live-informational?logo=storybook&style=flat)](https://spring-media.github.io/red-sourcepoint-cmp)
+[![storybook](https://img.shields.io/badge/Storybook-Vue-informational?logo=storybook&style=flat)](https://spring-media.github.io/red-sourcepoint-cmp)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 * [Introduction](#introduction)
 * [Installation](#installation)
 * [Modules](#modules)
-  * [Vendor Mapping](#static-vendor-mapping-module)
+  * [Vendor Mapping](#vendor-mapping-module)
   * [TCF V2](#tcf-v2-api-module)
   * [Sourcepoint](#sourcepoint-module)
   * [Embed Utils](#embed-utils-module)
@@ -29,11 +29,11 @@ npm i @spring-media/red-sourcepoint-cmp
 
 The project is organised into several (mostly) independent modules, that are described below:
 
-## Static Vendor Mapping Module
+## Vendor Mapping Module
 
 An API for (hardcoded) mappings of (custom) vendors and purposes and their relations between each other.
 
-[Documentation](src/vendor-mapping#static-vendor-mapping-module)
+[Documentation](src/vendor-mapping#vendor-mapping-module)
 
 ## TCF-V2 API Module
 

@@ -1,7 +1,5 @@
 export * from './ConsentActions';
-export * from './ConsentManagement';
 export * from './ConsentWrapper';
-export * from './ConsentedData';
 export * from './EmbedConsent';
 export * from './EmbedContent';
 export * from './EmbedFacebookConsent';
@@ -18,4 +16,3 @@ export * from './EmbedYoutubeConsent';
 export * from './EmbedYoutubePlaceholder';
 export * from './PrivacyManager';
 export * from './SocialSharingPopup';
-export * from './VendorMapping';

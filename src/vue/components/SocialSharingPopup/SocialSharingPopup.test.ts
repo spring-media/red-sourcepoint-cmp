@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { mount } from '@vue/test-utils';
 import { SocialSharingPopup } from './';
-import { getRelations, PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
+import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
 
 const loadPrivacyManagerModal = jest.fn();
 
@@ -17,7 +17,7 @@ const privacyManagerStub = Vue.extend({
   },
 });
 
-const customConsent = jest.fn();
+const consentPurpose = jest.fn();
 
 const consentActionsStub = Vue.extend({
   name: 'ConsentActions',
@@ -25,7 +25,7 @@ const consentActionsStub = Vue.extend({
     return (
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.$scopedSlots.default!({
-        customConsent,
+        consentPurpose,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }) as any
     );
@@ -75,9 +75,6 @@ describe('SocialSharingPopup', () => {
 
     wrapper.find('.social-sharing-popup__button--accept').trigger('click');
 
-    expect(customConsent).toHaveBeenCalledWith({
-      purposeIds: [PURPOSE_ID_SOCIAL],
-      vendorIds: getRelations(PURPOSE_ID_SOCIAL),
-    });
+    expect(consentPurpose).toHaveBeenCalledWith(PURPOSE_ID_SOCIAL);
   });
 });

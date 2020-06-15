@@ -20,7 +20,7 @@ exports[`SocialSharingPopup should initially render without any errors 1`] = `
         
     <a
       href="#"
-      rel="noopener"
+      rel="noopener noreferrer"
       target="_blank"
     >
       

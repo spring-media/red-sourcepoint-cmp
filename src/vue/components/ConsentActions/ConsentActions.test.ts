@@ -1,5 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
-import Vuex from 'vuex';
+import { mount } from '@vue/test-utils';
 import { postCustomConsent } from '../../../sourcepoint';
 import { ConsentActions } from './';
 import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
@@ -29,86 +28,82 @@ describe('ConsentActions component', () => {
     expect(mount(ConsentActions).element).toMatchInlineSnapshot(`<!---->`);
   });
 
-  describe('slot function consentCustomPurpose', () => {
-    it('should handle an error case as expected', () => {
-      expect.assertions(2);
-
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
-      (postCustomConsent as jest.Mock).mockImplementationOnce(() => Promise.reject(null));
-
+  it.each([['consentPurpose'], ['consentVendor'], ['customConsent']])(
+    'should provide scoped-slot function "%s"',
+    (name) => {
       mount(ConsentActions, {
         scopedSlots: {
-          async default({ consentCustomPurpose }: { consentCustomPurpose: (id: string) => void }): Promise<void> {
-            await consentCustomPurpose('1234');
-
-            expect(postCustomConsent).toHaveBeenCalledWith({ purposeIds: ['1234'] });
-            expect(consoleSpy).toHaveBeenCalled();
-
-            consoleSpy.mockRestore();
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          default(props: any): any {
+            expect(props[name]).toBeInstanceOf(Function);
           },
         },
       });
-    });
+    },
+  );
 
-    it('should dispatch an (vuex) action to update the consents in the store', () => {
-      expect.assertions(3);
+  it('scoped-slot function consentPurpose should handling consents for given purpose', () => {
+    expect.assertions(1);
 
-      const localVue = createLocalVue();
-      localVue.use(Vuex);
+    mount(ConsentActions, {
+      scopedSlots: {
+        default({ consentPurpose }: { consentPurpose: (id: string) => void }): void {
+          consentPurpose('5');
 
-      const bootstrapSpy = jest.fn();
-      const store = new Vuex.Store({
-        modules: {
-          sourcepoint: {
-            namespaced: true,
-            actions: {
-              bootstrapConsents: bootstrapSpy,
-            },
-          },
+          expect(postCustomConsent).toHaveBeenCalledWith({ vendorIds: [], purposeIds: ['5'] });
         },
-      });
-
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
-      (postCustomConsent as jest.Mock).mockImplementationOnce(() => Promise.resolve({}));
-
-      mount(ConsentActions, {
-        scopedSlots: {
-          async default({ consentCustomPurpose }: { consentCustomPurpose: (id: string) => void }): Promise<void> {
-            await consentCustomPurpose('1234');
-
-            expect(postCustomConsent).toHaveBeenCalledWith({ purposeIds: ['1234'] });
-            expect(consoleSpy).not.toHaveBeenCalled();
-            expect(bootstrapSpy).toHaveBeenCalled();
-
-            consoleSpy.mockRestore();
-          },
-        },
-        localVue,
-        store,
-      });
+      },
     });
   });
 
-  describe('slot function customConsent', () => {
-    it('should call postCustomConsent with the expected parameters', () => {
-      expect.assertions(1);
+  it('scoped-slot function consentVendor should handling consents for given vendor', () => {
+    expect.assertions(1);
 
-      (postCustomConsent as jest.Mock).mockImplementationOnce(() => Promise.reject(null));
+    mount(ConsentActions, {
+      scopedSlots: {
+        default({ consentVendor }: { consentVendor: (id: string) => void }): void {
+          consentVendor('5');
 
-      mount(ConsentActions, {
-        scopedSlots: {
-          async default({
-            customConsent,
-          }: {
-            customConsent: (payload: PostCustomConsentPayload) => void;
-          }): Promise<void> {
-            const payload: PostCustomConsentPayload = { vendorIds: ['123'], purposeIds: ['456'] };
-            await customConsent(payload);
-
-            expect(postCustomConsent).toHaveBeenCalledWith(payload);
-          },
+          expect(postCustomConsent).toHaveBeenCalledWith({ vendorIds: ['5'], purposeIds: [] });
         },
-      });
+      },
     });
+  });
+
+  it('scoped-slot function customConsent should handling consents for given parameters', () => {
+    expect.assertions(1);
+
+    mount(ConsentActions, {
+      scopedSlots: {
+        default({ customConsent }: { customConsent: (payload: PostCustomConsentPayload) => void }): void {
+          customConsent({ vendorIds: ['1'], purposeIds: ['2'] });
+
+          expect(postCustomConsent).toHaveBeenCalledWith({ vendorIds: ['1'], purposeIds: ['2'] });
+        },
+      },
+    });
+  });
+
+  it('should log an error message in the console', async () => {
+    expect.assertions(1);
+
+    (postCustomConsent as jest.Mock).mockImplementationOnce(() => Promise.reject({ message: 'Error' }));
+    jest.spyOn(window.console, 'error').mockImplementation(() => null);
+
+    const wrapper = mount(ConsentActions, {
+      scopedSlots: {
+        async default({
+          customConsent,
+        }: {
+          customConsent: (payload: PostCustomConsentPayload) => void;
+        }): Promise<void> {
+          await customConsent({ vendorIds: ['1'], purposeIds: ['2'] });
+        },
+      },
+    });
+
+    await wrapper.vm.$nextTick();
+
+    expect(console.error).toHaveBeenCalledWith('Error');
   });
 });

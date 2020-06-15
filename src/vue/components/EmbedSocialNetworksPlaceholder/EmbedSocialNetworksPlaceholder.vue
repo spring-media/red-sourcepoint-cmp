@@ -1,7 +1,7 @@
 <template>
   <embed-placeholder
-    :custom-consents="customConsents"
     :privacy-manager-id="privacyManagerId"
+    :purpose-id="purposeId"
   >
     <template #header>
       <slot name="header">
@@ -71,15 +71,14 @@
 <script lang="ts">
 import Vue from 'vue';
 import { EmbedPlaceholder } from '../EmbedPlaceholder';
-import { PURPOSE_ID_SOCIAL, getRelations } from '../../../vendor-mapping';
-import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
+import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
 
 type Props = {
   privacyManagerId: number;
 };
 
 type Data = {
-  customConsents: PostCustomConsentPayload;
+  purposeId: string;
 };
 
 type NonNullish = Record<string, unknown>;
@@ -88,10 +87,7 @@ export default Vue.extend<Data, NonNullish, NonNullish, Props>({
   name: 'EmbedSocialNetworksPlaceholder',
   components: { EmbedPlaceholder },
   data: () => ({
-    customConsents: {
-      purposeIds: [PURPOSE_ID_SOCIAL],
-      vendorIds: getRelations(PURPOSE_ID_SOCIAL),
-    },
+    purposeId: PURPOSE_ID_SOCIAL,
   }),
   props: {
     privacyManagerId: {

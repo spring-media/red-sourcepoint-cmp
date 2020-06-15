@@ -101,18 +101,21 @@
         Um mit Inhalten von Drittanbietern zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
       </slot>
     </div>
-    <slot name="button">
-      <consent-actions v-slot="{ customConsent }">
+    <consent-actions v-slot="{ consentVendor, consentPurpose }">
+      <slot
+        name="button"
+        v-bind="{ consentVendor, consentPurpose }"
+      >
         <button
           class="embed-placeholder__button"
-          @click.prevent="customConsent(customConsents)"
+          @click.prevent="giveConsent(consentVendor, consentPurpose)"
         >
           <slot name="buttonLabel">
             externen Inhalt aktivieren
           </slot>
         </button>
-      </consent-actions>
-    </slot>
+      </slot>
+    </consent-actions>
     <privacy-manager v-slot="{ loadPrivacyManagerModal }">
       <div class="embed-placeholder__footer-text">
         <slot name="footer">
@@ -122,7 +125,7 @@
           <a
             class="embed-placeholder__text-link"
             href="#"
-            rel="noopener"
+            rel="noopener noreferrer"
             target="_blank"
             @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
           >hier</a>.
@@ -133,31 +136,52 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue';
+import Vue from 'vue';
 import { ConsentActions } from '../ConsentActions';
 import { PrivacyManager } from '../PrivacyManager';
-import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
 
 type Props = {
   privacyManagerId: number;
-  customConsents: PostCustomConsentPayload;
+  vendorId: string;
+  purposeId: string;
 };
+
+type ConsentAction = (id: string) => void;
+
+type Methods = {
+  giveConsent: (consentVendor: ConsentAction, consentPurpose: ConsentAction) => void;
+}
 
 type NonNullish = Record<string, unknown>;
 
-export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
+export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   name: 'EmbedPlaceholder',
   components: { ConsentActions, PrivacyManager },
   props: {
     privacyManagerId: {
-      type: Number as PropType<number>,
+      type: Number,
       required: true,
     },
-    customConsents: {
-      type: Object as PropType<PostCustomConsentPayload>,
-      required: true,
+    vendorId: {
+      type: String,
+      default: '',
     },
+    purposeId: {
+      type: String,
+      default: '',
+    }
   },
+  methods: {
+    giveConsent(consentVendor: ConsentAction, consentPurpose: ConsentAction): void {
+      if (this.vendorId) {
+        return consentVendor(this.vendorId);
+      }
+
+      if (this.purposeId) {
+        consentPurpose(this.purposeId);
+      }
+    }
+  }
 });
 </script>
 
@@ -180,7 +204,7 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
 }
 
 .embed-placeholder__headline {
-  font-family: Gotham;
+  font-family: Gotham, sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 16px;
@@ -190,7 +214,7 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
 }
 
 .embed-placeholder__description {
-  font-family: Gotham XNarrow;
+  font-family: Gotham XNarrow, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -208,7 +232,7 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   border-style: none;
   margin-bottom: 10px;
 
-  font-family: Gotham XNarrow;
+  font-family: Gotham XNarrow, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
@@ -219,7 +243,7 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
 }
 
 .embed-placeholder__footer-text {
-  font-family: Gotham XNarrow;
+  font-family: Gotham XNarrow, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;

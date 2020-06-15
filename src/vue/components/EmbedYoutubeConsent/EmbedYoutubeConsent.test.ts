@@ -2,7 +2,7 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import { EmbedYoutubeConsent } from './';
 import { sourcepoint } from '../../vuex/sourcepoint';
-import { PURPOSE_ID_SOCIAL, VENDOR_ID_YOUTUBE } from '../../../vendor-mapping';
+import { VENDOR_ID_YOUTUBE } from '../../../vendor-mapping';
 
 const localVue = createLocalVue();
 
@@ -16,8 +16,7 @@ const store = new Vuex.Store({
 
 describe('EmbedYoutubeConsent component', () => {
   afterEach(() => {
-    store.commit('sourcepoint/setCustomVendorConsents', []);
-    store.commit('sourcepoint/setCustomPurposeConsents', []);
+    store.commit('sourcepoint/setGrantedVendors', []);
   });
 
   it('should render the placeholder by default', () => {
@@ -33,8 +32,7 @@ describe('EmbedYoutubeConsent component', () => {
   });
 
   it('should render the embed in case of a consented vendor and his purpose(s)', () => {
-    store.commit('sourcepoint/setCustomVendorConsents', [{ _id: VENDOR_ID_YOUTUBE }]);
-    store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: PURPOSE_ID_SOCIAL }]);
+    store.commit('sourcepoint/setGrantedVendors', [VENDOR_ID_YOUTUBE]);
 
     const wrapper = mount(EmbedYoutubeConsent, {
       propsData: {

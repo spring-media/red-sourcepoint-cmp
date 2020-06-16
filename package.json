@@ -21,7 +21,8 @@
     "preimage-snapshots": "docker run -p 9222:3000 --name chrome --rm -d browserless/chrome:1.32.0-chrome-stable",
     "image-snapshots": "jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js",
     "postimage-snapshots": "docker stop chrome || exit 0",
-    "image-snapshots:ci": "CI=true jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js"
+    "image-snapshots:ci": "CI=true jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js",
+    "sonar": "node sonar.js"
   },
   "files": [
     "dist",
@@ -96,6 +97,7 @@
     "rollup-plugin-vue": "5.1.9",
     "semantic-release": "17.0.8",
     "serve-handler": "6.1.3",
+    "sonarqube-scanner": "2.6.0",
     "terser": "4.7.0",
     "ts-jest": "26.1.0",
     "ts-loader": "7.0.5",

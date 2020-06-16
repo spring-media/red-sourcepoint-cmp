@@ -6,9 +6,9 @@ module.exports = {
   collectCoverageFrom: ['**/*.{js,ts,vue}', '!**/*.stories.js', '!**/*.d.ts'],
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: ['text', 'text-summary'],
+  coverageReporters: ['text', 'text-summary', 'lcov'],
 
-  coverageDirectory: null,
+  coverageDirectory: '../coverage',
 
   // An array of file extensions your modules use
   moduleFileExtensions: ['js', 'ts', 'vue'],

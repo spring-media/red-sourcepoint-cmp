@@ -13,5 +13,6 @@ playground/public/build
 
 playground/specs/e2e/output
 
-stderr.txt
-stdout.txt
+coverage
+
+.scannerwork

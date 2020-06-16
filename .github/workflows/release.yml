@@ -41,6 +41,16 @@ jobs:
         env:
           CI: true
 
+      - name: Setup Java 8 for Sonar Scanner
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Run Sonar Scanner
+        run: npm run sonar
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: Release
         if: success()
         run: npx semantic-release

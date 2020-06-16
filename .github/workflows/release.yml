@@ -41,7 +41,7 @@ jobs:
         env:
           CI: true
 
-      - name: Setup Java 8 for Sonar Scanner
+      - name: Setup Java for Sonar Scanner
         uses: actions/setup-java@v1
         with:
           java-version: 11
@@ -49,6 +49,7 @@ jobs:
       - name: Run Sonar Scanner
         run: npm run sonar
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Release

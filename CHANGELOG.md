@@ -1,3 +1,10 @@
+## [0.41.3](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.41.2...v0.41.3) (2020-06-17)
+
+
+### Bug Fixes
+
+* **playground:** add generic font rule ([e9815a7](https://github.com/spring-media/red-sourcepoint-cmp/commit/e9815a7b783129ae2bfa6d9e789424a6ca8a21b1))
+
 ## [0.41.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.41.1...v0.41.2) (2020-06-17)
 
 ## [0.41.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.41.0...v0.41.1) (2020-06-17)

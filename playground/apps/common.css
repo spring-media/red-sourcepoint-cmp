@@ -16,7 +16,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    font-family: Gotham XNarrow;
+    font-family: Gotham XNarrow, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;

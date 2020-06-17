@@ -63,12 +63,12 @@ const compileTemplate = (opts) => ({
 
     const files = Object.values(bundle).filter((file) => file.isEntry || file.type === 'asset' || file.isAsset);
     const links = files
-      .filter(({ fileName }) => extname(fileName).substring(1) === 'css')
-      .map(({ fileName }) => `<link href="${fileName}" rel="stylesheet">`)
+      .filter(({ name }) => extname(name).substring(1) === 'css')
+      .map(({ name }) => `<link href="${name}" rel="stylesheet">`)
       .join('\n');
     const scripts = files
-      .filter(({ fileName }) => extname(fileName).substring(1) === 'js')
-      .map(({ fileName }) => `<script src="${fileName}"></script>`)
+      .filter(({ name }) => extname(name).substring(1) === 'js')
+      .map(({ name }) => `<script src="${name}"></script>`)
       .join('\n');
 
     const source = `

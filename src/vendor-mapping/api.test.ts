@@ -13,7 +13,7 @@ describe('custom-vendor-grants module', () => {
       expect(vendorHasGrant('123')).toBe(false);
     });
 
-    it('should return false if vendorGrant is false', () => {
+    it('should return false', () => {
       const grants = {
         '123': {
           purposeGrants: {},
@@ -26,23 +26,10 @@ describe('custom-vendor-grants module', () => {
       expect(vendorHasGrant('123')).toBe(false);
     });
 
-    it('should return false if at least one purpose has no grant', () => {
-      const grants = {
-        '123': {
-          purposeGrants: { '123': true, '456': false },
-          vendorGrant: true,
-        },
-      };
-
-      configureGrants(grants);
-
-      expect(vendorHasGrant('123')).toBe(false);
-    });
-
     it('should return true', () => {
       const grants = {
         '123': {
-          purposeGrants: { '123': true, '456': true },
+          purposeGrants: {},
           vendorGrant: true,
         },
       };

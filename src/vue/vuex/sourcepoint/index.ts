@@ -4,7 +4,7 @@ import { SourcepointModuleState } from '../typings';
 import { CustomPurpose, CustomVendor } from '../../../sourcepoint/typings';
 import { configureGrants, getGrantedVendors } from '../../../vendor-mapping';
 
-const state: SourcepointModuleState = {
+const moduleState: SourcepointModuleState = {
   consentedCustomVendors: [],
   consentedCustomPurposes: [],
   grantedVendors: [],
@@ -41,7 +41,7 @@ export const actions = {
 
 export const sourcepoint: Module<SourcepointModuleState, Record<string, unknown>> = {
   namespaced: true,
-  state,
+  state: moduleState,
   mutations,
   actions,
   getters,

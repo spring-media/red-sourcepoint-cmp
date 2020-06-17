@@ -9,6 +9,12 @@ type RelationsDump = {
   purposeIds: string[];
 };
 
+const checkForRelationEntry = (map: Map<string, Set<string>>, id: string): void => {
+  if (!map.has(id)) {
+    map.set(id, new Set());
+  }
+};
+
 export const configureGrants = (grants: CustomVendorGrants): void => {
   purposeRelations.clear();
   vendorRelations.clear();
@@ -17,18 +23,14 @@ export const configureGrants = (grants: CustomVendorGrants): void => {
   for (const [vendorId, value] of Object.entries(grants)) {
     const { vendorGrant, purposeGrants } = value;
 
-    const hasGrant = Object.values(purposeGrants).every(Boolean) && vendorGrant;
-
-    if (hasGrant) {
+    if (vendorGrant) {
       grantedVendors.add(vendorId);
     }
 
     vendorRelations.set(vendorId, new Set(Object.keys(purposeGrants)));
 
     Object.keys(purposeGrants).forEach((purposeId) => {
-      if (!purposeRelations.has(purposeId)) {
-        purposeRelations.set(purposeId, new Set());
-      }
+      checkForRelationEntry(purposeRelations, purposeId);
 
       (<Set<string>>purposeRelations.get(purposeId)).add(vendorId);
     });

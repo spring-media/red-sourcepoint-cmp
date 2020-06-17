@@ -22,15 +22,21 @@ const components = {
   'social-sharing-popup': SocialSharingPopup,
 };
 
+const renderComponent = (h, component) => h(component, { props: { privacyManagerId: 12345, customConsents: {} } });
+
+const writeToFile = ({ name, version, content }) => writeFileSync(`.cae/red-cmp-${name}-${version}.html`, content);
+
+const logError = (error) => console.error(error);
+
 const buildHTMLSnippets = ({ version }) => {
   for (const [name, component] of Object.entries(components)) {
     const app = new Vue({
-      render: (h) => h(component, { props: { privacyManagerId: 12345, customConsents: {} } }),
+      render: (h) => renderComponent(h, component),
     });
 
     renderToString(app)
-      .then((html) => writeFileSync(`.cae/red-cmp-${name}-${version}.html`, html))
-      .catch((error) => console.error(error));
+      .then((html) => writeToFile({ name, version, content: html }))
+      .catch(logError);
   }
 };
 

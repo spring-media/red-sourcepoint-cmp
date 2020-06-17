@@ -5,6 +5,7 @@
 [![storybook](https://img.shields.io/badge/Storybook-Vue-informational?logo=storybook&style=flat)](https://spring-media.github.io/red-sourcepoint-cmp)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=spring-media_red-sourcepoint-cmp&metric=coverage)](https://sonarcloud.io/dashboard?id=spring-media_red-sourcepoint-cmp)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=spring-media_red-sourcepoint-cmp&metric=alert_status)](https://sonarcloud.io/dashboard?id=spring-media_red-sourcepoint-cmp)
 
 * [Introduction](#introduction)
 * [Installation](#installation)

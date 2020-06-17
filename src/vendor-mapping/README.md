@@ -140,7 +140,7 @@ console.log(getPurposeIdsForVendor('123')); // ['456', '789']
 ```    
 </details>
 
-### `removeCustomVendor`
+### `getVendorIdsForPurpose`
 
 ```typescript
 getVendorIdsForPurpose(purposeId: string): string[];

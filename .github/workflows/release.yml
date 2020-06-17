@@ -74,3 +74,6 @@ jobs:
           BUILD_OUTPUT_DIR: ".cae"
           DOMAIN_NAME_PREFIX: ${{ secrets.AKAMAI_DOMAIN_NAME_PREFIX }}
           TARGET_PATH: "/"
+
+      - name: Deploy Storybook
+        run: npm run storybook:deploy

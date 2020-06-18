@@ -1,28 +1,21 @@
-import { Selector } from 'testcafe';
+import { message, privacyManager } from '../fragments';
 
 fixture`Sourcepoint Message`.page`http://local.bild.de:5000/build/esm.html`;
 
 test('should exists', async (t) => {
-  await t.expect(Selector('iframe[src="https://notice.sp-prod.net?preload_message=true"]').exists).ok();
+  await t.expect(message.root.exists).ok();
 });
 
-/*
-Scenario('opens a privacy-data-center modal when clicking on the settings button', () => {
-  I.amOnPage(playgroundParams.host + '/build/esm');
-  I.waitForElement(sourcepointMessage.root, 5);
+test('should open a privacy-data-center modal when clicking on the settings button', async (t) => {
+  await message.clickOnSettingsButton();
 
-  sourcepointMessage.openSettings();
-
-  I.dontSeeElement(sourcepointMessage.root);
-  I.waitForElement(sourcepointPrivacyManager.root, 5);
+  await t.expect(message.root.visible).notOk();
+  await t.expect(privacyManager.root.exists).ok();
 });
 
-Scenario('closes the message when clicking on accept-all button', () => {
-  I.amOnPage(playgroundParams.host + '/build/esm');
-  I.waitForElement(sourcepointMessage.root, 5);
+test('should close the message when clicking on accept-all button', async (t) => {
+  await message.clickOnAcceptAllButton();
 
-  sourcepointMessage.acceptAll();
-
-  I.dontSeeElement(sourcepointMessage.root);
+  await t.expect(message.root.visible).notOk();
+  await t.expect(privacyManager.root.visible).notOk();
 });
- */

@@ -1,2 +1,2 @@
-export * from './sourcepoint-message';
-export * from './sourcepoint-privacy-manager';
+export * as message from './message';
+export * as privacyManager from './privacy-manager';

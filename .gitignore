@@ -2,6 +2,7 @@
 .cae
 
 dist
+logs
 
 node_modules
 

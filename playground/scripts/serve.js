@@ -35,8 +35,7 @@ ${chalk.grey('----------------------------')}
 
   server.listen(port, () => {
     console.log(`Running at:
-${parameters.host}/build/esm ${chalk.grey('(esm bundle)')}
-${parameters.host}/build/browser ${chalk.grey('(browser bundle)')}
+${parameters.host}/build
 `);
   });
 };

@@ -1,10 +1,8 @@
-const { rmdirSync, existsSync, writeFileSync, readFileSync } = require('fs');
+const { rmdirSync, existsSync, writeFileSync } = require('fs');
 const { extname } = require('path');
 const rollup = require('rollup');
 const postcss = require('rollup-plugin-postcss');
 const commonjs = require('@rollup/plugin-commonjs');
-const { version } = require('../../package.json');
-const { facebook, youtube, twitter, instagram } = require('./embed-contents');
 const { getIABStubScript } = require('../../dist/cjs/sourcepoint');
 
 const esmTemplate = () => {
@@ -15,47 +13,6 @@ const esmTemplate = () => {
 `;
 };
 
-const browserTemplate = () => {
-  const caeConfig = require(`../../.cae/red-cmp-config-${version}.json`);
-
-  const facebookPlaceholder = readFileSync(`.cae/${caeConfig.embedPlaceholderFacebookHtml}`, 'utf8');
-  const twitterPlaceholder = readFileSync(`.cae/${caeConfig.embedPlaceholderTwitterHtml}`, 'utf8');
-  const youtubePlaceholder = readFileSync(`.cae/${caeConfig.embedPlaceholderYoutubeHtml}`, 'utf8');
-  const instagramPlaceholder = readFileSync(`.cae/${caeConfig.embedPlaceholderInstagramHtml}`, 'utf8');
-
-  return `
-    <div>
-        <div class="privacy-manager__container"><button class="embed-placeholder__button open-privacy-manager" style="border-radius: 0;" @click="openPrivacyManager">Open Privacy Manager</button></div>
-        <ul class="embed__container">
-            <li class="embed__item" data-vendor-name="facebook">
-                <div>${facebookPlaceholder}</div>
-                <script type="text/embed-content">
-                    ${facebook}
-                </script>
-            </li>
-            <li class="embed__item" data-vendor-name="instagram">
-                <div>${instagramPlaceholder}</div>
-                <script type="text/embed-content">
-                    ${instagram}
-                </script>
-            </li>
-            <li class="embed__item" data-vendor-name="twitter">
-                <div>${twitterPlaceholder}</div>
-                <script type="text/embed-content">
-                    ${twitter}
-                </script>
-            </li>
-            <li class="embed__item" data-vendor-name="youtube">
-                <div>${youtubePlaceholder}</div>
-                <script type="text/embed-content">
-                    ${youtube}
-                </script>
-            </li>
-        </ul>
-    </div>
-  `;
-};
-
 const compileTemplate = (opts) => ({
   name: 'compileTemplate',
   generateBundle(output, bundle) {
@@ -64,11 +21,11 @@ const compileTemplate = (opts) => ({
     const files = Object.values(bundle).filter((file) => file.isEntry || file.type === 'asset' || file.isAsset);
     const links = files
       .filter(({ fileName: name }) => extname(name).substring(1) === 'css')
-      .map(({ fileName: name }) => `<link href="${name}" rel="stylesheet">`)
+      .map(({ fileName: name }) => `<link href="./build/${name}" rel="stylesheet">`)
       .join('\n');
     const scripts = files
       .filter(({ fileName: name }) => extname(name).substring(1) === 'js')
-      .map(({ fileName: name }) => `<script src="${name}"></script>`)
+      .map(({ fileName: name }) => `<script src="./build/${name}"></script>`)
       .join('\n');
 
     const source = `
@@ -125,53 +82,30 @@ const compile = async (parameters) => {
     return;
   }
 
-  const configs = [
-    {
-      input: './playground/apps/esm-bundle.js',
-      external: ['vue', 'vuex'],
-      output: {
-        format: 'iife',
-        globals: {
-          vue: 'Vue',
-          vuex: 'Vuex',
-        },
+  const config = {
+    input: { bundle: './playground/apps/esm-bundle.js' },
+    external: ['vue', 'vuex'],
+    output: {
+      format: 'iife',
+      globals: {
+        vue: 'Vue',
+        vuex: 'Vuex',
       },
-      plugins: [
-        commonjs(),
-        postcss({ extract: true }),
-        compileTemplate({ parameters, fileName: 'esm.html', template: esmTemplate }),
-      ],
     },
-    {
-      input: './playground/apps/browser-bundle.js',
-      output: {
-        format: 'es',
-      },
-      plugins: [
-        postcss({ extract: true }),
-        compileTemplate({ parameters, fileName: 'browser.html', template: browserTemplate }),
-        {
-          resolveId(source) {
-            if (source === 'cmp-embed-placeholder.css') {
-              return `.cae/red-cmp-components-${version}.min.css`;
-            }
+    plugins: [
+      commonjs(),
+      postcss({ extract: true }),
+      compileTemplate({ parameters, fileName: 'index.html', template: esmTemplate }),
+    ],
+  };
 
-            return null;
-          },
-        },
-      ],
-    },
-  ];
+  const bundle = await rollup.rollup(config);
 
-  for (const config of configs) {
-    const bundle = await rollup.rollup(config);
-
-    await bundle.write({
-      format: config.output.format,
-      dir: buildDir,
-      globals: config.output.globals || {},
-    });
-  }
+  await bundle.write({
+    format: config.output.format,
+    dir: buildDir,
+    globals: config.output.globals || {},
+  });
 
   writeFileSync('./playground/public/build/parameters.json', JSON.stringify(parameters));
 };

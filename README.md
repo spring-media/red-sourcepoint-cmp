@@ -6,6 +6,8 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=spring-media_red-sourcepoint-cmp&metric=coverage)](https://sonarcloud.io/dashboard?id=spring-media_red-sourcepoint-cmp)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=spring-media_red-sourcepoint-cmp&metric=alert_status)](https://sonarcloud.io/dashboard?id=spring-media_red-sourcepoint-cmp)
+[![Release](https://github.com/spring-media/red-sourcepoint-cmp/workflows/Release/badge.svg)](https://github.com/spring-media/red-sourcepoint-cmp/actions?query=workflow%3ARelease)
+[![Playground E2E](https://github.com/spring-media/red-sourcepoint-cmp/workflows/Playground%20E2E/badge.svg)](https://github.com/spring-media/red-sourcepoint-cmp/actions?query=workflow%3A%22Playground+E2E%22)
 
 * [Introduction](#introduction)
 * [Installation](#installation)

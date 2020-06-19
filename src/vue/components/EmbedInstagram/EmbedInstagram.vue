@@ -29,7 +29,7 @@ export default Vue.extend<Data, Methods, NonNullish, Props>({
   props: {
     content: {
       type: String,
-      default: '',
+      required: true,
     },
   },
   methods: {

@@ -1,5 +1,5 @@
 <script lang="ts">
-import Vue, { CreateElement, PropType, VNode } from 'vue';
+import Vue, { CreateElement, VNode } from 'vue';
 import { getScriptSrcFromOembedHTML, loadScript } from '../../../embed-utils';
 
 type Props = {
@@ -12,7 +12,7 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   name: 'EmbedContent',
   props: {
     content: {
-      type: String as PropType<string>,
+      type: String,
       required: true,
     },
   },

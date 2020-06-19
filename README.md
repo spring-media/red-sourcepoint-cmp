@@ -18,6 +18,7 @@
   * [Embed Utils](#embed-utils-module)
   * [Vue](#vue-module)
 * [Playground](#playground)
+* [Releasing and Publishing](#releasing-and-publishing)
 
 # Introduction
 

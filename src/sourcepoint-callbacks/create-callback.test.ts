@@ -82,4 +82,25 @@ describe('createCallback', () => {
     };
     expect(() => createCallback('onPrivacyManagerAction')(() => null)).not.toThrow();
   });
+
+  it('should handle multiple registered callbacks', () => {
+    window._sp_ = {
+      loadPrivacyManagerModal() {
+        return null;
+      },
+      config: { events: {} },
+    };
+
+    const cb1 = jest.fn();
+    const cb2 = jest.fn();
+
+    const onCallback = createCallback('onPrivacyManagerAction');
+    onCallback(cb1);
+    onCallback(cb2);
+
+    window._sp_.config?.events?.onPrivacyManagerAction?.('action');
+
+    expect(cb1).toHaveBeenCalled();
+    expect(cb2).toHaveBeenCalled();
+  });
 });

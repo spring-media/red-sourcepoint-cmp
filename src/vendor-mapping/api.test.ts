@@ -87,7 +87,7 @@ describe('custom-vendor-grants module', () => {
     expect(getRelations('5', map).length).toBe(0);
   });
 
-  it('dumpPurposeRelations should ...', () => {
+  it('dumpPurposeRelations should return a list of vendor ids and purpose ids connected with each other', () => {
     const grants = {
       '1': {
         purposeGrants: { '4': true, '5': true },

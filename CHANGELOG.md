@@ -1,3 +1,10 @@
+# [0.43.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.42.1...v0.43.0) (2020-06-19)
+
+
+### Features
+
+* **vendor-mapping:** update vendor id for facebook ([d1a389e](https://github.com/spring-media/red-sourcepoint-cmp/commit/d1a389e6281b078145098869b1da1f0cbf3f6686))
+
 ## [0.42.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.42.0...v0.42.1) (2020-06-18)
 
 # [0.42.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.41.4...v0.42.0) (2020-06-18)

@@ -2,7 +2,7 @@ name: Playground E2E
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 */2 * * *'
 
 jobs:
   playground-e2e:

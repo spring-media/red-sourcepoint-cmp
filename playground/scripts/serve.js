@@ -28,14 +28,14 @@ ${chalk.grey('----------------------------')}
   `);
 
   const server = http.createServer((request, response) => {
-    return handler(request, response, { public: publicDir });
+    return handler(request, response, { public: publicDir, cleanUrls: false, renderSingle: false });
   });
 
   const { port = 5000 } = new URL(parameters.host);
 
   server.listen(port, () => {
     console.log(`Running at:
-${parameters.host}/build
+${parameters.host}/build/index.html
 `);
   });
 };

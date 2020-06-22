@@ -31,12 +31,12 @@ test('should close the message when clicking on accept-all button', async () => 
 });
 
 test('should initial display all embeds as their placeholders', async () => {
-  const { getAll, getPlaceholders } = getEmbeds();
+  const { getAll, getPlaceholder } = getEmbeds();
   const embeds = await getAll();
   const collection = await toIterator(embeds);
 
   for (const item of collection) {
-    await exists(getPlaceholders(item));
+    await exists(getPlaceholder(item));
   }
 });
 
@@ -45,9 +45,9 @@ test('shoud open a privacy-data-center modal by clicking on a link in an embed p
 
   await notVisible(root);
 
-  const { getAll, getPlaceholders, clickPlaceholderLink } = getEmbeds();
+  const { getAll, getPlaceholder, clickPlaceholderLink } = getEmbeds();
 
-  await clickPlaceholderLink(getPlaceholders(getAll().nth(0)).nth(0));
+  await clickPlaceholderLink(getPlaceholder(getAll().nth(0)).nth(0));
 
   await visible(root);
 });

@@ -4,7 +4,7 @@ export interface Fragment {
 
 export interface EmbedsFragment extends Fragment {
   getAll(): Selector;
-  getPlaceholders(embed: Selector): Selector;
+  getPlaceholder(embed: Selector): Selector;
   clickPlaceholderLink(placeholder: Selector): TestControllerPromise;
   clickPlaceholderButton(placeholder: Selector): TestControllerPromise;
 }

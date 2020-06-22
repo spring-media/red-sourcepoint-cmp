@@ -21,11 +21,11 @@ const compileTemplate = (opts) => ({
     const files = Object.values(bundle).filter((file) => file.isEntry || file.type === 'asset' || file.isAsset);
     const links = files
       .filter(({ fileName: name }) => extname(name).substring(1) === 'css')
-      .map(({ fileName: name }) => `<link href="./build/${name}" rel="stylesheet">`)
+      .map(({ fileName: name }) => `<link href="../build/${name}" rel="stylesheet">`)
       .join('\n');
     const scripts = files
       .filter(({ fileName: name }) => extname(name).substring(1) === 'js')
-      .map(({ fileName: name }) => `<script src="./build/${name}"></script>`)
+      .map(({ fileName: name }) => `<script src="../build/${name}"></script>`)
       .join('\n');
 
     const source = `

@@ -47,7 +47,7 @@ const compileTemplate = (opts) => ({
             },
           };
         </script>
-        <script src="${parameters.libraryURL}"></script>
+        <script src="${parameters.libraryURL}" async></script>
         <script>
           window.__playground__ = {
             parameters: ${JSON.stringify(parameters)},

@@ -1,12 +1,13 @@
 import { Selector, t } from 'testcafe';
-import { EmbedsFragment } from '../typings';
 
-const root = Selector('.embed__container');
+export const rootElement = (): Selector => Selector('.embed__container');
 
-export const embeds: EmbedsFragment = {
-  root,
-  getAll: (): Selector => root().find('.embed__item'),
-  getPlaceholder: (embed: Selector): Selector => embed.find('.embed-placeholder__container'),
-  clickPlaceholderLink: (placeholder: Selector) => t.click(placeholder.find('.embed-placeholder__text-link')),
-  clickPlaceholderButton: (placeholder: Selector) => t.click(placeholder.find('.embed-placeholder__button')),
-};
+export const getAll = (): Selector => rootElement().find('.embed__item');
+
+export const getPlaceholder = (embed: Selector): Selector => embed.find('.embed-placeholder__container');
+
+export const clickPlaceholderLink = (placeholder: Selector): TestControllerPromise =>
+  t.click(placeholder.find('.embed-placeholder__text-link'));
+
+export const clickPlaceholderButton = (placeholder: Selector): TestControllerPromise =>
+  t.click(placeholder.find('.embed-placeholder__button'));

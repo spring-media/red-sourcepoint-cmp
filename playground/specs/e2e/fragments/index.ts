@@ -1,3 +1,3 @@
 export * as message from './message';
 export * as privacyManager from './privacy-manager';
-export { embeds } from './embeds';
+export * as embeds from './embeds';

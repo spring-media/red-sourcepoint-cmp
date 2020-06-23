@@ -1,64 +1,99 @@
-import { getMessage, getPrivacyManager, getEmbeds } from '../page-models/playground';
+import { message, privacyManager, embeds } from '../fragments';
 import { exists, notExists, notVisible, visible } from '../assertions';
 import { toIterator } from '../utils/to-iterator';
 
-fixture`Playground`.page`http://local.bild.de:5000/build/index.html`;
+fixture`I am in the Playground application`.page`http://local.bild.de:5000/build/index.html`;
 
-test('message should exists on initial page load', async () => {
-  const { root } = getMessage();
+test('i see a message initially', async () => {
+  const { rootElement } = message;
 
-  await exists(root);
+  await exists(rootElement());
 });
 
-test.skip('a privacy-data-center modal should be visible when clicking on the settings button in the message', async () => {
-  const { clickOnSettingsButton, root: mRoot } = getMessage();
-  const { root: pmRoot } = getPrivacyManager();
+test('i see a privacy-data-center modal after clicking on the settings button in the message', async () => {
+  const { clickSettingsButton, rootElement: mRoot } = message;
+  const { rootElement: pmRoot } = privacyManager;
 
-  await clickOnSettingsButton();
+  await clickSettingsButton();
 
-  await notVisible(mRoot);
-  await exists(pmRoot);
+  await notVisible(mRoot());
+  await exists(pmRoot());
 });
 
-test.skip('the message should disappear when clicking on the "Accept All" button within the message', async () => {
-  const { clickOnAcceptAllButton, root: mRoot } = getMessage();
-  const { root: pmRoot } = getPrivacyManager();
-
-  await clickOnAcceptAllButton();
-
-  await notVisible(mRoot);
-  await notVisible(pmRoot);
-});
-
-test.skip('initially, all embeds should be displayed as placeholders instead of real content', async () => {
-  const { getAll, getPlaceholder } = getEmbeds();
-  const embeds = await getAll();
-  const collection = await toIterator(embeds);
+test('i see all embeds are being displayed as placeholders instead of real content', async () => {
+  const { getAll, getPlaceholder } = embeds;
+  const collection = await toIterator(await getAll());
 
   for (const item of collection) {
     await exists(getPlaceholder(item));
   }
 });
 
-test.skip('a privacy-data-center modal should be visible when clicking on the link in an embed placeholder', async () => {
-  const { root } = getPrivacyManager();
+test('i see a privacy-data-center modal after clicking on the link in an embed placeholder', async () => {
+  const { rootElement } = privacyManager;
 
-  await notVisible(root);
+  await notVisible(rootElement());
 
-  const { getAll, getPlaceholder, clickPlaceholderLink } = getEmbeds();
+  const { getAll, getPlaceholder, clickPlaceholderLink } = embeds;
 
   await clickPlaceholderLink(getPlaceholder(getAll().nth(0)));
 
-  await visible(root);
+  await visible(rootElement());
 });
 
-test.skip('it should render all embeds when clicking on the button "soziale Netwzerke aktivieren" in at least one embed placeholder', async () => {
-  const { getAll, getPlaceholder, clickPlaceholderButton } = getEmbeds();
+test('i do not see a privacy-data-center after clicking on the save-and-exit button in that data-center', async () => {
+  const { clickSettingsButton } = message;
+  const { clickSaveAndExitButton, rootElement } = privacyManager;
 
-  const embeds = await getAll();
-  const collection = await toIterator(embeds);
+  await clickSettingsButton();
 
-  await clickPlaceholderButton(getPlaceholder(embeds.nth(0)));
+  await visible(rootElement());
+
+  await clickSaveAndExitButton();
+
+  await notVisible(rootElement());
+});
+
+test('i see all embeds with their real content after clicking on the accept-all button in the privacy-data-center', async () => {
+  const { clickSettingsButton } = message;
+  const { clickAcceptAllButton } = privacyManager;
+  const { getAll, getPlaceholder } = embeds;
+
+  const all = await getAll();
+  const collection = await toIterator(all);
+
+  await clickSettingsButton();
+
+  await clickAcceptAllButton();
+
+  for (const item of collection) {
+    await notExists(await getPlaceholder(item));
+  }
+});
+
+test('i see all embeds with their real content after clicking on the accept-all button in the message', async () => {
+  const { clickAcceptAllButton, rootElement } = message;
+  const { getAll, getPlaceholder } = embeds;
+
+  const all = await getAll();
+  const collection = await toIterator(all);
+
+  await clickAcceptAllButton();
+
+  await notVisible(rootElement());
+
+  for (const item of collection) {
+    await notExists(await getPlaceholder(item));
+  }
+});
+
+test.skip('i see all embeds with their real content after clicking on the button "Soziale Netzwerke aktivieren" in at least one embed placeholder', async () => {
+  const { getAll, getPlaceholder, clickPlaceholderButton } = embeds;
+
+  const all = await getAll();
+  const collection = await toIterator(all);
+
+  await clickPlaceholderButton(getPlaceholder(all.nth(0)));
 
   for (const item of collection) {
     await notExists(await getPlaceholder(item));

@@ -1,3 +1,10 @@
+## [0.43.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.43.1...v0.43.2) (2020-06-25)
+
+
+### Bug Fixes
+
+* **vendor-mapping:** use the same purpose ids for `purposeIds` and `legitimateInterestIds`  in result object of dumpPurposeRelations ([c516096](https://github.com/spring-media/red-sourcepoint-cmp/commit/c516096f4bb8cf2c04a1e755411332283daacbbe))
+
 ## [0.43.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.43.0...v0.43.1) (2020-06-19)
 
 # [0.43.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.42.1...v0.43.0) (2020-06-19)

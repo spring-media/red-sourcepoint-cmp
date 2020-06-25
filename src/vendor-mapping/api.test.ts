@@ -109,6 +109,10 @@ describe('custom-vendor-grants module', () => {
 
     configureGrants(grants);
 
-    expect(dumpPurposeRelations('5')).toEqual({ vendorIds: ['1', '2', '3'], purposeIds: ['5', '4', '8', '6'] });
+    expect(dumpPurposeRelations('5')).toEqual({
+      vendorIds: ['1', '2', '3'],
+      purposeIds: ['5', '4', '8', '6'],
+      legitimateInterestIds: ['5', '4', '8', '6'],
+    });
   });
 });

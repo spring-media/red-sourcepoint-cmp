@@ -1,13 +1,9 @@
 import { CustomVendorGrants } from '../sourcepoint/typings';
+import { RelationsDump } from './typings';
 
 const purposeRelations = new Map<string, Set<string>>();
 const vendorRelations = new Map<string, Set<string>>();
 const grantedVendors = new Set<string>();
-
-type RelationsDump = {
-  vendorIds: string[];
-  purposeIds: string[];
-};
 
 const checkForRelationEntry = (map: Map<string, Set<string>>, id: string): void => {
   if (!map.has(id)) {
@@ -62,5 +58,6 @@ export const dumpPurposeRelations = (purposeId: string): RelationsDump => {
   return {
     vendorIds,
     purposeIds: [...purposeIds],
+    legitimateInterestIds: [...purposeIds],
   };
 };

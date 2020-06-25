@@ -15,7 +15,7 @@
     "playground:start:background": "docker run -p 5000:80 -d --rm -v $(pwd)/playground/public:/usr/share/nginx/html --name playground nginx:alpine",
     "playground:stop:background": "docker stop playground",
     "playground:prepare": "node ./playground/scripts/prepare.js",
-    "playground:test:e2e": "testcafe 'chrome:headless' playground/specs/e2e/specs/*.specs.ts",
+    "playground:test:e2e": "docker run --net=host --rm -v $(pwd)/playground:/tests --name testcafe -it testcafe/testcafe:1.8.7 chromium /tests/specs/e2e/specs/*.specs.ts",
     "storybook": "start-storybook -p 9001 -s playground/public/assets",
     "storybook:build": "build-storybook --quiet -c .storybook -o .storybook-static && cp -R playground/public/assets/* .storybook-static",
     "storybook:deploy": "npm run storybook:build && storybook-to-ghpages -e .storybook-static",

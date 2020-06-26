@@ -1,3 +1,10 @@
+## [0.44.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.44.1...v0.44.2) (2020-06-26)
+
+
+### Bug Fixes
+
+* **playground:** fix error which is thrown when running the e2e tests in github actions ([83aef14](https://github.com/spring-media/red-sourcepoint-cmp/commit/83aef14238f98901ff51f46b6f9517b206c67c3a))
+
 ## [0.44.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.44.0...v0.44.1) (2020-06-26)
 
 

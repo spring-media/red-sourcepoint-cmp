@@ -1,8 +1,13 @@
-import { Commit, Module } from 'vuex';
+import { Commit, Dispatch, Module } from 'vuex';
 import { getCustomVendorConsents } from '../../../sourcepoint';
 import { SourcepointModuleState } from '../typings';
 import { CustomPurpose, CustomVendor } from '../../../sourcepoint/typings';
-import { configureGrants, getGrantedVendors } from '../../../vendor-mapping';
+import {
+  configureGrants,
+  configureVendorPurposeMapping,
+  getGrantedVendors,
+  loadVendorPurposeMapping,
+} from '../../../vendor-mapping';
 
 const moduleState: SourcepointModuleState = {
   consentedCustomVendors: [],
@@ -28,7 +33,7 @@ export const getters = {
 };
 
 export const actions = {
-  async bootstrapConsents({ commit }: { commit: Commit }): Promise<void> {
+  async refreshCustomVendorConsents({ commit }: { commit: Commit }): Promise<void> {
     const { consentedPurposes = [], consentedVendors = [], grants = {} } = await getCustomVendorConsents();
 
     configureGrants(grants);
@@ -36,6 +41,13 @@ export const actions = {
     commit('setCustomVendorConsents', consentedVendors);
     commit('setCustomPurposeConsents', consentedPurposes);
     commit('setGrantedVendors', getGrantedVendors());
+  },
+  async bootstrapConsents({ dispatch }: { dispatch: Dispatch }, payload: { propertyId: number }): Promise<void> {
+    await dispatch('refreshCustomVendorConsents');
+
+    const mappings = await loadVendorPurposeMapping(payload.propertyId);
+
+    configureVendorPurposeMapping(mappings);
   },
 };
 

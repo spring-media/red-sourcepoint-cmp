@@ -1,6 +1,8 @@
 # Vendor Mapping Module
 
-This module is being supposed to handle the grants-object from the result of the [getCustomVendorConsents](../sourcepoint/README.md#getcustomvendorconsents) API call.
+This module provides an API for handling relationships between vendors and purposes.
+
+> Both, `configureGrants` and `loadVendorPurposeMapping`, functions must be called for the module to work properly.
 
 ## API
 
@@ -210,6 +212,27 @@ const grants = {
 
 configureGrants(grants);
 
-console.log(dumpPurposeRelations('4')); // { vendorIds: ['1', '3'], purposeIds: ['4', '5', '8'] }
+console.log(dumpPurposeRelations('4')); // { vendorIds: ['1', '3'], purposeIds: ['4', '5'], legitimateInterestIds: ['8'] }
 ```    
 </details>
+
+### `loadVendorPurposeMapping`
+
+```typescript
+loadVendorPurposeMapping(propertyId: number): Promise<VendorPurposeMappings>;
+```
+
+Loads a list of vendors and associated purposes (including the type of the purpose).
+
+
+
+<details>
+<summary>Example</summary>
+    
+```javascript
+import { loadVendorPurposeMapping } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+
+loadVendorPurposeMapping(1234).then(result => console.log(result)); // [{ vendorId: '1', categories: [{ _id: '2', type: 'CONSENT' }] }]
+```    
+</details>
+

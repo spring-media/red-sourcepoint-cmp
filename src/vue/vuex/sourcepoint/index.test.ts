@@ -1,10 +1,13 @@
 import { mutations, actions } from './index';
 import { getCustomVendorConsents } from '../../../sourcepoint';
-import { Commit } from 'vuex';
+import { Commit, Dispatch } from 'vuex';
 import { SourcepointModuleState } from '../typings';
 import { CustomPurpose, CustomVendor, CustomVendorConsentsResult } from '../../../sourcepoint/typings';
+import { loadVendorPurposeMapping, getGrantedVendors } from '../../../vendor-mapping';
+import { VendorPurposeMappings } from '../../../vendor-mapping/typings';
 
 jest.mock('../../../sourcepoint');
+jest.mock('../../../vendor-mapping');
 
 const createState = (args: Partial<SourcepointModuleState> = {}): SourcepointModuleState => {
   const defaultState: SourcepointModuleState = {
@@ -17,7 +20,7 @@ const createState = (args: Partial<SourcepointModuleState> = {}): SourcepointMod
 };
 
 describe('vuex-module', () => {
-  describe('mutation', () => {
+  describe('mutations', () => {
     it('setCustomVendorConsents should set state property consentedCustomVendors', () => {
       const vendor1: CustomVendor = { _id: '#1234', name: 'vendor1', vendorType: 'custom' };
       const vendor2: CustomVendor = { _id: '#5678', name: 'vendor2', vendorType: 'custom' };
@@ -52,8 +55,8 @@ describe('vuex-module', () => {
     });
   });
 
-  describe('action', () => {
-    it('bootstrapConsents should initialize the consents props of the state', async () => {
+  describe('actions', () => {
+    it('refreshCustomVendorConsents should initialize the consents props of the state', async () => {
       const consents: CustomVendorConsentsResult = {
         consentedPurposes: [],
         consentedVendors: [],
@@ -63,25 +66,38 @@ describe('vuex-module', () => {
       const commit: Commit = jest.fn();
 
       (getCustomVendorConsents as jest.Mock).mockImplementation(() => Promise.resolve(consents));
+      (getGrantedVendors as jest.Mock).mockImplementation(() => []);
 
-      await actions.bootstrapConsents({ commit });
+      await actions.refreshCustomVendorConsents({ commit });
 
       expect(commit).toHaveBeenNthCalledWith(1, 'setCustomVendorConsents', consents.consentedVendors);
       expect(commit).toHaveBeenNthCalledWith(2, 'setCustomPurposeConsents', consents.consentedPurposes);
       expect(commit).toHaveBeenNthCalledWith(3, 'setGrantedVendors', []);
     });
 
-    it('bootstrapConsents should use default values if not set', async () => {
+    it('refreshCustomVendorConsents should use default values if not set', async () => {
       const consents: CustomVendorConsentsResult = {} as CustomVendorConsentsResult;
 
       const commit: Commit = jest.fn();
 
       (getCustomVendorConsents as jest.Mock).mockImplementation(() => Promise.resolve(consents));
 
-      await actions.bootstrapConsents({ commit });
+      await actions.refreshCustomVendorConsents({ commit });
 
       expect(commit).toHaveBeenNthCalledWith(1, 'setCustomVendorConsents', []);
       expect(commit).toHaveBeenNthCalledWith(2, 'setCustomPurposeConsents', []);
+    });
+
+    it('bootstrapConsents should setup the store', async () => {
+      const vendorPurposeMappings: VendorPurposeMappings = [];
+
+      const dispatch: Dispatch = jest.fn();
+
+      (loadVendorPurposeMapping as jest.Mock).mockImplementation(() => Promise.resolve(vendorPurposeMappings));
+
+      await actions.bootstrapConsents({ dispatch }, { propertyId: 1 });
+
+      expect(dispatch).toHaveBeenCalledWith('refreshCustomVendorConsents');
     });
   });
 });

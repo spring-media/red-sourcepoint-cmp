@@ -63,7 +63,7 @@ addEventListener((tcData) => {
   }
 });
 
-store.dispatch('sourcepoint/bootstrapConsents');
+store.dispatch('sourcepoint/bootstrapConsents', { propertyId: window.__playground__.parameters.propertyId});
 
 const PlaygroundApp = Vue.extend({
   name: 'PlaygroundApp',

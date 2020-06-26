@@ -15,7 +15,7 @@ type NonNullish = Record<string, unknown>;
 export default Vue.extend<NonNullish, Methods, NonNullish, NonNullish>({
   name: 'ConsentActions',
   methods: {
-    ...mapActions({ refreshConsents: 'sourcepoint/bootstrapConsents' }),
+    ...mapActions({ refreshConsents: 'sourcepoint/refreshCustomVendorConsents' }),
     async customConsent(payload: PostCustomConsentPayload) {
       try {
         await postCustomConsent(payload);

@@ -48,13 +48,9 @@ describe('ConsentActions component', () => {
     mount(ConsentActions, {
       scopedSlots: {
         default({ consentPurpose }: { consentPurpose: (id: string) => void }): void {
-          consentPurpose('5');
+          consentPurpose('1');
 
-          expect(postCustomConsent).toHaveBeenCalledWith({
-            vendorIds: [],
-            purposeIds: ['5'],
-            legitimateInterestIds: ['5'],
-          });
+          expect(postCustomConsent).toHaveBeenCalled();
         },
       },
     });

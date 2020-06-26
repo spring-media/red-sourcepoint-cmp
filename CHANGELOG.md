@@ -1,3 +1,10 @@
+## [0.44.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.44.0...v0.44.1) (2020-06-26)
+
+
+### Bug Fixes
+
+* **callbacks:** create an event object on config if not present ([794d1d4](https://github.com/spring-media/red-sourcepoint-cmp/commit/794d1d4c851ee405325a830314dd93afb77bac02))
+
 # [0.44.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.43.2...v0.44.0) (2020-06-25)
 
 ## [0.43.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.43.1...v0.43.2) (2020-06-25)

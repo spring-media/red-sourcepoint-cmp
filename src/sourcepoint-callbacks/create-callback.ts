@@ -8,13 +8,17 @@ const getEventStore = (): OptionalCallbacks | null => {
     return null;
   }
 
-  const events = window._sp_?.config?.events;
-
-  if (!events) {
+  if (!window._sp_?.config) {
     return null;
   }
 
-  return events;
+  const events = window._sp_.config.events;
+
+  if (!events) {
+    window._sp_.config.events = {};
+  }
+
+  return window._sp_.config.events as OptionalCallbacks;
 };
 
 const bindCallbacksToEvent = (

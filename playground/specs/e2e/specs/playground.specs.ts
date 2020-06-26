@@ -87,7 +87,7 @@ test('i see all embeds with their real content after clicking on the accept-all 
   }
 });
 
-test.skip('i see all embeds with their real content after clicking on the button "Soziale Netzwerke aktivieren" in at least one embed placeholder', async () => {
+test('i see all embeds with their real content after clicking on the button "Soziale Netzwerke aktivieren" in at least one embed placeholder', async () => {
   const { getAll, getPlaceholder, clickPlaceholderButton } = embeds;
 
   const all = await getAll();

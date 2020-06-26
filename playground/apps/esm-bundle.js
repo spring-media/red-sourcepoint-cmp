@@ -31,7 +31,7 @@ onPMCancel((...args) => console.log('onPMCancel', ...args));
 onMessageChoiceSelect((...args) => console.log('onMessageChoiceSelect', ...args));
 onMessageChoiceError((...args) => console.log('onMessageChoiceError', ...args));
 
-addEventListener((...args) => console.log('addEventListener', ...args));
+addEventListener((tcData) => console.log('addEventListener', tcData));
 
 Vue.use(Vuex);
 
@@ -56,12 +56,6 @@ const getConsents = async () => {
 };
 
 onConsentReady(getConsents);
-
-addEventListener((tcData) => {
-  if (tcData.eventStatus === 'tcloaded' || tcData.eventStatus === 'useractioncomplete') {
-    getConsents();
-  }
-});
 
 store.dispatch('sourcepoint/bootstrapConsents', { propertyId: window.__playground__.parameters.propertyId});
 

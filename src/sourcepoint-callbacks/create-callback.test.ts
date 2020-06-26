@@ -65,11 +65,14 @@ describe('createCallback', () => {
   });
 
   it('should not break if window._sp_.config is not available', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     window._sp_ = {
       loadPrivacyManagerModal() {
         return null;
       },
     };
+
     expect(() => createCallback('onPrivacyManagerAction')(() => null)).not.toThrow();
   });
 
@@ -102,5 +105,19 @@ describe('createCallback', () => {
 
     expect(cb1).toHaveBeenCalled();
     expect(cb2).toHaveBeenCalled();
+  });
+
+  it('should create an event object if it is not present in the config', () => {
+    window._sp_ = {
+      loadPrivacyManagerModal() {
+        return null;
+      },
+      config: {},
+    };
+
+    createCallback('onPrivacyManagerAction')(() => null);
+
+    expect(window._sp_.config.events).toBeTruthy();
+    expect(window._sp_.config.events?.onPrivacyManagerAction).toBeInstanceOf(Function);
   });
 });

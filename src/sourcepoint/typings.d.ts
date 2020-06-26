@@ -50,7 +50,7 @@ export type Config = {
 };
 
 export type SourcepointConfigObject = {
-  config?: Config;
+  config: Config;
   loadPrivacyManagerModal(managerId: number): void;
 };
 

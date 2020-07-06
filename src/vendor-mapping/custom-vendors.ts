@@ -24,3 +24,6 @@ export const VENDOR_ID_GOOGLE_ANALYTICS = '5e542b3a4cd8884eb41b5a72';
 
 export const VENDOR_NAME_FLOURISH = 'flourish';
 export const VENDOR_ID_FLOURISH = '5ec7955faf2b474b46b7a09e';
+
+export const VENDOR_NAME_MAPCREATOR = 'mapcreator';
+export const VENDOR_ID_MAPCREATOR = '5ed90e2947dbbd564700dfaa';

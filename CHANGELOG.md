@@ -1,3 +1,11 @@
+# [0.46.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.45.0...v0.46.0) (2020-07-06)
+
+
+### Features
+
+* **vendor-mapping:** add new method to group purposes by type ([32f0c28](https://github.com/spring-media/red-sourcepoint-cmp/commit/32f0c28275949abb9ec4d9f2d494f4e5b12e2c72))
+* **vendorMapping:** add GA and Flourish to vendor mapping ([0874c1d](https://github.com/spring-media/red-sourcepoint-cmp/commit/0874c1dc08a4eac384eab5c1700f16c0506a0eb6))
+
 # [0.45.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.44.2...v0.45.0) (2020-07-01)
 
 ## [0.44.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.44.1...v0.44.2) (2020-06-26)

@@ -9,6 +9,7 @@ import {
   purposeIsType,
   loadVendorPurposeMapping,
   getGrantedVendors,
+  groupPurposeIds,
 } from './api';
 import { PURPOSE_TYPE_CONSENT, PURPOSE_TYPE_LEGITIMATE_INTEREST } from './custom-purposes';
 import { VendorPurposeMappings } from './typings';
@@ -246,6 +247,29 @@ describe('custom-vendor-grants module', () => {
       });
 
       expect(getGrantedVendors()).toEqual(['1']);
+    });
+  });
+
+  it('groupPurposeIds should group given purpose ids based on their type', () => {
+    const mappings: VendorPurposeMappings = [
+      {
+        vendorId: '1',
+        categories: [
+          { _id: '1', type: 'LEGITIMATE_INTEREST' },
+          { _id: '2', type: 'CONSENT' },
+          { _id: '3', type: 'LEGITIMATE_INTEREST' },
+          { _id: '4', type: 'CONSENT' },
+          { _id: '5', type: 'LEGITIMATE_INTEREST' },
+          { _id: '6', type: 'CONSENT' },
+        ],
+      },
+    ];
+
+    configureVendorPurposeMapping(mappings);
+
+    expect(groupPurposeIds(['1', '2', '3', '4', '5', '6'])).toEqual({
+      purposeIds: ['2', '4', '6'],
+      legitimateInterestIds: ['1', '3', '5'],
     });
   });
 });

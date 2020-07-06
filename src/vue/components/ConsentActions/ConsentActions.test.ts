@@ -64,7 +64,11 @@ describe('ConsentActions component', () => {
         default({ consentVendor }: { consentVendor: (id: string) => void }): void {
           consentVendor('5');
 
-          expect(postCustomConsent).toHaveBeenCalledWith({ vendorIds: ['5'], purposeIds: [] });
+          expect(postCustomConsent).toHaveBeenCalledWith({
+            vendorIds: ['5'],
+            purposeIds: [],
+            legitimateInterestIds: [],
+          });
         },
       },
     });

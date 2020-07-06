@@ -70,6 +70,11 @@ export const getPurposeIdsForVendor = (vendorId: string): string[] => getRelatio
 
 export const getVendorIdsForPurpose = (purposeId: string): string[] => getRelations(purposeId, purposeRelations);
 
+export const groupPurposeIds = (purposeIds: string[]): { purposeIds: string[]; legitimateInterestIds: string[] } => ({
+  purposeIds: purposeIds.filter((id) => purposeIsType(id, PURPOSE_TYPE_CONSENT)),
+  legitimateInterestIds: purposeIds.filter((id) => purposeIsType(id, PURPOSE_TYPE_LEGITIMATE_INTEREST)),
+});
+
 export const dumpPurposeRelations = (purposeId: string): RelationsDump => {
   const vendorIds = getVendorIdsForPurpose(purposeId);
   const purposesMap: string[][] = vendorIds.reduce<string[][]>(
@@ -84,8 +89,7 @@ export const dumpPurposeRelations = (purposeId: string): RelationsDump => {
 
   return {
     vendorIds,
-    purposeIds: purposeIds.filter((id) => purposeIsType(id, PURPOSE_TYPE_CONSENT)),
-    legitimateInterestIds: purposeIds.filter((id) => purposeIsType(id, PURPOSE_TYPE_LEGITIMATE_INTEREST)),
+    ...groupPurposeIds(purposeIds),
   };
 };
 

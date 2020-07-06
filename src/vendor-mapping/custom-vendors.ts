@@ -18,3 +18,9 @@ export const VENDOR_ID_REDDIT = '5e7f6927b8e05c4e491e7381';
 
 export const VENDOR_NAME_PODIGEE = 'podigee';
 export const VENDOR_ID_PODIGEE = '5e717ad49a0b5040d5750815';
+
+export const VENDOR_NAME_GOOGLE_ANALYTICS = 'google_analytics';
+export const VENDOR_ID_GOOGLE_ANALYTICS = '5e542b3a4cd8884eb41b5a72';
+
+export const VENDOR_NAME_FLOURISH = 'flourish';
+export const VENDOR_ID_FLOURISH = '5ec7955faf2b474b46b7a09e';

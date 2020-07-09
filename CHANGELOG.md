@@ -1,3 +1,10 @@
+# [0.49.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.48.0...v0.49.0) (2020-07-09)
+
+
+### Features
+
+* **vue:** add slot `embed` in embed-consent component for overriding the default content ([a1cf8ae](https://github.com/spring-media/red-sourcepoint-cmp/commit/a1cf8ae7636a034a78ce5de1879df9ef551d6803))
+
 # [0.48.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.47.0...v0.48.0) (2020-07-09)
 
 

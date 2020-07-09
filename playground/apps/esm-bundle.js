@@ -14,6 +14,8 @@ import {
   EmbedYoutubeConsent,
   EmbedInstagramConsent,
   EmbedSocialNetworksConsent,
+  ConsentWrapper,
+  EmbedPlaceholder,
 } from '../../dist/esm/vue/components';
 import { sourcepoint } from '../../dist/esm/vue/vuex/sourcepoint';
 import { reloadPageOnReject } from '../../dist/esm/vue/vuex/sourcepoint/effects';
@@ -67,6 +69,8 @@ const PlaygroundApp = Vue.extend({
     EmbedTwitterConsent,
     EmbedYoutubeConsent,
     EmbedSocialNetworksConsent,
+    ConsentWrapper,
+    EmbedPlaceholder,
   },
   data: () => ({
     privacyManagerId: window.__playground__.parameters.privacyManagerId,
@@ -78,7 +82,7 @@ const PlaygroundApp = Vue.extend({
   template: `
     <div>
         <div class="privacy-manager__container"><button class="embed-placeholder__button" style="border-radius: 0;" @click="openPrivacyManager">Open Privacy Manager</button></div>
-        <ul class="embed__container">
+        <ul class="embed__container social-embeds__container">
             <li class="embed__item">
                 <embed-facebook-consent :privacyManagerId="privacyManagerId" :content="facebook"></embed-facebook-consent>
             </li>
@@ -93,6 +97,24 @@ const PlaygroundApp = Vue.extend({
             </li>
             <li class="embed__item">
                 <embed-social-networks-consent :privacyManagerId="privacyManagerId" :content="youtube" vendorId="5e7179e49a0b5040d5750812"></embed-social-networks-consent>
+            </li>
+        </ul>
+        <ul class="embed__container third-party-embeds__container">
+            <li class="embed__item">
+                <consent-wrapper vendorId="5ed90e2947dbbd564700dfaa">
+                    <template #disabledContent>
+                        <embed-placeholder
+                            :privacyManagerId="privacyManagerId"
+                            vendorId="5ed90e2947dbbd564700dfaa"
+                        ></embed-placeholder>
+                    </template>
+                    <template #enabledContent>
+                        <iframe 
+                            src="https://www.bild.de/ig/dda6ec1c-e23c-423a-9154-07154cb853e4/index/index.html" 
+                            style="width: 100%; height: 700px;">
+                        </iframe>
+                    </template>
+                </consent-wrapper>
             </li>
         </ul>
     </div>

@@ -17,3 +17,5 @@ export type VendorPurposeMapping = {
 };
 
 export type VendorPurposeMappings = VendorPurposeMapping[];
+
+export type GroupedPurposes<T = string[]> = { purposeIds: T; legitimateInterestIds: T };

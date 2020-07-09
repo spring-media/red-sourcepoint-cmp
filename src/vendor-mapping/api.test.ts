@@ -1,17 +1,13 @@
 import {
-  getPurposeIdsForVendor,
-  getRelations,
   getVendorIdsForPurpose,
   configureGrants,
   vendorHasGrant,
   dumpPurposeRelations,
   configureVendorPurposeMapping,
-  purposeIsType,
   loadVendorPurposeMapping,
   getGrantedVendors,
-  groupPurposeIds,
+  getPurposesForVendor,
 } from './api';
-import { PURPOSE_TYPE_CONSENT, PURPOSE_TYPE_LEGITIMATE_INTEREST } from './custom-purposes';
 import { VendorPurposeMappings } from './typings';
 
 describe('custom-vendor-grants module', () => {
@@ -52,123 +48,101 @@ describe('custom-vendor-grants module', () => {
     });
   });
 
-  it('getPurposeIdsForVendor should return a list of purpose ids for given vendor id', () => {
-    const grants = {
-      '123': {
-        purposeGrants: { '567': true, '890': true },
-        vendorGrant: true,
-      },
-    };
-
-    configureGrants(grants);
-
-    expect(getPurposeIdsForVendor('123')).toEqual(['567', '890']);
-  });
-
   it('getVendorIdsForPurpose should return a list of vendor ids for given purpose id', () => {
-    const grants = {
-      '1': {
-        purposeGrants: { '4': true, '5': true },
-        vendorGrant: true,
-      },
-      '2': {
-        purposeGrants: { '4': true, '5': true, '8': false },
-        vendorGrant: true,
-      },
-      '3': {
-        purposeGrants: { '5': true, '6': true },
-        vendorGrant: true,
-      },
-    };
-
-    configureGrants(grants);
-
-    expect(getVendorIdsForPurpose('5')).toEqual(['1', '2', '3']);
-  });
-
-  it('getRelations should return the value of given key from given map', () => {
-    const map = new Map<string, Set<string>>();
-    map.set('5', new Set(['1', '2', '3']));
-
-    expect(getRelations('5', map)).toEqual(['1', '2', '3']);
-  });
-
-  it('getRelations should return an empty array if given key not exists', () => {
-    const map = new Map<string, Set<string>>();
-
-    expect(getRelations('5', map).length).toBe(0);
-  });
-
-  it('dumpPurposeRelations should return a list of vendor ids and purpose ids connected with each other', () => {
-    const grants = {
-      '1': {
-        purposeGrants: { '4': true, '5': true },
-        vendorGrant: true,
-      },
-      '2': {
-        purposeGrants: { '4': true, '5': true, '8': false },
-        vendorGrant: false,
-      },
-      '3': {
-        purposeGrants: { '5': true, '6': true },
-        vendorGrant: true,
-      },
-      '9': {
-        purposeGrants: { '10': true },
-        vendorGrant: true,
-      },
-    };
-
-    configureGrants(grants);
     configureVendorPurposeMapping([
       {
         vendorId: '1',
         categories: [
-          { _id: '4', type: 'CONSENT' },
-          { _id: '5', type: 'LEGITIMATE_INTEREST' },
+          { _id: '1', type: 'CONSENT' },
+          { _id: '2', type: 'CONSENT' },
+          { _id: '3', type: 'CONSENT' },
         ],
       },
       {
         vendorId: '2',
         categories: [
-          { _id: '4', type: 'LEGITIMATE_INTEREST' },
-          { _id: '5', type: 'LEGITIMATE_INTEREST' },
-          { _id: '8', type: 'CONSENT' },
+          { _id: '2', type: 'CONSENT' },
+          { _id: '3', type: 'CONSENT' },
+          { _id: '4', type: 'CONSENT' },
         ],
       },
       {
         vendorId: '3',
-        categories: [
-          { _id: '5', type: 'LEGITIMATE_INTEREST' },
-          { _id: '6', type: 'LEGITIMATE_INTEREST' },
-        ],
+        categories: [{ _id: '9', type: 'CONSENT' }],
       },
     ]);
 
-    expect(dumpPurposeRelations('5')).toEqual({
-      vendorIds: ['1', '2', '3'],
-      purposeIds: ['4', '8'],
-      legitimateInterestIds: ['5', '4', '6'],
+    expect(getVendorIdsForPurpose('3')).toEqual(['1', '2']);
+  });
+
+  describe('getPurposesForVendor', () => {
+    it('should return empty lists if no purpose id is found', () => {
+      expect(getPurposesForVendor('99')).toEqual({
+        purposeIds: [],
+        legitimateInterestIds: [],
+      });
+    });
+
+    it('should return purpose ids for given vendor grouped by their type', () => {
+      configureVendorPurposeMapping([
+        {
+          vendorId: '1',
+          categories: [
+            { _id: '1', type: 'CONSENT' },
+            { _id: '2', type: 'CONSENT' },
+            { _id: '3', type: 'LEGITIMATE_INTEREST' },
+            { _id: '4', type: 'LEGITIMATE_INTEREST' },
+          ],
+        },
+      ]);
+
+      expect(getPurposesForVendor('1')).toEqual({
+        purposeIds: ['1', '2'],
+        legitimateInterestIds: ['3', '4'],
+      });
     });
   });
 
-  describe('purposeIsType', () => {
-    it('should return false', () => {
-      configureVendorPurposeMapping([{ vendorId: '1', categories: [{ _id: '2', type: PURPOSE_TYPE_CONSENT }] }]);
-
-      expect(purposeIsType('2', PURPOSE_TYPE_LEGITIMATE_INTEREST)).toBe(false);
+  describe('dumpPurposeRelations', () => {
+    it('should return empty lists if no purpose id is found', () => {
+      expect(dumpPurposeRelations('99')).toEqual({
+        purposeIds: [],
+        legitimateInterestIds: [],
+        vendorIds: [],
+      });
     });
 
-    it('should return false if given purposeId is unknown', () => {
-      expect(purposeIsType('123', PURPOSE_TYPE_LEGITIMATE_INTEREST)).toBe(false);
-    });
-
-    it('should return true', () => {
+    it('should return a list of vendor ids and purpose ids connected with each other', () => {
       configureVendorPurposeMapping([
-        { vendorId: '1', categories: [{ _id: '2', type: PURPOSE_TYPE_LEGITIMATE_INTEREST }] },
+        {
+          vendorId: '1',
+          categories: [
+            { _id: '4', type: 'CONSENT' },
+            { _id: '5', type: 'LEGITIMATE_INTEREST' },
+          ],
+        },
+        {
+          vendorId: '2',
+          categories: [
+            { _id: '4', type: 'LEGITIMATE_INTEREST' },
+            { _id: '5', type: 'LEGITIMATE_INTEREST' },
+            { _id: '8', type: 'CONSENT' },
+          ],
+        },
+        {
+          vendorId: '3',
+          categories: [
+            { _id: '5', type: 'LEGITIMATE_INTEREST' },
+            { _id: '6', type: 'LEGITIMATE_INTEREST' },
+          ],
+        },
       ]);
 
-      expect(purposeIsType('2', PURPOSE_TYPE_LEGITIMATE_INTEREST)).toBe(true);
+      expect(dumpPurposeRelations('5')).toEqual({
+        vendorIds: ['1', '2', '3'],
+        purposeIds: ['4', '8'],
+        legitimateInterestIds: ['5', '4', '6'],
+      });
     });
   });
 
@@ -209,26 +183,6 @@ describe('custom-vendor-grants module', () => {
     });
   });
 
-  it('configureVendorPurposeMapping', () => {
-    expect(purposeIsType('1', 'LEGITIMATE_INTEREST')).toBe(false);
-    expect(purposeIsType('2', 'CONSENT')).toBe(false);
-
-    const mappings: VendorPurposeMappings = [
-      {
-        vendorId: '1',
-        categories: [
-          { _id: '1', type: 'LEGITIMATE_INTEREST' },
-          { _id: '2', type: 'CONSENT' },
-        ],
-      },
-    ];
-
-    configureVendorPurposeMapping(mappings);
-
-    expect(purposeIsType('1', 'LEGITIMATE_INTEREST')).toBe(true);
-    expect(purposeIsType('2', 'CONSENT')).toBe(true);
-  });
-
   describe('getGrantedVendors', () => {
     it('should return an empty array if module is not configured', () => {
       expect(getGrantedVendors()).toEqual([]);
@@ -247,29 +201,6 @@ describe('custom-vendor-grants module', () => {
       });
 
       expect(getGrantedVendors()).toEqual(['1']);
-    });
-  });
-
-  it('groupPurposeIds should group given purpose ids based on their type', () => {
-    const mappings: VendorPurposeMappings = [
-      {
-        vendorId: '1',
-        categories: [
-          { _id: '1', type: 'LEGITIMATE_INTEREST' },
-          { _id: '2', type: 'CONSENT' },
-          { _id: '3', type: 'LEGITIMATE_INTEREST' },
-          { _id: '4', type: 'CONSENT' },
-          { _id: '5', type: 'LEGITIMATE_INTEREST' },
-          { _id: '6', type: 'CONSENT' },
-        ],
-      },
-    ];
-
-    configureVendorPurposeMapping(mappings);
-
-    expect(groupPurposeIds(['1', '2', '3', '4', '5', '6'])).toEqual({
-      purposeIds: ['2', '4', '6'],
-      legitimateInterestIds: ['1', '3', '5'],
     });
   });
 });

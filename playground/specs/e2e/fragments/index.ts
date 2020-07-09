@@ -1,3 +1,4 @@
-export * as message from './message';
+export * as dialogue from './dialogue';
 export * as privacyManager from './privacy-manager';
-export * as embeds from './embeds';
+export * as socialEmbeds from './social-embeds';
+export * as thirdPartyEmbeds from './third-party-embeds';

@@ -1,6 +1,6 @@
 import { Selector, t } from 'testcafe';
 
-export const rootElement = (): Selector => Selector('.embed__container');
+export const rootElement = (): Selector => Selector('.social-embeds__container');
 
 export const getAll = (): Selector => rootElement().find('.embed__item');
 

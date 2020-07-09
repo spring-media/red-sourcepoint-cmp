@@ -1,95 +1,100 @@
 import { CustomVendorGrants } from '../sourcepoint/typings';
-import { PurposeTypes, RelationsDump, VendorPurposeMappings } from './typings';
+import { GroupedPurposes, RelationsDump, VendorPurposeMappingPurpose, VendorPurposeMappings } from './typings';
 import { PURPOSE_TYPE_CONSENT, PURPOSE_TYPE_LEGITIMATE_INTEREST } from './custom-purposes';
 
-const purposeRelations = new Map<string, Set<string>>();
-const vendorRelations = new Map<string, Set<string>>();
 const grantedVendors = new Set<string>();
-const consentPurposes = new Set<string>();
-const legIntPurposes = new Set<string>();
-
-const checkForRelationEntry = (map: Map<string, Set<string>>, id: string): void => {
-  if (!map.has(id)) {
-    map.set(id, new Set());
-  }
-};
+const vendorPurposeMappings = new Map<string, VendorPurposeMappingPurpose[]>();
+const purposeVendorMappings = new Map<string, Set<string>>();
 
 export const configureGrants = (grants: CustomVendorGrants): void => {
-  purposeRelations.clear();
-  vendorRelations.clear();
   grantedVendors.clear();
 
   for (const [vendorId, value] of Object.entries(grants)) {
-    const { vendorGrant, purposeGrants } = value;
+    const { vendorGrant } = value;
 
     if (vendorGrant) {
       grantedVendors.add(vendorId);
     }
-
-    vendorRelations.set(vendorId, new Set(Object.keys(purposeGrants)));
-
-    Object.keys(purposeGrants).forEach((purposeId) => {
-      checkForRelationEntry(purposeRelations, purposeId);
-
-      (<Set<string>>purposeRelations.get(purposeId)).add(vendorId);
-    });
   }
 };
 
 export const configureVendorPurposeMapping = (mapping: VendorPurposeMappings): void => {
-  consentPurposes.clear();
-  legIntPurposes.clear();
-
   mapping.forEach((entry) => {
-    entry.categories.forEach((purpose) => {
-      if (purpose.type === PURPOSE_TYPE_LEGITIMATE_INTEREST) {
-        legIntPurposes.add(purpose._id);
+    vendorPurposeMappings.set(entry.vendorId, entry.categories);
+
+    entry.categories.forEach((category) => {
+      let vendorIds = purposeVendorMappings.get(category._id);
+
+      if (!vendorIds) {
+        vendorIds = new Set<string>();
+        purposeVendorMappings.set(category._id, vendorIds);
       }
-      if (purpose.type === PURPOSE_TYPE_CONSENT) {
-        consentPurposes.add(purpose._id);
-      }
+
+      vendorIds.add(entry.vendorId);
     });
   });
-};
-
-export const purposeIsType = (purposeId: string, type: PurposeTypes): boolean => {
-  if (type === PURPOSE_TYPE_LEGITIMATE_INTEREST) {
-    return legIntPurposes.has(purposeId);
-  }
-
-  return consentPurposes.has(purposeId);
 };
 
 export const vendorHasGrant = (vendorId: string): boolean => grantedVendors.has(vendorId);
 
 export const getGrantedVendors = (): string[] => [...grantedVendors];
 
-export const getRelations = (key: string, map: Map<string, Set<string>>): string[] => Array.from(map.get(key) || []);
+export const getPurposesForVendor = (vendorId: string): GroupedPurposes => {
+  const purposes = vendorPurposeMappings.get(vendorId);
 
-export const getPurposeIdsForVendor = (vendorId: string): string[] => getRelations(vendorId, vendorRelations);
+  if (!purposes) {
+    return {
+      purposeIds: [],
+      legitimateInterestIds: [],
+    };
+  }
 
-export const getVendorIdsForPurpose = (purposeId: string): string[] => getRelations(purposeId, purposeRelations);
+  return purposes.reduce<GroupedPurposes>(
+    (acc, current) => {
+      if (current.type === PURPOSE_TYPE_CONSENT) {
+        acc.purposeIds.push(current._id);
+      }
 
-export const groupPurposeIds = (purposeIds: string[]): { purposeIds: string[]; legitimateInterestIds: string[] } => ({
-  purposeIds: purposeIds.filter((id) => purposeIsType(id, PURPOSE_TYPE_CONSENT)),
-  legitimateInterestIds: purposeIds.filter((id) => purposeIsType(id, PURPOSE_TYPE_LEGITIMATE_INTEREST)),
-});
+      if (current.type === PURPOSE_TYPE_LEGITIMATE_INTEREST) {
+        acc.legitimateInterestIds.push(current._id);
+      }
+
+      return acc;
+    },
+    {
+      purposeIds: [],
+      legitimateInterestIds: [],
+    },
+  );
+};
+
+export const getVendorIdsForPurpose = (purposeId: string): string[] =>
+  Array.from<string>(purposeVendorMappings.get(purposeId) || []);
 
 export const dumpPurposeRelations = (purposeId: string): RelationsDump => {
   const vendorIds = getVendorIdsForPurpose(purposeId);
-  const purposesMap: string[][] = vendorIds.reduce<string[][]>(
+
+  const purposes: GroupedPurposes = vendorIds.reduce<GroupedPurposes>(
     (acc, vendorId) => {
-      acc.push(getPurposeIdsForVendor(vendorId));
+      const { purposeIds: pIds, legitimateInterestIds: lIds } = getPurposesForVendor(vendorId);
+
+      acc.purposeIds.push(...pIds);
+      acc.legitimateInterestIds.push(...lIds);
+
       return acc;
     },
-    [[purposeId]],
+    {
+      purposeIds: [],
+      legitimateInterestIds: [],
+    },
   );
 
-  const purposeIds = Array.from(new Set<string>(purposesMap.flat()));
+  const { purposeIds, legitimateInterestIds } = purposes;
 
   return {
     vendorIds,
-    ...groupPurposeIds(purposeIds),
+    purposeIds: [...new Set(purposeIds)],
+    legitimateInterestIds: [...new Set(legitimateInterestIds)],
   };
 };
 

@@ -118,27 +118,30 @@ console.log(getGrantedVendors()); /// ['456']
 ### `getPurposeIdsForVendor`
 
 ```typescript
-getPurposeIdsForVendor(vendorId: string): string[];
+getPurposesForVendor(vendorId: string): { purposeIds: string[], legitimateInterestIds: string[] }
 ```
 
-Returns a list of purpose ids that are linked to given vendor id.
+Returns ids of purposes grouped by their type by given vendor id.
 
 <details>
 <summary>Example</summary>
     
 ```javascript
-import { getPurposeIdsForVendor, configureGrants } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { getPurposesForVendor, configureVendorPurposeMapping } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-const grants = {
-  '123': {
-    purposeGrants: { '456': true, '789': false },
-    vendorGrant: true,
-  },
-};
+configureVendorPurposeMapping([
+    {
+      vendorId: '1',
+      categories: [
+        { _id: '1', type: 'CONSENT' },
+        { _id: '2', type: 'CONSENT' },
+        { _id: '3', type: 'LEGITIMATE_INTEREST' },
+        { _id: '4', type: 'LEGITIMATE_INTEREST' },
+      ],
+    },
+]);
 
-configureGrants(grants);
-
-console.log(getPurposeIdsForVendor('123')); // ['456', '789']
+console.log(getPurposesForVendor('123')); // { purposeIds: ['1', '2'], legitimateInterestIds: ['3', '4'] }
 ```    
 </details>
 
@@ -154,26 +157,32 @@ Returns a list of vendor ids that are linked to given purpose id.
 <summary>Example</summary>
     
 ```javascript
-import { getVendorIdsForPurpose, configureGrants } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { getVendorIdsForPurpose, configureVendorPurposeMapping } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-const grants = {
-  '1': {
-    purposeGrants: { '4': true, '5': false },
-    vendorGrant: true,
+configureVendorPurposeMapping([
+  {
+    vendorId: '1',
+    categories: [
+      { _id: '1', type: 'CONSENT' },
+      { _id: '2', type: 'CONSENT' },
+      { _id: '3', type: 'CONSENT' },
+    ],
   },
-  '2': {
-    purposeGrants: { '6': true, '7': false },
-    vendorGrant: true,
+  {
+    vendorId: '2',
+    categories: [
+      { _id: '2', type: 'CONSENT' },
+      { _id: '3', type: 'CONSENT' },
+      { _id: '4', type: 'CONSENT' },
+    ],
   },
-  '3': {
-    purposeGrants: { '8': true, '4': false },
-    vendorGrant: true,
+  {
+    vendorId: '3',
+    categories: [{ _id: '9', type: 'CONSENT' }],
   },
-};
+]);
 
-configureGrants(grants);
-
-console.log(getVendorIdsForPurpose('4')); // ['1', '3']
+console.log(getVendorIdsForPurpose('3')); // ['1', '2']
 
 ```    
 </details>
@@ -181,7 +190,7 @@ console.log(getVendorIdsForPurpose('4')); // ['1', '3']
 ### `dumpPurposeRelations`
 
 ```typescript
-dumpPurposeRelations(purposeId: string): { vendorIds: string[], purposeIds: string[] };
+dumpPurposeRelations(purposeId: string): { vendorIds: string[], purposeIds: string[], legitimateInterestIds: string[] };
 ```
 
 This function performs a deep dump of the relations of given purpose id. 
@@ -193,26 +202,34 @@ The result will include the vendor ids linked to given purpose id as well as the
 <summary>Example</summary>
     
 ```javascript
-import { dumpPurposeRelations, configureGrants } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+import { dumpPurposeRelations, configureVendorPurposeMapping } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-const grants = {
-  '1': {
-    purposeGrants: { '4': true, '5': false },
-    vendorGrant: true,
-  },
-  '2': {
-    purposeGrants: { '6': true, '7': false },
-    vendorGrant: true,
-  },
-  '3': {
-    purposeGrants: { '8': true, '4': false },
-    vendorGrant: true,
-  },
-};
+configureVendorPurposeMapping([
+    {
+      vendorId: '1',
+      categories: [
+        { _id: '4', type: 'CONSENT' },
+        { _id: '5', type: 'LEGITIMATE_INTEREST' },
+      ],
+    },
+    {
+      vendorId: '2',
+      categories: [
+        { _id: '4', type: 'LEGITIMATE_INTEREST' },
+        { _id: '5', type: 'LEGITIMATE_INTEREST' },
+        { _id: '8', type: 'CONSENT' },
+      ],
+    },
+    {
+      vendorId: '3',
+      categories: [
+        { _id: '5', type: 'LEGITIMATE_INTEREST' },
+        { _id: '6', type: 'LEGITIMATE_INTEREST' },
+      ],
+    },
+]);
 
-configureGrants(grants);
-
-console.log(dumpPurposeRelations('4')); // { vendorIds: ['1', '3'], purposeIds: ['4', '5'], legitimateInterestIds: ['8'] }
+console.log(dumpPurposeRelations('5')); // { vendorIds: ['1', '2', '3'], purposeIds: ['4', '8'], legitimateInterestIds: ['5', '4', '6'] }
 ```    
 </details>
 
@@ -223,8 +240,6 @@ loadVendorPurposeMapping(propertyId: number): Promise<VendorPurposeMappings>;
 ```
 
 Loads a list of vendors and associated purposes (including the type of the purpose).
-
-
 
 <details>
 <summary>Example</summary>

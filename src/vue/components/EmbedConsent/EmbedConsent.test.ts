@@ -52,4 +52,26 @@ describe('EmbedConsent component', () => {
       </div>
     `);
   });
+
+  it('should provide an embed slot for overriding the default consent content', () => {
+    store.commit('sourcepoint/setGrantedVendors', ['abc']);
+
+    const wrapper = mount(EmbedConsent, {
+      propsData: {
+        vendorId: 'abc',
+        privacyManagerId: 123,
+      },
+      slots: {
+        embed: '<div>Custom Embed Content</div>',
+      },
+      store,
+      localVue,
+    });
+
+    expect(wrapper.element).toMatchInlineSnapshot(`
+      <div>
+        Custom Embed Content
+      </div>
+    `);
+  });
 });

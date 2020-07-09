@@ -7,7 +7,9 @@
       />
     </template>
     <template #enabledContent>
-      <embed-content :content="content" />
+      <slot name="embed">
+        <embed-content :content="content" />
+      </slot>
     </template>
   </consent-wrapper>
 </template>

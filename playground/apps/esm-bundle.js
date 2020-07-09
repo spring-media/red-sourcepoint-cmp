@@ -14,8 +14,7 @@ import {
   EmbedYoutubeConsent,
   EmbedInstagramConsent,
   EmbedSocialNetworksConsent,
-  ConsentWrapper,
-  EmbedPlaceholder,
+  EmbedConsent,
 } from '../../dist/esm/vue/components';
 import { sourcepoint } from '../../dist/esm/vue/vuex/sourcepoint';
 import { reloadPageOnReject } from '../../dist/esm/vue/vuex/sourcepoint/effects';
@@ -69,8 +68,7 @@ const PlaygroundApp = Vue.extend({
     EmbedTwitterConsent,
     EmbedYoutubeConsent,
     EmbedSocialNetworksConsent,
-    ConsentWrapper,
-    EmbedPlaceholder,
+    EmbedConsent,
   },
   data: () => ({
     privacyManagerId: window.__playground__.parameters.privacyManagerId,
@@ -101,20 +99,14 @@ const PlaygroundApp = Vue.extend({
         </ul>
         <ul class="embed__container third-party-embeds__container">
             <li class="embed__item">
-                <consent-wrapper vendorId="5ed90e2947dbbd564700dfaa">
-                    <template #disabledContent>
-                        <embed-placeholder
-                            :privacyManagerId="privacyManagerId"
-                            vendorId="5ed90e2947dbbd564700dfaa"
-                        ></embed-placeholder>
-                    </template>
-                    <template #enabledContent>
+                <embed-consent vendorId="5ed90e2947dbbd564700dfaa" :privacyManagerId="privacyManagerId">
+                    <template #embed>
                         <iframe 
                             src="https://www.bild.de/ig/dda6ec1c-e23c-423a-9154-07154cb853e4/index/index.html" 
                             style="width: 100%; height: 700px;">
                         </iframe>
                     </template>
-                </consent-wrapper>
+                </embed-consent>
             </li>
         </ul>
     </div>

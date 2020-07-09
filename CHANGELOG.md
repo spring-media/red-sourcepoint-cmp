@@ -1,3 +1,10 @@
+# [0.48.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.47.0...v0.48.0) (2020-07-09)
+
+
+### Features
+
+* **vendor-mapping:** add new method `getPurposesForVendor` ([feca2d9](https://github.com/spring-media/red-sourcepoint-cmp/commit/feca2d96fca99abdf20d702b247933a3c2adba7a))
+
 # [0.47.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.46.0...v0.47.0) (2020-07-06)
 
 # [0.46.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.45.0...v0.46.0) (2020-07-06)

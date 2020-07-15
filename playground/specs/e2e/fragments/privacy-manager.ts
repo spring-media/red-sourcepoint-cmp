@@ -1,7 +1,7 @@
 import { Selector, t } from 'testcafe';
 
 export const rootElement = (): Selector =>
-  Selector('iframe[src^="https://notice.sp-prod.net/privacy-manager/index.html"]');
+  Selector('iframe[src^="https://cdn.privacy-mgmt.com/privacy-manager/index.html"]');
 
 export const findSaveAndExitButton = (): Selector =>
   Selector('.message-button').withExactText('Auswahl speichern & schließen');

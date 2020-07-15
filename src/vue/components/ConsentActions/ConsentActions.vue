@@ -19,8 +19,8 @@ export default Vue.extend<NonNullish, Methods, NonNullish, NonNullish>({
     async customConsent(payload: PostCustomConsentPayload) {
       try {
         await postCustomConsent(payload);
-      } catch (e) {
-        console.error(e.message);
+      } catch {
+        console.error('Could not post custom consent!');
       }
 
       this.refreshConsents();

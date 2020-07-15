@@ -108,6 +108,6 @@ describe('ConsentActions component', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(console.error).toHaveBeenCalledWith('Error');
+    expect(console.error).toHaveBeenCalledWith('Could not post custom consent!');
   });
 });

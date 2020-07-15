@@ -1,6 +1,7 @@
 import { Selector, t } from 'testcafe';
 
-export const rootElement = (): Selector => Selector('iframe[src="https://notice.sp-prod.net?preload_message=true"]');
+export const rootElement = (): Selector =>
+  Selector('iframe[src="https://cdn.privacy-mgmt.com/index.html?preload_message=true"]');
 
 export const switchIntoDialogue = (): TestControllerPromise => t.switchToIframe(rootElement());
 

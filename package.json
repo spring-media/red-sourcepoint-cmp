@@ -16,7 +16,7 @@
     "playground:stop:background": "docker stop playground",
     "playground:prepare": "node ./playground/scripts/prepare.js",
     "playground:test:e2e:ci": "docker run --net=host --rm -v $(pwd)/playground:/tests --name testcafe -t testcafe/testcafe:1.8.7 chromium /tests/specs/e2e/specs/*.specs.ts",
-    "playground:test:e2e": "docker run --add-host=local.bild.de:$(ipconfig getifaddr en0 || ipconfig getifaddr en1) --rm -v $(pwd)/playground:/tests --name testcafe -t testcafe/testcafe:1.8.7 chromium /tests/specs/e2e/specs/*.specs.ts",
+    "playground:test:e2e": "docker run --add-host=local.bild.de:$(ipconfig getifaddr en0 || ipconfig getifaddr en1 || ipconfig getifaddr en2 || ipconfig getifaddr en3 || ipconfig getifaddr en4 || ipconfig getifaddr en5 || ipconfig getifaddr en6 || ipconfig getifaddr en7 || ipconfig getifaddr en8 || ipconfig getifaddr en9 || ipconfig getifaddr en10) --rm -v $(pwd)/playground:/tests --name testcafe -t testcafe/testcafe:1.8.7 chromium /tests/specs/e2e/specs/*.specs.ts",
     "storybook": "start-storybook -p 9001 -s playground/public/assets",
     "storybook:build": "build-storybook --quiet -c .storybook -o .storybook-static && cp -R playground/public/assets/* .storybook-static",
     "storybook:deploy": "npm run storybook:build && storybook-to-ghpages -e .storybook-static",

@@ -1,3 +1,15 @@
+# [0.51.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.50.0...v0.51.0) (2020-08-14)
+
+
+### Bug Fixes
+
+* updated snapshots ([0980228](https://github.com/spring-media/red-sourcepoint-cmp/commit/0980228a492dd3800c015b7349715aba6dde7507))
+
+
+### Features
+
+* **vendor-mapping:** add giphy to the vendor list ([6b0b70d](https://github.com/spring-media/red-sourcepoint-cmp/commit/6b0b70d267d482ade4b4bc8162df790a402a8ce2))
+
 # [0.50.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.49.0...v0.50.0) (2020-07-14)
 
 # [0.49.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.48.0...v0.49.0) (2020-07-09)

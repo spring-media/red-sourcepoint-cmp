@@ -1,3 +1,10 @@
+# [0.52.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.51.0...v0.52.0) (2020-08-17)
+
+
+### Features
+
+* **vue:** add 500ms delay to page Reload on consent change ([f3c2bb5](https://github.com/spring-media/red-sourcepoint-cmp/commit/f3c2bb542ab37d6ea7cb69a362d41b62c7c5af2e))
+
 # [0.51.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.50.0...v0.51.0) (2020-08-14)
 
 

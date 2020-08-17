@@ -58,7 +58,7 @@ export default [
   {
     input: {
       'vuex/sourcepoint': './src/vue/vuex/sourcepoint/index.ts',
-      'vuex/sourcepoint/effects': './src/vue/vuex/sourcepoint/effects/index.ts',
+      'vuex/sourcepoint/plugins': './src/vue/vuex/sourcepoint/plugins/index.ts',
     },
     external: (id) => /vendor-mapping/.test(id) || id === 'vue' || id === 'vuex',
     output: [

@@ -1,10 +1,10 @@
 # sourcepoint Vuex Module
 
-## Effects
+## Plugins
 
 ### reloadPageOnReject
 
-This effect reloads the page after a vendor or purpose has been rejected.
+This plugin reloads the page after a vendor or purpose has been rejected.
 
 ## Example
 
@@ -12,7 +12,7 @@ This effect reloads the page after a vendor or purpose has been rejected.
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { sourcepoint } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/vuex/sourcepoint';
-import { reloadPageOnReject } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/vuex/sourcepoint/effects';
+import { reloadPageOnReject } from '@spring-media/red-sourcepoint-cmp/dist/esm/vue/vuex/sourcepoint/plugins';
 
 Vue.use(Vuex);
 

@@ -13,7 +13,7 @@ export const reloadPageOnReject = (store: Store<Record<string, unknown>>): (() =
 
   const mayReload = (consents: CustomConsent[], compareTo: CustomConsent[]): void => {
     if (getRemovedCustomConsents(consents, compareTo).length) {
-      typeof window !== 'undefined' && window.location.reload();
+      typeof window !== 'undefined' && setTimeout(window.location.reload, 500);
     }
   };
 

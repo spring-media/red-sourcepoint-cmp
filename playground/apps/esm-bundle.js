@@ -13,6 +13,7 @@ import {
   EmbedTwitterConsent,
   EmbedYoutubeConsent,
   EmbedInstagramConsent,
+  EmbedPodigeeConsent,
   EmbedSocialNetworksConsent,
   EmbedConsent,
 } from '../../dist/esm/vue/components';
@@ -22,7 +23,7 @@ import { addEventListener } from '../../dist/esm/tcf-v2';
 import { getCustomVendorConsents, loadPrivacyManagerModal } from '../../dist/esm/sourcepoint';
 import '../../dist/esm/vue/components.css';
 import './common.css';
-import { facebook, youtube, twitter, instagram } from '../scripts/embed-contents';
+import { facebook, youtube, twitter, instagram, podigee } from '../scripts/embed-contents';
 import { configureGrants, getGrantedVendors } from '../../dist/esm/vendor-mapping';
 
 onPrivacyManagerAction((...args) => console.log('onPrivacyManagerAction', ...args));
@@ -65,6 +66,7 @@ const PlaygroundApp = Vue.extend({
   components: {
     EmbedFacebookConsent,
     EmbedInstagramConsent,
+    EmbedPodigeeConsent,
     EmbedTwitterConsent,
     EmbedYoutubeConsent,
     EmbedSocialNetworksConsent,
@@ -76,6 +78,7 @@ const PlaygroundApp = Vue.extend({
     twitter,
     instagram,
     youtube,
+    podigee
   }),
   template: `
     <div>
@@ -92,6 +95,9 @@ const PlaygroundApp = Vue.extend({
             </li>
             <li class="embed__item">
                 <embed-youtube-consent :privacyManagerId="privacyManagerId" :content="youtube"></embed-youtube-consent>
+            </li>
+            <li class="embed__item">
+                <embed-podigee-consent vendorId="5e717ad49a0b5040d5750815" :privacyManagerId="privacyManagerId" :content="podigee"></embed-podigee-consent>   
             </li>
             <li class="embed__item">
                 <embed-social-networks-consent :privacyManagerId="privacyManagerId" :content="youtube" vendorId="5e7179e49a0b5040d5750812"></embed-social-networks-consent>

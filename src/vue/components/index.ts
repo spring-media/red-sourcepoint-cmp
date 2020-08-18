@@ -8,6 +8,8 @@ export * from './EmbedInstagram';
 export * from './EmbedInstagramConsent';
 export * from './EmbedInstagramPlaceholder';
 export * from './EmbedPlaceholder';
+export * from './EmbedPodigee';
+export * from './EmbedPodigeeConsent';
 export * from './EmbedSocialNetworksConsent';
 export * from './EmbedSocialNetworksPlaceholder';
 export * from './EmbedTwitterConsent';

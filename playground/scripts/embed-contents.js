@@ -10,9 +10,12 @@ const twitter =
 const youtube =
   '<div><div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"><iframe src="//cdn.iframe.ly/IkcyLdU?playerjs=1&amp;click_to_play=true" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen scrolling="no" allow="autoplay *; encrypted-media *; accelerometer; gyroscope; picture-in-picture"></iframe></div></div>';
 
+const podigee = '<iframe src=\"https://phrasenmaeher.podigee.io/12-neue-episode/embed?context=external\" style=\"border: 0; width: 100%; height: 142px;\" allowfullscreen scrolling=\"no\" allow=\"encrypted-media\"></iframe>'
+
 module.exports = {
   facebook,
   instagram,
   twitter,
   youtube,
+  podigee,
 };

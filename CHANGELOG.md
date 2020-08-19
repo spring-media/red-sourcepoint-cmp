@@ -1,3 +1,10 @@
+## [0.53.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.53.0...v0.53.1) (2020-08-19)
+
+
+### Bug Fixes
+
+* **vue:** use social media placeholder for podigee ([5b1d224](https://github.com/spring-media/red-sourcepoint-cmp/commit/5b1d22467b97617777c19e4e56afd82790377eb1))
+
 # [0.53.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.52.0...v0.53.0) (2020-08-19)
 
 

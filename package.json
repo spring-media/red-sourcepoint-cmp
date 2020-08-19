@@ -1,6 +1,6 @@
 {
   "name": "@spring-media/red-sourcepoint-cmp",
-  "version": "0.53.0",
+  "version": "0.53.1",
   "description": "CMP (Consent Management Platform) implementation for www.bild.de using the Sourcepoint API",
   "scripts": {
     "test": "jest --config tests/jest.config.js",

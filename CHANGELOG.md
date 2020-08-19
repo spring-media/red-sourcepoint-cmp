@@ -1,3 +1,10 @@
+# [0.53.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.52.0...v0.53.0) (2020-08-19)
+
+
+### Features
+
+* **vue:** added Podigee component ([5e81b27](https://github.com/spring-media/red-sourcepoint-cmp/commit/5e81b276432bbf913077cfb0db5d5514f8ed79ec))
+
 # [0.52.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.51.0...v0.52.0) (2020-08-17)
 
 

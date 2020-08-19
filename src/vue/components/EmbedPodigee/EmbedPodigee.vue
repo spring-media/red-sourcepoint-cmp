@@ -37,6 +37,7 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   methods: {
     podigeeEvent(event) {
         const data = JSON.parse(event.data || '{}');
+
         if (data && data.context === 'podigee' && data.height) {
             this.addHeightStyle(data.height);
             window.removeEventListener('message', this.podigeeEvent);

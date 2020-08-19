@@ -1,10 +1,7 @@
 <template>
   <consent-wrapper :vendor-id="vendorId">
     <template #disabledContent>
-      <embed-placeholder
-        :privacy-manager-id="privacyManagerId"
-        :vendor-id="vendorId"
-      />
+      <embed-social-networks-placeholder :privacy-manager-id="privacyManagerId" />
     </template>
     <template #enabledContent>
       <slot name="embed">
@@ -17,7 +14,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { ConsentWrapper } from '../ConsentWrapper';
-import { EmbedPlaceholder } from '../EmbedPlaceholder';
+import { EmbedSocialNetworksPlaceholder } from '../EmbedSocialNetworksPlaceholder';
 import { EmbedPodigee } from '../EmbedPodigee';
 
 type Props = {
@@ -30,7 +27,7 @@ type NonNullish = Record<string, unknown>;
 
 export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   name: 'EmbedPodigeeConsent',
-  components: { EmbedPlaceholder, ConsentWrapper, EmbedPodigee },
+  components: { EmbedSocialNetworksPlaceholder, ConsentWrapper, EmbedPodigee },
   props: {
     content: {
       type: String,

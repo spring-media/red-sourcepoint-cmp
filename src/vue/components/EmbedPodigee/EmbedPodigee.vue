@@ -36,15 +36,16 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   },
   methods: {
     podigeeEvent(event) {
-        const data = JSON.parse(event.data);        
+        const data = JSON.parse(event.data || '{}');
         if (data && data.context === 'podigee' && data.height) {
             this.addHeightStyle(data.height);
+            window.removeEventListener('message', this.podigeeEvent);
         }
     },
     addHeightStyle(height) {
-        if (this.$el.firstChild) {
-            const element = this.$el.firstChild as HTMLElement;
-            element.style.height = height + 'px';
+        if (this.$el.firstChild instanceof HTMLElement) {
+            const element = this.$el.firstChild;
+            element.style.height = `${height}px`;
         }
     },
   },

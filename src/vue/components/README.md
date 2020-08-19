@@ -11,11 +11,13 @@
   * [Instagram](EmbedInstagram#component-for-instagram-embeds)
   * [Twitter](EmbedTwitter#component-for-twitter-embeds)
   * [Youtube](EmbedYoutube#component-for-youtube-embeds)
+  * [Podigee](EmbedPodigee#component-for-podigee-embeds)
 * Consent Components
   * [Facebook](EmbedFacebookConsent#consent-component-for-facebook-embeds)
   * [Instagram](EmbedInstagramConsent#consent-component-for-instagram-embeds)
   * [Twitter](EmbedTwitterConsent#consent-component-for-twitter-embeds)
   * [Youtube](EmbedYoutubeConsent#consent-component-for-youtube-embeds)
+  * [Podigee](EmbedPodigeeConsent#consent-component-for-podigee-embeds)
   * [EmbedConsent](ConsentWrapper#generic-consent-component)
 * [ConsentWrapper](ConsentWrapper#consent-wrapper-component)
 * [PrivacyManager](PrivacyManager#privacymanager-component)

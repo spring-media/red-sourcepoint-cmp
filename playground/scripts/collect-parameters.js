@@ -23,9 +23,8 @@ ${chalk.yellow('Make sure your hosts file contains an entry for')} ${protocol}//
   const defaults = {
     accountId: cliParams.accountId || 75,
     propertyId: cliParams.propertyId || null,
-    mmsDomain: cliParams.mmsDomain || 'https://message75.sp-prod.net',
-    wrapperAPIOrigin: cliParams.wrapperAPIOrigin || 'https://wrapper-api.sp-prod.net/tcfv2',
-    libraryURL: cliParams.libraryURL || 'https://gdpr-tcfv2.sp-prod.net/wrapperMessagingWithoutDetection.js',
+    baseEndpoint: cliParams.baseEndpoint || 'https://cmp2.bild.de',
+    libraryURL: cliParams.libraryURL || 'https://cdn.privacy-mgmt.com/wrapperMessagingWithoutDetection.js',
     privacyManagerId: cliParams.privacyManagerId || null,
     host: cliParams.host || 'http://localhost:5000',
   };
@@ -58,15 +57,9 @@ ${chalk.yellow('Make sure your hosts file contains an entry for')} ${protocol}//
       },
       {
         type: 'text',
-        name: 'mmsDomain',
-        message: 'MMS Domain',
-        initial: initials.mmsDomain,
-      },
-      {
-        type: 'text',
-        name: 'wrapperAPIOrigin',
-        message: 'Wrapper API Origin',
-        initial: initials.wrapperAPIOrigin,
+        name: 'baseEndpoint',
+        message: 'baseEndpoint',
+        initial: initials.baseEndpoint,
       },
       {
         type: 'text',

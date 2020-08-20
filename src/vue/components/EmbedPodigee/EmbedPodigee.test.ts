@@ -4,17 +4,27 @@ import { EmbedPodigee } from './';
 const HEIGHT = 500;
 
 const VALID_EVENT = new MessageEvent('message', {
-  data: `{"context":"podigee", "height": ${HEIGHT} }`,
+  origin: `https://cdn.podigee.com`,
+  data: `{"context": "podigee", "height": ${HEIGHT}}`,
 });
 
 const INVALID_EVENTS = [
   new MessageEvent('message', {
-    data: `{"height": ${HEIGHT} }`,
+    origin: `some other origin`,
   }),
   new MessageEvent('message', {
+    origin: `https://cdn.podigee.com`,
+  }),
+  new MessageEvent('message', {
+    origin: `https://cdn.podigee.com`,
+    data: `{"height": ${HEIGHT}}`,
+  }),
+  new MessageEvent('message', {
+    origin: `https://cdn.podigee.com`,
     data: `{"context":"podigee"}`,
   }),
   new MessageEvent('message', {
+    origin: `https://cdn.podigee.com`,
     data: `{}`,
   }),
   new MessageEvent('message'),

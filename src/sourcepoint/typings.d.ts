@@ -43,9 +43,7 @@ export type PostCustomConsentCallback = (data: PostCustomConsentResult | null, s
 
 export type Config = {
   accountId?: number;
-  wrapperAPIOrigin?: string;
-  propertyId?: number;
-  mmsDomain?: string;
+  baseEndpoint?: string;
   events?: OptionalCallbacks;
 };
 

@@ -1,1 +1,1 @@
-export const getClientLibraryUrl = (): string => `https://gdpr-tcfv2.sp-prod.net/wrapperMessagingWithoutDetection.js`;
+export const getClientLibraryUrl = (): string => `https://cdn.privacy-mgmt.com/wrapperMessagingWithoutDetection.js`;

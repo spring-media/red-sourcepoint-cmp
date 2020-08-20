@@ -7,10 +7,7 @@ const createConfig = (config = {}): void => {
     },
     config: {
       ...config,
-      mmsDomain: '',
       accountId: 1,
-      propertyId: 2,
-      wrapperAPIOrigin: '',
     },
   };
 };

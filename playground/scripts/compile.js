@@ -40,10 +40,8 @@ const compileTemplate = (opts) => ({
         <script>
           window._sp_ = {
             config: {
-              mmsDomain: '${parameters.mmsDomain}',
+              baseEndpoint: '${parameters.baseEndpoint}',
               accountId: ${parameters.accountId},
-              propertyId: ${parameters.propertyId},
-              wrapperAPIOrigin: '${parameters.wrapperAPIOrigin}',
             },
           };
         </script>

@@ -1,3 +1,10 @@
+## [0.54.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.54.0...v0.54.1) (2020-08-21)
+
+
+### Bug Fixes
+
+* **vue:** use mounted hook to use window object ([12122a0](https://github.com/spring-media/red-sourcepoint-cmp/commit/12122a02d63f6a571945e095d23c10d07e354287))
+
 # [0.54.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.53.1...v0.54.0) (2020-08-20)
 
 

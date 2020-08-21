@@ -31,7 +31,7 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   beforeDestroy() {
       window.removeEventListener('message', this.podigeeEvent);
   },
-  created() {
+  mounted() {
       window.addEventListener('message', this.podigeeEvent);
   },
   methods: {

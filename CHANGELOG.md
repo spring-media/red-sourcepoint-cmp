@@ -1,3 +1,10 @@
+# [0.56.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.55.0...v0.56.0) (2020-09-08)
+
+
+### Features
+
+* **vendor-mapping:** add bitmovin vendor ID ([871dbc9](https://github.com/spring-media/red-sourcepoint-cmp/commit/871dbc95c6b97e482a445ee7d34a0b3a22b996d0))
+
 # [0.55.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.54.1...v0.55.0) (2020-08-21)
 
 ## [0.54.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.54.0...v0.54.1) (2020-08-21)

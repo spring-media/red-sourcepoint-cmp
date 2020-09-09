@@ -4,7 +4,7 @@ export const postCustomConsent = ({
   vendorIds = [],
   purposeIds = [],
   legitimateInterestIds = [],
-}: PostCustomConsentPayload): Promise<PostCustomConsentResult | null> => {
+}: PostCustomConsentPayload): Promise<PostCustomConsentResult> => {
   return new Promise((resolve, reject) => {
     if (typeof window === 'undefined' || !window.__tcfapi) {
       return reject();
@@ -13,7 +13,7 @@ export const postCustomConsent = ({
     window.__tcfapi(
       'postCustomConsent',
       2,
-      (data: PostCustomConsentResult | null, success: boolean) => {
+      (data: PostCustomConsentResult, success: boolean) => {
         if (!success) {
           return reject(data);
         }

@@ -1,13 +1,32 @@
-import { mount } from '@vue/test-utils';
+import Vuex from 'vuex';
+import { mount, createLocalVue } from '@vue/test-utils';
 import { postCustomConsent } from '../../../sourcepoint';
 import { ConsentActions } from './';
 import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
+import { sourcepoint } from '../../vuex/sourcepoint';
 
 jest.mock('../../../sourcepoint');
+
+type State = {
+  sourcepoint: {
+    grantedVendors: string[];
+  };
+};
+
+const localVue = createLocalVue();
+
+localVue.use(Vuex);
+
+const store = new Vuex.Store<State>({
+  modules: {
+    sourcepoint,
+  },
+});
 
 describe('ConsentActions component', () => {
   afterEach(() => {
     (postCustomConsent as jest.Mock).mockReset();
+    store.commit('sourcepoint/setGrantedVendors', []);
   });
 
   it('should provide a default scoped slot', () => {
@@ -45,6 +64,10 @@ describe('ConsentActions component', () => {
   it('scoped-slot function consentPurpose should handling consents for given purpose', () => {
     expect.assertions(1);
 
+    (postCustomConsent as jest.Mock).mockImplementationOnce(() =>
+      Promise.resolve({ grants: { '123': { vendorGrant: true }, '456': { vendorGrant: false } } }),
+    );
+
     mount(ConsentActions, {
       scopedSlots: {
         default({ consentPurpose }: { consentPurpose: (id: string) => void }): void {
@@ -53,11 +76,17 @@ describe('ConsentActions component', () => {
           expect(postCustomConsent).toHaveBeenCalled();
         },
       },
+      store,
+      localVue,
     });
   });
 
   it('scoped-slot function consentVendor should handling consents for given vendor', () => {
     expect.assertions(1);
+
+    (postCustomConsent as jest.Mock).mockImplementationOnce(() =>
+      Promise.resolve({ grants: { '123': { vendorGrant: true }, '456': { vendorGrant: false } } }),
+    );
 
     mount(ConsentActions, {
       scopedSlots: {
@@ -71,11 +100,17 @@ describe('ConsentActions component', () => {
           });
         },
       },
+      store,
+      localVue,
     });
   });
 
   it('scoped-slot function customConsent should handling consents for given parameters', () => {
     expect.assertions(1);
+
+    (postCustomConsent as jest.Mock).mockImplementationOnce(() =>
+      Promise.resolve({ grants: { '123': { vendorGrant: true }, '456': { vendorGrant: false } } }),
+    );
 
     mount(ConsentActions, {
       scopedSlots: {
@@ -85,6 +120,8 @@ describe('ConsentActions component', () => {
           expect(postCustomConsent).toHaveBeenCalledWith({ vendorIds: ['1'], purposeIds: ['2'] });
         },
       },
+      store,
+      localVue,
     });
   });
 
@@ -104,10 +141,38 @@ describe('ConsentActions component', () => {
           await customConsent({ vendorIds: ['1'], purposeIds: ['2'] });
         },
       },
+      store,
+      localVue,
     });
 
     await wrapper.vm.$nextTick();
 
-    expect(console.error).toHaveBeenCalledWith('Could not post custom consent!');
+    expect(console.error).toHaveBeenCalled();
+  });
+
+  it('should update the grantedVendors in the store', async () => {
+    (postCustomConsent as jest.Mock).mockImplementationOnce(() =>
+      Promise.resolve({ grants: { '123': { vendorGrant: true }, '456': { vendorGrant: false } } }),
+    );
+
+    const wrapper = mount(ConsentActions, {
+      scopedSlots: {
+        async default({
+          customConsent,
+        }: {
+          customConsent: (payload: PostCustomConsentPayload) => void;
+        }): Promise<void> {
+          await customConsent({ vendorIds: ['1'], purposeIds: ['2'] });
+        },
+      },
+      store,
+      localVue,
+    });
+
+    await wrapper.vm.$nextTick();
+
+    expect(store.state.sourcepoint.grantedVendors).toEqual(['123']);
+
+    store.commit('sourcepoint/setGrantedVendors', []);
   });
 });

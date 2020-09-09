@@ -1,13 +1,18 @@
 <script lang="ts">
 import Vue from 'vue';
-import { mapActions } from 'vuex';
+import { mapMutations } from 'vuex';
 import { postCustomConsent } from '../../../sourcepoint';
 import { PostCustomConsentPayload } from '../../../sourcepoint/typings';
-import { dumpPurposeRelations, getPurposesForVendor } from '../../../vendor-mapping';
+import {
+  configureGrants,
+  dumpPurposeRelations,
+  getGrantedVendors,
+  getPurposesForVendor,
+} from '../../../vendor-mapping';
 
 type Methods = {
   customConsent(payload: PostCustomConsentPayload): Promise<void>;
-  refreshConsents(): void;
+  setGrantedVendors(payload: string[]): void;
 };
 
 type NonNullish = Record<string, unknown>;
@@ -15,15 +20,17 @@ type NonNullish = Record<string, unknown>;
 export default Vue.extend<NonNullish, Methods, NonNullish, NonNullish>({
   name: 'ConsentActions',
   methods: {
-    ...mapActions({ refreshConsents: 'sourcepoint/refreshCustomVendorConsents' }),
+    ...mapMutations({ setGrantedVendors: 'sourcepoint/setGrantedVendors' }),
     async customConsent(payload: PostCustomConsentPayload) {
       try {
-        await postCustomConsent(payload);
-      } catch {
-        console.error('Could not post custom consent!');
-      }
+        const { grants } = await postCustomConsent(payload);
 
-      this.refreshConsents();
+        configureGrants(grants);
+
+        this.setGrantedVendors(getGrantedVendors());
+      } catch (e) {
+        console.error(e);
+      }
     },
   },
   render() {

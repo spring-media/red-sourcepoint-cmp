@@ -31,6 +31,7 @@ export type PostCustomConsentResult = {
   rejectAny: boolean;
   specialFeatures: string[];
   vendors: string[];
+  grants: CustomVendorGrants;
 };
 
 export type PostCustomConsentPayload = {
@@ -39,7 +40,7 @@ export type PostCustomConsentPayload = {
   legitimateInterestIds?: string[];
 };
 
-export type PostCustomConsentCallback = (data: PostCustomConsentResult | null, success: boolean) => void;
+export type PostCustomConsentCallback = (data: PostCustomConsentResult, success: boolean) => void;
 
 export type Config = {
   accountId?: number;

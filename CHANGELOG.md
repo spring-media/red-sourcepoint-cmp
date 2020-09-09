@@ -1,3 +1,10 @@
+# [0.57.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.56.0...v0.57.0) (2020-09-09)
+
+
+### Features
+
+* **sourcepoint:** change library URL to newer version ([16e65b5](https://github.com/spring-media/red-sourcepoint-cmp/commit/16e65b574ac59b15aba45d541437dadcce85748f))
+
 # [0.56.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.55.0...v0.56.0) (2020-09-08)
 
 

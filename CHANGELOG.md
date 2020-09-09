@@ -1,3 +1,10 @@
+# [0.58.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.57.0...v0.58.0) (2020-09-09)
+
+
+### Features
+
+* **vue:** use grants-object from postCustomConsent to configure granted vendors ([ee06a70](https://github.com/spring-media/red-sourcepoint-cmp/commit/ee06a70c3da671f20a18b499c722a7f634b8ebef))
+
 # [0.57.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.56.0...v0.57.0) (2020-09-09)
 
 

@@ -4,7 +4,7 @@ const verifyConditions = [
   [
     '@semantic-release/git',
     {
-      assets: ['package.json', 'CHANGELOG.md'],
+      assets: ['package.json', 'package-lock.json', 'CHANGELOG.md'],
     },
   ],
 ];
@@ -33,7 +33,7 @@ const prepare = [
   [
     '@semantic-release/git',
     {
-      assets: ['package.json', 'CHANGELOG.md'],
+      assets: ['package.json', 'package-lock.json', 'CHANGELOG.md'],
       message: 'chore(release): bump version ${nextRelease.version}',
     },
   ],

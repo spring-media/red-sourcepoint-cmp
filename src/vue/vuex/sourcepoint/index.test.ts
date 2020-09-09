@@ -1,6 +1,6 @@
 import { mutations, actions } from './index';
 import { getCustomVendorConsents } from '../../../sourcepoint';
-import { Commit, Dispatch } from 'vuex';
+import { Commit } from 'vuex';
 import { SourcepointModuleState } from '../typings';
 import { CustomPurpose, CustomVendor, CustomVendorConsentsResult } from '../../../sourcepoint/typings';
 import { loadVendorPurposeMapping, getGrantedVendors } from '../../../vendor-mapping';
@@ -56,48 +56,43 @@ describe('vuex-module', () => {
   });
 
   describe('actions', () => {
-    it('refreshCustomVendorConsents should initialize the consents props of the state', async () => {
+    it('bootstrapConsents should setup the store', async () => {
       const consents: CustomVendorConsentsResult = {
         consentedPurposes: [],
         consentedVendors: [],
         grants: {},
       };
+      const vendorPurposeMappings: VendorPurposeMappings = [];
 
       const commit: Commit = jest.fn();
 
+      (loadVendorPurposeMapping as jest.Mock).mockImplementation(() => Promise.resolve(vendorPurposeMappings));
       (getCustomVendorConsents as jest.Mock).mockImplementation(() => Promise.resolve(consents));
       (getGrantedVendors as jest.Mock).mockImplementation(() => []);
 
-      await actions.refreshCustomVendorConsents({ commit });
+      await actions.bootstrapConsents({ commit }, { propertyId: 1 });
 
       expect(commit).toHaveBeenNthCalledWith(1, 'setCustomVendorConsents', consents.consentedVendors);
       expect(commit).toHaveBeenNthCalledWith(2, 'setCustomPurposeConsents', consents.consentedPurposes);
       expect(commit).toHaveBeenNthCalledWith(3, 'setGrantedVendors', []);
     });
 
-    it('refreshCustomVendorConsents should use default values if not set', async () => {
+    it('bootstrapConsents should setup the store with default values', async () => {
       const consents: CustomVendorConsentsResult = {} as CustomVendorConsentsResult;
+
+      const vendorPurposeMappings: VendorPurposeMappings = [];
 
       const commit: Commit = jest.fn();
 
+      (loadVendorPurposeMapping as jest.Mock).mockImplementation(() => Promise.resolve(vendorPurposeMappings));
       (getCustomVendorConsents as jest.Mock).mockImplementation(() => Promise.resolve(consents));
+      (getGrantedVendors as jest.Mock).mockImplementation(() => []);
 
-      await actions.refreshCustomVendorConsents({ commit });
+      await actions.bootstrapConsents({ commit }, { propertyId: 1 });
 
       expect(commit).toHaveBeenNthCalledWith(1, 'setCustomVendorConsents', []);
       expect(commit).toHaveBeenNthCalledWith(2, 'setCustomPurposeConsents', []);
-    });
-
-    it('bootstrapConsents should setup the store', async () => {
-      const vendorPurposeMappings: VendorPurposeMappings = [];
-
-      const dispatch: Dispatch = jest.fn();
-
-      (loadVendorPurposeMapping as jest.Mock).mockImplementation(() => Promise.resolve(vendorPurposeMappings));
-
-      await actions.bootstrapConsents({ dispatch }, { propertyId: 1 });
-
-      expect(dispatch).toHaveBeenCalledWith('refreshCustomVendorConsents');
+      expect(commit).toHaveBeenNthCalledWith(3, 'setGrantedVendors', []);
     });
   });
 });

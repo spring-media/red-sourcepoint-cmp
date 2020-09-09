@@ -24,7 +24,7 @@ ${chalk.yellow('Make sure your hosts file contains an entry for')} ${protocol}//
     accountId: cliParams.accountId || 75,
     propertyId: cliParams.propertyId || null,
     baseEndpoint: cliParams.baseEndpoint || 'https://cmp2.bild.de',
-    libraryURL: cliParams.libraryURL || 'https://cdn.privacy-mgmt.com/wrapperMessagingWithoutDetection.js',
+    libraryURL: cliParams.libraryURL || 'https://cmp2.bild.de/wrapperMessagingWithoutDetection.js',
     privacyManagerId: cliParams.privacyManagerId || null,
     host: cliParams.host || 'http://localhost:5000',
   };

@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sourcepoint getClientLibraryUrl should return the expected content 1`] = `"https://cdn.privacy-mgmt.com/wrapperMessagingWithoutDetection.js"`;
+exports[`sourcepoint getClientLibraryUrl should return the expected content 1`] = `"https://cmp2.bild.de/wrapperMessagingWithoutDetection.js"`;

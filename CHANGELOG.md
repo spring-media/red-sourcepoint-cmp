@@ -1,3 +1,10 @@
+# [0.59.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.58.0...v0.59.0) (2020-09-11)
+
+
+### Features
+
+* **vendor-mapping:** change ID for Bitmovin Analytics ([b62f96d](https://github.com/spring-media/red-sourcepoint-cmp/commit/b62f96d4aa9a3a768e9dc035623f4fc8831b0768))
+
 # [0.58.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.57.0...v0.58.0) (2020-09-09)
 
 

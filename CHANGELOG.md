@@ -1,3 +1,10 @@
+# [0.61.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.60.0...v0.61.0) (2020-10-01)
+
+
+### Features
+
+* **sourcepoint:** add consentReady state to vuex store ([705a57c](https://github.com/spring-media/red-sourcepoint-cmp/commit/705a57c2234a751519879b3f0cda95e540c65b38))
+
 # [0.60.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.59.0...v0.60.0) (2020-09-22)
 
 # [0.59.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.58.0...v0.59.0) (2020-09-11)

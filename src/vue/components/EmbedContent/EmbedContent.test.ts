@@ -42,7 +42,7 @@ describe('EmbedContent component', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.emitted('scriptLoaded')).toEqual([[{ src: 'https://script.com/source.js', success: true }]]);
+    expect(wrapper.emitted('script-loaded')).toEqual([[{ src: 'https://script.com/source.js', success: true }]]);
   });
 
   it('should emit an event if a detected script has not loaded successfully', async () => {
@@ -57,7 +57,7 @@ describe('EmbedContent component', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.emitted('scriptLoaded')).toEqual([
+    expect(wrapper.emitted('script-loaded')).toEqual([
       [{ error: 'error', src: 'https://script.com/source.js', success: false }],
     ]);
   });

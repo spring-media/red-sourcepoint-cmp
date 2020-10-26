@@ -1,7 +1,7 @@
 <template>
   <embed-content
     :content="content"
-    @scriptLoaded="scriptLoaded"
+    @script-loaded="scriptLoaded"
   />
 </template>
 

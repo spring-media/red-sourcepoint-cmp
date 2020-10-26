@@ -26,9 +26,9 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
     try {
       await loadScript(src);
 
-      this.$emit('scriptLoaded', { success: true, src });
+      this.$emit('script-loaded', { success: true, src });
     } catch (error) {
-      this.$emit('scriptLoaded', { success: false, src, error });
+      this.$emit('script-loaded', { success: false, src, error });
     }
   },
   render(createElement: CreateElement): VNode {

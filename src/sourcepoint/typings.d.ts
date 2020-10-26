@@ -49,12 +49,12 @@ export type Config = {
 };
 
 export type SourcepointConfigObject = {
-  config: Config;
+  config?: Config;
   loadPrivacyManagerModal(managerId: number): void;
 };
 
 export declare global {
   interface Window {
-    _sp_: SourcepointConfigObject;
+    _sp_?: SourcepointConfigObject;
   }
 }

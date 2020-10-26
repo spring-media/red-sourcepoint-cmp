@@ -13,24 +13,20 @@ const createStore = (): Store<Record<string, unknown>> => {
   });
 };
 
+jest.useFakeTimers();
+
 const { location } = window;
 
-const CLOSE_DELAY = 500;
+Object.defineProperty(window, 'location', {
+  value: {
+    reload: jest.fn(),
+  },
+});
 
 describe('effect reloadPageOnReject', () => {
-  beforeEach(() => {
-    delete window.location;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    window.location = {
-      reload: jest.fn(),
-    };
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    window.location = location;
+  afterAll(() => {
     jest.useRealTimers();
+    window.location = location;
   });
 
   it('should not reload the page if no vendor has been rejected', () => {
@@ -41,7 +37,7 @@ describe('effect reloadPageOnReject', () => {
     store.commit('sourcepoint/setCustomVendorConsents', [{ _id: '123' }, { _id: '456' }]);
     store.commit('sourcepoint/setCustomVendorConsents', [{ _id: '123' }, { _id: '456' }]);
 
-    jest.advanceTimersByTime(CLOSE_DELAY);
+    jest.runAllTimers();
 
     expect(window.location.reload).not.toHaveBeenCalled();
   });
@@ -54,7 +50,7 @@ describe('effect reloadPageOnReject', () => {
     store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: '123' }, { _id: '456' }]);
     store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: '123' }, { _id: '456' }]);
 
-    jest.advanceTimersByTime(CLOSE_DELAY);
+    jest.runAllTimers();
 
     expect(window.location.reload).not.toHaveBeenCalled();
   });
@@ -67,7 +63,7 @@ describe('effect reloadPageOnReject', () => {
     store.commit('sourcepoint/setCustomVendorConsents', [{ _id: '123' }, { _id: '456' }]);
     store.commit('sourcepoint/setCustomVendorConsents', [{ _id: '456' }]);
 
-    jest.advanceTimersByTime(CLOSE_DELAY);
+    jest.runAllTimers();
 
     expect(window.location.reload).toHaveBeenCalled();
   });
@@ -80,7 +76,7 @@ describe('effect reloadPageOnReject', () => {
     store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: '123' }, { _id: '456' }]);
     store.commit('sourcepoint/setCustomPurposeConsents', [{ _id: '456' }]);
 
-    jest.advanceTimersByTime(CLOSE_DELAY);
+    jest.runAllTimers();
 
     expect(window.location.reload).toHaveBeenCalled();
   });

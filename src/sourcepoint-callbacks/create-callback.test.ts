@@ -24,7 +24,7 @@ describe('createCallback', () => {
       return;
     });
 
-    expect(window._sp_.config?.events?.onPrivacyManagerAction).toBeInstanceOf(Function);
+    expect(window._sp_?.config?.events?.onPrivacyManagerAction).toBeInstanceOf(Function);
   });
 
   it('should invoke the registered callback', () => {
@@ -114,7 +114,7 @@ describe('createCallback', () => {
 
     createCallback('onPrivacyManagerAction')(() => null);
 
-    expect(window._sp_.config.events).toBeTruthy();
-    expect(window._sp_.config.events?.onPrivacyManagerAction).toBeInstanceOf(Function);
+    expect(window._sp_?.config?.events).toBeTruthy();
+    expect(window._sp_?.config?.events?.onPrivacyManagerAction).toBeInstanceOf(Function);
   });
 });

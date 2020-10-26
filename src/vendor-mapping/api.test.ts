@@ -159,18 +159,20 @@ describe('custom-vendor-grants module', () => {
         },
       ];
 
+      const fetch = window.fetch;
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({ json: () => Promise.resolve(response) }));
 
       const result = await loadVendorPurposeMapping(123);
 
       expect(result).toBe(response);
 
-      delete window.fetch;
+      window.fetch = fetch;
     });
 
     it('should return an empty array in case of an error', async () => {
       jest.spyOn(window.console, 'error').mockImplementation(() => null);
 
+      const fetch = window.fetch;
       window.fetch = jest.fn().mockImplementation(() => Promise.reject({}));
 
       const result = await loadVendorPurposeMapping(123);
@@ -180,7 +182,7 @@ describe('custom-vendor-grants module', () => {
 
       (window.console.error as jest.Mock).mockRestore();
 
-      delete window.fetch;
+      window.fetch = fetch;
     });
   });
 

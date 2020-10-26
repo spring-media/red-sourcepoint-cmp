@@ -118,6 +118,6 @@ export interface PingReturn {
 
 export declare global {
   interface Window {
-    __tcfapi: TCFV2API;
+    __tcfapi?: TCFV2API;
   }
 }

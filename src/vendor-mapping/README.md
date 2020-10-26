@@ -8,8 +8,8 @@ This module provides an API for handling relationships between vendors and purpo
 
 ### Built in (custom) vendors and purposes
 
-* [Custom Vendors](custom-vendors.ts)
-* [Custom Purposes](custom-purposes.ts)
+- [Custom Vendors](custom-vendors.ts)
+- [Custom Purposes](custom-purposes.ts)
 
 ### `configureGrants`
 
@@ -25,7 +25,7 @@ Configures the module by given grants-object that comes usually from the return 
 ```javascript
 import { configureGrants, vendorHasGrant } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
-const grants = {
+  const grants = {
   '123': {
     purposeGrants: { '123': true, '456': true },
     vendorGrant: true,
@@ -35,7 +35,8 @@ const grants = {
 configureGrants(grants);
 
 console.log(vendorHasGrant('123')); // true
-```    
+
+```
 </details>
 
 ### `vendorHasGrant`
@@ -75,7 +76,8 @@ const grants = {
 configureGrants(grants);
 
 console.log(vendorHasGrant('123')); // false
-```    
+
+```
 </details>
 
 ### `getGrantedVendors`
@@ -85,7 +87,6 @@ getGrantedVendors(): string[];
 ```
 
 Returns a list of consented (vendor) ids.
-
 
 <details>
 <summary>Example</summary>
@@ -112,7 +113,7 @@ configureGrants(grants);
 
 console.log(getGrantedVendors()); /// ['456']
 
-```    
+```
 </details>
 
 ### `getPurposeIdsForVendor`
@@ -130,19 +131,19 @@ Returns ids of purposes grouped by their type by given vendor id.
 import { getPurposesForVendor, configureVendorPurposeMapping } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
 configureVendorPurposeMapping([
-    {
-      vendorId: '1',
-      categories: [
-        { _id: '1', type: 'CONSENT' },
-        { _id: '2', type: 'CONSENT' },
-        { _id: '3', type: 'LEGITIMATE_INTEREST' },
-        { _id: '4', type: 'LEGITIMATE_INTEREST' },
-      ],
-    },
+{
+  vendorId: '1',
+  categories: [
+    { _id: '1', type: 'CONSENT' },
+    { _id: '2', type: 'CONSENT' },
+    { _id: '3', type: 'LEGITIMATE_INTEREST' },
+    { _id: '4', type: 'LEGITIMATE_INTEREST' },
+  ]},
 ]);
 
 console.log(getPurposesForVendor('123')); // { purposeIds: ['1', '2'], legitimateInterestIds: ['3', '4'] }
-```    
+
+```
 </details>
 
 ### `getVendorIdsForPurpose`
@@ -160,22 +161,20 @@ Returns a list of vendor ids that are linked to given purpose id.
 import { getVendorIdsForPurpose, configureVendorPurposeMapping } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
 configureVendorPurposeMapping([
-  {
-    vendorId: '1',
-    categories: [
-      { _id: '1', type: 'CONSENT' },
-      { _id: '2', type: 'CONSENT' },
-      { _id: '3', type: 'CONSENT' },
-    ],
-  },
-  {
-    vendorId: '2',
-    categories: [
-      { _id: '2', type: 'CONSENT' },
-      { _id: '3', type: 'CONSENT' },
-      { _id: '4', type: 'CONSENT' },
-    ],
-  },
+{
+  vendorId: '1',
+  categories: [
+    { _id: '1', type: 'CONSENT' },
+    { _id: '2', type: 'CONSENT' },
+    { _id: '3', type: 'CONSENT' },
+  ]},
+{
+  vendorId: '2',
+  categories: [
+    { _id: '2', type: 'CONSENT' },
+    { _id: '3', type: 'CONSENT' },
+    { _id: '4', type: 'CONSENT' },
+  ]},
   {
     vendorId: '3',
     categories: [{ _id: '9', type: 'CONSENT' }],
@@ -184,7 +183,7 @@ configureVendorPurposeMapping([
 
 console.log(getVendorIdsForPurpose('3')); // ['1', '2']
 
-```    
+```
 </details>
 
 ### `dumpPurposeRelations`
@@ -193,7 +192,7 @@ console.log(getVendorIdsForPurpose('3')); // ['1', '2']
 dumpPurposeRelations(purposeId: string): { vendorIds: string[], purposeIds: string[], legitimateInterestIds: string[] };
 ```
 
-This function performs a deep dump of the relations of given purpose id. 
+This function performs a deep dump of the relations of given purpose id.
 The result will include the vendor ids linked to given purpose id as well as the purpose ids linked to the resulting vendor ids.
 
 > Use the return value of this function to give consents programmatically through [postCustomConsent](../sourcepoint/README.md#postcustomconsent)
@@ -205,32 +204,30 @@ The result will include the vendor ids linked to given purpose id as well as the
 import { dumpPurposeRelations, configureVendorPurposeMapping } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
 configureVendorPurposeMapping([
-    {
-      vendorId: '1',
-      categories: [
-        { _id: '4', type: 'CONSENT' },
-        { _id: '5', type: 'LEGITIMATE_INTEREST' },
-      ],
-    },
-    {
-      vendorId: '2',
-      categories: [
-        { _id: '4', type: 'LEGITIMATE_INTEREST' },
-        { _id: '5', type: 'LEGITIMATE_INTEREST' },
-        { _id: '8', type: 'CONSENT' },
-      ],
-    },
-    {
-      vendorId: '3',
-      categories: [
-        { _id: '5', type: 'LEGITIMATE_INTEREST' },
-        { _id: '6', type: 'LEGITIMATE_INTEREST' },
-      ],
-    },
+  {
+  vendorId: '1',
+  categories: [
+    { _id: '4', type: 'CONSENT' },
+    { _id: '5', type: 'LEGITIMATE_INTEREST' },
+  ]},
+  {
+  vendorId: '2',
+  categories: [
+    { _id: '4', type: 'LEGITIMATE_INTEREST' },
+    { _id: '5', type: 'LEGITIMATE_INTEREST' },
+    { _id: '8', type: 'CONSENT' },
+  ]},
+  {
+  vendorId: '3',
+  categories: [
+    { _id: '5', type: 'LEGITIMATE_INTEREST' },
+    { _id: '6', type: 'LEGITIMATE_INTEREST' },
+  ]},
 ]);
 
 console.log(dumpPurposeRelations('5')); // { vendorIds: ['1', '2', '3'], purposeIds: ['4', '8'], legitimateInterestIds: ['5', '4', '6'] }
-```    
+
+```
 </details>
 
 ### `loadVendorPurposeMapping`
@@ -248,6 +245,35 @@ Loads a list of vendors and associated purposes (including the type of the purpo
 import { loadVendorPurposeMapping } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
 
 loadVendorPurposeMapping(1234).then(result => console.log(result)); // [{ vendorId: '1', categories: [{ _id: '2', type: 'CONSENT' }] }]
-```    
+
+```
 </details>
 
+### `vendorHasPurpose`
+
+```typescript
+vendorHasPurpose(vendorId: string, purposeId: string): boolean;
+```
+
+Checks whether given vendor has given purpose.
+
+<details>
+<summary>Example</summary>
+
+```javascript
+import { configureVendorPurposeMapping, vendorHasPurpose } from '@spring-media/red-sourcepoint-cmp/dist/esm/vendor-mapping';
+
+configureVendorPurposeMapping([
+  {
+    vendorId: '1',
+    categories: [
+      { _id: '4', type: 'CONSENT' },
+      { _id: '5', type: 'LEGITIMATE_INTEREST' },
+    ],
+  },
+];
+
+console.log(vendorHasPurpose('1', '4')); // true
+
+```
+</details>

@@ -37,6 +37,16 @@ export const configureVendorPurposeMapping = (mapping: VendorPurposeMappings): v
 
 export const vendorHasGrant = (vendorId: string): boolean => grantedVendors.has(vendorId);
 
+export const vendorHasPurpose = (vendorId: string, purposeId: string): boolean => {
+  const categories = vendorPurposeMappings.get(vendorId);
+
+  if (!categories) {
+    return false;
+  }
+
+  return Boolean(categories.find((category) => category._id === purposeId));
+};
+
 export const getGrantedVendors = (): string[] => [...grantedVendors];
 
 export const getPurposesForVendor = (vendorId: string): GroupedPurposes => {

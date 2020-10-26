@@ -7,6 +7,7 @@ import {
   loadVendorPurposeMapping,
   getGrantedVendors,
   getPurposesForVendor,
+  vendorHasPurpose,
 } from './api';
 import { VendorPurposeMappings } from './typings';
 
@@ -201,6 +202,40 @@ describe('custom-vendor-grants module', () => {
       });
 
       expect(getGrantedVendors()).toEqual(['1']);
+    });
+  });
+
+  describe('vendorHasPurpose', () => {
+    it('should return false by default', () => {
+      expect(vendorHasPurpose('1234', '4567')).toBe(false);
+    });
+
+    it('should return false', () => {
+      configureVendorPurposeMapping([
+        {
+          vendorId: '1',
+          categories: [
+            { _id: '2', type: 'CONSENT' },
+            { _id: '3', type: 'LEGITIMATE_INTEREST' },
+          ],
+        },
+      ]);
+
+      expect(vendorHasPurpose('1', '4')).toBe(false);
+    });
+
+    it('should return true', () => {
+      configureVendorPurposeMapping([
+        {
+          vendorId: '1',
+          categories: [
+            { _id: '2', type: 'CONSENT' },
+            { _id: '3', type: 'LEGITIMATE_INTEREST' },
+          ],
+        },
+      ]);
+
+      expect(vendorHasPurpose('1', '2')).toBe(true);
     });
   });
 });

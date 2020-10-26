@@ -39,6 +39,7 @@ Array [
   "configureGrants",
   "configureVendorPurposeMapping",
   "vendorHasGrant",
+  "vendorHasPurpose",
   "getGrantedVendors",
   "getPurposesForVendor",
   "getVendorIdsForPurpose",

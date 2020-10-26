@@ -1,3 +1,10 @@
+# [0.62.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.61.0...v0.62.0) (2020-10-26)
+
+
+### Features
+
+* **vendor-mapping:** add function to check whether a vendor includes a purpose ([9d4ddfd](https://github.com/spring-media/red-sourcepoint-cmp/commit/9d4ddfda2d258c4960f8ca6f2c46f23859700272))
+
 # [0.61.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.60.0...v0.61.0) (2020-10-01)
 
 

@@ -3,6 +3,7 @@
 exports[`EmbedPodigeeConsent component should render the placeholder by default 1`] = `
 <div
   class="embed-placeholder__container"
+  data-vendor-id="5e717ad49a0b5040d5750815"
 >
   <div
     class="embed-placeholder__header"

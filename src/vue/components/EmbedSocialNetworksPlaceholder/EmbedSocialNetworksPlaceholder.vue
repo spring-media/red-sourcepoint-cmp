@@ -2,6 +2,7 @@
   <embed-placeholder
     :privacy-manager-id="privacyManagerId"
     :purpose-id="purposeId"
+    :vendor-id="vendorId"
   >
     <template #header>
       <slot name="header">
@@ -75,6 +76,7 @@ import { PURPOSE_ID_SOCIAL } from '../../../vendor-mapping';
 
 type Props = {
   privacyManagerId: number;
+  vendorId: string;
 };
 
 type Data = {
@@ -93,6 +95,10 @@ export default Vue.extend<Data, NonNullish, NonNullish, Props>({
     privacyManagerId: {
       type: Number,
       required: true,
+    },
+    vendorId: {
+      type: String,
+      default: '',
     },
   },
 });

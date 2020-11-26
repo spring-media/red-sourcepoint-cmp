@@ -3,6 +3,7 @@
 exports[`EmbedTwitterPlaceholder should render without any errors 1`] = `
 <div
   class="embed-placeholder__container"
+  data-vendor-id="5e71760b69966540e4554f01"
 >
   <div
     class="embed-placeholder__header"

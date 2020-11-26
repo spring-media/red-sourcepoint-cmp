@@ -3,6 +3,7 @@
 exports[`EmbedInstagramConsent component should render the placeholder by default 1`] = `
 <div
   class="embed-placeholder__container"
+  data-vendor-id="5e717c8e69966540e4554f05"
 >
   <div
     class="embed-placeholder__header"

@@ -42,7 +42,9 @@ describe('EmbedPlaceholder', () => {
   });
 
   it('should render without any errors', () => {
-    expect(mount(EmbedPlaceholder, { propsData: { privacyManagerId: 123 } }).element).toMatchSnapshot();
+    expect(
+      mount(EmbedPlaceholder, { propsData: { privacyManagerId: 123, vendorId: 'abc' } }).element,
+    ).toMatchSnapshot();
   });
 
   it('should give a consent to given vendor', () => {

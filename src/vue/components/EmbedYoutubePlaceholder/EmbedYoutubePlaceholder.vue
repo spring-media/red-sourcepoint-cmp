@@ -1,5 +1,8 @@
 <template>
-  <embed-social-networks-placeholder :privacy-manager-id="privacyManagerId">
+  <embed-social-networks-placeholder
+    :privacy-manager-id="privacyManagerId"
+    :vendor-id="vendorId"
+  >
     <template #header>
       <svg
         width="100%"
@@ -31,10 +34,12 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { VENDOR_ID_YOUTUBE } from '../../../vendor-mapping';
 import { EmbedSocialNetworksPlaceholder } from '../EmbedSocialNetworksPlaceholder';
 
 type Props = {
   privacyManagerId: number;
+  vendorId: string;
 };
 
 type NonNullish = Record<string, unknown>;
@@ -46,6 +51,10 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
     privacyManagerId: {
       type: Number,
       required: true,
+    },
+    vendorId: {
+      type: String,
+      default: VENDOR_ID_YOUTUBE,
     },
   },
 });

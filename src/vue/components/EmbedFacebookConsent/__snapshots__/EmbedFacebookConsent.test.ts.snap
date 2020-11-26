@@ -3,6 +3,7 @@
 exports[`EmbedFacebookConsent component should render the placeholder by default 1`] = `
 <div
   class="embed-placeholder__container"
+  data-vendor-id="5ee91b9593fc094b59242e25"
 >
   <div
     class="embed-placeholder__header"

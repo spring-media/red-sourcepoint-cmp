@@ -1,7 +1,10 @@
 <template>
   <consent-wrapper :vendor-id="vendorId">
     <template #disabledContent>
-      <embed-social-networks-placeholder :privacy-manager-id="privacyManagerId" />
+      <embed-social-networks-placeholder
+        :privacy-manager-id="privacyManagerId"
+        :vendor-id="vendorId"
+      />
     </template>
     <template #enabledContent>
       <embed-content :content="content" />

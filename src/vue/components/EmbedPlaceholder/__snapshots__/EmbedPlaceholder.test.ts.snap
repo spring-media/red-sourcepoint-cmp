@@ -3,6 +3,7 @@
 exports[`EmbedPlaceholder should render without any errors 1`] = `
 <div
   class="embed-placeholder__container"
+  data-vendor-id="abc"
 >
   <div
     class="embed-placeholder__header"

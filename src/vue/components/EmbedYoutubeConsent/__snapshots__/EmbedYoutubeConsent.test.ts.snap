@@ -3,6 +3,7 @@
 exports[`EmbedYoutubeConsent component should render the placeholder by default 1`] = `
 <div
   class="embed-placeholder__container"
+  data-vendor-id="5e7ac3fae30e7d1bc1ebf5e8"
 >
   <div
     class="embed-placeholder__header"

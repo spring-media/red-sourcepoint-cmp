@@ -1,5 +1,8 @@
 <template>
-  <div class="embed-placeholder__container">
+  <div
+    class="embed-placeholder__container"
+    :data-vendor-id="vendorId"
+  >
     <div class="embed-placeholder__header">
       <slot name="header">
         <svg

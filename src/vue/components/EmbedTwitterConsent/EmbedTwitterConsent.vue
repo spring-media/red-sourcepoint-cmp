@@ -1,7 +1,10 @@
 <template>
   <consent-wrapper :vendor-id="vendorId">
     <template #disabledContent>
-      <embed-twitter-placeholder :privacy-manager-id="privacyManagerId" />
+      <embed-twitter-placeholder
+        :privacy-manager-id="privacyManagerId"
+        :vendor-id="vendorId"
+      />
     </template>
     <template #enabledContent>
       <embed-content :content="content" />
@@ -16,27 +19,25 @@ import { ConsentWrapper } from '../ConsentWrapper';
 import { EmbedContent } from '../EmbedContent';
 import { VENDOR_ID_TWITTER } from '../../../vendor-mapping';
 
-type Data = {
-  vendorId: string;
-};
-
 type Props = {
+  vendorId: string;
   content: string;
   privacyManagerId: number;
 };
 
 type NonNullish = Record<string, unknown>;
 
-export default Vue.extend<Data, NonNullish, NonNullish, Props>({
+export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   name: 'EmbedTwitterConsent',
   components: { ConsentWrapper, EmbedTwitterPlaceholder, EmbedContent },
-  data: () => ({
-    vendorId: VENDOR_ID_TWITTER,
-  }),
   props: {
     content: {
       type: String,
       default: '',
+    },
+    vendorId: {
+      type: String,
+      default: VENDOR_ID_TWITTER,
     },
     privacyManagerId: {
       type: Number,

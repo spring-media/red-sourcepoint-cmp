@@ -11,6 +11,7 @@ exports[`EmbedSocialNetworksConsent component should render the embed in case of
 exports[`EmbedSocialNetworksConsent component should render the placeholder by default 1`] = `
 <div
   class="embed-placeholder__container"
+  data-vendor-id="abc"
 >
   <div
     class="embed-placeholder__header"

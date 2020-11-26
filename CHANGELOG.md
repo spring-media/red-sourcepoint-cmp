@@ -1,3 +1,15 @@
+# [0.65.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.64.0...v0.65.0) (2020-11-26)
+
+
+### Bug Fixes
+
+* **vue:** update cae snapshots ([d3eb96d](https://github.com/spring-media/red-sourcepoint-cmp/commit/d3eb96de8fbd75fb010c18a5a0654e3095655959))
+
+
+### Features
+
+* **vue:** add vendor-id as attribute to placeholders ([3a9fad5](https://github.com/spring-media/red-sourcepoint-cmp/commit/3a9fad56de35c9c48f5d605f83569434c9b7ed92))
+
 # [0.64.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.63.0...v0.64.0) (2020-11-19)
 
 # [0.63.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.62.0...v0.63.0) (2020-10-26)

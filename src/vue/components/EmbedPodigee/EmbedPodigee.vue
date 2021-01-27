@@ -36,7 +36,7 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   },
   methods: {
     podigeeEvent(event) {
-      if (event.origin !== 'https://cdn.podigee.com') {
+      if (event.origin.indexOf('podigee') === -1) {
         return;
       }
 

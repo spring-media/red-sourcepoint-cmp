@@ -1,3 +1,10 @@
+## [0.66.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.66.0...v0.66.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* **vue:** get correct height for podigee embeds ([e38ca3f](https://github.com/spring-media/red-sourcepoint-cmp/commit/e38ca3f9615b57d0964f340234b7085b87b14af5))
+
 # [0.66.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.65.0...v0.66.0) (2021-01-27)
 
 # [0.65.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.64.0...v0.65.0) (2020-11-26)

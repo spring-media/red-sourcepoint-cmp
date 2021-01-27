@@ -79,7 +79,7 @@
     "@vue/eslint-config-typescript": "7.0.0",
     "@vue/test-utils": "1.1.0",
     "babel-jest": "26.6.1",
-    "babel-loader": "8.1.0",
+    "babel-loader": "8.2.2",
     "babel-preset-vue": "2.0.2",
     "chalk": "4.1.0",
     "clean-css": "4.2.3",

@@ -1,0 +1,59 @@
+/*
+	Copyright (C) 2011-2017 Hoefler & Co.
+	This software is the property of Hoefler & Co. (H&Co).
+	Your right to access and use this software is subject to the
+	applicable License Agreement, or Terms of Service, that exists
+	between you and H&Co. If no such agreement exists, you may not
+	access or use this software for any purpose.
+	This software may only be hosted at the locations specified in
+	the applicable License Agreement or Terms of Service, and only
+	for the purposes expressly set forth therein. You may not copy,
+	modify, convert, create derivative works from or distribute this
+	software in any way, or make it accessible to any third party,
+	without first obtaining the written permission of H&Co.
+	For more information, please visit us at http://typography.com.
+	53236-109108-20170615
+*/
+
+/* NOT IN USE
+@font-face {
+	font-family: Gotham;
+	src: url('229B4A8D186CC909B.woff2') format('woff2'), url('229B4A8D186CC909B.woff') format('woff');
+	font-weight: 200;
+	font-style: normal;
+} */
+
+@font-face {
+	font-family: Gotham;
+	src: url('./fonts/gotham/8B8182E2BA0464F45.woff2') format('woff2'), url('./fonts/gotham/8B8182E2BA0464F45.woff') format('woff');
+	font-weight: 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Gotham Cond';
+	src: url('./fonts/gotham/3FF86ACA2E0D4CD65.woff2') format('woff2'), url('./fonts/gotham/3FF86ACA2E0D4CD65.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Gotham Cond';
+	src: url('./fonts/gotham/B6699C503D96A9BC1.woff2') format('woff2'), url('./fonts/gotham/B6699C503D96A9BC1.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Gotham XNarrow';
+	src: url('./fonts/gotham/21A46BAE2B5D0CF5D.woff2') format('woff2'), url('./fonts/gotham/21A46BAE2B5D0CF5D.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Gotham XNarrow';
+	src: url('./fonts/gotham/D7632D565C85109A8.woff2') format('woff2'), url('./fonts/gotham/D7632D565C85109A8.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}

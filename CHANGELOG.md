@@ -1,3 +1,10 @@
+# [0.67.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.66.1...v0.67.0) (2021-08-17)
+
+
+### Features
+
+* **vendor-mapping:** add Speedcurve vendor ([b5b59bc](https://github.com/spring-media/red-sourcepoint-cmp/commit/b5b59bce9351f13073d353410db163a9a160f9db))
+
 ## [0.66.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.66.0...v0.66.1) (2021-01-27)
 
 

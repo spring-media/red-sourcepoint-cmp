@@ -1,13 +1,13 @@
 <template>
-  <consent-wrapper :vendor-id="vendorId">
+  <consent-wrapper :vendor-id="vendorId" :is-pur="isPUR">
     <template #disabledContent>
-      <embed-twitter-placeholder
-        :privacy-manager-id="privacyManagerId"
-        :vendor-id="vendorId"
-      />
+      <embed-twitter-placeholder-pur v-if="isPUR" :vendor-id="vendorId" />
+      <embed-twitter-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
-      <embed-content :content="content" />
+      <embed-content-pur :show-controls="isPUR" :vendor-id="vendorId">
+        <embed-content :content="content" />
+      </embed-content-pur>
     </template>
   </consent-wrapper>
 </template>
@@ -15,21 +15,24 @@
 <script lang="ts">
 import Vue from 'vue';
 import { EmbedTwitterPlaceholder } from '../EmbedTwitterPlaceholder';
+import { EmbedTwitterPlaceholderPur } from '../EmbedTwitterPlaceholderPur';
 import { ConsentWrapper } from '../ConsentWrapper';
 import { EmbedContent } from '../EmbedContent';
 import { VENDOR_ID_TWITTER } from '../../../vendor-mapping';
+import { EmbedContentPur } from '../EmbedContentPur';
 
 type Props = {
   vendorId: string;
   content: string;
   privacyManagerId: number;
+  isPUR: boolean;
 };
 
 type NonNullish = Record<string, unknown>;
 
 export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   name: 'EmbedTwitterConsent',
-  components: { ConsentWrapper, EmbedTwitterPlaceholder, EmbedContent },
+  components: { ConsentWrapper, EmbedTwitterPlaceholder, EmbedContent, EmbedTwitterPlaceholderPur, EmbedContentPur },
   props: {
     content: {
       type: String,
@@ -42,6 +45,10 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
     privacyManagerId: {
       type: Number,
       required: true,
+    },
+    isPUR: {
+      type: Boolean,
+      default: false,
     },
   },
 });

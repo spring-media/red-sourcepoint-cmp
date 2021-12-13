@@ -7,12 +7,15 @@ import {
   configureVendorPurposeMapping,
   getGrantedVendors,
   loadVendorPurposeMapping,
+  getGrantedVendorsPUR,
+  setGrantedVendorsPUR,
 } from '../../../vendor-mapping';
 
 const moduleState: SourcepointModuleState = {
   consentedCustomVendors: [],
   consentedCustomPurposes: [],
   grantedVendors: [],
+  grantedVendorsPUR: [],
   consentReady: false,
 };
 
@@ -29,11 +32,30 @@ export const mutations = {
   setConsentReady(state: SourcepointModuleState, payload: boolean): void {
     state.consentReady = payload;
   },
+  setGrantedVendorPUR(state: SourcepointModuleState, payload: string): void {
+    if (state.grantedVendorsPUR.includes(payload)) {
+      return;
+    }
+
+    state.grantedVendorsPUR = [...state.grantedVendorsPUR, payload];
+
+    setGrantedVendorsPUR(state.grantedVendorsPUR);
+  },
+  rejectVendorPUR(state: SourcepointModuleState, payload: string): void {
+    state.grantedVendorsPUR = state.grantedVendorsPUR.filter((id) => id !== payload);
+
+    setGrantedVendorsPUR(state.grantedVendorsPUR);
+  },
+  setGrantedVendorsPUR(state: SourcepointModuleState, payload: string[]): void {
+    state.grantedVendorsPUR = payload;
+  },
 };
 
 export const getters = {
   vendorHasConsent: (state: SourcepointModuleState) => (vendorId: string): boolean =>
     state.grantedVendors.includes(vendorId),
+  vendorHasConsentPUR: (state: SourcepointModuleState) => (vendorId: string): boolean =>
+    state.grantedVendorsPUR.includes(vendorId),
 };
 
 export const actions = {
@@ -45,6 +67,8 @@ export const actions = {
     commit('setCustomVendorConsents', consentedVendors);
     commit('setCustomPurposeConsents', consentedPurposes);
     commit('setGrantedVendors', getGrantedVendors());
+
+    commit('setGrantedVendorsPUR', getGrantedVendorsPUR());
 
     commit('setConsentReady', true);
   },

@@ -5,4 +5,5 @@ export type SourcepointModuleState = {
   consentedCustomPurposes: CustomPurpose[];
   grantedVendors: string[];
   consentReady: boolean;
+  grantedVendorsPUR: string[];
 };

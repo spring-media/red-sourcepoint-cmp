@@ -1,14 +1,14 @@
 <template>
-  <consent-wrapper :vendor-id="vendorId">
+  <consent-wrapper :vendor-id="vendorId" :is-pur="isPUR">
     <template #disabledContent>
-      <embed-social-networks-placeholder
-        :privacy-manager-id="privacyManagerId"
-        :vendor-id="vendorId"
-      />
+      <embed-social-networks-placeholder-pur v-if="isPUR" :vendor-id="vendorId" />
+      <embed-social-networks-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
       <slot name="embed">
-        <embed-podigee :content="content" />
+        <embed-content-pur :show-controls="isPUR" :vendor-id="vendorId">
+          <embed-podigee :content="content" />
+        </embed-content-pur>
       </slot>
     </template>
   </consent-wrapper>
@@ -18,20 +18,29 @@
 import Vue from 'vue';
 import { ConsentWrapper } from '../ConsentWrapper';
 import { EmbedSocialNetworksPlaceholder } from '../EmbedSocialNetworksPlaceholder';
+import { EmbedSocialNetworksPlaceholderPur } from '../EmbedSocialNetworksPlaceholderPur';
 import { EmbedPodigee } from '../EmbedPodigee';
 import { VENDOR_ID_PODIGEE } from '../../../vendor-mapping';
+import { EmbedContentPur } from '../EmbedContentPur';
 
 type Props = {
   vendorId: string;
   content: string;
   privacyManagerId: number;
+  isPUR: boolean;
 };
 
 type NonNullish = Record<string, unknown>;
 
 export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   name: 'EmbedPodigeeConsent',
-  components: { EmbedSocialNetworksPlaceholder, ConsentWrapper, EmbedPodigee },
+  components: {
+    EmbedSocialNetworksPlaceholder,
+    ConsentWrapper,
+    EmbedPodigee,
+    EmbedSocialNetworksPlaceholderPur,
+    EmbedContentPur,
+  },
   props: {
     content: {
       type: String,
@@ -40,10 +49,14 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
     vendorId: {
       type: String,
       default: VENDOR_ID_PODIGEE,
-    },    
+    },
     privacyManagerId: {
       type: Number,
       required: true,
+    },
+    isPUR: {
+      type: Boolean,
+      default: false,
     },
   },
 });

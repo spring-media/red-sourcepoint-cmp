@@ -13,6 +13,8 @@ import {
 type Methods = {
   customConsent(payload: PostCustomConsentPayload): Promise<void>;
   setGrantedVendors(payload: string[]): void;
+  setGrantedVendorPUR(id: string): void;
+  rejectVendorPUR(id: string): void;
 };
 
 type NonNullish = Record<string, unknown>;
@@ -20,7 +22,11 @@ type NonNullish = Record<string, unknown>;
 export default Vue.extend<NonNullish, Methods, NonNullish, NonNullish>({
   name: 'ConsentActions',
   methods: {
-    ...mapMutations({ setGrantedVendors: 'sourcepoint/setGrantedVendors' }),
+    ...mapMutations({
+      setGrantedVendors: 'sourcepoint/setGrantedVendors',
+      setGrantedVendorPUR: 'sourcepoint/setGrantedVendorPUR',
+      rejectVendorPUR: 'sourcepoint/rejectVendorPUR',
+    }),
     async customConsent(payload: PostCustomConsentPayload) {
       try {
         const { grants } = await postCustomConsent(payload);
@@ -40,6 +46,8 @@ export default Vue.extend<NonNullish, Methods, NonNullish, NonNullish>({
         consentPurpose: (id: string): Promise<void> => this.customConsent(dumpPurposeRelations(id)),
         consentVendor: (id: string): Promise<void> =>
           this.customConsent({ ...getPurposesForVendor(id), vendorIds: [id] }),
+        consentVendorPUR: (id: string): void => this.setGrantedVendorPUR(id),
+        rejectVendorPUR: (id: string): void => this.rejectVendorPUR(id),
         customConsent: (payload: PostCustomConsentPayload): Promise<void> => this.customConsent(payload),
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }) as any)

@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmbedSocialNetworksPlaceholder should render without any errors 1`] = `
+<div
+  class="embed-placeholder__container"
+  data-vendor-id="abc"
+>
+  <div
+    class="embed-placeholder__header"
+  >
+    <svg
+      fill="none"
+      height="84"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="16"
+        cy="16"
+        fill="#E9ECEF"
+        r="16"
+      />
+       
+      <rect
+        fill="#E9ECEF"
+        height="10"
+        width="60"
+        x="40"
+        y="7"
+      />
+       
+      <rect
+        fill="#E9ECEF"
+        height="6"
+        width="40"
+        x="40"
+        y="19"
+      />
+       
+      <rect
+        fill="#E9ECEF"
+        height="8"
+        width="100%"
+        y="44"
+      />
+       
+      <rect
+        fill="#E9ECEF"
+        height="8"
+        width="100%"
+        y="60"
+      />
+       
+      <rect
+        fill="#E9ECEF"
+        height="8"
+        width="75%"
+        y="76"
+      />
+    </svg>
+  </div>
+   
+  <div
+    class="embed-placeholder__headline"
+  >
+    
+      An dieser Stelle findest du Inhalte aus sozialen Netzwerken
+    
+  </div>
+   
+  <div
+    class="embed-placeholder__description"
+  >
+    
+      Um mit Inhalten aus sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
+    
+  </div>
+   
+  <button
+    class="embed-placeholder__button"
+  >
+    
+    soziale Netzwerke aktivieren
+  
+  </button>
+   
+  <div
+    class="embed-placeholder__footer-text"
+  >
+    
+        Ich bin damit einverstanden, dass mir Inhalte von Drittanbietern angezeigt werden. Damit können
+        personenbezogene Daten an Drittanbieter übermittelt werden. Dazu ist ggf. die Speicherung von Cookies auf
+        deinem Gerät notwendig. Mehr Informationen dazu findest du
+        
+    <a
+      class="embed-placeholder__text-link"
+      href="#"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      hier
+    </a>
+    .
+      
+  </div>
+</div>
+`;

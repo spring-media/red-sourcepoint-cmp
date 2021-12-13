@@ -2,6 +2,8 @@ import { CustomVendorGrants } from '../sourcepoint/typings';
 import { GroupedPurposes, RelationsDump, VendorPurposeMappingPurpose, VendorPurposeMappings } from './typings';
 import { PURPOSE_TYPE_CONSENT, PURPOSE_TYPE_LEGITIMATE_INTEREST } from './custom-purposes';
 
+export const PUR_SESSION_STORAGE_KEY = '__cmp_pur_embeds_enabled';
+
 const grantedVendors = new Set<string>();
 const vendorPurposeMappings = new Map<string, VendorPurposeMappingPurpose[]>();
 const purposeVendorMappings = new Map<string, Set<string>>();
@@ -48,6 +50,35 @@ export const vendorHasPurpose = (vendorId: string, purposeId: string): boolean =
 };
 
 export const getGrantedVendors = (): string[] => [...grantedVendors];
+
+export const getGrantedVendorsPUR = (): string[] => {
+  try {
+    const item = window.sessionStorage.getItem(PUR_SESSION_STORAGE_KEY);
+
+    if (!item) {
+      return [];
+    }
+
+    const { consentedVendors } = JSON.parse(item);
+
+    if (!Array.isArray(consentedVendors)) {
+      return [];
+    }
+
+    return consentedVendors;
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+};
+
+export const setGrantedVendorsPUR = (vendorIds: string[]): void => {
+  try {
+    window.sessionStorage.setItem(PUR_SESSION_STORAGE_KEY, JSON.stringify({ consentedVendors: vendorIds }));
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 export const getPurposesForVendor = (vendorId: string): GroupedPurposes => {
   const purposes = vendorPurposeMappings.get(vendorId);

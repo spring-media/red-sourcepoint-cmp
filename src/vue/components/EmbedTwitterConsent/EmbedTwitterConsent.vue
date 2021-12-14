@@ -5,7 +5,7 @@
       <embed-twitter-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
-      <embed-content-pur :show-controls="isPUR" :vendor-id="vendorId">
+      <embed-content-pur :show-controls="isPUR" :vendor-id="vendorId" :switch-label="'Twitter'">
         <embed-content :content="content" />
       </embed-content-pur>
     </template>

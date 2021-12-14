@@ -46,8 +46,12 @@ describe('EmbedYoutubeConsent component', () => {
     expect(wrapper.element).toMatchInlineSnapshot(`
       <div>
         <div>
-          Youtube Embed Content
+          <div>
+            Youtube Embed Content
+          </div>
         </div>
+         
+        <!---->
       </div>
     `);
   });

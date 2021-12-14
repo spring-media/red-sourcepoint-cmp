@@ -1,12 +1,9 @@
 <template>
   <div>
     <slot />
-    <div v-if="showControls">
+    <div class="embed-content__actions" v-if="showControls">
       <consent-actions v-slot="{ rejectVendorPUR }">
-        <div>
-          {{ label }}
-          <input type="checkbox" @change="rejectConsent($event, rejectVendorPUR)" />
-        </div>
+        <input-switch :label="switchLabel" @change="rejectConsent($event, rejectVendorPUR)" :checked="true" />
       </consent-actions>
     </div>
   </div>
@@ -15,9 +12,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import { ConsentActions } from '../ConsentActions';
+import { InputSwitch } from '../InputSwitch';
 
 type Props = {
-  label: string;
+  switchLabel: string;
   showControls: boolean;
   vendorId: string;
 };
@@ -31,12 +29,12 @@ type Methods = {
 };
 
 export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
-  components: { ConsentActions },
+  components: { ConsentActions, InputSwitch },
   name: 'EmbedContentPur',
   props: {
-    label: {
+    switchLabel: {
       type: String,
-      default: 'Inhalt deaktivieren',
+      default: 'Externer Inhalt',
     },
     showControls: {
       type: Boolean,
@@ -60,3 +58,11 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   },
 });
 </script>
+
+<style>
+.embed-content__actions {
+  display: flex;
+  justify-content: end;
+  margin-top: 14px;
+}
+</style>

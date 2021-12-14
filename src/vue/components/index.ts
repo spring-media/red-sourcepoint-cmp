@@ -23,5 +23,6 @@ export * from './EmbedTwitterPlaceholderPur';
 export * from './EmbedYoutubeConsent';
 export * from './EmbedYoutubePlaceholder';
 export * from './EmbedYoutubePlaceholderPur';
+export * from './InputSwitch';
 export * from './PrivacyManager';
 export * from './SocialSharingPopup';

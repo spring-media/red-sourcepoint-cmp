@@ -1,5 +1,5 @@
 <template>
-  <embed-placeholder-pur :vendor-id="vendorId">
+  <embed-placeholder-pur :vendor-id="vendorId" :switch-label="switchLabel">
     <template #header>
       <slot name="header">
         <svg width="100%" height="84" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,6 +15,9 @@
     <template #headline>
       <slot name="headline"> An dieser Stelle findest du Inhalte aus sozialen Netzwerken </slot>
     </template>
+    <template #controls>
+      <slot name="controls" />
+    </template>
   </embed-placeholder-pur>
 </template>
 
@@ -24,6 +27,7 @@ import { EmbedPlaceholderPur } from '../EmbedPlaceholderPur';
 
 type Props = {
   vendorId: string;
+  switchLabel: string;
 };
 
 type Data = {
@@ -39,6 +43,10 @@ export default Vue.extend<Data, NonNullish, NonNullish, Props>({
     vendorId: {
       type: String,
       default: '',
+    },
+    switchLabel: {
+      type: String,
+      default: 'Inhalt freigeben',
     },
   },
 });

@@ -7,7 +7,7 @@ type RootState = {
   sourcepoint: SourcepointModuleState;
 };
 
-const reloadWindow = () => typeof window !== 'undefined' && setTimeout(window.location.reload, 500);
+const reloadWindow = () => typeof window !== 'undefined' && setTimeout(() => window.location.reload(), 500);
 
 export const reloadPageOnReject = (store: Store<Record<string, unknown>>): (() => void) => {
   let vendors: CustomConsent[] = [];

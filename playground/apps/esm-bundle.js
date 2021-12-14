@@ -59,7 +59,7 @@ const getConsents = async () => {
 
 onConsentReady(getConsents);
 
-store.dispatch('sourcepoint/bootstrapConsents', { propertyId: window.__playground__.parameters.propertyId});
+store.dispatch('sourcepoint/bootstrapConsents', { propertyId: window.__playground__.parameters.propertyId });
 
 const PlaygroundApp = Vue.extend({
   name: 'PlaygroundApp',
@@ -78,7 +78,7 @@ const PlaygroundApp = Vue.extend({
     twitter,
     instagram,
     youtube,
-    podigee
+    podigee,
   }),
   template: `
     <div>
@@ -102,10 +102,39 @@ const PlaygroundApp = Vue.extend({
             <li class="embed__item">
                 <embed-social-networks-consent :privacyManagerId="privacyManagerId" :content="youtube" vendorId="5e7179e49a0b5040d5750812"></embed-social-networks-consent>
             </li>
-        </ul>
-        <ul class="embed__container third-party-embeds__container">
             <li class="embed__item">
                 <embed-consent vendorId="5ed90e2947dbbd564700dfaa" :privacyManagerId="privacyManagerId">
+                    <template #embed>
+                        <iframe 
+                            src="https://www.bild.de/ig/dda6ec1c-e23c-423a-9154-07154cb853e4/index/index.html" 
+                            style="width: 100%; height: 700px;">
+                        </iframe>
+                    </template>
+                </embed-consent>
+            </li>
+        </ul>
+        <h2 class="pur-section">PUR</h2>
+        <ul class="embed__container social-embeds__container">
+            <li class="embed__item">
+                <embed-facebook-consent :content="facebook" :isPUR="true"></embed-facebook-consent>
+            </li>
+            <li class="embed__item">
+                <embed-instagram-consent :content="instagram" :isPUR="true"></embed-instagram-consent>
+            </li>
+            <li class="embed__item">
+                <embed-twitter-consent :content="twitter" :isPUR="true"></embed-twitter-consent>
+            </li>
+            <li class="embed__item">
+                <embed-youtube-consent :content="youtube" :isPUR="true"></embed-youtube-consent>
+            </li>
+            <li class="embed__item">
+                <embed-podigee-consent vendorId="5e717ad49a0b5040d57508000" :content="podigee" :isPUR="true"></embed-podigee-consent>   
+            </li>
+            <li class="embed__item">
+                <embed-social-networks-consent :content="youtube" vendorId="5e7179e49a0b5040d5750812" :isPUR="true"></embed-social-networks-consent>
+            </li>
+            <li class="embed__item">
+                <embed-consent vendorId="5ed90e2947dbbd564700dfaa" :privacyManagerId="privacyManagerId" :isPUR="true">
                     <template #embed>
                         <iframe 
                             src="https://www.bild.de/ig/dda6ec1c-e23c-423a-9154-07154cb853e4/index/index.html" 

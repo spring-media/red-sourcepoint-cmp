@@ -72,6 +72,14 @@ export const getGrantedVendorsPUR = (): string[] => {
   }
 };
 
+export const clearVendorsPURStorage = (): void => {
+  try {
+    window.sessionStorage.removeItem(PUR_SESSION_STORAGE_KEY);
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 export const setGrantedVendorsPUR = (vendorIds: string[]): void => {
   try {
     window.sessionStorage.setItem(PUR_SESSION_STORAGE_KEY, JSON.stringify({ consentedVendors: vendorIds }));

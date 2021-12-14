@@ -1,5 +1,5 @@
 <template>
-  <embed-social-networks-placeholder-pur :vendor-id="vendorId">
+  <embed-social-networks-placeholder-pur :vendor-id="vendorId" :switch-label="'Instagram freigeben'">
     <template #header>
       <svg width="100%" height="312" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="12" cy="12" r="12" fill="#E9ECEF" />

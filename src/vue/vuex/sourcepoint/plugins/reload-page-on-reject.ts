@@ -7,13 +7,15 @@ type RootState = {
   sourcepoint: SourcepointModuleState;
 };
 
+const reloadWindow = () => typeof window !== 'undefined' && setTimeout(window.location.reload, 500);
+
 export const reloadPageOnReject = (store: Store<Record<string, unknown>>): (() => void) => {
   let vendors: CustomConsent[] = [];
   let purposes: CustomConsent[] = [];
 
   const mayReload = (consents: CustomConsent[], compareTo: CustomConsent[]): void => {
     if (getRemovedCustomConsents(consents, compareTo).length) {
-      typeof window !== 'undefined' && setTimeout(window.location.reload, 500);
+      reloadWindow();
     }
   };
 
@@ -28,6 +30,10 @@ export const reloadPageOnReject = (store: Store<Record<string, unknown>>): (() =
       mayReload(purposes, mutation.payload);
 
       purposes = (state as RootState).sourcepoint.consentedCustomPurposes;
+    }
+
+    if (mutation.type === 'sourcepoint/rejectVendorPUR') {
+      reloadWindow();
     }
   });
 };

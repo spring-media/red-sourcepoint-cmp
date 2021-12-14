@@ -48,8 +48,12 @@ describe('EmbedTwitterConsent component', () => {
     expect(wrapper.element).toMatchInlineSnapshot(`
       <div>
         <div>
-          Twitter Embed Content
+          <div>
+            Twitter Embed Content
+          </div>
         </div>
+         
+        <!---->
       </div>
     `);
   });

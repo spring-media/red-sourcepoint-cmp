@@ -1,5 +1,5 @@
 <template>
-  <embed-social-networks-placeholder-pur :privacy-manager-id="privacyManagerId" :vendor-id="vendorId">
+  <embed-social-networks-placeholder-pur :vendor-id="vendorId" :switch-label="'Youtube freigeben'">
     <template #header>
       <svg width="100%" height="172" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g style="transform: translate(calc(50% - 20px), calc(50% - 20px)) scale(0.42)">

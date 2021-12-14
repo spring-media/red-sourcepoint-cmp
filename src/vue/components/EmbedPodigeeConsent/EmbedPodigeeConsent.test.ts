@@ -46,8 +46,12 @@ describe('EmbedPodigeeConsent component', () => {
     expect(wrapper.element).toMatchInlineSnapshot(`
       <div>
         <div>
-          Podigee Content
+          <div>
+            Podigee Content
+          </div>
         </div>
+         
+        <!---->
       </div>
     `);
   });

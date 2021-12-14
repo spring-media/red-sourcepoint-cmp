@@ -37,27 +37,39 @@
         von personenbezogenen Daten notwendig, da die Anbieter der eingebetteten Inhalte als Drittanbieter diese
         Einwilligung verlangen [In diesem Zusammenhang können auch Nutzungsprofile (u.a. auf Basis von Cookie-IDs)
         gebildet und angereichert werden, auch außerhalb des EWR]. Indem du den Schalter auf „an“ stellst, stimmst du
-        diesen (jederzeit widerruflich) zu. Dies umfasst auch deine Einwilligung in die Übermittlung bestimmter
-        personenbezogener Daten in Drittländer, u.a. die USA, nach Art. 49 (1) (a) DSGVO. Mehr Informationen dazu
-        findest du hier. Du kannst deine Einwilligung jederzeit über den Schalter und über Privatsphäre am Seitenende
-        widerrufen.
+        diesen (jederzeit widerruflich) zu. Dies umfasst auch deine
+        <abbr
+          title="Die betreffenden Drittländer, insb. die USA, weisen im Zweifel nicht das Datenschutzniveau auf, das Sie unter der DSGVO genießen. Das kann Nachteile wie eine erschwerte Durchsetzung von Betroffenenrechten, eine fehlende Kontrolle der Weiterverarbeitung und Übermittlung der Daten oder Zugriffe auf die Daten durch staatliche Stellen, insb. Behörden der USA, zu Kontroll- und Überwachungszwecken bedeuten, ohne dass Ihnen Rechtsbehelfe dagegen zustehen. Dies liegt nicht in der Hand von Axel Springer, sondern bedarf einer Regelung auf Gesetzgebungsebene."
+          >Einwilligung in die Übermittlung bestimmter personenbezogener Daten in Drittländer, u.a. die USA</abbr
+        >, nach Art. 49 (1) (a) DSGVO. Mehr Informationen dazu findest du
+        <a
+          class="embed-placeholder__text-link"
+          href="https://www.bild.de/corporate-site/privatsphaere/bild-de/artikel-privatsphaere-72035848.bild.html"
+          target="_blank"
+          title="Zu den Privatsphäre Einstellungen"
+          >hier</a
+        >. Du kannst deine Einwilligung jederzeit über den Schalter und über Privatsphäre am Seitenende widerrufen.
       </slot>
     </div>
-    <consent-actions v-slot="{ consentVendorPUR }">
-      <slot name="button" v-bind="{ consentVendorPUR }">
-        <input type="checkbox" @change="giveConsent($event, consentVendorPUR)" />
-      </slot>
-    </consent-actions>
+    <div class="embed-placeholder__actions">
+      <consent-actions v-slot="{ consentVendorPUR }">
+        <slot name="controls" v-bind="{ consentVendorPUR }">
+          <input-switch :label="switchLabel" @change="giveConsent($event, consentVendorPUR)" />
+        </slot>
+      </consent-actions>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import { ConsentActions } from '../ConsentActions';
+import { InputSwitch } from '../InputSwitch';
 
 type Props = {
   vendorId: string;
   purposeId: string;
+  switchLabel: string;
 };
 
 type ConsentAction = (id: string) => void;
@@ -70,7 +82,7 @@ type NonNullish = Record<string, unknown>;
 
 export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   name: 'EmbedPlaceholderPur',
-  components: { ConsentActions },
+  components: { ConsentActions, InputSwitch },
   props: {
     vendorId: {
       type: String,
@@ -79,6 +91,10 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
     purposeId: {
       type: String,
       default: '',
+    },
+    switchLabel: {
+      type: String,
+      default: 'Inhalt freigeben',
     },
   },
   methods: {
@@ -164,5 +180,12 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 .embed-placeholder__text-link {
   text-decoration: underline;
   color: #212529;
+}
+
+.embed-placeholder__actions {
+  display: flex;
+  justify-content: end;
+  border-top: 1px solid #ced4da;
+  padding-top: 10px;
 }
 </style>

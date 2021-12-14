@@ -5,7 +5,7 @@
       <embed-instagram-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
-      <embed-content-pur :show-controls="isPUR" :vendor-id="vendorId">
+      <embed-content-pur :show-controls="isPUR" :vendor-id="vendorId" :switch-label="'Instagram'">
         <embed-instagram :content="content" />
       </embed-content-pur>
     </template>

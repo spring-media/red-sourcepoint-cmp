@@ -48,8 +48,12 @@ describe('EmbedInstagramConsent component', () => {
     expect(wrapper.element).toMatchInlineSnapshot(`
       <div>
         <div>
-          Instagram Embed Content
+          <div>
+            Instagram Embed Content
+          </div>
         </div>
+         
+        <!---->
       </div>
     `);
   });

@@ -47,8 +47,12 @@ describe('EmbedConsent component', () => {
     expect(wrapper.element).toMatchInlineSnapshot(`
       <div>
         <div>
-          Embed Content
+          <div>
+            Embed Content
+          </div>
         </div>
+         
+        <!---->
       </div>
     `);
   });

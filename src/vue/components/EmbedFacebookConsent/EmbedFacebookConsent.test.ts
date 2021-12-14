@@ -48,8 +48,12 @@ describe('EmbedFacebookConsent component', () => {
     expect(wrapper.element).toMatchInlineSnapshot(`
       <div>
         <div>
-          Facebook Embed Content
+          <div>
+            Facebook Embed Content
+          </div>
         </div>
+         
+        <!---->
       </div>
     `);
   });

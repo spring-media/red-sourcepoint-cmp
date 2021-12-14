@@ -1,5 +1,5 @@
 <template>
-  <embed-social-networks-placeholder-pur :vendor-id="vendorId">
+  <embed-social-networks-placeholder-pur :vendor-id="vendorId" :switch-label="'Facebook freigeben'">
     <template #header>
       <svg width="100%" height="84" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="16" cy="16" r="16" fill="#E9ECEF" />

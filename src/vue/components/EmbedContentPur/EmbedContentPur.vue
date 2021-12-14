@@ -62,7 +62,7 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 <style>
 .embed-content__actions {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   margin-top: 14px;
 }
 </style>

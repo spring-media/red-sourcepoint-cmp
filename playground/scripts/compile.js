@@ -8,8 +8,8 @@ const { getIABStubScript } = require('../../dist/cjs/sourcepoint');
 const esmTemplate = () => {
   return `
 <div id="vue-app"></div>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-<script src="https://unpkg.com/vuex@3.1.3/dist/vuex.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<script src="https://unpkg.com/vuex@3.5.1/dist/vuex.js"></script>
 `;
 };
 

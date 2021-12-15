@@ -3,8 +3,12 @@
 exports[`EmbedSocialNetworksConsent component should render the embed in case of a consented vendor 1`] = `
 <div>
   <div>
-    Social Network Embed Content
+    <div>
+      Social Network Embed Content
+    </div>
   </div>
+   
+  <!---->
 </div>
 `;
 

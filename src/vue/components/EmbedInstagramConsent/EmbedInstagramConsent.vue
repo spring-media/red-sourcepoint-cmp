@@ -1,11 +1,11 @@
 <template>
-  <consent-wrapper :vendor-id="vendorId" :is-pur="isPUR">
+  <consent-wrapper :vendor-id="vendorId" :is-pur="isPur">
     <template #disabledContent>
-      <embed-instagram-placeholder-pur v-if="isPUR" :vendor-id="vendorId" />
+      <embed-instagram-placeholder-pur v-if="isPur" :vendor-id="vendorId" />
       <embed-instagram-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
-      <embed-content-pur :show-controls="isPUR" :vendor-id="vendorId" :switch-label="'Instagram'">
+      <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Instagram'">
         <embed-instagram :content="content" />
       </embed-content-pur>
     </template>
@@ -25,7 +25,7 @@ type Props = {
   vendorId: string;
   content: string;
   privacyManagerId: number;
-  isPUR: boolean;
+  isPur: boolean;
 };
 
 type NonNullish = Record<string, unknown>;
@@ -52,7 +52,7 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
       type: String,
       default: '',
     },
-    isPUR: {
+    isPur: {
       type: Boolean,
       default: false,
     },

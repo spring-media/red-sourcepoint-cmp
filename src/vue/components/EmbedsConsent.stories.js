@@ -68,7 +68,7 @@ const createStory = ({ cmp, vendorId, embedContent }) => ({
     },
   },
   render(h) {
-    return h(cmp, { props: { privacyManagerId: 1234, content: this.content, vendorId, isPUR: this.PUR } });
+    return h(cmp, { props: { privacyManagerId: 1234, content: this.content, vendorId, isPur: this.PUR } });
   },
 });
 

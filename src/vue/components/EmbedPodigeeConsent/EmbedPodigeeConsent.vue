@@ -1,12 +1,12 @@
 <template>
-  <consent-wrapper :vendor-id="vendorId" :is-pur="isPUR">
+  <consent-wrapper :vendor-id="vendorId" :is-pur="isPur">
     <template #disabledContent>
-      <embed-social-networks-placeholder-pur v-if="isPUR" :vendor-id="vendorId" />
+      <embed-social-networks-placeholder-pur v-if="isPur" :vendor-id="vendorId" />
       <embed-social-networks-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
       <slot name="embed">
-        <embed-content-pur :show-controls="isPUR" :vendor-id="vendorId">
+        <embed-content-pur :show-controls="isPur" :vendor-id="vendorId">
           <embed-podigee :content="content" />
         </embed-content-pur>
       </slot>
@@ -27,7 +27,7 @@ type Props = {
   vendorId: string;
   content: string;
   privacyManagerId: number;
-  isPUR: boolean;
+  isPur: boolean;
 };
 
 type NonNullish = Record<string, unknown>;
@@ -54,7 +54,7 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
       type: Number,
       required: true,
     },
-    isPUR: {
+    isPur: {
       type: Boolean,
       default: false,
     },

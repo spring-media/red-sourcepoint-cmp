@@ -42,6 +42,13 @@ const compileTemplate = (opts) => ({
             config: {
               baseEndpoint: '${parameters.baseEndpoint}',
               accountId: ${parameters.accountId},
+              propertyId: ${parameters.propertyId},
+				      consentLanguage: "de",
+              events: {
+                onMessageReceiveData(data) {
+                  window.__cmp_onMessageReceiveData = data;
+                },
+              }
             },
           };
         </script>

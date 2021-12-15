@@ -1,3 +1,12 @@
+## [0.68.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.68.0...v0.68.1) (2021-12-15)
+
+
+### Bug Fixes
+
+* **cae:** do not build the cae package anymore ([30f5776](https://github.com/spring-media/red-sourcepoint-cmp/commit/30f5776b7f9759b2b3b369ac0ec4edd13060f5b1))
+* **lint:** fix linting setup ([e2316b4](https://github.com/spring-media/red-sourcepoint-cmp/commit/e2316b4ae221c72acbc14fb7360611b7eef5ea33))
+* **vue:** revoke all updates due to integration problems in other clients ([9d8db03](https://github.com/spring-media/red-sourcepoint-cmp/commit/9d8db03d562c848b2e72c3c88bb43a04c29dd65b))
+
 # [0.68.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.67.0...v0.68.0) (2021-12-15)
 
 

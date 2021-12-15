@@ -1,3 +1,10 @@
+# [0.68.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.67.0...v0.68.0) (2021-12-15)
+
+
+### Features
+
+* **vue:** implement PUR ([5ec7b3d](https://github.com/spring-media/red-sourcepoint-cmp/commit/5ec7b3d3658e88672c644c44e778d4e7d80876f7))
+
 # [0.67.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.66.1...v0.67.0) (2021-08-17)
 
 

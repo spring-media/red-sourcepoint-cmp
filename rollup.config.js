@@ -1,4 +1,4 @@
-import { rmdirSync } from 'fs';
+import { rmSync } from 'fs';
 import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
 import postcss from 'rollup-plugin-postcss';
@@ -6,7 +6,7 @@ import babel from '@rollup/plugin-babel';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
-rmdirSync('./dist', { recursive: true });
+rmSync('./dist', { recursive: true, force: true });
 
 const typescriptPlugin = typescript();
 

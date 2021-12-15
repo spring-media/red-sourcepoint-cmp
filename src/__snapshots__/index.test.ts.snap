@@ -45,6 +45,7 @@ Array [
   "vendorHasPurpose",
   "getGrantedVendors",
   "getGrantedVendorsPUR",
+  "clearVendorsPURStorage",
   "setGrantedVendorsPUR",
   "getPurposesForVendor",
   "getVendorIdsForPurpose",

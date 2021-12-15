@@ -8,7 +8,6 @@
     "test:cae:package": "npm run test:cae:files && es-check es5 .cae/*.js",
     "test:all": "npm run build && npm run test && npm run test:cae:package",
     "build": "rollup -c",
-    "postbuild": "npm run build:cae:package",
     "build:cae:package": "node ./scripts/build-cae-package.js",
     "lint": "eslint --ext .js,.ts,.vue .",
     "playground:start": "node ./playground/scripts/serve.js",

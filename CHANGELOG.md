@@ -1,3 +1,10 @@
+## [0.68.3](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.68.2...v0.68.3) (2021-12-17)
+
+
+### Bug Fixes
+
+* revert right alignment of switch-buttons ([eef83f6](https://github.com/spring-media/red-sourcepoint-cmp/commit/eef83f619c144d5f381acfa2581854beb686a21f))
+
 ## [0.68.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.68.1...v0.68.2) (2021-12-17)
 
 

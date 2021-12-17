@@ -133,7 +133,7 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 
 .embed-placeholder__actions {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   border-top: 1px solid #ced4da;
   padding-top: 12px;
 }

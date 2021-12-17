@@ -6,7 +6,7 @@
     </template>
     <template #enabledContent>
       <slot name="embed">
-        <embed-content-pur :show-controls="isPur" :vendor-id="vendorId">
+        <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Drittanbieter sperren'">
           <embed-content :content="content" />
         </embed-content-pur>
       </slot>

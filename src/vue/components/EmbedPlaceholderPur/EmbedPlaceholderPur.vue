@@ -1,6 +1,6 @@
 <template>
   <div class="embed-placeholder__container" :data-vendor-id="vendorId">
-    <div class="embed-placeholder__header">
+    <div class="embed-placeholder__header--pur">
       <slot name="header">
         <svg width="100%" height="265" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="38" y="62" width="81" height="8" fill="#E9ECEF" />
@@ -31,7 +31,7 @@
     <div class="embed-placeholder__headline">
       <slot name="headline"> An dieser Stelle findest du Inhalte von Drittanbietern </slot>
     </div>
-    <div class="embed-placeholder__description">
+    <div class="embed-placeholder__description--pur">
       <slot name="description">
         Um eingebettete Inhalte anzuzeigen, ist deine widerrufliche Einwilligung in die Übermittlung und Verarbeitung
         von personenbezogenen Daten notwendig, da die Anbieter der eingebetteten Inhalte als Drittanbieter diese
@@ -112,80 +112,29 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 </script>
 
 <style>
-.embed-placeholder__container {
-  background: #e9ecef;
-  border-radius: 8px;
-  padding: 12px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.embed-placeholder__header {
+.embed-placeholder__header--pur {
   background: #ffffff;
   border: 1px solid #ced4da;
   box-sizing: border-box;
   border-radius: 8px;
   padding: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
 }
 
-.embed-placeholder__headline {
-  font-family: Gotham, sans-serif;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 16px;
-  line-height: 19px;
-  color: #000000;
-  margin-bottom: 6px;
-}
-
-.embed-placeholder__description {
+.embed-placeholder__description--pur {
   font-family: Gotham XNarrow, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 130%;
   color: #212529;
-  margin-bottom: 10px;
-}
-
-.embed-placeholder__button {
-  display: block;
-  padding: 9px 50px;
-  width: 100%;
-  background: #00c373;
-  border-radius: 8px;
-  border-style: none;
-  margin-bottom: 10px;
-
-  font-family: Gotham XNarrow, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 15px;
-  line-height: 18px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-
-.embed-placeholder__footer-text {
-  font-family: Gotham XNarrow, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 130%;
-  color: #212529;
-}
-
-.embed-placeholder__text-link {
-  text-decoration: underline;
-  color: #212529;
+  margin-bottom: 24px;
 }
 
 .embed-placeholder__actions {
   display: flex;
   justify-content: center;
   border-top: 1px solid #ced4da;
-  padding-top: 10px;
+  padding-top: 12px;
 }
 </style>

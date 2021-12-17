@@ -5,7 +5,7 @@
       <embed-facebook-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
-      <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Facebook'">
+      <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Facebook sperren'">
         <embed-content :content="content" />
       </embed-content-pur>
     </template>

@@ -1,3 +1,10 @@
+## [0.68.4](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.68.3...v0.68.4) (2022-01-03)
+
+
+### Bug Fixes
+
+* wording for PUR Placeholder ([8db1ee3](https://github.com/spring-media/red-sourcepoint-cmp/commit/8db1ee3829353ee4931efa26486e06a6000e89a0))
+
 ## [0.68.3](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.68.2...v0.68.3) (2021-12-17)
 
 

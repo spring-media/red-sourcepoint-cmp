@@ -48,7 +48,7 @@
           target="_blank"
           title="Zu den Privatsphäre Einstellungen"
           >hier</a
-        >. Du kannst deine Einwilligung jederzeit über den Schalter und über Privatsphäre am Seitenende widerrufen.
+        >. Du kannst deine Einwilligung jederzeit über den Schalter und über Widerruf Tracking am Seitenende widerrufen.
       </slot>
     </div>
     <div class="embed-placeholder__actions">

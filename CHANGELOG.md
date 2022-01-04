@@ -1,3 +1,16 @@
+# [0.69.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.68.4...v0.69.0) (2022-01-04)
+
+
+### Bug Fixes
+
+* delete unit test file ([7235fee](https://github.com/spring-media/red-sourcepoint-cmp/commit/7235feee64635cdce11450a5b474fbf3c930e51a))
+* fix unit test ([afc4a3b](https://github.com/spring-media/red-sourcepoint-cmp/commit/afc4a3bd9a38a49c9c27095a1e48fddb856bc0ba))
+
+
+### Features
+
+* implement privacy-manager in embed placeholder for PUR ([0b23fc2](https://github.com/spring-media/red-sourcepoint-cmp/commit/0b23fc23efdc2ddef1eda4e36ff530dfa95b02f5))
+
 ## [0.68.4](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.68.3...v0.68.4) (2022-01-03)
 
 

@@ -4,6 +4,7 @@ describe('loadPrivacyManagerModal', () => {
   it('should open a modal for given managerId', () => {
     window._sp_ = {
       loadPrivacyManagerModal: jest.fn(),
+      addEventListener: jest.fn(),
     };
 
     loadPrivacyManagerModal(1234);
@@ -18,6 +19,7 @@ describe('loadPrivacyManagerModal', () => {
       loadPrivacyManagerModal() {
         throw new Error('PM Error');
       },
+      addEventListener: jest.fn(),
     };
 
     const spy = jest.spyOn(window.console, 'error').mockImplementation();

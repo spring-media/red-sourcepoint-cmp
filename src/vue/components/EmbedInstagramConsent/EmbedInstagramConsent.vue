@@ -1,7 +1,12 @@
 <template>
   <consent-wrapper :vendor-id="vendorId" :is-pur="isPur">
     <template #disabledContent>
-      <embed-instagram-placeholder-pur v-if="isPur" :vendor-id="vendorId" />
+      <embed-instagram-placeholder-pur
+        v-if="isPur"
+        :privacy-manager-id="privacyManagerId"
+        :privacy-manager-id-deny-tracking="privacyManagerIdDenyTracking"
+        :vendor-id="vendorId"
+      />
       <embed-instagram-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
@@ -25,6 +30,7 @@ type Props = {
   vendorId: string;
   content: string;
   privacyManagerId: number;
+  privacyManagerIdDenyTracking: number;
   isPur: boolean;
 };
 
@@ -41,6 +47,10 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   },
   props: {
     privacyManagerId: {
+      type: Number,
+      required: true,
+    },
+    privacyManagerIdDenyTracking: {
       type: Number,
       required: true,
     },

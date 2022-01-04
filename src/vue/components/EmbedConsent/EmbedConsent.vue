@@ -1,15 +1,20 @@
 <template>
   <consent-wrapper :vendor-id="vendorId" :is-pur="isPur">
     <template #disabledContent>
-      <embed-placeholder-pur v-if="isPur" :vendor-id="vendorId" />
+      <embed-placeholder-pur
+        v-if="isPur"
+        :privacy-manager-id="privacyManagerId"
+        :privacy-manager-id-deny-tracking="privacyManagerIdDenyTracking"
+        :vendor-id="vendorId"
+      />
       <embed-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
-      <slot name="embed">
-        <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Drittanbieter sperren'">
+      <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Drittanbieter sperren'">
+        <slot name="embed">
           <embed-content :content="content" />
-        </embed-content-pur>
-      </slot>
+        </slot>
+      </embed-content-pur>
     </template>
   </consent-wrapper>
 </template>
@@ -26,6 +31,7 @@ type Props = {
   vendorId: string;
   content: string;
   privacyManagerId: number;
+  privacyManagerIdDenyTracking: number;
   isPur: boolean;
 };
 
@@ -44,6 +50,10 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
       required: true,
     },
     privacyManagerId: {
+      type: Number,
+      required: true,
+    },
+    privacyManagerIdDenyTracking: {
       type: Number,
       required: true,
     },

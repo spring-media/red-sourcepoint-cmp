@@ -22,10 +22,11 @@ ${chalk.yellow('Make sure your hosts file contains an entry for')} ${protocol}//
 
   const defaults = {
     accountId: cliParams.accountId || 75,
-    propertyId: cliParams.propertyId || null,
+    propertyId: cliParams.propertyId || 6804,
     baseEndpoint: cliParams.baseEndpoint || 'https://cmp2.bild.de',
     libraryURL: cliParams.libraryURL || 'https://cmp2.bild.de/wrapperMessagingWithoutDetection.js',
-    privacyManagerId: cliParams.privacyManagerId || null,
+    privacyManagerId: cliParams.privacyManagerId || 584504,
+    privacyManagerIdDenyTracking: cliParams.privacyManagerIdDenyTracking || 581337,
     host: cliParams.host || 'http://localhost:5000',
   };
 
@@ -72,6 +73,12 @@ ${chalk.yellow('Make sure your hosts file contains an entry for')} ${protocol}//
         name: 'privacyManagerId',
         message: 'Privacy Manager ID',
         initial: initials.privacyManagerId,
+      },
+      {
+        type: 'number',
+        name: 'privacyManagerIdDenyTracking',
+        message: 'Privacy Manager ID (Tracking Widerruf)',
+        initial: initials.privacyManagerIdDenyTracking,
       },
       {
         type: 'text',

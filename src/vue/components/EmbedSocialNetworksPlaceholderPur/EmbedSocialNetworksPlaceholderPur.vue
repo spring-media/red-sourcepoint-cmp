@@ -1,5 +1,10 @@
 <template>
-  <embed-placeholder-pur :vendor-id="vendorId" :switch-label="switchLabel">
+  <embed-placeholder-pur
+    :vendor-id="vendorId"
+    :privacy-manager-id="privacyManagerId"
+    :privacy-manager-id-deny-tracking="privacyManagerIdDenyTracking"
+    :switch-label="switchLabel"
+  >
     <template #header>
       <slot name="header">
         <svg width="100%" height="84" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,6 +33,8 @@ import { EmbedPlaceholderPur } from '../EmbedPlaceholderPur';
 type Props = {
   vendorId: string;
   switchLabel: string;
+  privacyManagerId: number;
+  privacyManagerIdDenyTracking: number;
 };
 
 type Data = {
@@ -47,6 +54,14 @@ export default Vue.extend<Data, NonNullish, NonNullish, Props>({
     switchLabel: {
       type: String,
       default: 'Inhalt freigeben',
+    },
+    privacyManagerId: {
+      type: Number,
+      required: true,
+    },
+    privacyManagerIdDenyTracking: {
+      type: Number,
+      required: true,
     },
   },
 });

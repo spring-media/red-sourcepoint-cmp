@@ -1,7 +1,12 @@
 <template>
   <consent-wrapper :vendor-id="vendorId" :is-pur="isPur">
     <template #disabledContent>
-      <embed-social-networks-placeholder-pur v-if="isPur" :vendor-id="vendorId" />
+      <embed-social-networks-placeholder-pur
+        v-if="isPur"
+        :vendor-id="vendorId"
+        :privacy-manager-id="privacyManagerId"
+        :privacy-manager-id-deny-tracking="privacyManagerIdDenyTracking"
+      />
       <embed-social-networks-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
@@ -27,6 +32,7 @@ type Props = {
   vendorId: string;
   content: string;
   privacyManagerId: number;
+  privacyManagerIdDenyTracking: number;
   isPur: boolean;
 };
 
@@ -51,6 +57,10 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
       default: VENDOR_ID_PODIGEE,
     },
     privacyManagerId: {
+      type: Number,
+      required: true,
+    },
+    privacyManagerIdDenyTracking: {
       type: Number,
       required: true,
     },

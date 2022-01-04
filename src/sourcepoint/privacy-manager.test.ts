@@ -8,7 +8,7 @@ describe('loadPrivacyManagerModal', () => {
 
     loadPrivacyManagerModal(1234);
 
-    expect(window._sp_.loadPrivacyManagerModal).toHaveBeenCalledWith(1234);
+    expect(window._sp_.loadPrivacyManagerModal).toHaveBeenCalledWith(1234, undefined);
 
     delete window._sp_;
   });

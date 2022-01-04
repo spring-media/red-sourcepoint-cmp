@@ -1,5 +1,10 @@
 <template>
-  <embed-social-networks-placeholder-pur :vendor-id="vendorId" :switch-label="'Youtube freigeben'">
+  <embed-social-networks-placeholder-pur
+    :vendor-id="vendorId"
+    :privacy-manager-id="privacyManagerId"
+    :privacy-manager-id-deny-tracking="privacyManagerIdDenyTracking"
+    :switch-label="'Youtube freigeben'"
+  >
     <template #header>
       <svg width="100%" height="172" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g style="transform: translate(calc(50% - 20px), calc(50% - 20px)) scale(0.42)">
@@ -22,6 +27,8 @@ import { EmbedSocialNetworksPlaceholderPur } from '../EmbedSocialNetworksPlaceho
 
 type Props = {
   vendorId: string;
+  privacyManagerId: number;
+  privacyManagerIdDenyTracking: number;
 };
 
 type NonNullish = Record<string, unknown>;
@@ -33,6 +40,14 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
     vendorId: {
       type: String,
       default: VENDOR_ID_YOUTUBE,
+    },
+    privacyManagerId: {
+      type: Number,
+      required: true,
+    },
+    privacyManagerIdDenyTracking: {
+      type: Number,
+      required: true,
     },
   },
 });

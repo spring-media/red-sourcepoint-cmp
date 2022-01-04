@@ -1,4 +1,10 @@
-import { createCallback } from './create-callback';
-import { OnPrivacyManagerActionCallback } from './typings';
+export const onPrivacyManagerAction = (callback: () => void): void => {
+  if (typeof window === 'undefined') {
+    return;
+  }
 
-export const onPrivacyManagerAction = createCallback<OnPrivacyManagerActionCallback>('onPrivacyManagerAction');
+  window._sp_queue = window._sp_queue || [];
+  window._sp_queue.push(function () {
+    window._sp_?.addEventListener('onPrivacyManagerAction', callback);
+  });
+};

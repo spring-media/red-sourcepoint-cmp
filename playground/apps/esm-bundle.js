@@ -1,13 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {
-  onPrivacyManagerAction,
-  onMessageReady,
-  onConsentReady,
-  onPMCancel,
-  onMessageChoiceSelect,
-  onMessageChoiceError,
-} from '../../dist/esm/sourcepoint-callbacks';
+import { onPrivacyManagerAction, onConsentReady } from '../../dist/esm/sourcepoint-callbacks';
 import {
   EmbedFacebookConsent,
   EmbedTwitterConsent,
@@ -26,12 +19,7 @@ import './common.css';
 import { facebook, youtube, twitter, instagram, podigee } from '../scripts/embed-contents';
 import { configureGrants, getGrantedVendors } from '../../dist/esm/vendor-mapping';
 
-onPrivacyManagerAction((...args) => console.log('onPrivacyManagerAction', ...args));
-onMessageReady((...args) => console.log('onMessageReady', ...args));
-onConsentReady((...args) => console.log('onConsentReady', ...args));
-onPMCancel((...args) => console.log('onPMCancel', ...args));
-onMessageChoiceSelect((...args) => console.log('onMessageChoiceSelect', ...args));
-onMessageChoiceError((...args) => console.log('onMessageChoiceError', ...args));
+onPrivacyManagerAction((args) => console.log('onPrivacyManagerAction', args));
 
 addEventListener((tcData) => console.log('addEventListener', tcData));
 
@@ -84,6 +72,7 @@ const PlaygroundApp = Vue.extend({
   },
   data: () => ({
     privacyManagerId: window.__playground__.parameters.privacyManagerId,
+    privacyManagerIdDenyTracking: window.__playground__.parameters.privacyManagerIdDenyTracking,
     facebook,
     twitter,
     instagram,
@@ -126,25 +115,25 @@ const PlaygroundApp = Vue.extend({
         <h2 class="pur-section">PUR</h2>
         <ul class="embed__container social-embeds__container">
             <li class="embed__item">
-                <embed-facebook-consent :content="facebook" :isPur="true"></embed-facebook-consent>
+                <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true"></embed-facebook-consent>
             </li>
             <li class="embed__item">
-                <embed-instagram-consent :content="instagram" :isPur="true"></embed-instagram-consent>
+                <embed-instagram-consent :content="instagram" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true"></embed-instagram-consent>
             </li>
             <li class="embed__item">
-                <embed-twitter-consent :content="twitter" :isPur="true"></embed-twitter-consent>
+                <embed-twitter-consent :content="twitter" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true"></embed-twitter-consent>
             </li>
             <li class="embed__item">
-                <embed-youtube-consent :content="youtube" :isPur="true"></embed-youtube-consent>
+                <embed-youtube-consent :content="youtube" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true"></embed-youtube-consent>
             </li>
             <li class="embed__item">
-                <embed-podigee-consent vendorId="5e717ad49a0b5040d57508000" :content="podigee" :isPur="true"></embed-podigee-consent>   
+                <embed-podigee-consent vendorId="5e717ad49a0b5040d57508000" :content="podigee" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true"></embed-podigee-consent>   
             </li>
             <li class="embed__item">
-                <embed-social-networks-consent :content="youtube" vendorId="5e7179e49a0b5040d5750812" :isPur="true"></embed-social-networks-consent>
+                <embed-social-networks-consent :content="youtube" vendorId="5e7179e49a0b5040d5750812" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true"></embed-social-networks-consent>
             </li>
             <li class="embed__item">
-                <embed-consent vendorId="5ed90e2947dbbd564700dfaa" :privacyManagerId="privacyManagerId" :isPur="true">
+                <embed-consent vendorId="5ed90e2947dbbd564700dfaa" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true">
                     <template #embed>
                         <iframe 
                             src="https://www.bild.de/ig/dda6ec1c-e23c-423a-9154-07154cb853e4/index/index.html" 

@@ -1,5 +1,10 @@
 <template>
-  <embed-social-networks-placeholder-pur :vendor-id="vendorId" :switch-label="'Facebook freigeben'">
+  <embed-social-networks-placeholder-pur
+    :vendor-id="vendorId"
+    :privacy-manager-id="privacyManagerId"
+    :privacy-manager-id-deny-tracking="privacyManagerIdDenyTracking"
+    :switch-label="'Facebook freigeben'"
+  >
     <template #header>
       <svg width="100%" height="84" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="16" cy="16" r="16" fill="#E9ECEF" />
@@ -26,6 +31,8 @@ import { EmbedSocialNetworksPlaceholderPur } from '../EmbedSocialNetworksPlaceho
 
 type Props = {
   vendorId: string;
+  privacyManagerId: number;
+  privacyManagerIdDenyTracking: number;
 };
 
 type NonNullish = Record<string, unknown>;
@@ -37,6 +44,14 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
     vendorId: {
       type: String,
       default: VENDOR_ID_FACEBOOK,
+    },
+    privacyManagerId: {
+      type: Number,
+      required: true,
+    },
+    privacyManagerIdDenyTracking: {
+      type: Number,
+      required: true,
     },
   },
 });

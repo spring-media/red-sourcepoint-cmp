@@ -42,13 +42,28 @@
           title="Die betreffenden Drittländer, insb. die USA, weisen im Zweifel nicht das Datenschutzniveau auf, das Sie unter der DSGVO genießen. Das kann Nachteile wie eine erschwerte Durchsetzung von Betroffenenrechten, eine fehlende Kontrolle der Weiterverarbeitung und Übermittlung der Daten oder Zugriffe auf die Daten durch staatliche Stellen, insb. Behörden der USA, zu Kontroll- und Überwachungszwecken bedeuten, ohne dass Ihnen Rechtsbehelfe dagegen zustehen. Dies liegt nicht in der Hand von Axel Springer, sondern bedarf einer Regelung auf Gesetzgebungsebene."
           >Einwilligung in die Übermittlung bestimmter personenbezogener Daten in Drittländer, u.a. die USA</abbr
         >, nach Art. 49 (1) (a) DSGVO. Mehr Informationen dazu findest du
-        <a
-          class="embed-placeholder__text-link"
-          href="https://www.bild.de/corporate-site/privatsphaere/bild-de/artikel-privatsphaere-72035848.bild.html"
-          target="_blank"
-          title="Zu den Privatsphäre Einstellungen"
-          >hier</a
-        >. Du kannst deine Einwilligung jederzeit über den Schalter und über Widerruf Tracking am Seitenende widerrufen.
+        <privacy-manager v-slot="{ loadPrivacyManagerModal }">
+          <span>
+            <a
+              class="embed-placeholder__text-link"
+              href="#"
+              rel="noopener noreferrer"
+              title="Zu den Privatsphäre Einstellungen"
+              @click.prevent="loadPrivacyManagerModal(privacyManagerId, 'vendors')"
+              >hier</a
+            >
+            . Du kannst deine Einwilligung jederzeit über den Schalter und über
+            <a
+              class="embed-placeholder__text-link"
+              href="#"
+              rel="noopener noreferrer"
+              title="Tracking widerrufen"
+              @click.prevent="loadPrivacyManagerModal(privacyManagerIdDenyTracking)"
+              >Widerruf Tracking</a
+            >
+          </span>
+        </privacy-manager>
+        am Seitenende widerrufen.
       </slot>
     </div>
     <div class="embed-placeholder__actions">
@@ -65,9 +80,12 @@
 import Vue from 'vue';
 import { ConsentActions } from '../ConsentActions';
 import { InputSwitch } from '../InputSwitch';
+import { PrivacyManager } from '../PrivacyManager';
 
 type Props = {
   vendorId: string;
+  privacyManagerId: number;
+  privacyManagerIdDenyTracking: number;
   purposeId: string;
   switchLabel: string;
 };
@@ -82,11 +100,19 @@ type NonNullish = Record<string, unknown>;
 
 export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   name: 'EmbedPlaceholderPur',
-  components: { ConsentActions, InputSwitch },
+  components: { ConsentActions, InputSwitch, PrivacyManager },
   props: {
     vendorId: {
       type: String,
       default: '',
+    },
+    privacyManagerId: {
+      type: Number,
+      required: true,
+    },
+    privacyManagerIdDenyTracking: {
+      type: Number,
+      required: true,
     },
     purposeId: {
       type: String,

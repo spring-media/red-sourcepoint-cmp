@@ -50,11 +50,14 @@ export type Config = {
 
 export type SourcepointConfigObject = {
   config?: Config;
-  loadPrivacyManagerModal(managerId: number): void;
+  loadPrivacyManagerModal(managerId: number, section?: string): void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  addEventListener(event: string, callback: (params: any) => void);
 };
 
 export declare global {
   interface Window {
     _sp_?: SourcepointConfigObject;
+    _sp_queue?: (() => void)[];
   }
 }

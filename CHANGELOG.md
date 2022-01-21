@@ -1,3 +1,10 @@
+## [0.69.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.69.0...v0.69.1) (2022-01-21)
+
+
+### Bug Fixes
+
+* update vue dependencies ([6f1aa8e](https://github.com/spring-media/red-sourcepoint-cmp/commit/6f1aa8e277b504e51a7ae2db6c8ee97f71b0758e))
+
 # [0.69.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.68.4...v0.69.0) (2022-01-04)
 
 

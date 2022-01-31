@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmbedPodigeePlaceholderPur should render without any errors 1`] = `
+<div
+  class="embed-placeholder__container"
+  data-vendor-id="abc"
+>
+  <div
+    class="embed-placeholder__header--pur"
+  >
+    <svg
+      fill="none"
+      height="172"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.81401 2.93521C6.15111 1.24064 2.6665 3.15348 2.6665 6.30985V45.6898C2.6665 48.8462 6.15111 50.759 8.81401 49.0645L39.7554 29.3745C42.2254 27.8027 42.2254 24.197 39.7554 22.6252L8.81401 2.93521Z"
+        stroke="#CED4DA"
+        stroke-width="4"
+        style="transform: translate(calc(50% - 18px), calc(50% - 18px)) scale(0.9);"
+      />
+    </svg>
+  </div>
+   
+  <div
+    class="embed-placeholder__headline"
+  >
+     An dieser Stelle findest du Inhalte von Drittanbietern 
+  </div>
+   
+  <div
+    class="embed-placeholder__description--pur"
+  >
+    
+      Um eingebettete Inhalte anzuzeigen, ist deine widerrufliche Einwilligung in die Übermittlung und Verarbeitung
+      von personenbezogenen Daten notwendig, da die Anbieter der eingebetteten Inhalte als Drittanbieter diese
+      Einwilligung verlangen [In diesem Zusammenhang können auch Nutzungsprofile (u.a. auf Basis von Cookie-IDs)
+      gebildet und angereichert werden, auch außerhalb des EWR]. Indem du den Schalter auf „an“ stellst, stimmst du
+      diesen (jederzeit widerruflich) zu. Dies umfasst auch deine
+      
+    <abbr
+      title="Die betreffenden Drittländer, insb. die USA, weisen im Zweifel nicht das Datenschutzniveau auf, das Sie unter der DSGVO genießen. Das kann Nachteile wie eine erschwerte Durchsetzung von Betroffenenrechten, eine fehlende Kontrolle der Weiterverarbeitung und Übermittlung der Daten oder Zugriffe auf die Daten durch staatliche Stellen, insb. Behörden der USA, zu Kontroll- und Überwachungszwecken bedeuten, ohne dass Ihnen Rechtsbehelfe dagegen zustehen. Dies liegt nicht in der Hand von Axel Springer, sondern bedarf einer Regelung auf Gesetzgebungsebene."
+    >
+      Einwilligung in die Übermittlung bestimmter personenbezogener Daten in Drittländer, u.a. die USA
+    </abbr>
+    , nach Art. 49 (1) (a) DSGVO. Mehr Informationen dazu findest du
+      
+    <span>
+      <a
+        class="embed-placeholder__text-link"
+        href="#"
+        rel="noopener noreferrer"
+        title="Zu den Privatsphäre Einstellungen"
+      >
+        hier
+      </a>
+      
+          . Du kannst deine Einwilligung jederzeit über den Schalter und über
+          
+      <a
+        class="embed-placeholder__text-link"
+        href="#"
+        rel="noopener noreferrer"
+        title="Tracking widerrufen"
+      >
+        Widerruf Tracking
+      </a>
+    </span>
+    
+      am Seitenende widerrufen.
+    
+  </div>
+   
+  <div
+    class="embed-placeholder__actions"
+  >
+    <div
+      class="cmp-input-switch__container"
+    >
+      <label
+        class="cmp-input-switch__label"
+        for="input-switch-0"
+      >
+        Externen Inhalt freigeben
+      </label>
+       
+      <div
+        class="cmp-input-switch"
+      >
+        <div
+          class="cmp-input-switch--hidden-accessible"
+        >
+          <input
+            id="input-switch-0"
+            role="switch"
+            type="checkbox"
+          />
+        </div>
+         
+        <span
+          class="cmp-input-switch__slider"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

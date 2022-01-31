@@ -53,7 +53,7 @@ export default Vue.extend<Data, NonNullish, NonNullish, Props>({
     },
     switchLabel: {
       type: String,
-      default: 'Inhalt freigeben',
+      default: 'Soziales Netzwerk freigeben',
     },
     privacyManagerId: {
       type: Number,

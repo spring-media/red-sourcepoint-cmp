@@ -26,7 +26,7 @@ exports[`EmbedPodigeePlaceholderPur should render without any errors 1`] = `
   <div
     class="embed-placeholder__headline"
   >
-     An dieser Stelle findest du Inhalte von Drittanbietern 
+     An dieser Stelle findest du Inhalte aus Podigee 
   </div>
    
   <div
@@ -82,7 +82,7 @@ exports[`EmbedPodigeePlaceholderPur should render without any errors 1`] = `
         class="cmp-input-switch__label"
         for="input-switch-0"
       >
-        Externen Inhalt freigeben
+        Podigee freigeben
       </label>
        
       <div

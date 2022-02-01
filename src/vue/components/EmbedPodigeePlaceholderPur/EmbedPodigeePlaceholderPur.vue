@@ -3,6 +3,7 @@
     :vendor-id="vendorId"
     :privacy-manager-id="privacyManagerId"
     :privacy-manager-id-deny-tracking="privacyManagerIdDenyTracking"
+    :switch-label="'Podigee freigeben'"
   >
     <template #header>
       <svg width="100%" height="172" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,6 +15,7 @@
         />
       </svg>
     </template>
+    <template #headline> An dieser Stelle findest du Inhalte aus Podigee </template>
   </embed-placeholder-pur>
 </template>
 

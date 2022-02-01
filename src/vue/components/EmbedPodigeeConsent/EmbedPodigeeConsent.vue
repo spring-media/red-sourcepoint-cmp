@@ -11,7 +11,7 @@
     </template>
     <template #enabledContent>
       <slot name="embed">
-        <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Externen Inhalt sperren'">
+        <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Podigee sperren'">
           <embed-podigee :content="content" />
         </embed-content-pur>
       </slot>

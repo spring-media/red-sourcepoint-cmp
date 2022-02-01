@@ -10,6 +10,11 @@
         />
       </svg>
     </template>
+    <template #headline> An dieser Stelle findest du Inhalte aus Podigee </template>
+    <template #description>
+      Um mit Inhalten aus Podigee und anderen externen Inhalten zu interagieren oder diese darzustellen, brauchen wir
+      deine Zustimmung.
+    </template>
   </embed-placeholder>
 </template>
 

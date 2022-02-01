@@ -26,17 +26,16 @@ exports[`EmbedPodigeePlaceholder should render without any errors 1`] = `
   <div
     class="embed-placeholder__headline"
   >
-    
-      An dieser Stelle findest du Inhalte von Drittanbietern
-    
+     An dieser Stelle findest du Inhalte aus Podigee 
   </div>
    
   <div
     class="embed-placeholder__description"
   >
     
-      Um mit Inhalten von Drittanbietern zu interagieren oder diese darzustellen, brauchen wir deine Zustimmung.
-    
+    Um mit Inhalten aus Podigee und anderen externen Inhalten zu interagieren oder diese darzustellen, brauchen wir
+    deine Zustimmung.
+  
   </div>
    
   <button

@@ -1,3 +1,15 @@
+# [0.70.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.69.1...v0.70.0) (2022-02-01)
+
+
+### Bug Fixes
+
+* **vue:** change legal text for podigee placeholders ([58a885b](https://github.com/spring-media/red-sourcepoint-cmp/commit/58a885b33f0dd6c284696ec81ec18fb41665d788))
+
+
+### Features
+
+* **vue:** add podigee placeholders ([7337d1c](https://github.com/spring-media/red-sourcepoint-cmp/commit/7337d1cf7ee8ea6359c94e066e1bd4115ba0514d))
+
 ## [0.69.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.69.0...v0.69.1) (2022-01-21)
 
 

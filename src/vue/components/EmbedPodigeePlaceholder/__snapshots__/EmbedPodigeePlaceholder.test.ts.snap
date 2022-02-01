@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EmbedPodigeeConsent component should render the placeholder by default 1`] = `
+exports[`EmbedPodigeePlaceholder should render without any errors 1`] = `
 <div
   class="embed-placeholder__container"
-  data-vendor-id="5e717ad49a0b5040d5750815"
+  data-vendor-id="abc"
 >
   <div
     class="embed-placeholder__header"

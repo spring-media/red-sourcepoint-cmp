@@ -1,17 +1,17 @@
 <template>
   <consent-wrapper :vendor-id="vendorId" :is-pur="isPur">
     <template #disabledContent>
-      <embed-social-networks-placeholder-pur
+      <embed-podigee-placeholder-pur
         v-if="isPur"
         :vendor-id="vendorId"
         :privacy-manager-id="privacyManagerId"
         :privacy-manager-id-deny-tracking="privacyManagerIdDenyTracking"
       />
-      <embed-social-networks-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
+      <embed-podigee-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
       <slot name="embed">
-        <embed-content-pur :show-controls="isPur" :vendor-id="vendorId">
+        <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Podigee sperren'">
           <embed-podigee :content="content" />
         </embed-content-pur>
       </slot>
@@ -22,8 +22,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import { ConsentWrapper } from '../ConsentWrapper';
-import { EmbedSocialNetworksPlaceholder } from '../EmbedSocialNetworksPlaceholder';
-import { EmbedSocialNetworksPlaceholderPur } from '../EmbedSocialNetworksPlaceholderPur';
+import { EmbedPodigeePlaceholder } from '../EmbedPodigeePlaceholder';
+import { EmbedPodigeePlaceholderPur } from '../EmbedPodigeePlaceholderPur';
 import { EmbedPodigee } from '../EmbedPodigee';
 import { VENDOR_ID_PODIGEE } from '../../../vendor-mapping';
 import { EmbedContentPur } from '../EmbedContentPur';
@@ -41,10 +41,10 @@ type NonNullish = Record<string, unknown>;
 export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   name: 'EmbedPodigeeConsent',
   components: {
-    EmbedSocialNetworksPlaceholder,
+    EmbedPodigeePlaceholder,
     ConsentWrapper,
     EmbedPodigee,
-    EmbedSocialNetworksPlaceholderPur,
+    EmbedPodigeePlaceholderPur,
     EmbedContentPur,
   },
   props: {

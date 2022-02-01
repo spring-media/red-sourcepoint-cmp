@@ -5,6 +5,7 @@
   * [Instagram](EmbedInstagramPlaceholder#placeholder-component-for-instagram-embeds)
   * [Twitter](EmbedTwitterPlaceholder#placeholder-component-for-twitter-embeds)
   * [Youtube](EmbedYoutubePlaceholder#placeholder-component-for-youtube-embeds)
+  * [Podigee](EmbedPodigeePlaceholder#placeholder-component-for-podigee-embeds)
   * [Generic](EmbedPlaceholder#placeholder-component-for-generic-embeds)
 * Embeds
   * [Facebook](EmbedFacebook#component-for-facebook-embeds)

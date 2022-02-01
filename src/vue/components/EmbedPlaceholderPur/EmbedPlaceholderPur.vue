@@ -120,7 +120,7 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
     },
     switchLabel: {
       type: String,
-      default: 'Inhalt freigeben',
+      default: 'Externen Inhalt freigeben',
     },
   },
   methods: {

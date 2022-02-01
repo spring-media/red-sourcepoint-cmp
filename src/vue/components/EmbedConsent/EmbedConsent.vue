@@ -10,7 +10,7 @@
       <embed-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
     </template>
     <template #enabledContent>
-      <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Drittanbieter sperren'">
+      <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Externen Inhalt sperren'">
         <slot name="embed">
           <embed-content :content="content" />
         </slot>

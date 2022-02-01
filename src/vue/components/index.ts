@@ -14,6 +14,8 @@ export * from './EmbedPlaceholder';
 export * from './EmbedPlaceholderPur';
 export * from './EmbedPodigee';
 export * from './EmbedPodigeeConsent';
+export * from './EmbedPodigeePlaceholder';
+export * from './EmbedPodigeePlaceholderPur';
 export * from './EmbedSocialNetworksConsent';
 export * from './EmbedSocialNetworksPlaceholder';
 export * from './EmbedSocialNetworksPlaceholderPur';

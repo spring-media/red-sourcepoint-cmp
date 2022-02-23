@@ -7,7 +7,13 @@
   >
     <template #header>
       <slot name="header">
-        <svg width="102" height="80" viewBox="0 0 102 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="102"
+          height="80"
+          viewBox="0 0 102 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <g opacity="0.3">
             <path
               d="M65.9658 42.7696C68.8825 39.1697 73.3392 36.8686 78.3333 36.8686C83.3274 36.8686 87.7841 39.1697 90.7008 42.7696C89.9041 43.8122 88.9786 44.751 87.948 45.5624C85.7549 42.6446 82.2645 40.7575 78.3333 40.7575C74.4021 40.7575 70.9117 42.6446 68.7186 45.5624C67.688 44.751 66.7625 43.8122 65.9658 42.7696Z"
@@ -42,7 +48,9 @@
       </slot>
     </template>
     <template #headline>
-      <slot name="headline"> An dieser Stelle findest du Inhalte aus sozialen Netzwerken </slot>
+      <slot name="headline">
+        An dieser Stelle findest du Inhalte aus sozialen Netzwerken
+      </slot>
     </template>
     <template #controls>
       <slot name="controls" />

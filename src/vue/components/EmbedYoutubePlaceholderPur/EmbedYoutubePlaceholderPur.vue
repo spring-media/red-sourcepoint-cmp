@@ -6,7 +6,13 @@
     :switch-label="'Youtube freigeben'"
   >
     <template #header>
-      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        width="80"
+        height="80"
+        viewBox="0 0 80 80"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
@@ -29,10 +35,12 @@
             fill="white"
           />
         </mask>
-        <g mask="url(#mask0_382_22532)"></g>
+        <g mask="url(#mask0_382_22532)" />
       </svg>
     </template>
-    <template #headline> An dieser Stelle findest du Inhalte aus YouTube </template>
+    <template #headline>
+      An dieser Stelle findest du Inhalte aus YouTube
+    </template>
   </embed-social-networks-placeholder-pur>
 </template>
 

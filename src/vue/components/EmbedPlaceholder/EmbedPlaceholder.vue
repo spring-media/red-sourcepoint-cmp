@@ -1,8 +1,17 @@
 <template>
-  <div class="embed-placeholder__container" :data-vendor-id="vendorId">
+  <div
+    class="embed-placeholder__container"
+    :data-vendor-id="vendorId"
+  >
     <div class="embed-placeholder__header">
       <slot name="header">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="80"
+          height="80"
+          viewBox="0 0 80 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             opacity="0.4"
             d="M46.1772 43.5439L64.8503 62.217C67.8858 58.824 70.2367 54.8056 71.6858 50.3789L46.1772 43.5439Z"
@@ -21,7 +30,9 @@
       </slot>
     </div>
     <div class="embed-placeholder__headline">
-      <slot name="headline"> An dieser Stelle findest du Inhalte von Drittanbietern </slot>
+      <slot name="headline">
+        An dieser Stelle findest du Inhalte von Drittanbietern
+      </slot>
     </div>
     <div class="embed-placeholder__description">
       <slot name="description">
@@ -29,9 +40,17 @@
       </slot>
     </div>
     <consent-actions v-slot="{ consentVendor, consentPurpose }">
-      <slot name="button" v-bind="{ consentVendor, consentPurpose }">
-        <button class="embed-placeholder__button" @click.prevent="giveConsent(consentVendor, consentPurpose)">
-          <slot name="buttonLabel"> externen Inhalt aktivieren </slot>
+      <slot
+        name="button"
+        v-bind="{ consentVendor, consentPurpose }"
+      >
+        <button
+          class="embed-placeholder__button"
+          @click.prevent="giveConsent(consentVendor, consentPurpose)"
+        >
+          <slot name="buttonLabel">
+            externen Inhalt aktivieren
+          </slot>
         </button>
       </slot>
     </consent-actions>
@@ -47,8 +66,7 @@
             rel="noopener noreferrer"
             target="_blank"
             @click.prevent="loadPrivacyManagerModal(privacyManagerId)"
-            >hier</a
-          >.
+          >hier</a>.
         </slot>
       </div>
     </privacy-manager>
@@ -110,11 +128,9 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   background: #e9ecef;
   border-radius: 8px;
   padding: 12px;
-  max-width: 500px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  aspect-ratio: 1;
 }
 
 .embed-placeholder__header {
@@ -183,5 +199,11 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 .embed-placeholder__text-link {
   text-decoration: underline;
   color: #212529;
+}
+
+@media (min-width: 0) and (max-width: 600px) {
+  .embed-placeholder__header {
+    display: none;
+  }
 }
 </style>

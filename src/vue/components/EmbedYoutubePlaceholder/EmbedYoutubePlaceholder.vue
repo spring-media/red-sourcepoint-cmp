@@ -1,7 +1,16 @@
 <template>
-  <embed-social-networks-placeholder :privacy-manager-id="privacyManagerId" :vendor-id="vendorId">
+  <embed-social-networks-placeholder
+    :privacy-manager-id="privacyManagerId"
+    :vendor-id="vendorId"
+  >
     <template #header>
-      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        width="80"
+        height="80"
+        viewBox="0 0 80 80"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
@@ -24,10 +33,12 @@
             fill="white"
           />
         </mask>
-        <g mask="url(#mask0_382_22532)"></g>
+        <g mask="url(#mask0_382_22532)" />
       </svg>
     </template>
-    <template #headline> An dieser Stelle findest du Inhalte aus YouTube </template>
+    <template #headline>
+      An dieser Stelle findest du Inhalte aus YouTube
+    </template>
     <template #description>
       Um mit Inhalten aus YouTube und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
       deine Zustimmung.

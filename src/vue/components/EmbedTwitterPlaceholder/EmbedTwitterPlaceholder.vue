@@ -1,14 +1,25 @@
 <template>
-  <embed-social-networks-placeholder :privacy-manager-id="privacyManagerId" :vendor-id="vendorId">
+  <embed-social-networks-placeholder
+    :privacy-manager-id="privacyManagerId"
+    :vendor-id="vendorId"
+  >
     <template #header>
-      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        width="80"
+        height="80"
+        viewBox="0 0 80 80"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path
           d="M73.3333 19.7418C70.8861 20.8391 68.2444 21.5641 65.4833 21.8891C68.3111 20.1974 70.4694 17.5141 71.5 14.3196C68.8583 15.8807 65.925 17.0335 62.8139 17.6391C60.3139 14.9863 56.7611 13.3335 52.8305 13.3335C45.2777 13.3335 39.1583 19.4529 39.1583 27.0002C39.1583 28.0724 39.2777 29.1141 39.5111 30.114C28.1444 29.5391 18.0694 24.1002 11.3277 15.8196C10.1555 17.8391 9.47774 20.1918 9.47774 22.6946C9.47774 27.4363 11.8861 31.6252 15.5583 34.0752C13.3166 34.0141 11.2111 33.3835 9.36385 32.3696C9.36385 32.4252 9.36385 32.489 9.36385 32.5418C9.36385 39.1696 14.075 44.7002 20.3361 45.9502C19.1888 46.2613 17.9777 46.4363 16.7305 46.4363C15.8444 46.4363 14.9972 46.3418 14.1527 46.1863C15.8944 51.6113 20.9444 55.5724 26.925 55.6863C22.2361 59.3585 16.35 61.5446 9.93329 61.5446C8.82774 61.5446 7.74718 61.4807 6.66663 61.3502C12.7333 65.2446 19.9194 67.4974 27.6416 67.4974C52.7944 67.4974 66.5527 46.6529 66.5527 28.5863C66.5527 27.9807 66.5416 27.3946 66.5111 26.8085C69.1805 24.8974 71.5 22.4891 73.3333 19.7418Z"
           fill="#CED4DA"
         />
       </svg>
     </template>
-    <template #headline> An dieser Stelle findest du Inhalte aus Twitter </template>
+    <template #headline>
+      An dieser Stelle findest du Inhalte aus Twitter
+    </template>
     <template #description>
       Um mit Inhalten aus Twitter und anderen sozialen Netzwerken zu interagieren oder diese darzustellen, brauchen wir
       deine Zustimmung.

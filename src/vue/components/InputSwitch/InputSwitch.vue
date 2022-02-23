@@ -1,9 +1,18 @@
 <template>
   <div class="cmp-input-switch__container">
-    <label class="cmp-input-switch__label" :for="id">{{ label }}</label>
+    <label
+      class="cmp-input-switch__label"
+      :for="id"
+    >{{ label }}</label>
     <div class="cmp-input-switch">
       <div class="cmp-input-switch--hidden-accessible">
-        <input type="checkbox" ref="checkbox" :id="id" role="switch" @change="$emit('change', $event)" />
+        <input
+          type="checkbox"
+          ref="checkbox"
+          :id="id"
+          role="switch"
+          @change="$emit('change', $event)"
+        >
       </div>
       <span
         class="cmp-input-switch__slider"

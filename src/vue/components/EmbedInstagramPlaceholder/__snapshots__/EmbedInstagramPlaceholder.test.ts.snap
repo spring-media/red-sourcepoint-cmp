@@ -35,7 +35,9 @@ exports[`EmbedInstagramPlaceholder should render without any errors 1`] = `
   <div
     class="embed-placeholder__headline"
   >
-     An dieser Stelle findest du Inhalte aus Instagram 
+    
+    An dieser Stelle findest du Inhalte aus Instagram
+  
   </div>
    
   <div
@@ -50,7 +52,9 @@ exports[`EmbedInstagramPlaceholder should render without any errors 1`] = `
   <button
     class="embed-placeholder__button"
   >
-     soziale Netzwerke aktivieren 
+    
+    soziale Netzwerke aktivieren
+  
   </button>
    
   <div

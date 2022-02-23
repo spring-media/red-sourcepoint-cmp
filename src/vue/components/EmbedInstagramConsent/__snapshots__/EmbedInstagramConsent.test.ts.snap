@@ -35,7 +35,9 @@ exports[`EmbedInstagramConsent component should render the placeholder by defaul
   <div
     class="embed-placeholder__headline"
   >
-     An dieser Stelle findest du Inhalte aus Instagram 
+    
+    An dieser Stelle findest du Inhalte aus Instagram
+  
   </div>
    
   <div
@@ -50,7 +52,9 @@ exports[`EmbedInstagramConsent component should render the placeholder by defaul
   <button
     class="embed-placeholder__button"
   >
-     soziale Netzwerke aktivieren 
+    
+    soziale Netzwerke aktivieren
+  
   </button>
    
   <div

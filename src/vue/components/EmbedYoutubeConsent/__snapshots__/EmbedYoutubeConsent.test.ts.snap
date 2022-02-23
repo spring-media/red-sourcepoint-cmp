@@ -48,7 +48,9 @@ exports[`EmbedYoutubeConsent component should render the placeholder by default 
   <div
     class="embed-placeholder__headline"
   >
-     An dieser Stelle findest du Inhalte aus YouTube 
+    
+    An dieser Stelle findest du Inhalte aus YouTube
+  
   </div>
    
   <div
@@ -63,7 +65,9 @@ exports[`EmbedYoutubeConsent component should render the placeholder by default 
   <button
     class="embed-placeholder__button"
   >
-     soziale Netzwerke aktivieren 
+    
+    soziale Netzwerke aktivieren
+  
   </button>
    
   <div

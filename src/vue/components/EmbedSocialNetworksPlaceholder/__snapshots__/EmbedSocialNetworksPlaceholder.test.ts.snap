@@ -59,7 +59,9 @@ exports[`EmbedSocialNetworksPlaceholder should render without any errors 1`] = `
   <div
     class="embed-placeholder__headline"
   >
-     An dieser Stelle findest du Inhalte aus sozialen Netzwerken 
+    
+      An dieser Stelle findest du Inhalte aus sozialen Netzwerken
+    
   </div>
    
   <div
@@ -73,7 +75,9 @@ exports[`EmbedSocialNetworksPlaceholder should render without any errors 1`] = `
   <button
     class="embed-placeholder__button"
   >
-     soziale Netzwerke aktivieren 
+    
+    soziale Netzwerke aktivieren
+  
   </button>
    
   <div

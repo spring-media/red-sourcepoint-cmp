@@ -26,7 +26,9 @@ exports[`EmbedPodigeeConsent component should render the placeholder by default 
   <div
     class="embed-placeholder__headline"
   >
-     An dieser Stelle findest du Inhalte aus Podigee 
+    
+    An dieser Stelle findest du Inhalte aus Podigee
+  
   </div>
    
   <div
@@ -41,7 +43,9 @@ exports[`EmbedPodigeeConsent component should render the placeholder by default 
   <button
     class="embed-placeholder__button"
   >
-     externen Inhalt aktivieren 
+    
+          externen Inhalt aktivieren
+        
   </button>
    
   <div

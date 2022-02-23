@@ -37,7 +37,9 @@ exports[`EmbedPlaceholder should render without any errors 1`] = `
   <div
     class="embed-placeholder__headline"
   >
-     An dieser Stelle findest du Inhalte von Drittanbietern 
+    
+      An dieser Stelle findest du Inhalte von Drittanbietern
+    
   </div>
    
   <div
@@ -51,7 +53,9 @@ exports[`EmbedPlaceholder should render without any errors 1`] = `
   <button
     class="embed-placeholder__button"
   >
-     externen Inhalt aktivieren 
+    
+          externen Inhalt aktivieren
+        
   </button>
    
   <div

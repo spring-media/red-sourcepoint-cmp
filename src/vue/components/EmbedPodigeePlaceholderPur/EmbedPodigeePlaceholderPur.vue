@@ -6,10 +6,9 @@
     :switch-label="'Podigee freigeben'"
   >
     <template #header>
-      <svg width="100%" height="172" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
-          style="transform: translate(calc(50% - 18px), calc(50% - 18px)) scale(0.9)"
-          d="M8.81401 2.93521C6.15111 1.24064 2.6665 3.15348 2.6665 6.30985V45.6898C2.6665 48.8462 6.15111 50.759 8.81401 49.0645L39.7554 29.3745C42.2254 27.8027 42.2254 24.197 39.7554 22.6252L8.81401 2.93521Z"
+          d="M30.814 16.9352C28.1511 15.2406 24.6665 17.1535 24.6665 20.3099V59.6898C24.6665 62.8462 28.1511 64.759 30.814 63.0645L61.7554 43.3745C64.2254 41.8027 64.2254 38.197 61.7554 36.6252L30.814 16.9352Z"
           stroke="#CED4DA"
           stroke-width="4"
         />

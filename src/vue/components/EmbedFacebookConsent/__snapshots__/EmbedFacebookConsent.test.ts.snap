@@ -10,58 +10,14 @@ exports[`EmbedFacebookConsent component should render the placeholder by default
   >
     <svg
       fill="none"
-      height="84"
-      width="100%"
+      height="80"
+      viewBox="0 0 80 80"
+      width="80"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="16"
-        cy="16"
-        fill="#E9ECEF"
-        r="16"
-      />
-       
-      <rect
-        fill="#E9ECEF"
-        height="10"
-        width="60"
-        x="40"
-        y="7"
-      />
-       
-      <rect
-        fill="#E9ECEF"
-        height="6"
-        width="40"
-        x="40"
-        y="19"
-      />
-       
-      <rect
-        fill="#E9ECEF"
-        height="8"
-        width="100%"
-        y="44"
-      />
-       
-      <rect
-        fill="#E9ECEF"
-        height="8"
-        width="100%"
-        y="60"
-      />
-       
-      <rect
-        fill="#E9ECEF"
-        height="8"
-        width="75%"
-        y="76"
-      />
-       
       <path
-        d="M20 10.0611C20 4.50451 15.5229 0 10 0C4.47715 0 0 4.50451 0 10.0611C0 15.0828 3.65684 19.2452 8.4375 20V12.9694H5.89844V10.0611H8.4375V7.84452C8.4375 5.32296 9.93047 3.93012 12.2146 3.93012C13.3088 3.93012 14.4531 4.12663 14.4531 4.12663V6.60261H13.1922C11.95 6.60261 11.5625 7.37822 11.5625 8.17387V10.0611H14.3359L13.8926 12.9694H11.5625V20C16.3432 19.2452 20 15.0828 20 10.0611Z"
-        fill="#1877F2"
-        style="transform: translateX(calc(100% - 20px));"
+        d="M73.3334 40.2035C73.3334 21.6815 58.4095 6.6665 40 6.6665C21.5905 6.6665 6.66669 21.6815 6.66669 40.2035C6.66669 56.9426 18.8561 70.8172 34.7917 73.3332V49.8979H26.3281V40.2035H34.7917V32.8149C34.7917 24.4097 39.7683 19.7669 47.3822 19.7669C51.0293 19.7669 54.8438 20.4219 54.8438 20.4219V28.6752H50.6406C46.5 28.6752 45.2084 31.2606 45.2084 33.9127V40.2035H54.4531L52.9753 49.8979H45.2084V73.3332C61.1439 70.8172 73.3334 56.9426 73.3334 40.2035Z"
+        fill="#CED4DA"
       />
     </svg>
   </div>
@@ -69,9 +25,7 @@ exports[`EmbedFacebookConsent component should render the placeholder by default
   <div
     class="embed-placeholder__headline"
   >
-    
-    An dieser Stelle findest du Inhalte aus Facebook
-  
+     An dieser Stelle findest du Inhalte aus Facebook 
   </div>
    
   <div
@@ -86,9 +40,7 @@ exports[`EmbedFacebookConsent component should render the placeholder by default
   <button
     class="embed-placeholder__button"
   >
-    
-    soziale Netzwerke aktivieren
-  
+     soziale Netzwerke aktivieren 
   </button>
    
   <div

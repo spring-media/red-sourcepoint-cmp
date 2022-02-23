@@ -139,12 +139,17 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 
 <style>
 .embed-placeholder__header--pur {
+  position: relative;
   background: #ffffff;
   border: 1px solid #ced4da;
   box-sizing: border-box;
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 24px;
+
+  display: flex;
+  justify-content: center;
+  flex: 1;
 }
 
 .embed-placeholder__description--pur {

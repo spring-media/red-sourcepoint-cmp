@@ -1,3 +1,10 @@
+# [0.71.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.70.0...v0.71.0) (2022-02-24)
+
+
+### Features
+
+* **vue:** refactor placeholders for stage support ([84f4793](https://github.com/spring-media/red-sourcepoint-cmp/commit/84f4793602b78ca2e5c67cd13771172c27aeb978))
+
 # [0.70.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.69.1...v0.70.0) (2022-02-01)
 
 

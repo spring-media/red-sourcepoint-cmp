@@ -159,6 +159,10 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   flex: 1;
 }
 
+.a-teaser > .embed-placeholder__header--pur {
+  display: none;
+}
+
 .embed-placeholder__description--pur {
   font-family: Gotham XNarrow, sans-serif;
   font-style: normal;
@@ -175,12 +179,6 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   border-top: 1px solid #ced4da;
   padding-top: 12px;
   margin-top: auto;
-}
-
-@media (min-width: 0) and (max-width: 1023.99px) {
-  .a-teaser > .embed-placeholder__header--pur {
-    display: none;
-  }
 }
 
 @media (min-width: 0) and (max-width: 600px) {

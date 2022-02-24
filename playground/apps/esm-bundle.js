@@ -112,7 +112,7 @@ const PlaygroundApp = Vue.extend({
                 </embed-consent>
             </li>
         </ul>
-        <h2 class="pur-section">PUR</h2>
+        <h2 class="section">PUR</h2>
         <ul class="embed__container social-embeds__container">
             <li class="embed__item">
                 <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true"></embed-facebook-consent>
@@ -143,6 +143,28 @@ const PlaygroundApp = Vue.extend({
                 </embed-consent>
             </li>
         </ul>
+        <h2 class="section">LAYOUT SECTION</h2>
+        <div class="embed__container social-embeds__container layout-1">
+            <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" teaserFormat="quad"></embed-facebook-consent>
+            <embed-instagram-consent :content="instagram" :privacyManagerId="privacyManagerId" teaserFormat="bc"></embed-instagram-consent>
+        </div>
+        <div class="embed__container social-embeds__container layout-2">
+            <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" teaserFormat="a-teaser"></embed-facebook-consent>
+        </div>
+        <div class="embed__container social-embeds__container">
+            <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" teaserFormat="super-a"></embed-facebook-consent>
+        </div>
+        <h2 class="section">LAYOUT SECTION PUR</h2>
+        <div class="embed__container social-embeds__container layout-1">
+            <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true" teaserFormat="quad"></embed-facebook-consent>
+            <embed-instagram-consent :content="instagram" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true" teaserFormat="bc"></embed-instagram-consent>
+        </div>
+        <div class="embed__container social-embeds__container layout-2">
+            <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true" teaserFormat="a-teaser"></embed-facebook-consent>
+        </div>
+        <div class="embed__container social-embeds__container">
+            <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true" teaserFormat="super-a"></embed-facebook-consent>
+        </div>
     </div>
   `,
   methods: {

@@ -131,6 +131,19 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+}
+
+.quad.embed-placeholder__container {
+  aspect-ratio: 1;
+}
+
+.a-teaser.embed-placeholder__container {
+  aspect-ratio: 16/9;
+}
+
+.bc.embed-placeholder__container {
+  aspect-ratio: 20/41;
 }
 
 .embed-placeholder__header {

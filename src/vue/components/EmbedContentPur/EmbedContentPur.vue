@@ -1,9 +1,16 @@
 <template>
   <div>
     <slot />
-    <div class="embed-content__actions" v-if="showControls">
+    <div
+      class="embed-content__actions"
+      v-if="showControls"
+    >
       <consent-actions v-slot="{ rejectVendorPUR }">
-        <input-switch :label="switchLabel" @change="rejectConsent($event, rejectVendorPUR)" :checked="true" />
+        <input-switch
+          :label="switchLabel"
+          @change="rejectConsent($event, rejectVendorPUR)"
+          :checked="true"
+        />
       </consent-actions>
     </div>
   </div>

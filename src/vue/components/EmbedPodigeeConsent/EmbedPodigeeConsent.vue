@@ -1,17 +1,30 @@
 <template>
-  <consent-wrapper :vendor-id="vendorId" :is-pur="isPur">
+  <consent-wrapper
+    :vendor-id="vendorId"
+    :is-pur="isPur"
+  >
     <template #disabledContent>
       <embed-podigee-placeholder-pur
         v-if="isPur"
         :vendor-id="vendorId"
         :privacy-manager-id="privacyManagerId"
         :privacy-manager-id-deny-tracking="privacyManagerIdDenyTracking"
+        :class="teaserFormat"
       />
-      <embed-podigee-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
+      <embed-podigee-placeholder
+        v-else
+        :privacy-manager-id="privacyManagerId"
+        :vendor-id="vendorId"
+        :class="teaserFormat"
+      />
     </template>
     <template #enabledContent>
       <slot name="embed">
-        <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Podigee sperren'">
+        <embed-content-pur
+          :show-controls="isPur"
+          :vendor-id="vendorId"
+          :switch-label="'Podigee sperren'"
+        >
           <embed-podigee :content="content" />
         </embed-content-pur>
       </slot>
@@ -31,6 +44,7 @@ import { EmbedContentPur } from '../EmbedContentPur';
 type Props = {
   vendorId: string;
   content: string;
+  teaserFormat: string;
   privacyManagerId: number;
   privacyManagerIdDenyTracking: number;
   isPur: boolean;
@@ -49,6 +63,10 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
   },
   props: {
     content: {
+      type: String,
+      default: '',
+    },
+    teaserFormat: {
       type: String,
       default: '',
     },

@@ -1,16 +1,29 @@
 <template>
-  <consent-wrapper :vendor-id="vendorId" :is-pur="isPur">
+  <consent-wrapper
+    :vendor-id="vendorId"
+    :is-pur="isPur"
+  >
     <template #disabledContent>
       <embed-instagram-placeholder-pur
         v-if="isPur"
         :privacy-manager-id="privacyManagerId"
         :privacy-manager-id-deny-tracking="privacyManagerIdDenyTracking"
         :vendor-id="vendorId"
+        :class="teaserFormat"
       />
-      <embed-instagram-placeholder v-else :privacy-manager-id="privacyManagerId" :vendor-id="vendorId" />
+      <embed-instagram-placeholder
+        v-else
+        :privacy-manager-id="privacyManagerId"
+        :vendor-id="vendorId"
+        :class="teaserFormat"
+      />
     </template>
     <template #enabledContent>
-      <embed-content-pur :show-controls="isPur" :vendor-id="vendorId" :switch-label="'Instagram sperren'">
+      <embed-content-pur
+        :show-controls="isPur"
+        :vendor-id="vendorId"
+        :switch-label="'Instagram sperren'"
+      >
         <embed-instagram :content="content" />
       </embed-content-pur>
     </template>
@@ -29,6 +42,7 @@ import { EmbedContentPur } from '../EmbedContentPur';
 type Props = {
   vendorId: string;
   content: string;
+  teaserFormat: string;
   privacyManagerId: number;
   privacyManagerIdDenyTracking: number;
   isPur: boolean;
@@ -59,6 +73,10 @@ export default Vue.extend<NonNullish, NonNullish, NonNullish, Props>({
       default: VENDOR_ID_INSTAGRAM,
     },
     content: {
+      type: String,
+      default: '',
+    },
+    teaserFormat: {
       type: String,
       default: '',
     },

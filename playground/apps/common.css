@@ -4,7 +4,6 @@
   align-items: center;
   list-style-type: none;
   max-width: 992px;
-
   padding: 0;
   margin: auto;
 }
@@ -65,7 +64,6 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: 'slot1 slot1 slot2';
   grid-gap: 16px;
-
   margin-bottom: 20px;
 }
 

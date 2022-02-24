@@ -1,17 +1,8 @@
 <template>
-  <div
-    class="embed-placeholder__container"
-    :data-vendor-id="vendorId"
-  >
+  <div class="embed-placeholder__container" :data-vendor-id="vendorId">
     <div class="embed-placeholder__header--pur">
       <slot name="header">
-        <svg
-          width="80"
-          height="80"
-          viewBox="0 0 80 80"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             opacity="0.4"
             d="M46.1772 43.5439L64.8503 62.217C67.8858 58.824 70.2367 54.8056 71.6858 50.3789L46.1772 43.5439Z"
@@ -30,9 +21,7 @@
       </slot>
     </div>
     <div class="embed-placeholder__headline">
-      <slot name="headline">
-        An dieser Stelle findest du Inhalte von Drittanbietern
-      </slot>
+      <slot name="headline"> An dieser Stelle findest du Inhalte von Drittanbietern </slot>
     </div>
     <div class="embed-placeholder__description--pur">
       <slot name="description">
@@ -43,7 +32,8 @@
         diesen (jederzeit widerruflich) zu. Dies umfasst auch deine
         <abbr
           title="Die betreffenden Drittländer, insb. die USA, weisen im Zweifel nicht das Datenschutzniveau auf, das Sie unter der DSGVO genießen. Das kann Nachteile wie eine erschwerte Durchsetzung von Betroffenenrechten, eine fehlende Kontrolle der Weiterverarbeitung und Übermittlung der Daten oder Zugriffe auf die Daten durch staatliche Stellen, insb. Behörden der USA, zu Kontroll- und Überwachungszwecken bedeuten, ohne dass Ihnen Rechtsbehelfe dagegen zustehen. Dies liegt nicht in der Hand von Axel Springer, sondern bedarf einer Regelung auf Gesetzgebungsebene."
-        >Einwilligung in die Übermittlung bestimmter personenbezogener Daten in Drittländer, u.a. die USA</abbr>, nach Art. 49 (1) (a) DSGVO. Mehr Informationen dazu findest du
+          >Einwilligung in die Übermittlung bestimmter personenbezogener Daten in Drittländer, u.a. die USA</abbr
+        >, nach Art. 49 (1) (a) DSGVO. Mehr Informationen dazu findest du
         <privacy-manager v-slot="{ loadPrivacyManagerModal }">
           <span>
             <a
@@ -52,7 +42,8 @@
               rel="noopener noreferrer"
               title="Zu den Privatsphäre Einstellungen"
               @click.prevent="loadPrivacyManagerModal(privacyManagerId, 'vendors')"
-            >hier</a>
+              >hier</a
+            >
             . Du kannst deine Einwilligung jederzeit über den Schalter und über
             <a
               class="embed-placeholder__text-link"
@@ -60,7 +51,8 @@
               rel="noopener noreferrer"
               title="Tracking widerrufen"
               @click.prevent="loadPrivacyManagerModal(privacyManagerIdDenyTracking)"
-            >Widerruf Tracking</a>
+              >Widerruf Tracking</a
+            >
           </span>
         </privacy-manager>
         am Seitenende widerrufen.
@@ -68,14 +60,8 @@
     </div>
     <div class="embed-placeholder__actions">
       <consent-actions v-slot="{ consentVendorPUR }">
-        <slot
-          name="controls"
-          v-bind="{ consentVendorPUR }"
-        >
-          <input-switch
-            :label="switchLabel"
-            @change="giveConsent($event, consentVendorPUR)"
-          />
+        <slot name="controls" v-bind="{ consentVendorPUR }">
+          <input-switch :label="switchLabel" @change="giveConsent($event, consentVendorPUR)" />
         </slot>
       </consent-actions>
     </div>
@@ -159,8 +145,9 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   flex: 1;
 }
 
-.a-teaser > .embed-placeholder__header--pur {
-  display: none;
+.a-teaser > .embed-placeholder__header--pur svg {
+  width: 48px;
+  height: 48px;
 }
 
 .embed-placeholder__description--pur {
@@ -170,7 +157,7 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   font-size: 16px;
   line-height: 130%;
   color: #212529;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .embed-placeholder__actions {
@@ -179,6 +166,12 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   border-top: 1px solid #ced4da;
   padding-top: 12px;
   margin-top: auto;
+}
+
+@media (min-width: 0) and (max-width: 1023.99px) {
+  .a-teaser > .embed-placeholder__header--pur {
+    display: none;
+  }
 }
 
 @media (min-width: 0) and (max-width: 600px) {

@@ -1,3 +1,10 @@
+## [0.71.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.0...v0.71.1) (2022-04-19)
+
+
+### Bug Fixes
+
+* **placeholder:** add css definition for double-a-teaser ([2447519](https://github.com/spring-media/red-sourcepoint-cmp/commit/2447519c9e5ee2bbf6d06193673942988c60ad76))
+
 # [0.71.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.70.0...v0.71.0) (2022-02-24)
 
 

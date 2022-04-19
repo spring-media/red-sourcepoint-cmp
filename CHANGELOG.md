@@ -1,3 +1,10 @@
+## [0.71.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.1...v0.71.2) (2022-04-19)
+
+
+### Bug Fixes
+
+* **placeholder:** fixed css for desktop ([84c8627](https://github.com/spring-media/red-sourcepoint-cmp/commit/84c86278a5e37e5fea199c720e309d410f233363))
+
 ## [0.71.1](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.0...v0.71.1) (2022-04-19)
 
 

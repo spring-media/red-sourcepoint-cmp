@@ -215,17 +215,17 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 }
 
 @media (min-width: 0) and (max-width: 599.99px) {
-  :not(.nobp) .a-teaser.embed-placeholder__container {
+  .page-wrapper:not(.nobp) .a-teaser.embed-placeholder__container {
     aspect-ratio: auto;
   }
 
-  :not(.nobp) .embed-placeholder__header {
+  .page-wrapper:not(.nobp) .embed-placeholder__header {
     display: none;
   }
 }
 
 @media (max-width: 399.99px) {
-  :not(.nobp) .quad.embed-placeholder__container {
+  .page-wrapper:not(.nobp) .quad.embed-placeholder__container {
     aspect-ratio: auto;
   }
 }

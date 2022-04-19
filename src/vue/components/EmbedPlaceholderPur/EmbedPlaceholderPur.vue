@@ -188,17 +188,17 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 }
 
 @media (min-width: 0) and (max-width: 1023.99px) {
-  :not(.nobp) .a-teaser > .embed-placeholder__header--pur {
+  .page-wrapper:not(.nobp) .a-teaser > .embed-placeholder__header--pur {
     display: none;
   }
 
-  :not(.nobp) .double-a-teaser > .embed-placeholder__header--pur {
+  .page-wrapper:not(.nobp) .double-a-teaser > .embed-placeholder__header--pur {
     display: none;
   }
 }
 
 @media (min-width: 0) and (max-width: 599.99px) {
-  :not(.nobp) .embed-placeholder__header--pur {
+  .page-wrapper:not(.nobp) .embed-placeholder__header--pur {
     display: none;
   }
 }

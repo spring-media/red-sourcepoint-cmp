@@ -215,33 +215,18 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 }
 
 @media (min-width: 0) and (max-width: 599.99px) {
-  .a-teaser.embed-placeholder__container {
+  :not(.nobp) .a-teaser.embed-placeholder__container {
     aspect-ratio: auto;
   }
 
-  .embed-placeholder__header {
+  :not(.nobp) .embed-placeholder__header {
     display: none;
   }
 }
 
 @media (max-width: 399.99px) {
-  .quad.embed-placeholder__container {
+  :not(.nobp) .quad.embed-placeholder__container {
     aspect-ratio: auto;
-  }
-}
-
-/* workaround nobp class */
-@media (min-width: 1024px) {
-  .a-teaser.embed-placeholder__container {
-    aspect-ratio: 16 / 9;
-  }
-
-  .quad.embed-placeholder__container {
-    aspect-ratio: 1 / 1;
-  }
-
-  .embed-placeholder__header {
-    display: flex;
   }
 }
 </style>

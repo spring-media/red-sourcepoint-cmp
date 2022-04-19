@@ -188,33 +188,18 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 }
 
 @media (min-width: 0) and (max-width: 1023.99px) {
-  .a-teaser > .embed-placeholder__header--pur {
+  :not(.nobp) .a-teaser > .embed-placeholder__header--pur {
     display: none;
   }
 
-  .double-a-teaser > .embed-placeholder__header--pur {
+  :not(.nobp) .double-a-teaser > .embed-placeholder__header--pur {
     display: none;
   }
 }
 
 @media (min-width: 0) and (max-width: 599.99px) {
-  .embed-placeholder__header--pur {
+  :not(.nobp) .embed-placeholder__header--pur {
     display: none;
-  }
-}
-
-/* workaround nobp class */
-@media (min-width: 1024px) {
-  .a-teaser > .embed-placeholder__header--pur {
-    display: flex;
-  }
-
-  .double-a-teaser > .embed-placeholder__header--pur {
-    display: flex;
-  }
-
-  .embed-placeholder__header--pur {
-    display: flex;
   }
 }
 </style>

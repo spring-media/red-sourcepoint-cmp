@@ -1,3 +1,10 @@
+## [0.71.3](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.2...v0.71.3) (2022-04-19)
+
+
+### Bug Fixes
+
+* **placeholder:** adjust css ([d846e4e](https://github.com/spring-media/red-sourcepoint-cmp/commit/d846e4e5386ee08633dcd22d76d3d193471a1e97))
+
 ## [0.71.2](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.1...v0.71.2) (2022-04-19)
 
 

@@ -1,3 +1,10 @@
+## [0.71.4](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.3...v0.71.4) (2022-04-19)
+
+
+### Bug Fixes
+
+* **placeholder:** adjust nobp selector ([6273ecb](https://github.com/spring-media/red-sourcepoint-cmp/commit/6273ecbc089e6baf6180f430eb88b2caf4896660))
+
 ## [0.71.3](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.2...v0.71.3) (2022-04-19)
 
 

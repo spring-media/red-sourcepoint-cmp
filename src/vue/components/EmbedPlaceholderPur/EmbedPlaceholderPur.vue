@@ -150,6 +150,11 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   height: 48px;
 }
 
+.double-a-teaser > .embed-placeholder__header--pur svg {
+  width: 48px;
+  height: 48px;
+}
+
 .embed-placeholder__description--pur {
   font-family: Gotham XNarrow, sans-serif;
   font-style: normal;
@@ -170,6 +175,10 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 
 @media (min-width: 0) and (max-width: 1023.99px) {
   .a-teaser > .embed-placeholder__header--pur {
+    display: none;
+  }
+
+  .double-a-teaser > .embed-placeholder__header--pur {
     display: none;
   }
 }

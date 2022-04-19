@@ -139,11 +139,11 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
 }
 
 .a-teaser.embed-placeholder__container {
-  aspect-ratio: 16/9;
+  aspect-ratio: 16 / 9;
 }
 
 .bc.embed-placeholder__container {
-  aspect-ratio: 20/41;
+  aspect-ratio: 4.3875 / 9;
 }
 
 .embed-placeholder__header {

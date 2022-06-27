@@ -1,5 +1,5 @@
 export const getScriptSrcFromOembedHTML = (html: string): string | null => {
-  const src = html.match(/script async src\s*=\s*["'](.+?)["']/);
+  const src = html.match(/script(.*)src\s*=\s*["'](.+?)["']/);
 
-  return src ? src[1].trim() : null;
+  return src ? src[src.length - 1].trim() : null;
 };

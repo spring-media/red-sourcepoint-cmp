@@ -8,7 +8,7 @@ describe('oembed utilities', () => {
       ['script.js', '<script async src=" script.js "></script>'],
       ['script.js', '<script async src= " script.js "></script>'],
       ['script.js', `<script async src='script.js'></script>`],
-      ['script.js', '<script class="someClassName" data-configuration="someConfiguration" src="script.js"/>'],
+      ['script.js', '<script class="someClassName"\n data-configuration="someConfiguration"\n src="script.js"\n/>'],
       [null, `<scrip async src='script.js'></scrip>`],
       [null, ''],
     ])('should return %s for input: %s', (expected, input) => {

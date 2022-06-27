@@ -1,3 +1,10 @@
+## [0.71.5](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.4...v0.71.5) (2022-06-27)
+
+
+### Bug Fixes
+
+* **oembed:** Regex adjustment: allow any string between script and src and remove async. ([fd57e11](https://github.com/spring-media/red-sourcepoint-cmp/commit/fd57e116e90c73cc12acac565198735fbefd6733))
+
 ## [0.71.4](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.3...v0.71.4) (2022-04-19)
 
 

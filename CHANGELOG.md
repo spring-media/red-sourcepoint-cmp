@@ -1,3 +1,11 @@
+## [0.71.6](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.5...v0.71.6) (2022-06-27)
+
+
+### Bug Fixes
+
+* **oembed:** Add newlines to regex ([be69d19](https://github.com/spring-media/red-sourcepoint-cmp/commit/be69d19b6669a9b1a20a52f2bd8c833ab786c191))
+* **oembed:** Improve regex ([b710415](https://github.com/spring-media/red-sourcepoint-cmp/commit/b7104155798138a69ab0fa99e8abe6980bc4e3fb))
+
 ## [0.71.5](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.4...v0.71.5) (2022-06-27)
 
 

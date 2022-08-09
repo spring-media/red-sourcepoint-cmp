@@ -1,3 +1,10 @@
+# [0.72.0](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.6...v0.72.0) (2022-08-09)
+
+
+### Features
+
+* **vue:** implement css for sportbild tenant ([ce244de](https://github.com/spring-media/red-sourcepoint-cmp/commit/ce244de747695bbcfa567a5f1956bdcf8473b234))
+
 ## [0.71.6](https://github.com/spring-media/red-sourcepoint-cmp/compare/v0.71.5...v0.71.6) (2022-06-27)
 
 

@@ -143,6 +143,15 @@ const PlaygroundApp = Vue.extend({
                 </embed-consent>
             </li>
         </ul>
+        <h2 class="section">SPOBI</h2>
+        <ul class="embed__container social-embeds__container" data-tenant="sportbild">
+            <li class="embed__item">
+                <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" :privacyManagerIdDenyTracking="privacyManagerIdDenyTracking" :isPur="true"></embed-facebook-consent>
+            </li>
+            <li class="embed__item">
+                <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" :isPur="false"></embed-facebook-consent>
+            </li>
+        </ul>
         <h2 class="section">LAYOUT SECTION</h2>
         <div class="embed__container social-embeds__container layout-1">
             <embed-facebook-consent :content="facebook" :privacyManagerId="privacyManagerId" teaserFormat="quad"></embed-facebook-consent>

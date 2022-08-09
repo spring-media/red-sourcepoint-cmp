@@ -161,6 +161,29 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   flex: 1;
 }
 
+[data-tenant='sportbild'] .embed-placeholder__headline {
+  font-family: Antenna Extra Cond, sans-serif;
+  font-size: 20px;
+  line-height: 1;
+}
+
+[data-tenant='sportbild'] .embed-placeholder__description {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+[data-tenant='sportbild'] .embed-placeholder__button {
+  font-family: Antenna Extra Cond, sans-serif;
+  line-height: 1;
+}
+
+[data-tenant='sportbild'] .embed-placeholder__footer-text {
+  font-family: Inter, sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
 .embed-placeholder__headline {
   font-family: Gotham, sans-serif;
   font-style: normal;

@@ -169,6 +169,12 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   height: 48px;
 }
 
+[data-tenant='sportbild'] .embed-placeholder__description--pur {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
 .embed-placeholder__description--pur {
   font-family: Gotham XNarrow, sans-serif;
   font-style: normal;

@@ -24,36 +24,56 @@
 } */
 
 @font-face {
-	font-family: Gotham;
-	src: url('./fonts/gotham/8B8182E2BA0464F45.woff2') format('woff2'), url('./fonts/gotham/8B8182E2BA0464F45.woff') format('woff');
-	font-weight: 800;
-	font-style: normal;
+  font-family: Gotham;
+  src: url('./fonts/gotham/8B8182E2BA0464F45.woff2') format('woff2'),
+    url('./fonts/gotham/8B8182E2BA0464F45.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Gotham Cond';
-	src: url('./fonts/gotham/3FF86ACA2E0D4CD65.woff2') format('woff2'), url('./fonts/gotham/3FF86ACA2E0D4CD65.woff') format('woff');
-	font-weight: 600;
-	font-style: normal;
+  font-family: 'Gotham Cond';
+  src: url('./fonts/gotham/3FF86ACA2E0D4CD65.woff2') format('woff2'),
+    url('./fonts/gotham/3FF86ACA2E0D4CD65.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Gotham Cond';
-	src: url('./fonts/gotham/B6699C503D96A9BC1.woff2') format('woff2'), url('./fonts/gotham/B6699C503D96A9BC1.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
+  font-family: 'Gotham Cond';
+  src: url('./fonts/gotham/B6699C503D96A9BC1.woff2') format('woff2'),
+    url('./fonts/gotham/B6699C503D96A9BC1.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Gotham XNarrow';
-	src: url('./fonts/gotham/21A46BAE2B5D0CF5D.woff2') format('woff2'), url('./fonts/gotham/21A46BAE2B5D0CF5D.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
+  font-family: 'Gotham XNarrow';
+  src: url('./fonts/gotham/21A46BAE2B5D0CF5D.woff2') format('woff2'),
+    url('./fonts/gotham/21A46BAE2B5D0CF5D.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Gotham XNarrow';
-	src: url('./fonts/gotham/D7632D565C85109A8.woff2') format('woff2'), url('./fonts/gotham/D7632D565C85109A8.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
+  font-family: 'Gotham XNarrow';
+  src: url('./fonts/gotham/D7632D565C85109A8.woff2') format('woff2'),
+    url('./fonts/gotham/D7632D565C85109A8.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Antenna Extra Cond';
+  src: url('./fonts/antenna/antenna-extra-condensed.woff2') format('woff2'),
+    url('./fonts/antenna/antenna-extra-condensed.woff') format('woff');
+  font-weight: 700;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url('./fonts/inter/inter.woff2') format('woff2'), url('./fonts/inter/inter.woff') format('woff');
+  font-weight: 400;
+  font-display: auto;
 }

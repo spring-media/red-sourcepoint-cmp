@@ -72,6 +72,11 @@ export default Vue.extend<NonNullish, Methods, NonNullish, Props>({
   align-items: center;
 }
 
+[data-tenant='sportbild'] .cmp-input-switch__label {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+}
+
 .cmp-input-switch__label {
   font-family: Gotham XNarrow, sans-serif;
   margin-right: 8px;

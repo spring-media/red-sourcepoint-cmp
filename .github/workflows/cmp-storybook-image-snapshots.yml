@@ -1,4 +1,4 @@
-name: Storybook Image Snapshots
+name: CMP - Storybook Image Snapshots
 
 on:
   release:

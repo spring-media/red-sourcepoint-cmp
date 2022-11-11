@@ -4,7 +4,7 @@
   "description": "CMP (Consent Management Platform) implementation for www.bild.de using the Sourcepoint API",
   "scripts": {
     "test": "jest --config tests/jest.config.js",
-    "test:all": "npm run build && npm run test && npm run test:cae:package",
+    "test:all": "npm run build && npm run test",
     "build": "rollup -c",
     "lint": "eslint --ext .js,.ts,.vue .",
     "playground:start": "node ./playground/scripts/serve.js",

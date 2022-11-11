@@ -25,16 +25,16 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-json.lock') }}
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --prefix libs/red-sourcepoint-cmp
 
       - name: Lint files
-        run: npm run lint
+        run: npm run lint --prefix libs/red-sourcepoint-cmp
 
       - name: Run unit tests
-        run: npm test
+        run: npm test --prefix libs/red-sourcepoint-cmp
 
       - name: Build project
-        run: npm run build
+        run: npm run build --prefix libs/red-sourcepoint-cmp
         env:
           CI: true
 
@@ -44,14 +44,14 @@ jobs:
           java-version: 11
 
       - name: Run Sonar Scanner
-        run: npm run sonar
+        run: npm run sonar --prefix libs/red-sourcepoint-cmp
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Release
         if: success()
-        run: npx semantic-release
+        run: npm run release --prefix libs/red-sourcepoint-cmp
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

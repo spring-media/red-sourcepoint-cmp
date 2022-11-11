@@ -57,9 +57,3 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-
-
-      # - name: Deploy Storybook
-      #  run: npm run storybook:deploy -- --ci
-      #  env:
-      #    GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}

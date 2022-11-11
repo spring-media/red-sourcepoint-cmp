@@ -13,7 +13,6 @@
     "playground:prepare": "node ./playground/scripts/prepare.js",
     "storybook": "start-storybook -p 9001 -s playground/public/assets",
     "storybook:build": "build-storybook --quiet -c .storybook -o .storybook-static && cp -R playground/public/assets/* .storybook-static",
-    "storybook:deploy": "npm run storybook:build && storybook-to-ghpages -e .storybook-static",
     "preimage-snapshots": "docker run -p 9222:3000 --name chrome --rm -d browserless/chrome:1.32.0-chrome-stable",
     "image-snapshots": "jest --config tests/jest.image-snapshots.config.js tests/image-snapshots.runner.js",
     "postimage-snapshots": "docker stop chrome || exit 0",
@@ -48,11 +47,6 @@
     "registry": "https://registry.npmjs.org/",
     "tag": "latest"
   },
-  "storybook-deployer": {
-    "gitUsername": "Spring Media",
-    "gitEmail": "developer@spring-media.de",
-    "commitMessage": "Deploy Storybook to GitHub Pages"
-  },
   "license": "MIT",
   "devDependencies": {
     "@babel/preset-react": "7.12.1",
@@ -66,7 +60,6 @@
     "@storybook/addon-knobs": "6.0.27",
     "@storybook/addon-viewport": "6.0.27",
     "@storybook/client-api": "6.0.27",
-    "@storybook/storybook-deployer": "2.8.7",
     "@storybook/vue": "6.0.27",
     "@types/jest": "26.0.15",
     "@types/node": "14.14.3",

@@ -57,20 +57,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      #- name: Build CAE package
-      #  run: npm run build:cae:package
 
-      #- name: Test CAE package
-      #  run: npm run test:cae:package
-
-      #- name: Upload to Akamai
-      #  if: success()
-      #  uses: ./.github/actions/akamai_uploader
-      #  env:
-      #    SSH_KEY_AKAMAI: ${{ secrets.AKAMAI_SSH_KEY }}
-      #    BUILD_OUTPUT_DIR: ".cae"
-      #    DOMAIN_NAME_PREFIX: ${{ secrets.AKAMAI_DOMAIN_NAME_PREFIX }}
-      #    TARGET_PATH: "/"
 
       # - name: Deploy Storybook
       #  run: npm run storybook:deploy -- --ci

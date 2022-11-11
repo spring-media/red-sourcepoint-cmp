@@ -33,8 +33,3 @@ jobs:
       - name: Build project
         run: npm run build
 
-      #- name: Build CAE package
-      #  run: npm run build:cae:package
-
-      #- name: Test CAE package
-      #  run: npm run test:cae:package

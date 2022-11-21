@@ -1,3 +1,7 @@
+# This repository has been archived and is no longer in use. The successor is [red-web-delivery-frontend](https://github.com/spring-media/red-web-delivery-frontend)
+
+Find project in `libs/red-sourcepoint-cmp` subfolder
+
 # Red Sourcepoint CMP
 
 [![npm](https://img.shields.io/npm/v/@spring-media/red-sourcepoint-cmp)](https://www.npmjs.com/package/@spring-media/red-sourcepoint-cmp)
